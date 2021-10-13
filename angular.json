@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "exadel-sandbox-fe"
+  "defaultProject": "exadel-sandbox-fe",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
