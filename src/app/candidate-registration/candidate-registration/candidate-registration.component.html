@@ -1,28 +1,36 @@
 <div class="container">
-  <div class="col">
-    <div class="about-exadel">
-      <h2>About Exadel</h2>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Pellentesque sit amet porttitor eget dolor morbi. Odio ut enim blandit volutpat maecenas volutpat. Nam at lectus urna duis convallis
-      convallis tellus. Tempor commodo ullamcorper a lacus vestibulum sed arcu.
-    </div>
-    <div class="about-sandbox">
-      <h2>About Sandbox</h2>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl
-      condimentum id venenatis a condimentum. Vulputate mi sit amet mauris commodo quis. Sit amet tellus cras adipiscing enim eu. At varius
-      vel pharetra vel.
-    </div>
+  <header class="header">
+    <img class="logo" src="" alt="logo" />
+    <h1>Registration to Exadel's Sandbox</h1>
+    <button mat-raised-button color="primary">Log in for Exadel's employees</button>
+  </header>
+  <div class="about">
+    <mat-card class="about-card">
+      <mat-card-title>About Exadel</mat-card-title>
+      <mat-card-content>
+        <p>
+          Exadel is a software engineering company that delivers the digital platforms, products and applications our clients need to run
+          and grow their business.
+        </p>
+        <br />
+        <p>
+          <a href="https://exadel.com/">Find more information about Exadel</a>
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="about-card">
+      <mat-card-title>About Exadel</mat-card-title>
+      <mat-card-content>
+        <p>
+          In our competitive Sandbox program, about 65% of each class will win professional position with us. Here, as part of our
+          development team, internships work closely with experienced engineers to quickly deepen their skills through real-world work in
+          coding, development, design and testing. Being part of a consultancy organization, a strong emphasis on teamwork is also part of
+          every internship's experience. Interested in learning more?
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <div class="col">
-    <h2>Available programs</h2>
-    <ul>
-      <li>JavaScript</li>
-      <li>.NET</li>
-      <li>Business Analyst</li>
-    </ul>
-  </div>
-  <div class="col">
-    <h2>Registration form</h2>
+  <div class="registration-form">
     <app-candidate-form></app-candidate-form>
   </div>
 </div>
