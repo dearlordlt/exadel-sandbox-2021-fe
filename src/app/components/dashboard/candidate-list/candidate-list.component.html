@@ -1,0 +1,45 @@
+<div class="container">
+  <p>List of candidates</p>
+  <div class="table">
+    <div class="cell table-header" style="grid-column: 1/12">From registration form</div>
+    <div class="cell table-header" style="grid-area: 1/12/3/13">status</div>
+    <div class="cell table-header" style="grid-area: 1/13/3/14">input test result</div>
+    <div class="cell table-header" style="grid-area: 1/14/3/15">English</div>
+    <div class="cell table-header" style="grid-area: 1/15/3/16">Soft skill</div>
+    <div class="cell table-header" style="grid-area: 1/16/3/17">Hard skill</div>
+    <div class="cell table-header" style="grid-area: 1/17/3/18">Mentor's mark in the end of program</div>
+    <div class="cell table-header">First name</div>
+    <div class="cell table-header">Last name</div>
+    <div class="cell table-header">Educational program</div>
+    <div class="cell table-header">Position/ technology</div>
+    <div class="cell table-header">Email</div>
+    <div class="cell table-header">Skype</div>
+    <div class="cell table-header">Phone</div>
+    <div class="cell table-header">Country</div>
+    <div class="cell table-header">City</div>
+    <div class="cell table-header">Other</div>
+    <div class="cell table-header">Date of applying</div>
+    <ng-container *ngIf="candidates$ | async as candidates">
+      <ng-container *ngFor="let candidate of candidates">
+        <div class="cell">{{candidate.firstname}}</div>
+        <div class="cell">{{candidate.lastname}}</div>
+        <div class="cell">{{candidate.eduProg}}</div>
+        <div class="cell">{{candidate.position}}</div>
+        <div class="cell">{{candidate.email}}</div>
+        <div class="cell">{{candidate.skype}}</div>
+        <div class="cell">{{candidate.phone_number}}</div>
+        <div class="cell">{{candidate.country}}</div>
+        <div class="cell">{{candidate.city}}</div>
+        <div class="cell">{{candidate.other}}</div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+

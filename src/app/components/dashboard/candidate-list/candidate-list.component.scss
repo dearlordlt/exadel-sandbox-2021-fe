@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .table {
+    display: grid;
+    justify-content: center;
+    width: 1728px;
+    height: 1000px;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(17, 1fr);
+
+    .cell {
+      border: 1px solid gray;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .table-header {
+      background-color: #f8f9fa;
+    }
+  }
+}
+

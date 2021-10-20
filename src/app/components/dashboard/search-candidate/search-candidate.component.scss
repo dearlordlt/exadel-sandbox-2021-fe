@@ -1,0 +1,18 @@
+p {
+  font-size: 2rem;
+}
+
+input {
+  display: block;
+  width: 50%;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 1rem;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 5px 1px lightgray;
+  }
+}
