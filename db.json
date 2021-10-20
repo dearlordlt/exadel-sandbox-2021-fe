@@ -1,0 +1,46 @@
+{
+  "candidates": [
+    {
+      "id": 1,
+      "firstname": "Titus",
+      "lastname": "Chase",
+      "eduProg": "JS",
+      "position": "Developer",
+      "email": "Titus.Chase@gmail.com",
+      "phone_number": "123123123"
+    },{
+      "id": 2,
+      "firstname": "Dawson",
+      "lastname": "Gallegos",
+      "eduProg": "BA",
+      "position": "Developer",
+      "email": "Dawson.Gallegos@gmail.com",
+      "phone_number": "456234678"
+    },
+    {
+      "id": 3,
+      "firstname": "Lance",
+      "lastname": "Gallegos",
+      "eduProg": ".NET",
+      "position": "Developer",
+      "email": "Lance.Mack@gmail.com",
+      "phone_number": "490634678"
+    },
+    {
+      "id": 4,
+      "firstname": "Kate",
+      "lastname": "Long",
+      "eduProg": "BA",
+      "position": "Developer",
+      "email": "Kate.Long@gmail.com",
+      "phone_number": "346745628"
+    }
+  ],
+  "mentors": [
+    {
+      "id": 1,
+      "firstname": "john",
+      "lastname": "Smith"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+$primary: #0082ca;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30px;
+
+  img {
+    width: 85px;
+    aspect-ratio: 1/1;
+  }
+
+  ul {
+    display: flex;
+    gap: 70px;
+    list-style: none;
+
+    li {
+      font-size: 1.7rem;
+
+      a {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+          border-bottom: 3px solid $primary;
+          padding-bottom: 15px;
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .profile {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    button {
+      background-color: #fff;
+      box-shadow: 0 0 2px 2px $primary;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      margin-left: 10px;
+
+      &:hover {
+        box-shadow: 0 0 4px 2px $primary;
+
+      }
+    }
+
+    span {
+      font-size: 1.1rem;
+
+      i {
+        font-size: 3rem;
+        color: $primary;
+      }
+    }
+  }
+}
