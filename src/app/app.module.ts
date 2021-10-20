@@ -18,11 +18,7 @@ import {ReportComponent} from './components/report/report.component';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, TopBarComponent, EducationalProgramComponent, SearchCandidateComponent, CandidateListComponent, PlanningComponent, EducationalProgramsComponent, LettersComponent, ReportComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot([{
-    path: '',
-    component: TopBarComponent,
-    pathMatch: 'full'
-  },
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot([
     {
       path: 'dashboard',
       component: DashboardComponent

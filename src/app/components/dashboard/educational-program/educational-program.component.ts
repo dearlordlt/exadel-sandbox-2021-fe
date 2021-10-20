@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {educationalPrograms} from "../../../global/constants";
 
 @Component({
   selector: 'app-educational-program',
@@ -6,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./educational-program.component.scss']
 })
 export class EducationalProgramComponent implements OnInit {
-  programs = ['All', '.NET', 'JS', 'BA']
+  programs = educationalPrograms
 
   constructor() {
   }
