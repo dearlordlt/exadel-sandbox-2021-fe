@@ -1,36 +1,73 @@
 <div class="reg-form">
-  <form action="#">
-    <div class="container">
-      <label for="cars">Education program:</label>
-
-      <select name="edu-program" id="edu-program">
-        <option value="JavaScript">JavaScript</option>
-        <option value=".Net">.Net</option>
-        <option value="Business Analyst">Business Analyst</option>
-      </select>
-      <br />
-      <br />
-      <label for="fname">First Name:</label>
-      <input type="text" id="fname" name="firstname" placeholder="Your name.." required />
-
-      <label for="lname">Last Name:</label>
-      <input type="text" id="lname" name="lastname" placeholder="Your last name.." required />
-
-      <label for="email">Email:</label>
-      <input type="text" placeholder="Enter Email" name="email" required />
-
-      <label for="skype">Skype:</label>
-      <input type="text" placeholder="Enter your Skype account" name="skype" required />
-
-      <label for="phonenum">Phone Number:</label>
-      <input type="tel" placeholder="Enter Your Phone Number" name="phonenum" required />
-
-      <label for="myfile">Upload CV:</label>
-      <input type="file" id="myfile" name="myfile" />
-
-      <div class="g-recaptcha" data-sitekey="http://localhost:4200/candidate-registration"></div>
-      <br />
-      <input type="submit" value="Submit" />
-    </div>
-  </form>
+    <form action="#">
+      <!-- Left side of form -->
+      <div class="container">
+        <label for="fname">First Name:</label><br>
+        <input class="input" type="text" id="fname" name="firstname" placeholder="Your name.." required />
+        <br>
+        <label for="lname">Last Name:</label><br>
+        <input class="input" type="text" id="lname" name="lastname" placeholder="Your last name.." required />
+        <br>
+        <label for="email">Email:</label><br>
+        <input class="input" type="text" placeholder="Enter Email" name="email" required />
+        <br>
+        <label for="skype">Skype:</label><br>
+        <input class="input" type="text" placeholder="Enter your Skype account" name="skype" required />
+        <br>
+        <label for="phonenum">Phone Number:</label><br>
+        <input class="input" type="tel" placeholder="Enter Your Phone Number" name="phonenum" required /><br>
+      </div>
+        <!-- Right side of form -->
+      <div class="container2">
+        <label for="pr-skill">Primary skill</label>
+        <br>
+        <select name="pr-skill" id="pr-skill">
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+          <option value="C#">C#</option>
+          <option value="C++">C++</option>
+          <option value="PHP">PHP</option>
+          <option value="Swift">Swift</option>
+          <option value="Go">Go</option>
+          <option value="Scala">Scala</option>
+          <option value="Other">Other</option>
+        </select> <br><br>
+        <label for="en-lvl">English level</label> <br>
+        <select name="en-lvl" id="en-lvl">
+          <option value="Elementary">Elementary</option>
+          <option value="Pre-Intermediate">Pre-Intermediate</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Upper-Intermediate">Upper-Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select><br><br>
+        <label for="time">Best time to contact (Minsk, UTC+3)</label><br>
+        <select name="time" id="time">
+          <option value="10.00-13.00">10.00-13.00</option>
+          <option value="13.00-16.00">13.00-16.00</option>
+          <option value="16.00-19.00">16.00-19.00</option>
+          <option value="Anytime">Anytime</option>
+        </select><br><br>
+        <label for="edu-program">Education program:</label><br>
+        <select name="edu-program" id="edu-program">
+          <option value="JavaScript">JavaScript</option>
+          <option value=".Net">.Net</option>
+          <option value="Business Analyst">Business Analyst</option>
+        </select><br><br>
+        <label for="decision">Are you planning to join Exadel after Internship?</label><br>
+        <select name="decision" id="decision">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Maybe">Maybe</option>
+        </select><br><br>
+        <label for="myfile">Upload CV:</label><br>
+        <input type="file" id="myfile" name="myfile" />
+        <br /><br>
+        <input type="checkbox">I know that my personal data will be processed on the terms of specified in the Privacy Policy<br><br>
+        <p>Your personal data will be used during the Event and will not be shared with third parties</p><br>
+        <p>Please read our <a href="#" target="_blank">Privacy Policy</a></p>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+  
 </div>

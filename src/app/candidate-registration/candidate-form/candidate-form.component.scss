@@ -6,8 +6,7 @@ label {
   font-weight: 600;
 }
 
-input {
-  width: 100%;
+.input {
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -15,7 +14,7 @@ input {
   background: #f1f1f1;
 }
 
-input:focus {
+.input:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -34,6 +33,13 @@ button {
 button:hover {
   opacity: 1;
 }
-.container {
+
+.container, .container2{
+  display: inline-block;
   padding: 16px;
+  width: 50%;
+}
+.reg-form{
+ // display: flex;
+  padding: 16px 50px;
 }
