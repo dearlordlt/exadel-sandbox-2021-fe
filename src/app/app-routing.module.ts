@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CandidateRegistrationComponent } from './candidate-registration/candidate-registration/candidate-registration.component';
+import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
 
-const routes: Routes = [{ path: 'candidate-registration', component: CandidateRegistrationComponent }];
+const routes: Routes = [{ path: 'candidate-registration', component: CandidateHeaderComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
