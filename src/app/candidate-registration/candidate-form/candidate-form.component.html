@@ -1,6 +1,6 @@
-<div class="reg-form">
+<!-- <div class="reg-form">
     <form action="#">
-      <!-- Left side of form -->
+      Left side of form
       <div class="container">
         <label for="fname">First Name:</label><br>
         <input class="input" type="text" id="fname" name="firstname" placeholder="Your name.." required />
@@ -17,7 +17,7 @@
         <label for="phonenum">Phone Number:</label><br>
         <input class="input" type="tel" placeholder="Enter Your Phone Number" name="phonenum" required /><br>
       </div>
-        <!-- Right side of form -->
+        Right side of form
       <div class="container2">
         <label for="pr-skill">Primary skill</label>
         <br>
@@ -70,4 +70,33 @@
       </div>
     </form>
   
+</div> -->
+<div class="container">
+  <div class="edu-programs">
+    <h3>Actual Educational programs</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>.NET, JS, BA: 10-11.21</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let program of programs" [value]="program.value">
+          {{program.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h3>Your position/technology</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Select technology</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let technology of technologies" [value]="technology.value">
+          {{technology.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="descr-form">
+    <div class="descr"></div>
+    <div class="form">
+      <div class="left-form"></div>
+      <div class="right-form"></div>
+    </div>
+  </div>
 </div>
