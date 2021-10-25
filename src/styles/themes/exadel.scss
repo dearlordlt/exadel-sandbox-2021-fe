@@ -1,0 +1,20 @@
+@use '~@angular/material' as mat;
+@import '../palettes/exadel-palette.scss';
+@include mat.core();
+
+$exadel-primary: mat.define-palette($md-exadel-palette);
+$exadel-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
+
+$exadel-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $exadel-primary,
+      accent: $exadel-accent,
+    ),
+  )
+);
+
+// Emit styles for MatButton based on `$my-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.all-component-themes($exadel-theme);
