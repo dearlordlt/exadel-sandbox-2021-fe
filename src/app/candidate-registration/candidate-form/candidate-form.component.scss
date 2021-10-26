@@ -3,7 +3,22 @@
   margin: 0;
   padding: 0;
 }
-
+li {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.bold-text{
+  font-weight: 500;
+}
+h3.bold-text{
+  text-align: center;
+}
+.apply-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   width: 100%;
   border: 1px solid red;
@@ -20,71 +35,35 @@
     margin-top: 5px;
     padding: 5px;
     width: 100%;
-    height: 680px;
     border: 1px solid blue;
     .descr{
       width: 100%;
-      height: 200px;
       border: 1px dashed purple;
+      .decr-card{
+        padding: 20px 180px;
+        .requiremnets{
+          padding: 20px;
+        }
+      }
     }
     .form{
       margin-top: 5px;
       padding: 5px;
       width: 100%;
-      height: 460px;
       border: 1px dashed orangered;
       display: flex;
       .left-form{
         width: 100%;
-        height: 450px;
         border: 1px solid red;
+        display: flex;
+        flex-direction: column;
       }
       .right-form{
         width: 100%;
-        height: 450px;
         border: 1px solid green;
+        display: flex;
+        flex-direction: column;
       }
     }
   }
 }
-// label {
-//   font-weight: 600;
-// }
-
-// .input {
-//   padding: 15px;
-//   margin: 5px 0 22px 0;
-//   display: inline-block;
-//   border: none;
-//   background: #f1f1f1;
-// }
-
-// .input:focus {
-//   background-color: #ddd;
-//   outline: none;
-// }
-
-// button {
-//   background-color: #04aa6d;
-//   color: white;
-//   padding: 14px 20px;
-//   margin: 8px 0;
-//   border: none;
-//   cursor: pointer;
-//   width: 100%;
-//   opacity: 0.9;
-// }
-
-// button:hover {
-//   opacity: 1;
-// }
-
-// .container, .container2{
-//   display: inline-block;
-//   padding: 16px;
-//   width: 50%;
-// }
-// .reg-form{
-//  // display: flex;
-//   padding: 16px 50px;
-// }

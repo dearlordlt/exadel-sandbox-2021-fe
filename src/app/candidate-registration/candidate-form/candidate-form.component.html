@@ -1,88 +1,15 @@
-<!-- <div class="reg-form">
-    <form action="#">
-      Left side of form
-      <div class="container">
-        <label for="fname">First Name:</label><br>
-        <input class="input" type="text" id="fname" name="firstname" placeholder="Your name.." required />
-        <br>
-        <label for="lname">Last Name:</label><br>
-        <input class="input" type="text" id="lname" name="lastname" placeholder="Your last name.." required />
-        <br>
-        <label for="email">Email:</label><br>
-        <input class="input" type="text" placeholder="Enter Email" name="email" required />
-        <br>
-        <label for="skype">Skype:</label><br>
-        <input class="input" type="text" placeholder="Enter your Skype account" name="skype" required />
-        <br>
-        <label for="phonenum">Phone Number:</label><br>
-        <input class="input" type="tel" placeholder="Enter Your Phone Number" name="phonenum" required /><br>
-      </div>
-        Right side of form
-      <div class="container2">
-        <label for="pr-skill">Primary skill</label>
-        <br>
-        <select name="pr-skill" id="pr-skill">
-          <option value="Python">Python</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="Java">Java</option>
-          <option value="C#">C#</option>
-          <option value="C++">C++</option>
-          <option value="PHP">PHP</option>
-          <option value="Swift">Swift</option>
-          <option value="Go">Go</option>
-          <option value="Scala">Scala</option>
-          <option value="Other">Other</option>
-        </select> <br><br>
-        <label for="en-lvl">English level</label> <br>
-        <select name="en-lvl" id="en-lvl">
-          <option value="Elementary">Elementary</option>
-          <option value="Pre-Intermediate">Pre-Intermediate</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Upper-Intermediate">Upper-Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select><br><br>
-        <label for="time">Best time to contact (Minsk, UTC+3)</label><br>
-        <select name="time" id="time">
-          <option value="10.00-13.00">10.00-13.00</option>
-          <option value="13.00-16.00">13.00-16.00</option>
-          <option value="16.00-19.00">16.00-19.00</option>
-          <option value="Anytime">Anytime</option>
-        </select><br><br>
-        <label for="edu-program">Education program:</label><br>
-        <select name="edu-program" id="edu-program">
-          <option value="JavaScript">JavaScript</option>
-          <option value=".Net">.Net</option>
-          <option value="Business Analyst">Business Analyst</option>
-        </select><br><br>
-        <label for="decision">Are you planning to join Exadel after Internship?</label><br>
-        <select name="decision" id="decision">
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
-          <option value="Maybe">Maybe</option>
-        </select><br><br>
-        <label for="myfile">Upload CV:</label><br>
-        <input type="file" id="myfile" name="myfile" />
-        <br /><br>
-        <input type="checkbox">I know that my personal data will be processed on the terms of specified in the Privacy Policy<br><br>
-        <p>Your personal data will be used during the Event and will not be shared with third parties</p><br>
-        <p>Please read our <a href="#" target="_blank">Privacy Policy</a></p>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  
-</div> -->
 <div class="container">
   <div class="edu-programs">
-    <h3>Actual Educational programs</h3>
+    <h4>Actual Educational programs</h4>
     <mat-form-field appearance="fill">
-      <mat-label>.NET, JS, BA: 10-11.21</mat-label>
+      <mat-label>Select program</mat-label>
       <mat-select>
         <mat-option *ngFor="let program of programs" [value]="program.value">
           {{program.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <h3>Your position/technology</h3>
+    <h4>Your position/technology</h4>
     <mat-form-field appearance="fill">
       <mat-label>Select technology</mat-label>
       <mat-select>
@@ -93,10 +20,115 @@
     </mat-form-field>
   </div>
   <div class="descr-form">
-    <div class="descr"></div>
+    <div class="descr">
+      <mat-card class="decr-card">
+        <h3 class="bold-text">Description</h3>
+        <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
+
+        <p><span class="bold-text">How to get there: </span> pass the interview</p>
+        <p><span class="bold-text">Duration: </span> 2 months</p>
+        <p><span class="bold-text">Start: </span> October 4,2021</p>
+        <p><span class="bold-text">Registration: </span> by September 24, 2021</p>
+        <p><span class="bold-text">Format: </span> online</p>
+        <p><span class="bold-text">Language: </span> Russian or English</p>
+        <p><span class="bold-text">Location: </span> Georgia, Uzbekistan, Poland, Lithuania, Belarus, Russia.</p>
+        <p class="bold-text">Requirements for BA candidates:</p>
+        <div class="requirments">
+          <ul>
+            <li>English language: Intermediate or higher</li>
+            <li>Availability: from October 4 to December 4, 2021, at least 20 hours per week</li>
+            <li>Excellent understanding:
+              <ul>
+                <li>software development cycle;</li>
+                <li>process and techniques for identifying requirements;</li>
+                <li>process and notation for requirements analysis</li>
+                <li>classification of Requirements and formats of their documentation;</li>
+                <li>the technician for verification, validation and requirements management;</li>
+              </ul>
+            </li>
+            <li>Excellent analytical and communication skills</li>
+            <li>Ability to present information in of group of people</li>
+            <li>Business communication skills</li>
+            <li>An additional plus will be:
+              <ul>
+                <li>a basic understanding of the principles of user interface design;</li>
+                <li>a basic understanding of the principles of OOP;</li>
+                <li>basic understanding of API</li>
+                <li>experience of using Jira / Confluence, Trello, MS Visio, draw.io, Miro, Figma</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        
+        
+      </mat-card>
+    </div>
     <div class="form">
-      <div class="left-form"></div>
-      <div class="right-form"></div>
+        <div class="left-form">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First name</mat-label>
+            <input type="text" matInput >
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input type="text" matInput >
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Skype</mat-label>
+            <input type="text" matInput >
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="email@example.com">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input type="tel" matInput >
+          </mat-form-field>
+          <!-- <mat-select-country appearance="outline" 
+                    label="Country"
+                    (onCountrySelected)="onCountrySelected($event)">
+          </mat-select-country> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>City</mat-label>
+            <input type="text" matInput >
+          </mat-form-field>
+        </div>
+        <div class="right-form">
+          <mat-form-field appearance="fill">
+            <mat-label>English level</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{level.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>The best time to contact (Minsk, UTC+3)</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let time of times" [value]="time.value">
+                {{time.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Are you planning to join Exadel after the Training?</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let decision of decisions" [value]="decision.value">
+                {{decision.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <section class="example-section">
+            <mat-checkbox class="example-margin">I know that my personal data will be processed on the terms of specified in the Privacy Policy</mat-checkbox>
+          </section>
+          <br>
+          <p>Your personal data will be used during the Event and will not be shared with third parties</p>
+          <p>Please read our <a href="#" target="_blank">Privacy Policy</a></p>
+        </div>
+    </div>
+    <div class="apply-btn">
+      <button mat-stroked-button color="primary">Apply</button>
     </div>
   </div>
 </div>
