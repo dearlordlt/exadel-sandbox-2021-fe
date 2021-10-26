@@ -15,6 +15,8 @@ import {PlanningComponent} from './components/planning/planning.component';
 import {EducationalProgramsComponent} from './components/educational-programs/educational-programs.component';
 import {LettersComponent} from './components/letters/letters.component';
 import {ReportComponent} from './components/report/report.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './app-material.module';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, TopBarComponent, EducationalProgramComponent, SearchCandidateComponent, CandidateListComponent, PlanningComponent, EducationalProgramsComponent, LettersComponent, ReportComponent],
@@ -39,7 +41,7 @@ import {ReportComponent} from './components/report/report.component';
       path: 'report',
       component: ReportComponent
     },
-  ])],
+  ]), BrowserAnimationsModule, AppMaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
