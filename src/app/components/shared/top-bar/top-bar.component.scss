@@ -4,7 +4,7 @@ $primary: #0082ca;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 30px;
+  margin: 0 3rem;
 
   img {
     width: 85px;
@@ -17,7 +17,7 @@ $primary: #0082ca;
     list-style: none;
 
     li {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
 
       a {
         text-decoration: none;
@@ -25,7 +25,7 @@ $primary: #0082ca;
 
         &:hover {
           border-bottom: 3px solid $primary;
-          padding-bottom: 15px;
+          padding-bottom: 1.5rem;
           color: $primary;
         }
       }
@@ -39,22 +39,21 @@ $primary: #0082ca;
 
     button {
       background-color: #fff;
-      box-shadow: 0 0 2px 2px $primary;
-      border: none;
+      // box-shadow: 0 0 2px 2px $primary;
+      border: 1px solid $primary;
       border-radius: 3px;
       cursor: pointer;
       padding: 10px 20px;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       margin-left: 10px;
 
       &:hover {
         box-shadow: 0 0 4px 2px $primary;
-
       }
     }
 
     span {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
 
       i {
         font-size: 3rem;

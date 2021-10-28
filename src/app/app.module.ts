@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -37,6 +38,7 @@ import { ReportComponent } from './components/report/report.component';
     ReportComponent,
   ],
   imports: [
+    AppMaterialModule
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
