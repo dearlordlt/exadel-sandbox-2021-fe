@@ -63,7 +63,8 @@
         
       </mat-card>
     </div>
-    <div class="form">
+    <form action="#">
+      <div class="form">
         <div class="left-form">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>First name</mat-label>
@@ -85,10 +86,10 @@
             <mat-label>Phone</mat-label>
             <input type="tel" matInput >
           </mat-form-field>
-          <!-- <mat-select-country appearance="outline" 
+          <mat-select-country appearance="outline" 
                     label="Country"
                     (onCountrySelected)="onCountrySelected($event)">
-          </mat-select-country> -->
+          </mat-select-country>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>City</mat-label>
             <input type="text" matInput >
@@ -120,15 +121,20 @@
             </mat-select>
           </mat-form-field>
           <section class="example-section">
-            <mat-checkbox class="example-margin">I know that my personal data will be processed on the terms of specified in the Privacy Policy</mat-checkbox>
+            <p><mat-checkbox class="example-margin"> I know that my personal data will be processed on the terms of specified in the Privacy Policy</mat-checkbox></p>
           </section>
           <br>
           <p>Your personal data will be used during the Event and will not be shared with third parties</p>
           <p>Please read our <a href="#" target="_blank">Privacy Policy</a></p>
         </div>
-    </div>
+      </div>
+    </form>
+    
     <div class="apply-btn">
-      <button mat-stroked-button color="primary">Apply</button>
+      <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
+    </div>
+    <div>
     </div>
   </div>
+
 </div>

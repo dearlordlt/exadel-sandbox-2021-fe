@@ -8,11 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'
-// import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
-// import {HttpClientModule} from '@angular/common/http';
+import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [CandidateFormComponent, CandidateHeaderComponent],
-  imports: [CommonModule, MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule], 
-  // MatSelectCountryModule.forRoot('en'), HttpClientModule],
+  imports: [CommonModule, MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, 
+  MatSelectCountryModule.forRoot('en'), HttpClientModule],
 })
 export class CandidateRegistrationModule {}

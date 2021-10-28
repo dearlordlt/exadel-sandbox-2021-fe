@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {Country} from '@angular-material-extensions/select-country'; 
+import {Country} from '@angular-material-extensions/select-country'; 
 
   
 
@@ -61,9 +61,9 @@ export class CandidateFormComponent implements OnInit {
   ];
   
 
-  // onCountrySelected(country: Country) {
-  //   console.log(country);
-  // }
+  onCountrySelected(country: Country) {
+    console.log(country);
+  }
   constructor() {}
 
   ngOnInit(): void {}

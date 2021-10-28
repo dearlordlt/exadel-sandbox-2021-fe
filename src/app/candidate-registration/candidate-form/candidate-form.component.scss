@@ -21,11 +21,9 @@ h3.bold-text{
 }
 .container {
   width: 100%;
-  border: 1px solid red;
   padding: 5px;
   .edu-programs{
     width: 100%;
-    border: 1px solid green;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,10 +33,8 @@ h3.bold-text{
     margin-top: 5px;
     padding: 5px;
     width: 100%;
-    border: 1px solid blue;
     .descr{
       width: 100%;
-      border: 1px dashed purple;
       .decr-card{
         padding: 20px 180px;
         .requiremnets{
@@ -48,19 +44,18 @@ h3.bold-text{
     }
     .form{
       margin-top: 5px;
-      padding: 5px;
+      padding: 25px;
       width: 100%;
-      border: 1px dashed orangered;
       display: flex;
       .left-form{
-        width: 100%;
-        border: 1px solid red;
+        width: 50%;
+        padding: 0 40px 0 40px;
         display: flex;
         flex-direction: column;
       }
       .right-form{
-        width: 100%;
-        border: 1px solid green;
+        width: 50%;
+        padding: 0 40px 0 40px;
         display: flex;
         flex-direction: column;
       }
