@@ -38,7 +38,7 @@ import { ReportComponent } from './components/report/report.component';
     ReportComponent,
   ],
   imports: [
-    AppMaterialModule
+    AppMaterialModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

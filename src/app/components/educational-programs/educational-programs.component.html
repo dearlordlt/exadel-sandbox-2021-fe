@@ -1,16 +1,17 @@
 <form class="educational-programs" [formGroup]="programForm" (ngSubmit)="onSubmit()">
   <h1>Creating new educational program</h1>
   <p>Value: {{ programForm.value | json }}</p>
+  <p>Status: {{ programForm.status }}</p>
   <div class="educational-programs__acceptance-period">
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
+      <mat-date-range-input [rangePicker]="picker1">
         <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
       </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker1></mat-date-range-picker>
     </mat-form-field>
   </div>
 
@@ -18,12 +19,12 @@
     <h2>Educational program's period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
+      <mat-date-range-input [rangePicker]="picker2">
         <input matStartDate placeholder="Start date" formControlName="programsPeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
       </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker2></mat-date-range-picker>
     </mat-form-field>
   </div>
 
