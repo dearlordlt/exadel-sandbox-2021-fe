@@ -11,6 +11,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, CandidateRegistrationModule, BrowserAnimationsModule],
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
