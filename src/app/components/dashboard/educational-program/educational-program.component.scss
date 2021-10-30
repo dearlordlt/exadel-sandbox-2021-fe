@@ -1,0 +1,18 @@
+label {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 1rem;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+
+  option {
+    font-size: 1.2rem;
+  }
+}

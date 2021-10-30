@@ -34,14 +34,20 @@ $exadel-sandbox-fe-theme: mat.define-light-theme((
 @include mat.all-component-themes($exadel-sandbox-fe-theme);
 
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+  font-size: 10px;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+}
+
