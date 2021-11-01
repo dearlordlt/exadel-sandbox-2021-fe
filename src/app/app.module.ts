@@ -23,6 +23,7 @@ import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
+import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ReportComponent } from './components/report/report.component';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+    CreateEducationalProgramComponent,
   ],
   imports: [
     AppMaterialModule,
@@ -59,7 +61,7 @@ import { ReportComponent } from './components/report/report.component';
         component: PlanningComponent,
       },
       {
-        path: 'educational_programs',
+        path: 'educational-programs',
         component: EducationalProgramsComponent,
       },
       {
@@ -69,6 +71,11 @@ import { ReportComponent } from './components/report/report.component';
       {
         path: 'report',
         component: ReportComponent,
+      },
+
+      {
+        path: 'create-educational-program',
+        component: CreateEducationalProgramComponent,
       },
     ]),
   ],
