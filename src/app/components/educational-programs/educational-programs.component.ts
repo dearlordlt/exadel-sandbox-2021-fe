@@ -94,7 +94,7 @@ const ELEMENT_DATA: EducationalProgram[] = [
   styleUrls: ['./educational-programs.component.scss'],
 })
 export class EducationalProgramsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'acceptanceFrom', 'acceptanceTo', 'programFrom', 'programTo', 'edit'];
+  displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod', 'edit'];
   dataSource = ELEMENT_DATA;
 
   constructor() {}
