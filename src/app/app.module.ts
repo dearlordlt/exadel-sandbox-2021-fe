@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,10 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CandidateRegistrationModule, BrowserAnimationsModule],
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
@@ -30,6 +26,7 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +39,13 @@ import { ReportComponent } from './components/report/report.component';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+    BrowserModule,
+    AppRoutingModule,
+    CandidateRegistrationModule,
+    BrowserAnimationsModule
   ],
   imports: [
-    AppMaterialModule
+    AppMaterialModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
