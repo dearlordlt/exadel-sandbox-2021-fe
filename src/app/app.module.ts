@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -26,7 +25,6 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +37,6 @@ import { ReportComponent } from './components/report/report.component';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
-    BrowserModule,
-    AppRoutingModule,
-    CandidateRegistrationModule,
-    BrowserAnimationsModule
   ],
   imports: [
     AppMaterialModule,
@@ -56,28 +50,8 @@ import { ReportComponent } from './components/report/report.component';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    RouterModule.forRoot([
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'planning',
-        component: PlanningComponent,
-      },
-      {
-        path: 'educational_programs',
-        component: EducationalProgramsComponent,
-      },
-      {
-        path: 'letters',
-        component: LettersComponent,
-      },
-      {
-        path: 'report',
-        component: ReportComponent,
-      },
-    ]),
+    CandidateRegistrationModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
