@@ -24,7 +24,8 @@ import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
-
+import { LogoutComponent } from './components/shared/logout/logout.component';
+import { MatDialog } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { ReportComponent } from './components/report/report.component';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+    LogoutComponent
   ],
   imports: [
     AppMaterialModule,
@@ -52,6 +54,7 @@ import { ReportComponent } from './components/report/report.component';
     MatNativeDateModule,
     CandidateRegistrationModule,
     RouterModule,
+    MatDialog
   ],
   providers: [],
   bootstrap: [AppComponent],

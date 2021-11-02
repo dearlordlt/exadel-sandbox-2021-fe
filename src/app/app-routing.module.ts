@@ -5,11 +5,13 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { PlanningComponent } from './components/planning/planning.component';
 import { ReportComponent } from './components/report/report.component';
+import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
 
-// import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
 
-// const routes: Routes = [{ path: 'candidate-registration', component: CandidateHeaderComponent }];
 const routes: Routes = [
+  {
+    path: '', component: CandidateHeaderComponent
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
