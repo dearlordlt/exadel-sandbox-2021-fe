@@ -6,11 +6,15 @@ import { LettersComponent } from './components/letters/letters.component';
 import { PlanningComponent } from './components/planning/planning.component';
 import { ReportComponent } from './components/report/report.component';
 import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: '', component: CandidateHeaderComponent
+  },
+  {
+    path: 'login', component: LoginComponent
   },
   {
     path: 'dashboard',
