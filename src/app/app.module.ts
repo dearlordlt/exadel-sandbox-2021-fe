@@ -25,7 +25,7 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,9 +54,10 @@ import { MatDialog } from '@angular/material/dialog';
     MatNativeDateModule,
     CandidateRegistrationModule,
     RouterModule,
-    MatDialog
+    MatDialogModule
   ],
   providers: [],
+  entryComponents:[LogoutComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

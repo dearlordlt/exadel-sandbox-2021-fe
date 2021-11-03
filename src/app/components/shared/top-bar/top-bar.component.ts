@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-//import { MatDialog } from '@angular/material/dialog';
-//import { LogoutComponent } from '../logout/logout.component';
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutComponent } from '../logout/logout.component';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -9,18 +9,17 @@ import {Component, OnInit} from '@angular/core';
 export class TopBarComponent implements OnInit {
   navigation = ['Candidates', 'Planning', 'Educational programs', 'Letters', 'Report']
 
-  // constructor(public dialog: MatDialog) {
-  // }
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
+  //constructor() { }
   ngOnInit(): void {
   }
 
-  // openDialog(){
-  //   const dialogRef = this.dialog.open(LogoutComponent, {data: {name: "username"}});
+  openDialog(){
+    const dialogRef = this.dialog.open(LogoutComponent, {data: {name: "username"}});
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   })
-  //}
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    })
+  }
 
 }
