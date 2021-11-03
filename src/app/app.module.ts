@@ -17,7 +17,7 @@ import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     LettersComponent,
     ReportComponent,
     LoginFormComponent,
+    MatFormFieldModule
   ],
   imports: [
     BrowserModule,
