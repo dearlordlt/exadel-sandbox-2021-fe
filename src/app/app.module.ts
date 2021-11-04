@@ -24,11 +24,13 @@ import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
+import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+    CreateEducationalProgramComponent,
     LoginComponent,
     LogoutComponent
   ],
