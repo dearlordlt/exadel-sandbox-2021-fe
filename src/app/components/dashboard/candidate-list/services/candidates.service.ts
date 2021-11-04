@@ -1,10 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Candidate} from '../../../models/candidate';
-import {concatMap, filter, catchError, map, tap, switchMap, toArray} from 'rxjs/operators';
-import {of, Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
-import {ReadFeedbackService} from "../../read-feedback/read-feedback.service";
+import { Injectable } from '@angular/core';
+import { Candidate } from '../../../models/candidate';
+import { concatMap, filter, catchError, map, tap, switchMap, toArray } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,27 +12,15 @@ export class CandidatesService {
   apiUrl: string = 'candidates';
 
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.api}/${this.apiUrl}`)
-      .pipe(
-        switchMap(candidates =>
-          this.readFeedbackService.getFeedback()
-            .pipe(
-              map(feedback => candidates.map(c => {
-                  return {...c, feedback: feedback.filter(f => f.candidateId == c.id)}
-                })
-              ),
-            )
-        ),
-        // tap(() => console.log('fetched candidates')),
-        //   catchError(this.handleError('getCandidates', []))
-      )
+    return this.http.get<Candidate[]>(`${environment.api}/${this.apiUrl}`).pipe(
+      tap(() => console.log('fetched candidates')),
+      catchError(this.handleError('getCandidates', []))
+    );
   }
 
-  filterData(searchText: string) {
-  }
 
-  constructor(private http: HttpClient, private readFeedbackService: ReadFeedbackService) {
-  }
+
+  constructor(private http: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
