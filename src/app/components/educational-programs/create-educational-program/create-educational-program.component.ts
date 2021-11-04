@@ -52,7 +52,6 @@ export class CreateEducationalProgramComponent implements OnInit {
 
   deletePosition(i: number) {
     this.positions.removeAt(i);
-    console.log('detePosition, i = ', i);
   }
 
   onNumberOfPositionsChanges(): void {
