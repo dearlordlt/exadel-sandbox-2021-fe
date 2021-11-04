@@ -1,3 +1,15 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .list-header {
+    font-size: 2.8rem;
+    margin: 3rem 0;
+  }
+}
+
 .table-wrapper {
   width: 100%;
   display: flex;
@@ -5,18 +17,14 @@
   justify-content: center;
   align-items: center;
 
-  .table-header {
-    font-size: 2.8rem;
-    margin: 3rem 0;
+  .table {
+    width: 80%;
+    overflow-x: scroll;
   }
 }
 
-.table {
-  width: 80%;
-}
-
 th.mat-header-cell {
-  min-width: 55px;
+  min-width: 5rem;
   color: #000;
   font-size: 1.3rem;
   font-weight: bold;
@@ -26,10 +34,19 @@ th.mat-header-cell,
 td.mat-cell {
   text-align: center;
   border: 1px solid #ccc;
-  padding: 0 0.5rem;
+  padding: 1.2rem 0.2rem;
+}
 
+.mat-column-edit {
   .edit-icon {
     text-align: center;
     cursor: pointer;
+    margin-bottom: 0.8rem;
+  }
+}
+
+.mat-header-row {
+  .mat-header-cell {
+    background: #ddd;
   }
 }
