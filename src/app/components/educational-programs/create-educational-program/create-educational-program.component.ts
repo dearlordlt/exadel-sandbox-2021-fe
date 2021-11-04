@@ -50,7 +50,7 @@ export class CreateEducationalProgramComponent implements OnInit {
     this.positions.push(position);
   }
 
-  deletePosition(i: any) {
+  deletePosition(i: number) {
     this.positions.removeAt(i);
     console.log('detePosition, i = ', i);
   }
