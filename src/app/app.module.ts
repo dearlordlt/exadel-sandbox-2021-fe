@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +7,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -24,6 +22,9 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -39,46 +40,49 @@ import { CreateEducationalProgramComponent } from './components/educational-prog
     ReportComponent,
     CreateEducationalProgramComponent,
   ],
-  imports: [
-    AppMaterialModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule,
-    RouterModule.forRoot([
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'planning',
-        component: PlanningComponent,
-      },
-      {
-        path: 'educational-programs',
-        component: EducationalProgramsComponent,
-      },
-      {
-        path: 'letters',
-        component: LettersComponent,
-      },
-      {
-        path: 'report',
-        component: ReportComponent,
-      },
+    imports: [
+        AppMaterialModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatNativeDateModule,
+        MatTableModule,
+        RouterModule.forRoot([
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+            },
+            {
+                path: 'planning',
+                component: PlanningComponent,
+            },
+            {
+                path: 'educational-programs',
+                component: EducationalProgramsComponent,
+            },
+            {
+                path: 'letters',
+                component: LettersComponent,
+            },
+            {
+                path: 'report',
+                component: ReportComponent,
+            },
 
-      {
-        path: 'create-educational-program',
-        component: CreateEducationalProgramComponent,
-      },
-    ]),
-  ],
+            {
+                path: 'create-educational-program',
+                component: CreateEducationalProgramComponent,
+            },
+        ]),
+        MatSelectModule,
+        MatSortModule,
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })
