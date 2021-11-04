@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -11,6 +10,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
@@ -24,6 +25,11 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
+import { LogoutComponent } from './components/shared/logout/logout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,8 @@ import { CreateEducationalProgramComponent } from './components/educational-prog
     LettersComponent,
     ReportComponent,
     CreateEducationalProgramComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     AppMaterialModule,
@@ -51,35 +59,14 @@ import { CreateEducationalProgramComponent } from './components/educational-prog
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    RouterModule.forRoot([
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'planning',
-        component: PlanningComponent,
-      },
-      {
-        path: 'educational-programs',
-        component: EducationalProgramsComponent,
-      },
-      {
-        path: 'letters',
-        component: LettersComponent,
-      },
-      {
-        path: 'report',
-        component: ReportComponent,
-      },
-
-      {
-        path: 'create-educational-program',
-        component: CreateEducationalProgramComponent,
-      },
-    ]),
+    CandidateRegistrationModule,
+    RouterModule,
+    MatDialogModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
+  entryComponents:[LogoutComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
