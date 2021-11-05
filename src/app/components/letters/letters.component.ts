@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Date_Elements } from '../models/dateElements';
 
@@ -18,7 +18,7 @@ const table_Data: Date_Elements[] = [
   templateUrl: './letters.component.html',
   styleUrls: ['./letters.component.scss']
 })
-export class LettersComponent implements OnInit {
+export class LettersComponent  {
 
   displayedColumns: string[] = ["dateUpdate", "Name","edit"];
   dataSource = new MatTableDataSource(table_Data)
@@ -26,7 +26,4 @@ export class LettersComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {
-
-  }
 }

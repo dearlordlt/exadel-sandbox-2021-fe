@@ -27,10 +27,10 @@ import { CreateEducationalProgramComponent } from './components/educational-prog
 import { LogoutComponent } from './components/shared/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
