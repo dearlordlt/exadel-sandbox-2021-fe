@@ -62,9 +62,16 @@ export class CreateEducationalProgramComponent implements OnInit {
         .pipe(startWith(1), pairwise())
         .subscribe(([prevVal, nextVal]: [any, any]) => {
           const changeInPositions = nextVal - prevVal;
-          if (changeInPositions < 0) for (let i = prevVal; i > nextVal; i--) this.deletePosition(i - 1);
-          // -1 because in template they are indexed from 0
-          else for (let i = 0; i < changeInPositions; i++) this.addPosition();
+
+          if (changeInPositions < 0) {
+            for (let i = prevVal; i > nextVal; i--) {
+              this.deletePosition(i - 1);
+            }
+          } else {
+            for (let i = 0; i < changeInPositions; i++) {
+              this.addPosition();
+            }
+          }
         });
     }
   }

@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface EducationalProgram {
-  name: string;
-  acceptanceFrom: string;
-  acceptanceTo: string;
-  programFrom: string;
-  programTo: string;
-}
+import { EducationalProgram } from './interfaces/educational-program.interface';
 
 const ELEMENT_DATA: EducationalProgram[] = [
   {
@@ -93,11 +86,9 @@ const ELEMENT_DATA: EducationalProgram[] = [
   templateUrl: './educational-programs.component.html',
   styleUrls: ['./educational-programs.component.scss'],
 })
-export class EducationalProgramsComponent implements OnInit {
+export class EducationalProgramsComponent {
   displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod', 'edit'];
   dataSource = ELEMENT_DATA;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }
