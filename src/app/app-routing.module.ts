@@ -8,6 +8,7 @@ import { PlanningComponent } from './components/planning/planning.component';
 import { ReportComponent } from './components/report/report.component';
 import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
 import { LoginComponent } from './login/login.component';
+import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'report',
     component: ReportComponent,
+  },
+  {
+    path: 'create-letters-temp',
+    component: CreateLettersTempComponent,
   },
 ];
 @NgModule({
