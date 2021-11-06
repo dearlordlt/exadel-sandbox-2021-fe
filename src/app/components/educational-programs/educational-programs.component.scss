@@ -1,45 +1,29 @@
 .educational-programs {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 30px;
+  margin: 50px;
 
-  &__acceptance-period {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__programs-period {
+  &__create {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  &__name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &__table {
+    margin-top: 50px;
   }
+}
 
-  &__number-of-positions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+table {
+  width: 100%;
+}
 
-  &__position {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+th.mat-header-cell,
+td.mat-cell {
+  text-align: center;
+  border: 0px solid #ccc;
+}
 
-  mat-form-field {
-    width: 300px;
-  }
-
-  &__position-description {
-    mat-form-field {
-      width: 500px;
-    }
-  }
+td.mat-cell {
+  border-bottom: 1px solid #ccc;
 }

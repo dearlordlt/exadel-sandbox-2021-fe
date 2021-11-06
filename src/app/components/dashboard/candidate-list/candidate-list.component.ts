@@ -13,6 +13,7 @@ import { Candidate } from '../../models/candidate';
 })
 export class CandidateListComponent implements OnInit {
   candidates: Candidate[] = [];
+  dataSource: Candidate[] = [];
 
   displayedColumns: string[] = [
     'edit',
@@ -21,8 +22,10 @@ export class CandidateListComponent implements OnInit {
     'eduProg',
     'position',
     'email',
+    'skype',
     'phone_number',
     'country',
+    'city',
     'english_level',
     'contact_time',
     'plan_to_join',
@@ -42,5 +45,20 @@ export class CandidateListComponent implements OnInit {
 
   getCandidates() {
     this.candidatesService.getCandidates().subscribe((candidates) => (this.candidates = candidates));
+
+    //need this now to make search component work, should be removed when connected to actual backend
+    this.candidatesService.getCandidates().subscribe((candidates) => (this.dataSource = candidates));
+  }
+
+  searchList(values: string[]) {
+    const [program, status, name, email] = [...values];
+
+    this.dataSource = this.candidates.filter(
+      (item) =>
+        item.eduProg === (program === 'All' ? item.eduProg : program) &&
+        item.status === (status === 'All' ? item.status : status) &&
+        item.email.toLowerCase().includes(email.toLowerCase()) &&
+        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
+    );
   }
 }

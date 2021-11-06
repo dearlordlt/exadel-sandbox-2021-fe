@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
@@ -26,16 +25,25 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
 
+
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 
 import { LogoutComponent } from './components/shared/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginComponent } from './login/login.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -50,11 +58,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     LettersComponent,
     ReportComponent,
 
+
     LoginFormComponent,
     MatFormFieldModule,
 
+    CreateEducationalProgramComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreateLettersTempComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +117,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     LogoutComponent,
 
     MatCardModule,
-    MatToolbarModule
+
+    MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
 
   ],
  
