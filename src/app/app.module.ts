@@ -33,6 +33,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { LogoutComponent } from './components/shared/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +49,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+
     LoginFormComponent,
-    MatFormFieldModule
+    MatFormFieldModule,
+
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +76,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CandidateRegistrationModule,
     RouterModule,
     MatDialogModule,
+
     RouterModule.forRoot([
       {
         path: 'dashboard',
@@ -94,7 +103,11 @@ import { MatDialogModule } from '@angular/material/dialog';
         component: LoginFormComponent,
       },
     ]),
-    LogoutComponent
+    LogoutComponent,
+
+    MatCardModule,
+    MatToolbarModule
+
   ],
  
   providers: [],

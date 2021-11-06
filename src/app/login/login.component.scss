@@ -1,0 +1,14 @@
+.form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center ; 
+    align-items: center;
+    mat-card {
+        display: flex;
+        flex-direction: column;
+    }
+}
+form{
+    width: 25%;
+}
