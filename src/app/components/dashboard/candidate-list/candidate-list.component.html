@@ -5,6 +5,8 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let candidate">
+        <mat-icon class="feedback-icon" (click)="writeFeedback()">feedback</mat-icon>
+        <mat-icon class="feedback-icon" (click)="readFeedback()">feedback</mat-icon>
         <mat-icon class="edit-icon">mode_edit</mat-icon>
       </td>
     </ng-container>

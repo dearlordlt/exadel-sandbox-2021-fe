@@ -217,5 +217,16 @@
       "firstname": "john",
       "lastname": "Smith"
     }
+  ],
+  "feedback": [
+    {
+      "id": 1,
+      "candidateId": 1,
+      "fromRecruiter": "good candidate",
+      "fromInterviewer": "good candidate",
+      "fromMentor": "good candidate",
+      "fromInterviewerTwo": "good candidate"
+    }
+
   ]
 }

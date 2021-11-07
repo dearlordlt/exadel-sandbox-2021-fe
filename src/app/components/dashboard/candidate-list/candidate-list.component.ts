@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { filter, map, switchMap, take } from 'rxjs/operators';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import {Component, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
+import {filter, map, switchMap, take} from 'rxjs/operators';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
-import { CandidatesService } from './services/candidates.service';
-import { Candidate } from '../../models/candidate';
+import {CandidatesService} from './services/candidates.service';
+import {Candidate} from '../../models/candidate';
+import {Router} from "@angular/router";
+import {ReadFeedbackService} from "../read-feedback/read-feedback.service";
 
 @Component({
   selector: 'app-candidate-list',
@@ -37,9 +39,14 @@ export class CandidateListComponent implements OnInit {
     'interviewer_mark',
   ];
 
-  constructor(private candidatesService: CandidatesService) {}
+  constructor(private candidatesService: CandidatesService, private readFeedbackService: ReadFeedbackService,
+              private router: Router
+  ) {
+  }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.getCandidates();
   }
 
@@ -50,7 +57,10 @@ export class CandidateListComponent implements OnInit {
     this.candidatesService.getCandidates().subscribe((candidates) => (this.dataSource = candidates));
   }
 
-  searchList(values: string[]) {
+  searchList(values
+               :
+               string[]
+  ) {
     const [program, status, name, email] = [...values];
 
     this.dataSource = this.candidates.filter(
@@ -60,5 +70,13 @@ export class CandidateListComponent implements OnInit {
         item.email.toLowerCase().includes(email.toLowerCase()) &&
         (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
     );
+  }
+
+  writeFeedback() {
+    this.router.navigateByUrl('/write_feedback').then()
+  }
+
+  readFeedback() {
+    this.router.navigateByUrl('/read_feedback').then()
   }
 }

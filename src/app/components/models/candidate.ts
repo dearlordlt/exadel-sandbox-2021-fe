@@ -1,3 +1,5 @@
+import {Feedback} from "../dashboard/read-feedback/feedback";
+
 export interface Candidate {
   id: number;
   firstname: string;
@@ -18,4 +20,5 @@ export interface Candidate {
   hard_skill?: number;
   mentor_mark?: number;
   interviewer_mark?: number;
+  feedback: Feedback[];
 }

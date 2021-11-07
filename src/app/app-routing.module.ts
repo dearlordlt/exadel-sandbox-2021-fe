@@ -1,14 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
-import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
-import { LettersComponent } from './components/letters/letters.component';
-import { PlanningComponent } from './components/planning/planning.component';
-import { ReportComponent } from './components/report/report.component';
-import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
-import { LoginComponent } from './login/login.component';
-import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {EducationalProgramsComponent} from './components/educational-programs/educational-programs.component';
+import {CreateEducationalProgramComponent} from './components/educational-programs/create-educational-program/create-educational-program.component';
+import {LettersComponent} from './components/letters/letters.component';
+import {PlanningComponent} from './components/planning/planning.component';
+import {ReportComponent} from './components/report/report.component';
+import {CandidateHeaderComponent} from './candidate-registration/candidate-header/candidate-header.component';
+import {LoginComponent} from './login/login.component';
+import {CreateLettersTempComponent} from './components/letters/create-letters-temp/create-letters-temp.component';
+import {WriteFeedbackComponent} from "./components/dashboard/write-feedback/write-feedback.component";
+import {ReadFeedbackComponent} from "./components/dashboard/read-feedback/read-feedback.component";
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'write_feedback',
+    component: WriteFeedbackComponent,
+  },
+  {
+    path: 'read_feedback',
+    component: ReadFeedbackComponent,
   },
   {
     path: 'planning',
@@ -48,8 +58,10 @@ const routes: Routes = [
     component: CreateLettersTempComponent,
   },
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
