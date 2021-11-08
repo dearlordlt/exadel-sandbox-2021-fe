@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
+import { SendLetterComponent } from './components/letters/send-letter/send-letter.component';
 import { ReportComponent } from './components/report/report.component';
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
@@ -48,7 +49,8 @@ import { MatSortModule } from '@angular/material/sort';
     CreateEducationalProgramComponent,
     LoginComponent,
     LogoutComponent,
-    CreateLettersTempComponent
+    CreateLettersTempComponent,
+    SendLetterComponent,
   ],
   imports: [
     AppMaterialModule,
@@ -71,7 +73,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSortModule,
   ],
   providers: [],
-  entryComponents:[LogoutComponent],
+  entryComponents: [LogoutComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
