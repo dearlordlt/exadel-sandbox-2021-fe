@@ -1,11 +1,11 @@
 <div class="list">
   <app-search-candidate (searchEvent)="searchList($event)"></app-search-candidate>
   <h3 class="list-header">List of candidates</h3>
-  <div *ngIf="dataSource" class="table-wrapper mat-elevation-z8">
+  <div *ngIf="dataSource" class="table-wrapper mat-elevation-z8 table-responsive">
     <table mat-table [dataSource]="dataSource" class="table">
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let candidate">
+        <td mat-cell *matCellDef="let candidate" class="edit-feedback">
           <mat-icon class="edit-icon">mode_edit</mat-icon>
           <button mat-stroked-button color="primary">Feedback</button>
         </td>
@@ -97,7 +97,10 @@
       </ng-container>
 
       <ng-container matColumnDef="interviewer_mark">
-        <th mat-header-cell *matHeaderCellDef>Interviewer's mark after Sandbox</th>
+        <th mat-header-cell *matHeaderCellDef>
+          Interviewer's mark <br />
+          after Sandbox
+        </th>
         <td mat-cell *matCellDef="let candidate">{{candidate.interviewer_mark}}</td>
       </ng-container>
 

@@ -11,14 +11,17 @@
 }
 
 .table-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  width: 95%;
+  overflow-x: auto;
 
   .table {
     width: 100%;
-    overflow-x: auto;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    display: table;
+    border-collapse: collapse;
+    margin: 0;
   }
 }
 
@@ -45,19 +48,42 @@ td.mat-cell {
   min-width: 5rem;
   text-align: center;
   border: 1px solid #ccc;
-  // padding: 1.2rem 0.2rem;
+  padding: 0.4rem 0.2rem;
 }
 
 .mat-column-edit {
   .edit-icon {
     text-align: center;
     cursor: pointer;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
   }
+}
+
+.edit-feedback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
 }
 
 .mat-header-row {
   .mat-header-cell {
     background: #ddd;
   }
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  line-break: unset;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
 }
