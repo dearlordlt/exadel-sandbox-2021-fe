@@ -1,0 +1,128 @@
+$primary-color: rgba(0, 102, 204, 255);
+$disabled-button-color: rgba(0, 102, 204, 0.5);
+$primary-active-color: rgba(0, 64, 128, 255);
+$input-form-height: 35px;
+$text-color: #363636;
+
+.main-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: url(../../assets/images/keycloak-bg.png) no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: $text-color;
+  padding-bottom: 50px;
+}
+
+#company-name {
+  font-size: 29px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 1.2em;
+  padding: 62px 10px 20px;
+  white-space: normal;
+  color: white;
+  font-weight: 300;
+}
+
+.form-container {
+  padding: 30px 40px 20px 40px;
+  background: white;
+  width: 500px;
+  height: 400px;
+  position: relative;
+  transform: translateY(-20%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 5px solid $primary-color;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+.login-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+#input--username,
+#input--password {
+  padding-left: 10px;
+  width: 100%;
+  height: $input-form-height;
+  border-width: 1px;
+  border-color: #ededed #ededed #8a8d90 #ededed;
+}
+
+input:hover,
+input:focus,
+input:active {
+  border-bottom: 2px $primary-color;
+  //   outline: none;
+}
+
+#btn--submit {
+  -webkit-appearance: none;
+  border: none;
+  width: 100%;
+  height: $input-form-height - 5px;
+  background-color: $primary-color;
+  color: white;
+  cursor: pointer;
+}
+
+#btn--submit:disabled,
+#btn--submit[disabled] {
+  cursor: not-allowed;
+  background-color: $disabled-button-color;
+}
+
+#btn--submit:hover:enabled {
+  background-color: $primary-active-color;
+}
+label {
+  font-size: 0.7rem;
+  position: relative;
+  transform: translateY(150%);
+  cursor: pointer;
+}
+
+.invalid {
+  outline: 2px solid red !important;
+}
+
+.btn {
+  width: 100%;
+  height: $input-form-height - 5px;
+  background-color: $primary-color;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 200;
+  font-size: 0.7rem;
+}
+
+.btn:hover {
+  background-color: $primary-active-color;
+}
+
+#horizontal-line {
+  width: 50%;
+  align-self: center;
+  border: 1px solid grey;
+}
