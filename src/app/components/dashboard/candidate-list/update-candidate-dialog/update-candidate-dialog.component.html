@@ -26,6 +26,12 @@
     <mat-error *ngIf="!data.phone_number.length">This field can’t be empty</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>English Level</mat-label>
+    <mat-select [(ngModel)]="data.english_level" (selectionChange)="checkValues()">
+      <mat-option *ngFor="let en of englishLevel" [value]="en">{{en}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Country</mat-label>
     <mat-select [(ngModel)]="data.country" (selectionChange)="checkValues()">
       <mat-option *ngFor="let ct of country" [value]="ct">{{ct}}</mat-option>
@@ -36,12 +42,7 @@
     <input matInput [(ngModel)]="data.city" required />
     <mat-error *ngIf="!data.city.length">This field can’t be empty</mat-error>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>English Level</mat-label>
-    <mat-select [(ngModel)]="data.english_level" (selectionChange)="checkValues()">
-      <mat-option *ngFor="let en of englishLevel" [value]="en">{{en}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
     <mat-select [(ngModel)]="data.status" (selectionChange)="checkValues()">

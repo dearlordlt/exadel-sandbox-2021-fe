@@ -66,7 +66,7 @@ export class CandidateListComponent implements OnInit {
   openDialog(candidate: Candidate): void {
     const data = { ...candidate };
     const dialogRef = this.dialog.open(UpdateCandidateDialogComponent, {
-      width: '400px',
+      width: '800px',
       data: data,
     });
 
