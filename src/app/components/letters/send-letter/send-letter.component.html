@@ -13,14 +13,26 @@
   <div class="send-letter__from">
     <mat-form-field appearance="outline">
       <mat-label>From</mat-label>
-      <input type="email" matInput formControlName="fromEmail" />
+      <input matInput type="email" formControlName="sendFrom" />
     </mat-form-field>
   </div>
 
-  <div class="send-letter__from">
+  <app-search-candidates (searchEvent)="getSearchedCandidatesEmails($event)"></app-search-candidates>
+
+  <div class="send-letter__to">
+    <mat-form-field appearance="outline">
+      <mat-label>Send email to</mat-label>
+      <input matInput formControlName="sendTo" />
+      <mat-error *ngIf="letterForm.controls['sendTo'].hasError('invalidEmail') && (letterForm.controls['sendTo'].dirty)">
+        Email is invalid: {{letterForm.get('sendTo')?.getError('invalidEmail')}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="send-letter__subject">
     <mat-form-field appearance="outline">
       <mat-label>Subject</mat-label>
-      <input matInput #input maxlength="100" matInput formControlName="Subject" />
+      <input matInput #input maxlength="100" formControlName="Subject" />
       <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
     </mat-form-field>
   </div>

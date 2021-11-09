@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { statuses } from 'src/app/global/constants';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { pairwise, startWith } from 'rxjs/operators';
 import { Validators } from '@angular/forms';
+import { Candidate } from '../../models/candidate';
+
+import { ValidateStringOfEmails } from '../../shared/validators/string-of-emails.validator';
 
 @Component({
   selector: 'app-send-letter',
@@ -12,18 +13,11 @@ import { Validators } from '@angular/forms';
 })
 export class SendLetterComponent implements OnInit {
   letterForm: FormGroup = this.fb.group({
-    fromEmail: [{ value: 'no-reply.sandbox@exadel.com', disabled: true }, [Validators.required, Validators.email]],
-    toEmails: ['', [Validators.required]],
+    sendFrom: [{ value: 'no-reply.sandbox@exadel.com', disabled: true }, [Validators.required, Validators.email]],
+    sendTo: ['', [Validators.required, ValidateStringOfEmails]],
     Subject: ['', [Validators.required]],
     Text: ['', [Validators.required]],
     Signature: ['', [Validators.required]],
-
-    positions: this.fb.array([
-      this.fb.group({
-        positionName: '',
-        descriptionAndRequirements: '',
-      }),
-    ]),
   });
 
   Templates = statuses;
@@ -31,6 +25,11 @@ export class SendLetterComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
+
+  getSearchedCandidatesEmails(searchedCandidates: Candidate[]): void {
+    const emails: string[] = searchedCandidates.map((item) => item.email);
+    this.letterForm.controls['sendTo'].setValue(emails.join(', '));
+  }
 
   onSubmit(): void {}
 }

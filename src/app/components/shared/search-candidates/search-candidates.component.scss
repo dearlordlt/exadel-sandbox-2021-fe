@@ -1,0 +1,13 @@
+h2 {
+  text-align: center;
+  font-weight: 400;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 50px;
+}

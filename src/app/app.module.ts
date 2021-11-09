@@ -33,6 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { MatSortModule } from '@angular/material/sort';
     LogoutComponent,
     CreateLettersTempComponent,
     SendLetterComponent,
+    SearchCandidatesComponent,
   ],
   imports: [
     AppMaterialModule,
