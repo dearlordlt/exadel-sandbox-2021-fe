@@ -1,5 +1,5 @@
 <div class="form">
-    <form >
+    <form  #logInForm="ngForm" (ngSubmit)="onSubmit(logInForm.value)">
         <mat-card>
                 <p>
                     <mat-toolbar>
@@ -8,18 +8,35 @@
                 </p>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput  required placeholder="Email" [formControl]="email" >
+                    <input matInput  required placeholder="Email"  ngModel [formControl]="email">
+                    <!-- (change)="onType($event)"
+                    type="text"
+                    id="input--username"
+                    name="input--username"
+                    [ngClass]="{invalid: !isValidName}" -->
+                    
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required placeholder="Password">
+                    <input matInput [type]="hide ? 'password' : 'text'"  ngModel [formControl]="password" required placeholder="Password">
+                    <!-- (change)="onType($event)"
+                    type="password"
+                    id="input--password"
+                    name="input--password"
+                    minlength="6"
+                    [ngClass]="{invalid: !isValidPassword}" -->
+                    
                     <mat-error *ngIf="password.invalid">{{getErrorMesPas()}}</mat-error>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                 </mat-form-field>
-                <a [routerLink]="'/dashboard'"><button class="login-btn" mat-raised-button type="submit">Log in</button> </a>
+                <!-- <button mat-raised-button (click)="onSubmit()" id="btn--submit" [disabled]="!isBtnEnabled">Sign in</button> -->
+                <button class="login-btn" mat-raised-button type="submit" [disabled]="!logInForm.valid">Log in</button>
+                <!-- <a [routerLink]="'/dashboard'"><button class="login-btn" mat-raised-button type="submit" [disabled]="!loginForm.valid">Log in</button> </a> -->
+                <a [routerLink]="''"><button class="back-btn" mat-raised-button type="menu">Back to registration page</button> </a>
+
         </mat-card>
     </form>    
 </div>
