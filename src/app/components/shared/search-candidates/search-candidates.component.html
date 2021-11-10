@@ -1,0 +1,40 @@
+<h2>Searching Candidate</h2>
+<form [formGroup]="searchForm" (ngSubmit)="clickSearch()">
+  <div class="flex">
+    <div class="search-group">
+      <mat-form-field>
+        <mat-label>Educational Programs</mat-label>
+        <mat-select formControlName="searchEducationalProgram">
+          <mat-option *ngFor="let program of educationalPrograms" [value]="program">{{program}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="search-group">
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="searchStatus">
+          <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="search-group">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="add text" formControlName="searchName" />
+      </mat-form-field>
+    </div>
+
+    <div class="search-group">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="add text" formControlName="searchEmail" />
+        <mat-error *ngIf="searchForm.controls['searchEmail'].hasError"> Sorry, but email address isn't correct </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="search-group">
+      <button mat-stroked-button color="primary" type="submit">Search</button>
+    </div>
+  </div>
+</form>

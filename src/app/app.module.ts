@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
+import { SendLetterComponent } from './components/letters/send-letter/send-letter.component';
 import { ReportComponent } from './components/report/report.component';
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
@@ -32,6 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 
 @NgModule({
@@ -50,6 +52,8 @@ import { UpdateCandidateDialogComponent } from './components/dashboard/candidate
     LoginComponent,
     LogoutComponent,
     CreateLettersTempComponent,
+    SendLetterComponent,
+    SearchCandidatesComponent,
     UpdateCandidateDialogComponent,
   ],
   imports: [
