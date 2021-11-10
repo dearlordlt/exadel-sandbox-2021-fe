@@ -7,10 +7,10 @@ export interface Candidate {
   eduProg: string;
   position: string;
   email: string;
-  skype?: string;
-  phone_number?: string;
-  country?: string;
-  city?: string;
+  skype: string;
+  phone_number: string;
+  country: string;
+  city: string;
   english_level: string;
   contact_time: string;
   plan_to_join: string;

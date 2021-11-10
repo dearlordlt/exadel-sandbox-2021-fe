@@ -30,8 +30,8 @@ interface Decision {
 export class CandidateFormComponent implements OnInit {
   programs: Program[] = [
     { value: '.Net, JS, BA; 10-11.21', viewValue: '.Net, JS, BA; 10-11.21' },
-    { value: '.Net, JS, BA; 10-11.21', viewValue: '.Net, JS, BA; 10-11.22' },
-    { value: '.Net, JS, BA; 10-11.21', viewValue: '.Net, JS, BA; 10-11.23' },
+    { value: '.Net, JS, BA; 10-11.22', viewValue: '.Net, JS, BA; 10-11.22' },
+    { value: '.Net, JS, BA; 10-11.23', viewValue: '.Net, JS, BA; 10-11.23' },
   ];
   technologies: Technology[] = [
     { value: '.Net-0', viewValue: '.Net' },
@@ -39,16 +39,18 @@ export class CandidateFormComponent implements OnInit {
     { value: 'BA-2', viewValue: 'BA' },
   ];
   levels: Level[] = [
-    { value: 'Elementary', viewValue: 'Elementary' },
-    { value: 'Pre-Intermediate', viewValue: 'Pre-Intermediate' },
-    { value: 'Intermediate', viewValue: 'Intermediate' },
-    { value: 'Upper-Intermediate', viewValue: 'Upper-Intermediate' },
-    { value: 'Advanced', viewValue: 'Advanced' },
+    { value: 'A1', viewValue: 'A1' },
+    { value: 'A2', viewValue: 'A2' },
+    { value: 'B1', viewValue: 'B1' },
+    { value: 'B2', viewValue: 'B2' },
+    { value: 'C1', viewValue: 'C1' },
+    { value: 'C2', viewValue: 'C2' },
   ];
   times: Time[] = [
     { value: '10.00-13.00', viewValue: '10.00-13.00' },
     { value: '13.00-16.00', viewValue: '13.00-16.00' },
     { value: '16.00-19.00', viewValue: '16.00-19.00' },
+    { value: 'anytime', viewValue: 'anytime' },
   ];
   decisions: Decision[] = [
     { value: 'Yes', viewValue: 'Yes' },
