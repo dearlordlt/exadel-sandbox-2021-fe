@@ -11,7 +11,7 @@ import { ValidateStringOfEmails } from '../../shared/validators/string-of-emails
   templateUrl: './send-letter.component.html',
   styleUrls: ['./send-letter.component.scss'],
 })
-export class SendLetterComponent implements OnInit {
+export class SendLetterComponent {
   letterForm: FormGroup = this.fb.group({
     sendFrom: [{ value: 'no-reply.sandbox@exadel.com', disabled: true }, [Validators.required, Validators.email]],
     sendTo: ['', [Validators.required, ValidateStringOfEmails]],
@@ -20,11 +20,9 @@ export class SendLetterComponent implements OnInit {
     Signature: ['', [Validators.required]],
   });
 
-  Templates = statuses;
+  readonly Templates: string[] = statuses.search;
 
   constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {}
 
   getSearchedCandidatesEmails(searchedCandidates: Candidate[]): void {
     const emails: string[] = searchedCandidates.map((item) => item.email);

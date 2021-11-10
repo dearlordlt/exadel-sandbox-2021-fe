@@ -6,6 +6,8 @@ import { statuses } from 'src/app/global/constants';
 import { CandidatesService } from '../../dashboard/candidate-list/services/candidates.service';
 import { Candidate } from '../../models/candidate';
 
+const All: string = 'All';
+
 @Component({
   selector: 'app-search-candidates',
   templateUrl: './search-candidates.component.html',
@@ -15,8 +17,8 @@ export class SearchCandidatesComponent implements OnInit {
   // This whole component will need to be refactored once we get the API
 
   searchForm: FormGroup = this.fb.group({
-    searchEducationalProgram: 'All',
-    searchStatus: 'All',
+    searchEducationalProgram: All,
+    searchStatus: All,
     searchName: '',
     searchEmail: ['', [Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
   });
@@ -26,8 +28,8 @@ export class SearchCandidatesComponent implements OnInit {
 
   @Output() searchEvent: EventEmitter<Candidate[]> = new EventEmitter();
 
-  educationalPrograms = educationalPrograms;
-  statuses = statuses;
+  readonly educationalPrograms: string[] = educationalPrograms;
+  readonly statuses: string[] = statuses.search;
 
   constructor(private fb: FormBuilder, private candidatesService: CandidatesService) {}
 
@@ -37,9 +39,6 @@ export class SearchCandidatesComponent implements OnInit {
 
   getCandidates() {
     this.candidatesService.getCandidates().subscribe((candidates) => (this.allCandidates = candidates));
-
-    //need this now to make search component work, should be removed when connected to actual backend
-    this.candidatesService.getCandidates().subscribe((candidates) => (this.searchedCandidates = candidates));
   }
 
   searchCandidates(values: string[]) {
@@ -47,8 +46,8 @@ export class SearchCandidatesComponent implements OnInit {
 
     this.searchedCandidates = this.allCandidates.filter(
       (item) =>
-        item.eduProg === (program === 'All' ? item.eduProg : program) &&
-        item.status === (status === 'All' ? item.status : status) &&
+        item.eduProg === (program === All ? item.eduProg : program) &&
+        item.status === (status === All ? item.status : status) &&
         item.email.toLowerCase().includes(email.toLowerCase()) &&
         (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
     );
