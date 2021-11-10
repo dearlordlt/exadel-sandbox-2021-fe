@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { filter, map, switchMap, take } from 'rxjs/operators';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+// import { MatTooltip } from '@angular/material/tooltip';
 
 import { CandidatesService } from './services/candidates.service';
 import { Candidate } from '../../models/candidate';
@@ -13,7 +14,6 @@ import { Candidate } from '../../models/candidate';
 })
 export class CandidateListComponent implements OnInit {
   dataSource: Candidate[] = [];
-
   displayedColumns: string[] = [
     'edit',
     'firstname',
