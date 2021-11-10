@@ -7,7 +7,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
@@ -17,18 +16,24 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
 import { EducationalProgramComponent } from './components/dashboard/educational-program/educational-program.component';
 import { SearchCandidateComponent } from './components/dashboard/search-candidate/search-candidate.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CandidateListComponent } from './components/dashboard/candidate-list/candidate-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { ReportComponent } from './components/report/report.component';
+import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +46,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     EducationalProgramsComponent,
     LettersComponent,
     ReportComponent,
+    CreateEducationalProgramComponent,
     LoginComponent,
     LogoutComponent,
+    CreateLettersTempComponent,
+    UpdateCandidateDialogComponent,
   ],
   imports: [
     AppMaterialModule,
@@ -61,6 +69,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDialogModule,
     MatCardModule,
     MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
+    FormsModule,
   ],
   providers: [],
   entryComponents: [LogoutComponent],

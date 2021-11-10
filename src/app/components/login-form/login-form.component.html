@@ -1,0 +1,32 @@
+<main class="main-container">
+  <header class="login-header">
+    <h1 id="company-name">EXADEL</h1>
+  </header>
+  <div class="form-container">
+    <h2>Sign in to your account</h2>
+    <form class="login-form" action="submit">
+      <label for="input--username">Username or Email</label>
+      <input
+        (change)="onType($event)"
+        type="text"
+        id="input--username"
+        name="input--username"
+        [ngClass]="{invalid: !isValidName}"
+        required
+      />
+      <label for="input--password">Password</label>
+      <input
+        (change)="onType($event)"
+        type="password"
+        id="input--password"
+        name="input--password"
+        minlength="6"
+        [ngClass]="{invalid: !isValidPassword}"
+        required
+      />
+      <button (click)="onSubmit()" id="btn--submit" [disabled]="!isBtnEnabled">Sign in</button>
+      <hr id="horizontal-line" />
+      <a class="btn" href="/registration"><div>Back to registration</div></a>
+    </form>
+  </div>
+</main>

@@ -6,7 +6,7 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let candidate" class="edit-feedback">
-          <mat-icon class="edit-icon">mode_edit</mat-icon>
+          <mat-icon class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
           <button mat-stroked-button color="primary">Feedback</button>
         </td>
       </ng-container>
@@ -22,7 +22,9 @@
 
       <ng-container matColumnDef="eduProg">
         <th mat-header-cell *matHeaderCellDef>Educational Program</th>
-        <td [matTooltip]="candidate.eduProg" [matTooltipShowDelay]="1000" mat-cell *matCellDef="let candidate">{{candidate.eduProg}}</td>
+        <td [matTooltip]="candidate.eduProg" [matTooltipShowDelay]="showDelay" mat-cell *matCellDef="let candidate">
+          {{candidate.eduProg}}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="position">
@@ -32,12 +34,12 @@
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email" [matTooltipShowDelay]="1000">{{candidate.email}}</td>
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email" [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
       </ng-container>
 
       <ng-container matColumnDef="skype">
         <th mat-header-cell *matHeaderCellDef>Skype</th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.skype" [matTooltipShowDelay]="1000">{{candidate.skype}}</td>
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.skype" [matTooltipShowDelay]="showDelay">{{candidate.skype}}</td>
       </ng-container>
 
       <ng-container matColumnDef="phone_number">
@@ -78,7 +80,7 @@
       <!-- Assessment -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.status" [matTooltipShowDelay]="1000">{{candidate.status}}</td>
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.status" [matTooltipShowDelay]="showDelay">{{candidate.status}}</td>
       </ng-container>
 
       <ng-container matColumnDef="soft_skill">

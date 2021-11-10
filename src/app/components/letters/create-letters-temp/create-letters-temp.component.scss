@@ -1,0 +1,22 @@
+.container-crtLetter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 50px;
+
+  .crtLetter__status {
+    width: 30%;
+  }
+    h1 {
+      font-weight: 500;
+      font-size: 3rem;
+    }
+    strong {
+      margin-right: 30px;
+    }
+    mat-form-field {
+      min-width: 50%;
+    }
+}
