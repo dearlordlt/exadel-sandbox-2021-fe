@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 
 import {CandidatesService} from './services/candidates.service';
 import {Candidate} from '../../models/candidate';
 import {Router} from "@angular/router";
+import {ReadFeedbackService} from "../read-feedback/read-feedback.service";
 
 @Component({
   selector: 'app-candidate-list',
@@ -11,16 +12,12 @@ import {Router} from "@angular/router";
   styleUrls: ['./candidate-list.component.scss'],
 })
 export class CandidateListComponent implements OnInit {
-  filterValues: any = {};
   candidates: Candidate[] = [];
-  // EPFormControl: FormControl = new FormControl('All');
-  dataSource = new MatTableDataSource();
+
+  dataSource: any | Candidate[] = new MatTableDataSource();
+  filterValues:any = {};
   filterSelectObj: any = [];
 
-  // educationalPrograms: Array<string> =['All'];
-
-
-  // getcandidates$ = this.candidatesService.filteredByEduPrograms('')
   displayedColumns: string[] = [
     'edit',
     'firstname',
@@ -28,8 +25,10 @@ export class CandidateListComponent implements OnInit {
     'eduProg',
     'position',
     'email',
+    'skype',
     'phone_number',
     'country',
+    'city',
     'english_level',
     'contact_time',
     'plan_to_join',
@@ -41,7 +40,10 @@ export class CandidateListComponent implements OnInit {
     'interviewer_mark',
   ];
 
-  constructor(private candidatesService: CandidatesService, private router: Router) {
+  constructor(private candidatesService: CandidatesService, private readFeedbackService: ReadFeedbackService,
+              private router: Router
+  ) {
+    // Object to create Filter for
     this.filterSelectObj = [
       {
         name: 'Educational Programs',
@@ -49,7 +51,7 @@ export class CandidateListComponent implements OnInit {
         options: []
       }, {
         name: 'Position/Technology',
-        columnProp: 'position',
+        columnProp: 'status',
         options: []
       },
       {
@@ -95,19 +97,18 @@ export class CandidateListComponent implements OnInit {
 
 
     ]
-
   }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
 
   }
 
   // Get Uniqu values from columns to build filter
-  getFilterObject(fullObj: any, key: any) {
-    const uniqChk: any = [];
-    fullObj.filter((obj: any) => {
+  getFilterObject(fullObj: any, key:any) {
+    const uniqChk:any = [];
+    fullObj.filter((obj:any) => {
       if (!uniqChk.includes(obj[key])) {
         uniqChk.push(obj[key]);
       }
@@ -118,24 +119,27 @@ export class CandidateListComponent implements OnInit {
   }
 
   getCandidates() {
-    this.candidatesService.getCandidates().subscribe((candidates) => {
+    this.candidatesService.getCandidates().subscribe((candidates) =>
+    {
       this.candidates = candidates;
-      console.log(this.candidates)
+
+      //need this now to make search component work, should be removed when connected to actual backend
+      // this.dataSource = candidates;
 
       this.dataSource.data = this.candidates;
 
-      this.filterSelectObj.filter((o: any) => {
-        o.options = this.getFilterObject(this.candidates, o.columnProp);
+      this.filterSelectObj.filter((o:any) => {
+        o.options = this.getFilterObject( this.candidates, o.columnProp);
       });
     });
+
+    // this.candidatesService.getCandidates().subscribe((candidates) => (this.dataSource = candidates));
 
 
   }
 
-
   // Called on Filter change
-  filterChange(filter: any, event: any) {
-    //let filterValues = {}
+  filterChange(filter:any, event:any) {
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
     this.dataSource.filter = JSON.stringify(this.filterValues)
   }
@@ -158,7 +162,7 @@ export class CandidateListComponent implements OnInit {
         let found = false;
         if (isFilterSet) {
           for (const col in searchTerms) {
-            searchTerms[col].trim().toLowerCase().split(' ').forEach((word: any) => {
+            searchTerms[col].trim().toLowerCase().split(' ').forEach((word:any) => {
               if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
                 found = true
               }
@@ -178,14 +182,33 @@ export class CandidateListComponent implements OnInit {
   // Reset table filters
   resetFilters() {
     this.filterValues = {}
-    this.filterSelectObj.forEach((value: any, key: any) => {
+    this.filterSelectObj.forEach((value:any, key:any) => {
       value.modelValue = undefined;
     })
     this.dataSource.filter = "";
   }
 
-  feedback() {
-    this.router.navigateByUrl('/feedback').then()
+
+  searchList(values
+               :
+               string[]
+  ) {
+    const [program, status, name, email] = [...values];
+
+    this.dataSource = this.candidates.filter(
+      (item) =>
+        item.eduProg === (program === 'All' ? item.eduProg : program) &&
+        item.status === (status === 'All' ? item.status : status) &&
+        item.email.toLowerCase().includes(email.toLowerCase()) &&
+        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
+    );
   }
 
+  writeFeedback() {
+    this.router.navigateByUrl('/write_feedback').then()
+  }
+
+  readFeedback() {
+    this.router.navigateByUrl('/read_feedback').then()
+  }
 }
