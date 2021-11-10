@@ -16,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
 import { EducationalProgramComponent } from './components/dashboard/educational-program/educational-program.component';
 import { SearchCandidateComponent } from './components/dashboard/search-candidate/search-candidate.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CandidateListComponent } from './components/dashboard/candidate-list/candidate-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlanningComponent } from './components/planning/planning.component';
@@ -34,6 +34,7 @@ import { CreateLettersTempComponent } from './components/letters/create-letters-
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
+import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SearchCandidatesComponent } from './components/shared/search-candidates
     CreateLettersTempComponent,
     SendLetterComponent,
     SearchCandidatesComponent,
+    UpdateCandidateDialogComponent,
   ],
   imports: [
     AppMaterialModule,
@@ -73,6 +75,7 @@ import { SearchCandidatesComponent } from './components/shared/search-candidates
     MatToolbarModule,
     MatTableModule,
     MatSortModule,
+    FormsModule,
   ],
   providers: [],
   entryComponents: [LogoutComponent],

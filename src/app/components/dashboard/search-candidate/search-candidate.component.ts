@@ -18,7 +18,7 @@ export class SearchCandidateComponent implements OnInit {
   @Output() searchEvent = new EventEmitter();
 
   programs = educationalPrograms;
-  status = statuses;
+  status = statuses.search;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
