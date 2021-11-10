@@ -8,14 +8,18 @@
                 </p>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput type="email" placeholder="Email">
+                    <input matInput  required placeholder="Email" [formControl]="email" >
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" placeholder="Password">
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required placeholder="Password">
+                    <mat-error *ngIf="password.invalid">{{getErrorMesPas()}}</mat-error>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                 </mat-form-field>
-                <button mat-raised-button type="submit">Log in</button> 
+                <a [routerLink]="'/dashboard'"><button class="login-btn" mat-raised-button type="submit">Log in</button> </a>
         </mat-card>
     </form>    
 </div>
- 

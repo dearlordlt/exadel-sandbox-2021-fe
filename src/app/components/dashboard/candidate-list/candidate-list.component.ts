@@ -1,3 +1,4 @@
+
 import {Component, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 
@@ -98,6 +99,7 @@ export class CandidateListComponent implements OnInit {
 
     ]
   }
+
 
   ngOnInit():void {
     this.getCandidates();
@@ -204,11 +206,32 @@ export class CandidateListComponent implements OnInit {
     );
   }
 
+
   writeFeedback() {
     this.router.navigateByUrl('/write_feedback').then()
   }
 
   readFeedback() {
     this.router.navigateByUrl('/read_feedback').then()
+
+  openDialog(candidate: Candidate): void {
+    const data = { ...candidate };
+    const dialogRef = this.dialog.open(UpdateCandidateDialogComponent, {
+      width: '800px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined && result !== 'cancel') {
+        if (JSON.stringify(result) !== JSON.stringify(candidate)) {
+          this.candidatesService
+            .updateCandidate(result)
+            .subscribe(
+              (candidate) => (this.dataSource = this.dataSource.map((cand) => (candidate.id === cand.id ? { ...candidate } : cand)))
+            );
+        }
+      }
+    });
+
   }
 }

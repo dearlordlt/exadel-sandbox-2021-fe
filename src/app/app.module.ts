@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppMaterialModule} from './app-material.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -53,6 +52,7 @@ import {ReadFeedbackComponent} from "./components/dashboard/read-feedback/read-f
     CreateLettersTempComponent,
     WriteFeedbackComponent,
     ReadFeedbackComponent,
+    UpdateCandidateDialogComponent,
   ],
   imports: [
     AppMaterialModule,
@@ -79,5 +79,5 @@ import {ReadFeedbackComponent} from "./components/dashboard/read-feedback/read-f
   entryComponents: [LogoutComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+
+export class AppModule {}

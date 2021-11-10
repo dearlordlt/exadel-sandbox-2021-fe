@@ -10,9 +10,10 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router'
 @NgModule({
   declarations: [CandidateFormComponent, CandidateHeaderComponent],
   imports: [CommonModule, MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, 
-  MatSelectCountryModule.forRoot('en'), HttpClientModule],
+  MatSelectCountryModule.forRoot('en'), HttpClientModule, RouterModule],
 })
 export class CandidateRegistrationModule {}

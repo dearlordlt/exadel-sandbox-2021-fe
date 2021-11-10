@@ -6,6 +6,12 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {ReadFeedbackService} from "../../read-feedback/read-feedback.service";
 
+const headers = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,8 +35,16 @@ export class CandidatesService {
       )
   }
 
+
   filterData(searchText: string) {
   }
+
+  updateCandidate(candidate: Candidate): Observable<Candidate> {
+    return this.http.put<Candidate>(`${environment.api}/${this.apiUrl}/${candidate.id}`, candidate, headers);
+  }
+
+  filterData(searchText: string) {}
+
 
   constructor(private http: HttpClient, private readFeedbackService: ReadFeedbackService) {
   }
