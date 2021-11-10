@@ -13,9 +13,7 @@ import { UpdateCandidateDialogComponent } from './update-candidate-dialog/update
   styleUrls: ['./candidate-list.component.scss'],
 })
 export class CandidateListComponent implements OnInit {
-  candidates: Candidate[] = [];
   dataSource: Candidate[] = [];
-
   displayedColumns: string[] = [
     'edit',
     'firstname',
@@ -38,6 +36,8 @@ export class CandidateListComponent implements OnInit {
     'interviewer_mark',
   ];
 
+  showDelay = 1000;
+
   constructor(private candidatesService: CandidatesService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -45,8 +45,6 @@ export class CandidateListComponent implements OnInit {
   }
 
   getCandidates() {
-    this.candidatesService.getCandidates().subscribe((candidates) => (this.candidates = candidates));
-
     //need this now to make search component work, should be removed when connected to actual backend
     this.candidatesService.getCandidates().subscribe((candidates) => (this.dataSource = candidates));
   }
@@ -54,7 +52,7 @@ export class CandidateListComponent implements OnInit {
   searchList(values: string[]) {
     const [program, status, name, email] = [...values];
 
-    this.dataSource = this.candidates.filter(
+    this.dataSource = this.dataSource.filter(
       (item) =>
         item.eduProg === (program === 'All' ? item.eduProg : program) &&
         item.status === (status === 'All' ? item.status : status) &&
