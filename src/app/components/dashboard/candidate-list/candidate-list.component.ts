@@ -6,6 +6,7 @@ import { Candidate } from '../../models/candidate';
 import { Router } from '@angular/router';
 import { ReadFeedbackService } from '../read-feedback/read-feedback.service';
 import { educationalPrograms } from 'src/app/global/constants';
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-candidate-list',
@@ -102,7 +103,10 @@ export class CandidateListComponent implements OnInit {
   ngOnInit(): void {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
+    this.dataSource.sort = this.sort;
   }
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort | undefined;
 
   // Get Uniqu values from columns to build filter
   getFilterObject(fullObj: any, key: any) {
@@ -157,15 +161,11 @@ export class CandidateListComponent implements OnInit {
         let found = false;
         if (isFilterSet) {
           for (const col in searchTerms) {
-            searchTerms[col]
-              .trim()
-              .toLowerCase()
-              .split(' ')
-              .forEach((word: any) => {
-                if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
-                  found = true;
-                }
-              });
+            searchTerms[col].trim().toLowerCase().split(' ').forEach((word: any) => {
+              if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
+                found = true
+              }
+            });
           }
           return found;
         } else {
