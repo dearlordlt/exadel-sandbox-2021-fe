@@ -19,7 +19,7 @@ const table_Data: Date_Elements[] = [
 })
 export class LettersComponent  {
 
-  displayedColumns: string[] = ["dateUpdate", "Name","edit"];
+  displayedColumns: string[] = ['dateUpdate', 'Name','edit'];
   dataSource = new MatTableDataSource(table_Data)
 
   constructor() {}

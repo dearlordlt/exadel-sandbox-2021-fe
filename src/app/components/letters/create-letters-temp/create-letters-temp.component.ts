@@ -17,21 +17,21 @@ export class CreateLettersTempComponent {
               private router: Router) {}
 
    profileForm = this.fb.group( {
-     name: ["",[
+     name: ['',[
         Validators.required,
         Validators.maxLength(100)
      ]],
-     status: [""],
-     from: [""],
-     subject: ["",[
+     status: [''],
+     from: [''],
+     subject: ['',[
        Validators.maxLength(100),
        Validators.required
      ]],
-     text: ["",[
+     text: ['',[
        Validators.maxLength(1500),
        Validators.required
      ]],
-     signature: ["",[
+     signature: ['',[
        Validators.maxLength(100),
        Validators.required
      ]]
@@ -47,7 +47,7 @@ export class CreateLettersTempComponent {
      if (this.profileForm.invalid) {
       return;
     }
-    this.router.navigate(["/", "letters"])
+    this.router.navigate(['/', 'letters'])
   }
 
 }
