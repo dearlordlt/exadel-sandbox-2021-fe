@@ -1,5 +1,5 @@
 
 export interface Date_Elements {
-  date: string ;
-  desc: string ;
+  subject: string ;
+  addDateTime: string ;
 }
