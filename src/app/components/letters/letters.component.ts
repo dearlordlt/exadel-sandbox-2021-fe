@@ -1,17 +1,16 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild, AfterViewInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Date_Elements } from '../models/dateElements';
 
 
 const table_Data: Date_Elements[] = [
-  {date:"27.10.2021", desc:"the application is accepted"},
-  {date:"25.10.2021", desc:"refusal by the level of English" },
-  {date:"24.10.2021", desc:"refusal by location" },
-  {date:"23.10.2021", desc:"failure on the technical level"},
-  {date:"22.10.2021", desc:"in reserve" },
-  {date:"18.10.2021", desc:"accepted for Sandbox"}
+  {addDateTime:"27.10.2021", subject:"the application is accepted"},
+  {addDateTime:"25.10.2021", subject:"refusal by the level of English" },
+  {addDateTime:"24.10.2021", subject:"refusal by location" },
+  {addDateTime:"23.10.2021", subject:"failure on the technical level"},
+  {addDateTime:"22.10.2021", subject:"in reserve" },
+  {addDateTime:"18.10.2021", subject:"accepted for Sandbox"}
 ]
-
 
 @Component({
   selector: 'app-letters',
@@ -20,10 +19,9 @@ const table_Data: Date_Elements[] = [
 })
 export class LettersComponent  {
 
-  displayedColumns: string[] = ["dateUpdate", "Name","edit"];
+  displayedColumns: string[] = ['dateUpdate', 'Name','edit'];
   dataSource = new MatTableDataSource(table_Data)
 
-  constructor() {
-  }
+  constructor() {}
 
 }
