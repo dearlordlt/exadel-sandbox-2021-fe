@@ -5,6 +5,7 @@ import { EducationalProgramsComponent } from './components/educational-programs/
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LettersComponent } from './components/letters/letters.component';
 import { PlanningComponent } from './components/planning/planning.component';
+import { PlannerComponent } from './components/planning/planner/planner.component';
 import { ReportComponent } from './components/report/report.component';
 import { CandidateHeaderComponent } from './candidate-registration/candidate-header/candidate-header.component';
 import { LoginComponent } from './login/login.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'planning',
     component: PlanningComponent,
+  },
+  {
+    path: 'planning/:educationalProgramId',
+    component: PlannerComponent,
   },
   {
     path: 'create-educational-program',
