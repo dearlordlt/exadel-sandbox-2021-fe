@@ -1,10 +1,11 @@
-import {Component, OnInit, AfterViewInit, ViewChild, Input} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, AfterViewInit, ViewChild, Input } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
-import {CandidatesService} from './services/candidates.service';
-import {Candidate} from '../../models/candidate';
-import {Router} from "@angular/router";
-import {ReadFeedbackService} from "../read-feedback/read-feedback.service";
+import { CandidatesService } from './services/candidates.service';
+import { Candidate } from '../../models/candidate';
+import { Router } from '@angular/router';
+import { ReadFeedbackService } from '../read-feedback/read-feedback.service';
+import { educationalPrograms } from 'src/app/global/constants';
 
 @Component({
   selector: 'app-candidate-list',
@@ -14,8 +15,10 @@ import {ReadFeedbackService} from "../read-feedback/read-feedback.service";
 export class CandidateListComponent implements OnInit {
   candidates: Candidate[] = [];
 
+  programs = educationalPrograms;
+
   dataSource: any | Candidate[] = new MatTableDataSource();
-  filterValues:any = {};
+  filterValues: any = {};
   filterSelectObj: any = [];
 
   displayedColumns: string[] = [
@@ -40,75 +43,71 @@ export class CandidateListComponent implements OnInit {
     'interviewer_mark',
   ];
 
-  constructor(private candidatesService: CandidatesService, private readFeedbackService: ReadFeedbackService,
-              private router: Router
-  ) {
+  constructor(private candidatesService: CandidatesService, private readFeedbackService: ReadFeedbackService, private router: Router) {
     // Object to create Filter for
     this.filterSelectObj = [
       {
         name: 'Educational Programs',
         columnProp: 'eduProg',
-        options: []
-      }, {
+        options: [],
+      },
+      {
         name: 'Position/Technology',
         columnProp: 'status',
-        options: []
+        options: [],
       },
       {
         name: 'English Level',
         columnProp: 'english_level',
-        options: []
+        options: [],
       },
       {
         name: 'Time to Contact',
         columnProp: 'contact_time',
-        options: []
+        options: [],
       },
       {
         name: 'Plan To Join',
         columnProp: 'plan_to_join',
-        options: []
+        options: [],
       },
       {
         name: 'Status',
         columnProp: 'status',
-        options: []
+        options: [],
       },
       {
         name: 'Soft Skill',
         columnProp: 'soft_skill',
-        options: []
+        options: [],
       },
       {
         name: 'Hard Skill',
         columnProp: 'hard_skill',
-        options: []
+        options: [],
       },
       {
-        name: 'Mentor\'s Mark',
+        name: "Mentor's Mark",
         columnProp: 'mentor_mark',
-        options: []
+        options: [],
       },
       {
-        name: 'Interviewer\'s Mark after Sandbox',
+        name: "Interviewer's Mark after Sandbox",
         columnProp: 'interviewer_mark',
-        options: []
-      }
-
-
-    ]
+        options: [],
+      },
+    ];
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
-
   }
 
   // Get Uniqu values from columns to build filter
-  getFilterObject(fullObj: any, key:any) {
-    const uniqChk:any = [];
-    fullObj.filter((obj:any) => {
+  getFilterObject(fullObj: any, key: any) {
+    const uniqChk: any = [];
+    fullObj.filter((obj: any) => {
       if (!uniqChk.includes(obj[key])) {
         uniqChk.push(obj[key]);
       }
@@ -119,8 +118,7 @@ export class CandidateListComponent implements OnInit {
   }
 
   getCandidates() {
-    this.candidatesService.getCandidates().subscribe((candidates) =>
-    {
+    this.candidatesService.getCandidates().subscribe((candidates) => {
       this.candidates = candidates;
 
       //need this now to make search component work, should be removed when connected to actual backend
@@ -128,20 +126,18 @@ export class CandidateListComponent implements OnInit {
 
       this.dataSource.data = this.candidates;
 
-      this.filterSelectObj.filter((o:any) => {
-        o.options = this.getFilterObject( this.candidates, o.columnProp);
+      this.filterSelectObj.filter((o: any) => {
+        o.options = this.getFilterObject(this.candidates, o.columnProp);
       });
     });
 
     // this.candidatesService.getCandidates().subscribe((candidates) => (this.dataSource = candidates));
-
-
   }
 
   // Called on Filter change
-  filterChange(filter:any, event:any) {
-    this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
-    this.dataSource.filter = JSON.stringify(this.filterValues)
+  filterChange(filter: any, event: any) {
+    this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase();
+    this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
   // Custom filter method fot Angular Material Datatable
@@ -157,42 +153,40 @@ export class CandidateListComponent implements OnInit {
         }
       }
 
-
       const nameSearch = () => {
         let found = false;
         if (isFilterSet) {
           for (const col in searchTerms) {
-            searchTerms[col].trim().toLowerCase().split(' ').forEach((word:any) => {
-              if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
-                found = true
-              }
-            });
+            searchTerms[col]
+              .trim()
+              .toLowerCase()
+              .split(' ')
+              .forEach((word: any) => {
+                if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
+                  found = true;
+                }
+              });
           }
-          return found
+          return found;
         } else {
           return true;
         }
-      }
-      return nameSearch()
-    }
-    return filterFunction
+      };
+      return nameSearch();
+    };
+    return filterFunction;
   }
-
 
   // Reset table filters
   resetFilters() {
-    this.filterValues = {}
-    this.filterSelectObj.forEach((value:any, key:any) => {
+    this.filterValues = {};
+    this.filterSelectObj.forEach((value: any, key: any) => {
       value.modelValue = undefined;
-    })
-    this.dataSource.filter = "";
+    });
+    this.dataSource.filter = '';
   }
 
-
-  searchList(values
-               :
-               string[]
-  ) {
+  searchList(values: string[]) {
     const [program, status, name, email] = [...values];
 
     this.dataSource = this.candidates.filter(
@@ -205,10 +199,10 @@ export class CandidateListComponent implements OnInit {
   }
 
   writeFeedback() {
-    this.router.navigateByUrl('/write_feedback').then()
+    this.router.navigateByUrl('/write_feedback').then();
   }
 
   readFeedback() {
-    this.router.navigateByUrl('/read_feedback').then()
+    this.router.navigateByUrl('/read_feedback').then();
   }
 }
