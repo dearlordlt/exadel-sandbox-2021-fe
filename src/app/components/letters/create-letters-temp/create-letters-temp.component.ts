@@ -36,7 +36,7 @@ export class CreateLettersTempComponent {
        Validators.required
      ]]
    })
-   candidate_status = statuses
+   candidate_status = statuses.select
    submitted = false ;
 
   get f() { return this.profileForm.controls}
