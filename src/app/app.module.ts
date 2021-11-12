@@ -34,6 +34,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
+import { PlannerComponent } from './components/planning/planner/planner.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { UpdateCandidateDialogComponent } from './components/dashboard/candidate
     SendLetterComponent,
     SearchCandidatesComponent,
     UpdateCandidateDialogComponent,
+    PlannerComponent,
   ],
   imports: [
     AppMaterialModule,
