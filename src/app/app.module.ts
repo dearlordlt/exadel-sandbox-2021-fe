@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
-import { EducationalProgramComponent } from './components/dashboard/educational-program/educational-program.component';
 import { SearchCandidateComponent } from './components/dashboard/search-candidate/search-candidate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CandidateListComponent } from './components/dashboard/candidate-list/candidate-list.component';
@@ -41,7 +40,6 @@ import { UpdateCandidateDialogComponent } from './components/dashboard/candidate
     AppComponent,
     DashboardComponent,
     TopBarComponent,
-    EducationalProgramComponent,
     SearchCandidateComponent,
     CandidateListComponent,
     PlanningComponent,
