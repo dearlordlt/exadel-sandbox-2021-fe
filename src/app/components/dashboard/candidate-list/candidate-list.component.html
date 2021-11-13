@@ -4,7 +4,9 @@
   <div *ngIf="dataSource" class="table-wrapper mat-elevation-z8 table-responsive">
     <table mat-table [dataSource]="dataSource" matSort class="table">
       <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef></th>
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-flat-button color="primary" (click)="resetFilters()">Reset</button>
+        </th>
         <td mat-cell *matCellDef="let candidate" class="edit-feedback">
           <mat-icon class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
           <button mat-stroked-button color="primary" (click)="writeFeedback()">Feedback</button>
@@ -30,7 +32,7 @@
             <select matNativeControl name="{{filterSelectObj[0].columnProp}}"
                     [(ngModel)]="filterSelectObj[0].modelValue"
                     (change)="filterChange(filterSelectObj[0],$event)">
-              <option value="">{{filterSelectObj[0].name}}</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[0].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -47,7 +49,7 @@
             <select matNativeControl name="{{filterSelectObj[1].columnProp}}"
                     [(ngModel)]="filterSelectObj[1].modelValue"
                     (change)="filterChange(filterSelectObj[1],$event)">
-              <option value=""> {{filterSelectObj[1].name}}</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[1].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -89,7 +91,7 @@
             <select matNativeControl name="{{filterSelectObj[2].columnProp}}"
                     [(ngModel)]="filterSelectObj[2].modelValue"
                     (change)="filterChange(filterSelectObj[2],$event)">
-              <option value="">-- Select {{filterSelectObj[2].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[2].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -104,7 +106,7 @@
             <select matNativeControl name="{{filterSelectObj[3].columnProp}}"
                     [(ngModel)]="filterSelectObj[2].modelValue"
                     (change)="filterChange(filterSelectObj[3],$event)">
-              <option value="">-- Select {{filterSelectObj[3].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[3].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -119,7 +121,7 @@
             <select matNativeControl name="{{filterSelectObj[4].columnProp}}"
                     [(ngModel)]="filterSelectObj[4].modelValue"
                     (change)="filterChange(filterSelectObj[4],$event)">
-              <option value="">-- Select {{filterSelectObj[4].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[4].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -140,7 +142,7 @@
             <select matNativeControl name="{{filterSelectObj[5].columnProp}}"
                     [(ngModel)]="filterSelectObj[5].modelValue"
                     (change)="filterChange(filterSelectObj[5],$event)">
-              <option value="">-- Select {{filterSelectObj[5].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[5].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -156,7 +158,7 @@
             <select matNativeControl name="{{filterSelectObj[6].columnProp}}"
                     [(ngModel)]="filterSelectObj[6].modelValue"
                     (change)="filterChange(filterSelectObj[6],$event)">
-              <option value="">-- Select {{filterSelectObj[6].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[6].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -171,7 +173,7 @@
             <select matNativeControl name="{{filterSelectObj[7].columnProp}}"
                     [(ngModel)]="filterSelectObj[7].modelValue"
                     (change)="filterChange(filterSelectObj[7],$event)">
-              <option value="">-- Select {{filterSelectObj[7].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[7].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -186,7 +188,7 @@
             <select matNativeControl name="{{filterSelectObj[8].columnProp}}"
                     [(ngModel)]="filterSelectObj[8].modelValue"
                     (change)="filterChange(filterSelectObj[8],$event)">
-              <option value="">-- Select {{filterSelectObj[8].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[8].options">{{item}}</option>
             </select>
           </mat-form-field>
@@ -201,7 +203,7 @@
             <select matNativeControl name="{{filterSelectObj[9].columnProp}}"
                     [(ngModel)]="filterSelectObj[9].modelValue"
                     (change)="filterChange(filterSelectObj[9],$event)">
-              <option value="">-- Select {{filterSelectObj[9].name}} --</option>
+              <option value="">All</option>
               <option [value]="item" *ngFor="let item of filterSelectObj[9].options">{{item}}</option>
             </select>
           </mat-form-field>
