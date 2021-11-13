@@ -24,7 +24,22 @@
     display: table;
     border-collapse: collapse;
     margin: 0;
+
+    th {
+      mat-form-field {
+        width: 120px;
+
+        mat-label {
+          font-weight: bold;
+          color: #000;
+        }
+      }
+    }
   }
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
 }
 
 th.mat-header-cell {
