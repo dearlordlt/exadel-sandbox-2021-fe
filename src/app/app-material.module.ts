@@ -8,10 +8,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule],
-  exports: [MatTableModule, MatPaginatorModule, MatInputModule, MatIconModule, MatSelectModule, MatTooltipModule, MatProgressSpinnerModule],
+  exports: [
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    ClipboardModule,
+    TextFieldModule,
+  ],
 })
 export class AppMaterialModule {}

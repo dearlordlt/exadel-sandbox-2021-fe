@@ -1,0 +1,19 @@
+#dialog {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5rem 5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .copy-btn {
+    color: #0000008a;
+  }
+}
