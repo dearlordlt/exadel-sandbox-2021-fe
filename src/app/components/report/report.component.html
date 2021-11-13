@@ -1,2 +1,23 @@
 <app-top-bar></app-top-bar>
-<p>report works!</p>
+<div class="flex">
+  <h1>Report</h1>
+  <p>Educational program</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Educational Programs</mat-label>
+    <mat-select>
+      <ng-container *ngIf="programs$ | async as programs">
+        <mat-option *ngFor="let program of programs" [value]="program.name">{{program.name}}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <button>Create</button>
+  <ng-container *ngIf="report$ | async as report">
+    <p>applications: {{report[0].applications}}</p>
+    <p>refusalByEnglish: {{report[0].refusalByEnglish}}</p>
+    <p>refusalByLocation: {{report[0].refusalByLocation}}</p>
+    <p>failureTechnical: {{report[0].failureTechnical}}</p>
+    <p>candidateRefusal: {{report[0].candidateRefusal}}</p>
+    <p>sandboxCompleted: {{report[0].sandboxCompleted}}</p>
+  </ng-container>
+  <button>Save to Excel</button>
+</div>
