@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, NgForm, Validators} from '@angular/forms';
+import { AuthenticationService } from '../service/authentication/authentication.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,13 +29,18 @@ export class LoginComponent implements OnInit {
     return this.password.hasError('password') ? 'Not a valid password' : '';
   }
   
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(logInForm: NgForm){
-    console.log(this.email);
-    console.log(this.password);
+    console.log(logInForm.value);
+    // console.log(this.email);
+    // console.log(this.password);
+
+  // const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
+  const logInData = (logInForm.value.email, logInForm.value.password);
+  this.authenticationService.authenticate(logInData);
   }
 }

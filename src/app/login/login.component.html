@@ -1,5 +1,5 @@
 <div class="form">
-    <form  #logInForm="ngForm" (ngSubmit)="onSubmit(logInForm.value)">
+    <form  (ngSubmit)="onSubmit(logInForm)" #logInForm="ngForm" >
         <mat-card>
                 <p>
                     <mat-toolbar>
@@ -8,17 +8,18 @@
                 </p>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput  required placeholder="Email"  ngModel [formControl]="email">
+                    <input matInput  required namr="email" placeholder="Email"  ngModel [formControl]="email">
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'"  ngModel [formControl]="password" required placeholder="Password">  
+                    <input matInput [type]="hide ? 'password' : 'text'"  name="password" ngModel [formControl]="password" required placeholder="Password">  
                     <mat-error *ngIf="password.invalid">{{getErrorMesPas()}}</mat-error>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                 </mat-form-field>
+            
                 <button class="login-btn" mat-raised-button type="submit"  [routerLink]="'/dashboard'" [disabled]="!email.valid || !password.valid">Log in</button>
                 <button [routerLink]="''" class="back-btn" mat-raised-button type="menu">Back to registration page</button>
         </mat-card>
