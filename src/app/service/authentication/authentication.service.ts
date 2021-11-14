@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { logInData } from 'src/app/components/models/loginData';
+import { logInData } from 'src/app/components/models/logInData';
 @Injectable({
   providedIn: 'root'
 })
