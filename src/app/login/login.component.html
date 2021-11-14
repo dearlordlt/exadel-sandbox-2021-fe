@@ -19,8 +19,8 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                 </mat-form-field>
-                <a [routerLink]="'/dashboard'"><button class="login-btn" mat-raised-button type="submit" [disabled]="!email.valid || !password.valid">Log in</button> </a>
-                <a [routerLink]="''"><button class="back-btn" mat-raised-button type="menu">Back to registration page</button> </a>
+                <button class="login-btn" mat-raised-button type="submit"  [routerLink]="'/dashboard'" [disabled]="!email.valid || !password.valid">Log in</button>
+                <button [routerLink]="''" class="back-btn" mat-raised-button type="menu">Back to registration page</button>
         </mat-card>
     </form>    
 </div>
