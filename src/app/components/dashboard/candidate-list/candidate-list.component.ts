@@ -48,6 +48,16 @@ export class CandidateListComponent implements OnInit {
   constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog) {
     this.filterSelectObj = [
       {
+        name: "First name",
+        columnProp: 'firstname',
+        options: [],
+      },
+      {
+        name: "Second name",
+        columnProp: 'lastname',
+        options: [],
+      },
+      {
         name: 'Educational Programs',
         columnProp: 'eduProg',
         options: [],
@@ -55,6 +65,31 @@ export class CandidateListComponent implements OnInit {
       {
         name: 'Position/Technology',
         columnProp: 'position',
+        options: [],
+      },
+      {
+        name: "Email",
+        columnProp: 'email',
+        options: [],
+      },
+      {
+        name: "Skype",
+        columnProp: 'skype',
+        options: [],
+      },
+      {
+        name: "Phone",
+        columnProp: 'phone_number',
+        options: [],
+      },
+      {
+        name: "Country",
+        columnProp: 'country',
+        options: [],
+      },
+      {
+        name: "City",
+        columnProp: 'city',
         options: [],
       },
       {
@@ -70,6 +105,11 @@ export class CandidateListComponent implements OnInit {
       {
         name: 'Plan To Join',
         columnProp: 'plan_to_join',
+        options: [],
+      },
+      {
+        name: "Date of Applying",
+        columnProp: 'date_of_apply',
         options: [],
       },
       {
@@ -97,6 +137,8 @@ export class CandidateListComponent implements OnInit {
         columnProp: 'interviewer_mark',
         options: [],
       },
+
+
     ];
   }
 
