@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { logInData } from 'src/app/components/models/logInData';
+import { LogInData } from 'src/app/components/models/logInData';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private readonly testUser = new logInData('test@exadel.com', '123456')
+  private readonly testUser = new LogInData('test@exadel.com', '123456')
   isAuthenticated = false;
 
   constructor(private router: Router) { }
 
-  authenticate(logInData: logInData): boolean{
+  authenticate(logInData: LogInData): boolean{
     if(this.checkData(logInData)){
       this.isAuthenticated = true;
       this.router.navigate(['dashboard'])
@@ -22,7 +22,7 @@ export class AuthenticationService {
       return false;
     }
   }
-  private checkData(logInData: logInData): boolean {
+  private checkData(logInData: LogInData): boolean {
     return this.checkEmail(logInData.getEmail()) && this.checkPassword(logInData.getPassword());
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, NgForm, Validators} from '@angular/forms';
 import { AuthenticationService } from '../service/authentication/authentication.service';
+import { LogInData } from '../components/models/logInData';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,11 +37,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit(logInForm: NgForm){
     console.log(logInForm.value);
-    // console.log(this.email);
-    // console.log(this.password);
+    console.log(logInForm.value.email);
+    console.log(logInForm.value.password);
+    console.log(this.email);
+    console.log(this.password);
 
-  // const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
-  const logInData = (logInForm.value.email, logInForm.value.password);
+  const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
+ 
   this.authenticationService.authenticate(logInData);
   }
 }
