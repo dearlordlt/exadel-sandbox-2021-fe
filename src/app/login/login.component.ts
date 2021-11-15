@@ -36,14 +36,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(logInForm: NgForm){
+    const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
+    this.authenticationService.authenticate(logInData);
     console.log(logInForm.value);
     console.log(logInForm.value.email);
     console.log(logInForm.value.password);
     console.log(this.email);
     console.log(this.password);
-
-  const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
- 
-  this.authenticationService.authenticate(logInData);
+    
   }
 }

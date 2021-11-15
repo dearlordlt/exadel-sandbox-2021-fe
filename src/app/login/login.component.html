@@ -1,5 +1,5 @@
 <div class="form">
-    <form  (ngSubmit)="onSubmit(logInForm)" #logInForm="ngForm" >
+    <form #logInForm="ngForm" (ngSubmit)="onSubmit(logInForm)"  >
         <mat-card>
                 <p>
                     <mat-toolbar>
@@ -20,8 +20,9 @@
                       </button>
                 </mat-form-field>
             
-                <button class="login-btn" mat-raised-button type="submit"  [routerLink]="'/dashboard'" [disabled]="!email.valid || !password.valid">Log in</button>
+                <button class="login-btn" mat-raised-button type="submit"   [disabled]="!email.valid || !password.valid">Log in</button>
+                <button [routerLink]="'/dashboard'">dash</button>
                 <button [routerLink]="''" class="back-btn" mat-raised-button type="menu">Back to registration page</button>
         </mat-card>
-    </form>    
+    </form>   
 </div>
