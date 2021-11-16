@@ -35,6 +35,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 import { PlannerComponent } from './components/planning/planner/planner.component';
+import { ScheduleComponent } from './components/planning/planner/schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { PlannerComponent } from './components/planning/planner/planner.componen
     SearchCandidatesComponent,
     UpdateCandidateDialogComponent,
     PlannerComponent,
+    ScheduleComponent,
   ],
   imports: [
     AppMaterialModule,

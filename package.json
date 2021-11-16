@@ -24,6 +24,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@types/moment-timezone": "^0.5.30",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "svg-country-flags": "^1.2.10",
     "tslib": "^2.3.0",

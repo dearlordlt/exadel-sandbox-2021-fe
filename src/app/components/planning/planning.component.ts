@@ -9,7 +9,7 @@ import { EducationalProgramsData } from '../../global/educational-programs-data'
 })
 export class PlanningComponent {
   displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod', 'calendar'];
-  dataSource = EducationalProgramsData;
+  dataSource: EducationalProgram[] = EducationalProgramsData;
 
   constructor() {}
 }

@@ -10,13 +10,11 @@ import { EducationalProgramsData } from '../../../global/educational-programs-da
 })
 export class PlannerComponent implements OnInit {
   programForm: FormGroup = this.fb.group({
-    name: '',
-    acceptancePeriodStartDate: '',
-    programsPeriodStartDate: '',
+    date: '',
   });
 
-  public educationalProgramId: string | null = null;
-  public educationalProgramName: string | null = null;
+  educationalProgramId: string | null = null;
+  educationalProgramName: string | null = null;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
 
@@ -24,7 +22,6 @@ export class PlannerComponent implements OnInit {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId');
     if (this.educationalProgramId) {
       this.educationalProgramName = EducationalProgramsData.find((program) => program.id === parseInt(this.educationalProgramId!))?.name!;
-      this.programForm.controls['name'].setValue(this.educationalProgramName);
     }
   }
 }
