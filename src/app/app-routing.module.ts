@@ -7,18 +7,18 @@ import {LettersComponent} from './components/letters/letters.component';
 import {PlanningComponent} from './components/planning/planning.component';
 import {PlannerComponent} from './components/planning/planner/planner.component';
 import {ReportComponent} from './components/report/report.component';
-import {CandidateHeaderComponent} from './candidate-registration/candidate-header/candidate-header.component';
 import {LoginComponent} from './login/login.component';
 import {CreateLettersTempComponent} from './components/letters/create-letters-temp/create-letters-temp.component';
 import {SendLetterComponent} from './components/letters/send-letter/send-letter.component';
 import {ReadFeedbackComponent} from "./components/feedback/read-feedback/read-feedback.component";
 import {WriteFeedbackComponent} from "./components/feedback/write-feedback/write-feedback.component";
+import { CandidateRegistrationComponent } from './components/candidate-registration/candidate-registration.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: CandidateHeaderComponent,
+    component: CandidateRegistrationComponent,
   },
   {
     path: 'login',
