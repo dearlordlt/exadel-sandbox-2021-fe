@@ -217,5 +217,48 @@
       "firstname": "john",
       "lastname": "Smith"
     }
+  ],
+  "educationalPrograms": [
+    {
+      "id": 1,
+      "name": ".NET,JS,BA: 10-11.2021"
+    },
+    {
+      "id": 2,
+      "name": "Java,JS,BA: 6-7.2021"
+    },
+    {
+      "id": 3,
+      "name": "PHP,JS: 2-3.2021"
+    }
+  ],
+  "GetForReport": [
+    {
+      "applications": 4,
+      "refusalByEnglish": 5,
+      "refusalByLocation": 2,
+      "failureTechnical": 7,
+      "candidateRefusal": 11,
+      "sandboxCompleted": 9,
+      "eduProgId": 1
+    },
+    {
+      "applications": 50,
+      "refusalByEnglish": 15,
+      "refusalByLocation": 5,
+      "failureTechnical": 17,
+      "candidateRefusal": 15,
+      "sandboxCompleted": 9,
+      "eduProgId": 2
+    },
+    {
+      "applications": 100,
+      "refusalByEnglish": 20,
+      "refusalByLocation": 30,
+      "failureTechnical": 15,
+      "candidateRefusal": 11,
+      "sandboxCompleted": 9,
+      "eduProgId": 3
+    }
   ]
 }
