@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppMaterialModule } from './app-material.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -9,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CandidateRegistrationModule } from './candidate-registration/candidate-registration.module';
+import { CandidateRegistrationModule } from './components/candidate-registration/candidate-registration.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -36,12 +35,17 @@ import { SearchCandidatesComponent } from './components/shared/search-candidates
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 import { PlannerComponent } from './components/planning/planner/planner.component';
 import { ScheduleComponent } from './components/planning/planner/schedule/schedule.component';
+import { WriteFeedbackComponent } from './components/feedback/write-feedback/write-feedback.component';
+import { ReadFeedbackComponent } from './components/feedback/read-feedback/read-feedback.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     TopBarComponent,
+    WriteFeedbackComponent,
+    ReadFeedbackComponent,
     SearchCandidateComponent,
     CandidateListComponent,
     PlanningComponent,
@@ -78,9 +82,11 @@ import { ScheduleComponent } from './components/planning/planner/schedule/schedu
     MatTableModule,
     MatSortModule,
     FormsModule,
+    ChartModule,
   ],
   providers: [],
   entryComponents: [LogoutComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
