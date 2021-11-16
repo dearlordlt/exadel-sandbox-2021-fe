@@ -18,7 +18,7 @@ export class ReportComponent implements OnInit {
     "Candidate's refusal",
     "Sandbox completed"];
   reportArrValues: number[] = [];
-  name: string = 'NaN';
+  name = 'NaN';
   chart!: Chart;
 
   constructor(private reportService: ReportService) {
@@ -39,7 +39,7 @@ export class ReportComponent implements OnInit {
   }
 
   init() {
-    let chart = new Chart({
+    const chart = new Chart({
       chart: {
         type: 'bar'
       },

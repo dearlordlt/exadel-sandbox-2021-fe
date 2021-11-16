@@ -1,0 +1,43 @@
+<app-top-bar></app-top-bar>
+<div class="feedback">
+  <h1>{{name}}'s feedback</h1>
+  <div class="flex">
+    <div>
+      <label for="hard_skill">Hard skill</label>
+      <select name="hard_skill" id="hard_skill">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <label for="soft_skill">Soft skill</label>
+      <select name="soft_skill" id="soft_skill">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <label for="mark">Mark</label>
+      <select name="mark" id="mark">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="textarea">
+      <label for="feedback">Feedback</label>
+      <textarea name="feedback" id="feedback" cols="50" rows="5" placeholder="Your feedback"></textarea>
+    </div>
+  </div>
+  <div class="btn">
+    <button (click)="saveFeedback()">Save</button>
+    <button (click)="back()">Back to candidate's page</button>
+  </div>
+</div>

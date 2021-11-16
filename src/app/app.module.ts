@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppMaterialModule } from './app-material.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CandidateRegistrationModule } from './components/candidate-registration/candidate-registration.module';
-
 import { AppComponent } from './app.component';
+import { CandidateRegistrationModule } from './components/candidate-registration/candidate-registration.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
 import { SearchCandidateComponent } from './components/dashboard/search-candidate/search-candidate.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CandidateListComponent } from './components/dashboard/candidate-list/candidate-list.component';
+import { HttpClientModule } from '@angular/common/http';
 import { PlanningComponent } from './components/planning/planning.component';
 import { EducationalProgramsComponent } from './components/educational-programs/educational-programs.component';
 import { LettersComponent } from './components/letters/letters.component';
@@ -20,11 +24,18 @@ import { SendLetterComponent } from './components/letters/send-letter/send-lette
 import { ReportComponent } from './components/report/report.component';
 import { CreateEducationalProgramComponent } from './components/educational-programs/create-educational-program/create-educational-program.component';
 import { LogoutComponent } from './components/shared/logout/logout.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateLettersTempComponent } from './components/letters/create-letters-temp/create-letters-temp.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 import { PlannerComponent } from './components/planning/planner/planner.component';
+import { WriteFeedbackComponent } from './components/feedback/write-feedback/write-feedback.component';
+import { ReadFeedbackComponent } from './components/feedback/read-feedback/read-feedback.component';
 import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
@@ -32,6 +43,8 @@ import { ChartModule } from 'angular-highcharts';
     AppComponent,
     DashboardComponent,
     TopBarComponent,
+    WriteFeedbackComponent,
+    ReadFeedbackComponent,
     SearchCandidateComponent,
     CandidateListComponent,
     PlanningComponent,
@@ -54,7 +67,18 @@ import { ChartModule } from 'angular-highcharts';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
     CandidateRegistrationModule,
+    RouterModule,
+    MatDialogModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatSortModule,
     FormsModule,
     ChartModule,
   ],
@@ -62,4 +86,5 @@ import { ChartModule } from 'angular-highcharts';
   entryComponents: [LogoutComponent],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
