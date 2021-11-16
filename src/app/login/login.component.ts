@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AuthenticationService } from '../service/authentication/authentication.service';
 import { LogInData } from '../components/models/logInData';
 @Component({
@@ -8,6 +8,15 @@ import { LogInData } from '../components/models/logInData';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  // logInForm = new FormGroup({
+  //   email: new FormControl(),
+  //   password: new FormControl()
+  // });
+  // onSubmit(logInForm: LogInData){
+    
+  //   const logInData = new LogInData(logInForm.getEmail(), logInForm.getPassword());
+  //   this.authenticationService.authenticate(logInData); 
+  // }
   email = new FormControl('', [Validators.required, Validators.email, Validators.pattern(/@exadel.com/)]);
   password = new FormControl('',  [Validators.required, Validators.minLength(6)])
   hide = true;
@@ -32,17 +41,13 @@ export class LoginComponent implements OnInit {
   
   constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+   
   }
 
-  onSubmit(logInForm: NgForm){
-    const logInData = new LogInData(logInForm.value.email, logInForm.value.password);
-    this.authenticationService.authenticate(logInData);
-    console.log(logInForm.value);
-    console.log(logInForm.value.email);
-    console.log(logInForm.value.password);
-    console.log(this.email);
-    console.log(this.password);
-    
+  onSubmit(){
+    const logInData = new LogInData(this.email.value, this.password.value);
+    this.authenticationService.authenticate(logInData);   
   }
+  
 }
