@@ -1,0 +1,239 @@
+<div class="schedule">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>Position</th>
+      <td mat-cell *matCellDef="let element">{{element.position}}</td>
+    </ng-container>
+
+    <!-- Time Columns -->
+    <ng-container matColumnDef="9:00">
+      <th mat-header-cell *matHeaderCellDef>9:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.nine === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.nine === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.nine === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="9:30">
+      <th mat-header-cell *matHeaderCellDef>9:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.ninethirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.ninethirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.ninethirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="10:00">
+      <th mat-header-cell *matHeaderCellDef>10:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.ten === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.ten === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.ten === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="10:30">
+      <th mat-header-cell *matHeaderCellDef>10:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.tenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.tenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.tenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="11:00">
+      <th mat-header-cell *matHeaderCellDef>11:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eleven === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eleven === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.eleven === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="11:30">
+      <th mat-header-cell *matHeaderCellDef>11:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eleventhirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eleventhirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.eleventhirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="12:00">
+      <th mat-header-cell *matHeaderCellDef>12:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.twelve === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.twelve === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.twelve === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="12:30">
+      <th mat-header-cell *matHeaderCellDef>12:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.twelvethirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.twelvethirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.twelvethirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="13:00">
+      <th mat-header-cell *matHeaderCellDef>13:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.thirteen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.thirteen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="13:30">
+      <th mat-header-cell *matHeaderCellDef>13:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.thirteenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.thirteenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="14:00">
+      <th mat-header-cell *matHeaderCellDef>14:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fourteen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.fourteen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="14:30">
+      <th mat-header-cell *matHeaderCellDef>14:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fourteenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.fourteenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="15:00">
+      <th mat-header-cell *matHeaderCellDef>15:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fiveteen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.fiveteen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="15:30">
+      <th mat-header-cell *matHeaderCellDef>15:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fiveteenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.fiveteenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="16:00">
+      <th mat-header-cell *matHeaderCellDef>16:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.sixteen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.sixteen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="16:30">
+      <th mat-header-cell *matHeaderCellDef>16:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.sixteenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.sixteenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="17:00">
+      <th mat-header-cell *matHeaderCellDef>17:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.seventeen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.seventeen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="17:30">
+      <th mat-header-cell *matHeaderCellDef>17:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.seventeenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.seventeenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="18:00">
+      <th mat-header-cell *matHeaderCellDef>18:00</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eighteen === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.eighteen === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="18:30">
+      <th mat-header-cell *matHeaderCellDef>18:30</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eighteenthirty === 'unavailable' }"
+      >
+        <mat-icon *ngIf="element.eighteenthirty === 'check'">check</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

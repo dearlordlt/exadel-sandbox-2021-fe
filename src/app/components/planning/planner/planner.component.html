@@ -3,14 +3,13 @@
   <div class="planner__calendar">
     <h1>{{ educationalProgramName }}</h1>
     <mat-form-field appearance="outline" [formGroup]="programForm">
-      <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="datePicker">
-        <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
-        <input matEndDate placeholder="End date" formControlName="programsPeriodStartDate" />
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-      <mat-date-range-picker #datePicker></mat-date-range-picker>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
-  <div class="planner__scheduler"></div>
+  <div class="planner__scheduler">
+    <app-schedule [_educationalProgramId]="educationalProgramId" [date]="programForm.controls['date'].value"></app-schedule>
+  </div>
 </div>

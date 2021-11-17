@@ -34,6 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { SearchCandidatesComponent } from './components/shared/search-candidates/search-candidates.component';
 import { UpdateCandidateDialogComponent } from './components/dashboard/candidate-list/update-candidate-dialog/update-candidate-dialog.component';
 import { PlannerComponent } from './components/planning/planner/planner.component';
+import { ScheduleComponent } from './components/planning/planner/schedule/schedule.component';
 import { WriteFeedbackComponent } from './components/feedback/write-feedback/write-feedback.component';
 import { ReadFeedbackComponent } from './components/feedback/read-feedback/read-feedback.component';
 import { ChartModule } from 'angular-highcharts';
@@ -59,6 +60,7 @@ import { ChartModule } from 'angular-highcharts';
     SearchCandidatesComponent,
     UpdateCandidateDialogComponent,
     PlannerComponent,
+    ScheduleComponent,
   ],
   imports: [
     AppMaterialModule,

@@ -8,8 +8,8 @@ import { EducationalProgramsData } from '../../global/educational-programs-data'
   styleUrls: ['./planning.component.scss'],
 })
 export class PlanningComponent {
-  displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod'];
-  dataSource = EducationalProgramsData;
+  displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod', 'calendar'];
+  dataSource: EducationalProgram[] = EducationalProgramsData;
 
   constructor() {}
 }
