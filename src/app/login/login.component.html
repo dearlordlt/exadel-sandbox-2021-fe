@@ -1,5 +1,5 @@
 <div class="form">
-    <form #logInForm="ngForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
         <mat-card>
                 <p>
                     <mat-toolbar>
@@ -8,47 +8,21 @@
                 </p>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput  required name="email" ngModel placeholder="Email" [formControl]="email">
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <input matInput  required name="email" formControlName="email" placeholder="Email" >
+                    <mat-error *ngIf="logInForm.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'"  name="password" ngModel [formControl]="password" required placeholder="Password">  
-                    <mat-error *ngIf="password.invalid">{{getErrorMesPas()}}</mat-error>
+                    <input matInput [type]="hide ? 'password' : 'text'"  name="password" formControlName="password"  required placeholder="Password">  
+                    <mat-error   *ngIf="logInForm.controls['password'].invalid">{{getErrorMesPas()}}</mat-error>
+                  
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                 </mat-form-field>
             
-                <button class="login-btn" mat-raised-button type="submit" [disabled]="!email.valid || !password.valid">Log in</button>
+                <button class="login-btn" mat-raised-button type="submit" [disabled]="!logInForm.controls['password'].valid || !logInForm.controls['email'].valid">Log in</button>
                 <button [routerLink]="''" class="back-btn" mat-raised-button type="menu">Back to registration page</button>
         </mat-card>
     </form>   
 </div>
-<!-- <div class="form">
-    <form [formGroup]="logInForm" (ngSubmit)="onSubmit(logInForm)">
-        <mat-card>
-                <p>
-                    <mat-toolbar>
-                      <span>Log in</span>
-                    </mat-toolbar>
-                </p>
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput  required name="email" formControlName="email" placeholder="Email" [formControl]="email">
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'"  name="password" formControlName="password" [formControl]="password" required placeholder="Password">  
-                    <mat-error *ngIf="password.invalid">{{getErrorMesPas()}}</mat-error>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                </mat-form-field>
-            
-                <button class="login-btn" mat-raised-button type="submit" [disabled]="!email.valid || !password.valid">Log in</button>
-                <button [routerLink]="''" class="back-btn" mat-raised-button type="menu">Back to registration page</button>
-        </mat-card>
-    </form>   
-</div> -->
