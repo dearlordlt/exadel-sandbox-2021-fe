@@ -13,7 +13,7 @@ import {SendLetterComponent} from './components/letters/send-letter/send-letter.
 import {ReadFeedbackComponent} from "./components/feedback/read-feedback/read-feedback.component";
 import {WriteFeedbackComponent} from "./components/feedback/write-feedback/write-feedback.component";
 import { CandidateRegistrationComponent } from './components/candidate-registration/candidate-registration.component';
-
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,50 +27,62 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'write_feedback',
     component: WriteFeedbackComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'read_feedback',
     component: ReadFeedbackComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'planning',
     component: PlanningComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'planning/:educationalProgramId',
     component: PlannerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-educational-program',
     component: CreateEducationalProgramComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'educational-programs',
     component: EducationalProgramsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'educational-programs',
     component: EducationalProgramsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'send-letter',
     component: SendLetterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'letters',
     component: LettersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'report',
     component: ReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-letters-temp',
     component: CreateLettersTempComponent,
+    canActivate: [AuthGuard]
   },
 ];
 
