@@ -3,7 +3,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      <td mat-cell *matCellDef="let element" class="schedule__name-cell" (click)="openFreeSpotsDialog()">{{element.name}}</td>
     </ng-container>
 
     <!-- Position Column -->
@@ -18,7 +18,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.nine === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.nine === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.nine === 'available' || element.nine === 'check', 'schedule__cell schedule__cell--unavailable': element.nine === 'unavailable' }"
       >
         <mat-icon *ngIf="element.nine === 'check'">check</mat-icon>
       </td>
@@ -29,7 +29,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.ninethirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.ninethirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.ninethirty === 'available' || element.ninethirty === 'check', 'schedule__cell schedule__cell--unavailable': element.ninethirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.ninethirty === 'check'">check</mat-icon>
       </td>
@@ -40,7 +40,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.ten === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.ten === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.ten === 'available' || element.ten === 'check', 'schedule__cell schedule__cell--unavailable': element.ten === 'unavailable' }"
       >
         <mat-icon *ngIf="element.ten === 'check'">check</mat-icon>
       </td>
@@ -51,7 +51,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.tenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.tenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.tenthirty === 'available' || element.tenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.tenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.tenthirty === 'check'">check</mat-icon>
       </td>
@@ -62,7 +62,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.eleven === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eleven === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eleven === 'available' || element.eleven === 'check', 'schedule__cell schedule__cell--unavailable': element.eleven === 'unavailable' }"
       >
         <mat-icon *ngIf="element.eleven === 'check'">check</mat-icon>
       </td>
@@ -73,7 +73,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.eleventhirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eleventhirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eleventhirty === 'available' || element.eleventhirty === 'check', 'schedule__cell schedule__cell--unavailable': element.eleventhirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.eleventhirty === 'check'">check</mat-icon>
       </td>
@@ -84,7 +84,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.twelve === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.twelve === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.twelve === 'available' || element.twelve === 'check', 'schedule__cell schedule__cell--unavailable': element.twelve === 'unavailable' }"
       >
         <mat-icon *ngIf="element.twelve === 'check'">check</mat-icon>
       </td>
@@ -95,7 +95,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.twelvethirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.twelvethirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.twelvethirty === 'available' || element.twelvethirty === 'check', 'schedule__cell schedule__cell--unavailable': element.twelvethirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.twelvethirty === 'check'">check</mat-icon>
       </td>
@@ -106,7 +106,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.thirteen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteen === 'available' || element.thirteen === 'check', 'schedule__cell schedule__cell--unavailable': element.thirteen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.thirteen === 'check'">check</mat-icon>
       </td>
@@ -117,7 +117,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.thirteenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.thirteenthirty === 'available' || element.thirteenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.thirteenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.thirteenthirty === 'check'">check</mat-icon>
       </td>
@@ -128,7 +128,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fourteen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteen === 'available' || element.fourteen === 'check', 'schedule__cell schedule__cell--unavailable': element.fourteen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.fourteen === 'check'">check</mat-icon>
       </td>
@@ -139,7 +139,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fourteenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fourteenthirty === 'available' || element.fourteenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.fourteenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.fourteenthirty === 'check'">check</mat-icon>
       </td>
@@ -150,7 +150,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fiveteen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteen === 'available' || element.fiveteen === 'check', 'schedule__cell schedule__cell--unavailable': element.fiveteen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.fiveteen === 'check'">check</mat-icon>
       </td>
@@ -161,7 +161,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.fiveteenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.fiveteenthirty === 'available' || element.fiveteenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.fiveteenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.fiveteenthirty === 'check'">check</mat-icon>
       </td>
@@ -172,7 +172,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.sixteen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteen === 'available' || element.sixteen === 'check', 'schedule__cell schedule__cell--unavailable': element.sixteen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.sixteen === 'check'">check</mat-icon>
       </td>
@@ -183,7 +183,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.sixteenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.sixteenthirty === 'available' || element.sixteenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.sixteenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.sixteenthirty === 'check'">check</mat-icon>
       </td>
@@ -194,7 +194,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.seventeen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeen === 'available' || element.seventeen === 'check', 'schedule__cell schedule__cell--unavailable': element.seventeen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.seventeen === 'check'">check</mat-icon>
       </td>
@@ -205,7 +205,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.seventeenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.seventeenthirty === 'available' || element.seventeenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.seventeenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.seventeenthirty === 'check'">check</mat-icon>
       </td>
@@ -216,7 +216,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteen === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eighteen === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteen === 'available' || element.eighteen === 'check', 'schedule__cell schedule__cell--unavailable': element.eighteen === 'unavailable' }"
       >
         <mat-icon *ngIf="element.eighteen === 'check'">check</mat-icon>
       </td>
@@ -227,7 +227,7 @@
       <td
         mat-cell
         *matCellDef="let element"
-        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteenthirty === 'available' || 'check' ,'schedule__cell schedule__cell--unavailable': element.eighteenthirty === 'unavailable' }"
+        [ngClass]="{'schedule__cell schedule__cell--available': element.eighteenthirty === 'available' || element.eighteenthirty === 'check', 'schedule__cell schedule__cell--unavailable': element.eighteenthirty === 'unavailable' }"
       >
         <mat-icon *ngIf="element.eighteenthirty === 'check'">check</mat-icon>
       </td>
