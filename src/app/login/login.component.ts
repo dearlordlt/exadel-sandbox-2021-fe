@@ -6,13 +6,14 @@ import { LogInData } from '../components/models/logInData';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
+  
 })
+
 export class LoginComponent implements OnInit {
   logInForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(/@exadel.com/)]],
     password: ['',  [Validators.required, Validators.minLength(6)]]
   });
- 
   hide = true;
   getErrorMessage() {
     if (this.logInForm.controls['email'].hasError('required')) {
@@ -32,13 +33,28 @@ export class LoginComponent implements OnInit {
     }
     return 'Not a valid password';
   }
-  
+ 
+  getLoginRejected(){
+    if (!this.authenticationService.getEmailChecked()){
+      console.log(this.authenticationService.getEmailChecked())
+      return 'Your email is incorrect'
+    }
+    if (!this.authenticationService.getPasswordChecked()){
+      console.log(this.authenticationService.getPasswordChecked())
+      return 'Your password is incorrect'
+    }
+    else return 'Your email or password is incorrect'
+  }
+ 
+ 
   constructor(private authenticationService: AuthenticationService, private fb: FormBuilder) { }
-
+  result = true;
+ 
   ngOnInit(){ }
   onSubmit(){
     const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
-    console.log(logInData)
     this.authenticationService.authenticate(logInData); 
+    this.result = this.authenticationService.authenticate(logInData);
+    console.log(this.result)
   }  
 }

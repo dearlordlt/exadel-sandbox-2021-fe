@@ -25,13 +25,36 @@ export class AuthenticationService {
   private checkData(logInData: LogInData): boolean {
     return this.checkEmail(logInData.getEmail()) && this.checkPassword(logInData.getPassword());
   }
-
+  email_val: boolean | null = null;
   private checkEmail(email: string): boolean{
-    return email === this.testUser.getEmail();
+  
+    if(email === this.testUser.getEmail()) {
+      this.email_val = true;
+      return this.email_val;
+    }
+    else {
+      this.email_val = false;
+      return this.email_val;
+    }
+    
+  }
+  password_val: boolean | null = null;
+  private checkPassword(password: string){
+    if(password === this.testUser.getPassword()){
+      this.password_val = true;
+      return this.password_val;
+    }
+    else {
+      this.password_val = false;
+      return this.password_val;
+    }
   }
   
-  private checkPassword(password: string){
-    return password === this.testUser.getPassword();
+  getEmailChecked(){
+    return this.email_val;
+  }
+  getPasswordChecked(){
+    return this.password_val;
   }
   logout(){
     this.isAuthenticated = false;
