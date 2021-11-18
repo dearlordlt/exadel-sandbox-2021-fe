@@ -1,40 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, NgForm, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { AuthenticationService } from '../service/authentication/authentication.service';
+import { LogInData } from '../components/models/logInData';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
+  
 })
+
 export class LoginComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email, Validators.pattern(/@exadel.com/)]);
-  password = new FormControl('',  [Validators.required, Validators.minLength(6)])
+  logInForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.pattern(/@exadel.com/)]],
+    password: ['',  [Validators.required, Validators.minLength(6)]]
+  });
   hide = true;
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.logInForm.controls['email'].hasError('required')) {
       return 'You must enter a email';
     }
-    if (this.email.hasError('pattern')) {
+    if (this.logInForm.controls['email'].hasError('pattern')) {
       return 'You must enter proper email containing @exadel.com';
     }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return 'Not a valid email';
   }
   getErrorMesPas() {
-    if (this.password.hasError('required')) {
+    if (this.logInForm.controls['password'].hasError('required')) {
       return 'You must enter a password';
     }
-    if (this.password.hasError('minlength')) {
+    if (this.logInForm.controls['password'].hasError('minlength')) {
       return 'Your password must be more than 6 symbols';
     }
-    return this.password.hasError('password') ? 'Not a valid password' : '';
+    return 'Not a valid password';
   }
-  
-  constructor() { }
-
-  ngOnInit(): void {
+ 
+  getLoginRejected(){
+    if (!this.authenticationService.getEmailChecked()){
+      console.log(this.authenticationService.getEmailChecked())
+      return 'Your email is incorrect'
+    }
+    if (!this.authenticationService.getPasswordChecked()){
+      console.log(this.authenticationService.getPasswordChecked())
+      return 'Your password is incorrect'
+    }
+    else return 'Your email or password is incorrect'
   }
-
-  onSubmit(logInForm: NgForm){
-    console.log(this.email);
-    console.log(this.password);
-  }
+ 
+ 
+  constructor(private authenticationService: AuthenticationService, private fb: FormBuilder) { }
+  result = true;
+ 
+  ngOnInit(){ }
+  onSubmit(){
+    const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
+    this.authenticationService.authenticate(logInData); 
+    this.result = this.authenticationService.authenticate(logInData);
+    console.log(this.result)
+  }  
 }
