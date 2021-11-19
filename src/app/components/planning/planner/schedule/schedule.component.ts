@@ -39,7 +39,6 @@ export class ScheduleComponent {
 
   @Input() set date(value: string) {
     this._date = moment(value, 'GMT').tz('Europe/Kiev').format();
-    console.log(this._date);
   }
 
   @Input() _educationalProgramId: string | null = null;
@@ -49,8 +48,6 @@ export class ScheduleComponent {
   openFreeSpotsDialog() {
     const dialogRef = this.dialog.open(MakeFreeSpotsDialogComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
