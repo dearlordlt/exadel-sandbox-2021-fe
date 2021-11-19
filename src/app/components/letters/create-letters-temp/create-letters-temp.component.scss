@@ -8,13 +8,14 @@
   padding-top: 50px;
   padding-bottom: 40px;
 
-   input, textarea{
-     font-size: 1.9rem;
-   }
-   ::placeholder {
-     color: #454545;
-     opacity: 0.8;
-   }
+  input,
+  textarea {
+    font-size: 1.9rem;
+  }
+  ::placeholder {
+    color: #454545;
+    opacity: 0.8;
+  }
   .nameError {
     font-size: 1.5rem;
     width: 120%;
@@ -70,7 +71,7 @@
             height: 120px;
           }
         }
-        strong  {
+        strong {
           font-size: 2rem;
           min-width: 280px;
           margin-right: 110px;
@@ -79,14 +80,14 @@
         .left-elem-one {
           max-width: 100px;
         }
-        .left-elem-two  {
+        .left-elem-two {
           text-align: right;
         }
         .crtLetter-sending {
           min-width: 250px;
-             mat-option {
-              min-width: 200px;
-           }
+          mat-option {
+            min-width: 200px;
+          }
         }
 
         .crtLetter-from {
@@ -103,6 +104,5 @@
         }
       }
     }
-
   }
 }

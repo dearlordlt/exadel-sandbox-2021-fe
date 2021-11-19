@@ -16,6 +16,10 @@ $unavailable: #878787;
   &__cell--unavailable {
     background-color: $unavailable;
   }
+
+  &__name-cell {
+    cursor: pointer;
+  }
 }
 
 table {

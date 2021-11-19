@@ -18,10 +18,16 @@ table {
   width: 100%;
 }
 
+th.mat-header-cell {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
 th.mat-header-cell,
 td.mat-cell {
   text-align: center;
-  border: 0px solid #ccc;
+  border: none;
 }
 
 td.mat-cell {

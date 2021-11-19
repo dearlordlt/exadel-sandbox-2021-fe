@@ -38,6 +38,7 @@ import { ScheduleComponent } from './components/planning/planner/schedule/schedu
 import { WriteFeedbackComponent } from './components/feedback/write-feedback/write-feedback.component';
 import { ReadFeedbackComponent } from './components/feedback/read-feedback/read-feedback.component';
 import { ChartModule } from 'angular-highcharts';
+import { MakeFreeSpotsDialogComponent } from './components/planning/planner/make-free-spots-dialog/make-free-spots-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ChartModule } from 'angular-highcharts';
     UpdateCandidateDialogComponent,
     PlannerComponent,
     ScheduleComponent,
+    MakeFreeSpotsDialogComponent,
   ],
   imports: [
     AppMaterialModule,

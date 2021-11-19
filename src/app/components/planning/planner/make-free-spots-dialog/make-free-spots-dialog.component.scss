@@ -1,0 +1,26 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+
+  &__time-spot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__form-field {
+    width: 150px;
+  }
+
+  &__add-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__action-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
