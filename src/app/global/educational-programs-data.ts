@@ -1,4 +1,4 @@
-import { EducationalProgram } from '../components/shared/interfaces/educational-program.interface';
+import { EducationalProgram } from '../components/dashboard/shared/interfaces/educational-program.interface';
 
 export const EducationalProgramsData: EducationalProgram[] = [
   {
