@@ -1,14 +1,13 @@
-import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
-import {filter, map, switchMap, take} from 'rxjs/operators';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from '@angular/material/dialog';
-import {CandidatesService} from './services/candidates.service';
-import {Candidate} from '../../models/candidate';
-import {UpdateCandidateDialogComponent} from './update-candidate-dialog/update-candidate-dialog.component';
-import {Router} from "@angular/router";
-import {MatSort} from "@angular/material/sort";
-
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { filter, map, switchMap, take } from 'rxjs/operators';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { CandidatesService } from './services/candidates.service';
+import { Candidate } from '../../models/candidate';
+import { UpdateCandidateDialogComponent } from './update-candidate-dialog/update-candidate-dialog.component';
+import { Router } from '@angular/router';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-candidate-list',
@@ -48,12 +47,12 @@ export class CandidateListComponent implements OnInit {
   constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog) {
     this.filterSelectObj = [
       {
-        name: "First name",
+        name: 'First name',
         columnProp: 'firstname',
         options: [],
       },
       {
-        name: "Second name",
+        name: 'Second name',
         columnProp: 'lastname',
         options: [],
       },
@@ -68,27 +67,27 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: "Email",
+        name: 'Email',
         columnProp: 'email',
         options: [],
       },
       {
-        name: "Skype",
+        name: 'Skype',
         columnProp: 'skype',
         options: [],
       },
       {
-        name: "Phone",
+        name: 'Phone',
         columnProp: 'phone_number',
         options: [],
       },
       {
-        name: "Country",
+        name: 'Country',
         columnProp: 'country',
         options: [],
       },
       {
-        name: "City",
+        name: 'City',
         columnProp: 'city',
         options: [],
       },
@@ -108,7 +107,7 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: "Date of Applying",
+        name: 'Date of Applying',
         columnProp: 'date_of_apply',
         options: [],
       },
@@ -137,8 +136,6 @@ export class CandidateListComponent implements OnInit {
         columnProp: 'interviewer_mark',
         options: [],
       },
-
-
     ];
   }
 
@@ -193,11 +190,15 @@ export class CandidateListComponent implements OnInit {
         let found = false;
         if (isFilterSet) {
           for (const col in searchTerms) {
-            searchTerms[col].trim().toLowerCase().split(' ').forEach((word: any) => {
-              if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
-                found = true
-              }
-            });
+            searchTerms[col]
+              .trim()
+              .toLowerCase()
+              .split(' ')
+              .forEach((word: any) => {
+                if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
+                  found = true;
+                }
+              });
           }
           return found;
         } else {
@@ -229,7 +230,6 @@ export class CandidateListComponent implements OnInit {
     );
   }
 
-
   writeFeedback() {
     this.router.navigateByUrl('/write_feedback').then();
   }
@@ -238,9 +238,8 @@ export class CandidateListComponent implements OnInit {
     this.router.navigateByUrl('/read_feedback').then();
   }
 
-
   openDialog(candidate: Candidate): void {
-    const data = {...candidate};
+    const data = { ...candidate };
     const dialogRef = this.dialog.open(UpdateCandidateDialogComponent, {
       width: '800px',
       data: data,
@@ -252,7 +251,8 @@ export class CandidateListComponent implements OnInit {
           this.candidatesService
             .updateCandidate(result)
             .subscribe(
-              (candidate) => (this.dataSource = this.dataSource.map((cand: Candidate) => (candidate.id === cand.id ? {...candidate} : cand)))
+              (candidate) =>
+                (this.dataSource = this.dataSource.map((cand: Candidate) => (candidate.id === cand.id ? { ...candidate } : cand)))
             );
         }
       }
