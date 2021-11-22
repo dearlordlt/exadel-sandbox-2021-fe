@@ -1,0 +1,28 @@
+<div class="container">
+  <img class="logo" src="../../../../assets/imgs/logo.svg" alt="exadel-logo" />
+
+  <div class="nav">
+    <ul>
+      <li>
+        <a [routerLink]="['./candidates']" routerLinkActive="activeLink">Candidates</a>
+      </li>
+      <li>
+        <a [routerLink]="['./planning']" routerLinkActive="activeLink">Planning</a>
+      </li>
+      <li>
+        <a [routerLink]="['./educational-programs']" routerLinkActive="activeLink">Educational programs</a>
+      </li>
+      <li>
+        <a [routerLink]="['./letters']" routerLinkActive="activeLink">Letters</a>
+      </li>
+      <li>
+        <a [routerLink]="['./report']" routerLinkActive="activeLink">Report</a>
+      </li>
+    </ul>
+  </div>
+  <div class="profile">
+    <span><i class="fas fa-user-circle"></i></span>
+    <span>Aliaksei Hausiuk</span>
+    <button mat-raised-button (click)="openDialog()">Log Out</button>
+  </div>
+</div>
