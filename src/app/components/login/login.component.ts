@@ -27,20 +27,20 @@ export class LoginComponent implements OnInit {
       return 'You must enter a password';
     }
     if (this.logInForm.controls['password'].hasError('minlength')) {
-      return 'Your password must be more than 6 symbols';
+      return 'Your password must at least 6 symbols';
     }
     return 'Not a valid password';
   }
 
   getLoginRejected() {
-    if (!this.authenticationService.getEmailChecked()) {
-      console.log(this.authenticationService.getEmailChecked());
-      return 'Your email is incorrect';
-    }
-    if (!this.authenticationService.getPasswordChecked()) {
-      console.log(this.authenticationService.getPasswordChecked());
-      return 'Your password is incorrect';
-    } else return 'Your email or password is incorrect';
+    // NOT SURE IF THIS IS NEEDED
+
+    // if (!this.authenticationService.getEmailChecked() || !this.authenticationService.getPasswordChecked()) {
+    //   console.log(this.authenticationService.getEmailChecked());
+    //   console.log(this.authenticationService.getPasswordChecked());
+    //   return 'Your email or password is incorrect';
+    // } else
+    return 'Your email or password is incorrect';
   }
 
   constructor(private authenticationService: AuthenticationService, private fb: FormBuilder) {}

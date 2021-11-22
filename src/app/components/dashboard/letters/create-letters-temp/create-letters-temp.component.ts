@@ -23,7 +23,7 @@ export class CreateLettersTempComponent {
   candidate_status = statuses.select;
   submitted = false;
 
-  get f() {
+  get profileFormControls() {
     return this.profileForm.controls;
   }
 

@@ -11,9 +11,11 @@
             matInput
             placeholder="Refusal by the level of English"
           />
-          <mat-error *ngIf="submitted && f.name.errors">
-            <mat-error class="nameError" *ngIf="f.name.errors.required">This field mustn't be empty</mat-error>
-            <mat-error class="nameError" *ngIf="f.name.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+          <mat-error *ngIf="submitted && profileFormControls.name.errors">
+            <mat-error class="nameError" *ngIf="profileFormControls.name.errors.required">This field mustn't be empty</mat-error>
+            <mat-error class="nameError" *ngIf="profileFormControls.name.errors.maxlength"
+              >Fields can't include more than 100 symbols</mat-error
+            >
           </mat-error>
         </mat-form-field>
       </div>
@@ -36,9 +38,11 @@
           <strong class="left-elem-two">Subject *</strong>
           <mat-form-field class="crtLetter-subject" appearance="outline">
             <input formControlName="subject" matInput placeholder="Exadel Sandbox Refusal by the level of English" />
-            <mat-error *ngIf="submitted && f.subject.errors">
-              <mat-error class="nameError" *ngIf="f.subject.errors.required">This field mustn't be empty</mat-error>
-              <mat-error class="nameError" *ngIf="f.subject.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+            <mat-error *ngIf="submitted && profileFormControls.subject.errors">
+              <mat-error class="nameError" *ngIf="profileFormControls.subject.errors.required">This field mustn't be empty</mat-error>
+              <mat-error class="nameError" *ngIf="profileFormControls.subject.errors.maxlength"
+                >Fields can't include more than 100 symbols</mat-error
+              >
             </mat-error>
           </mat-form-field>
         </div>
@@ -53,9 +57,11 @@
                     We'll be glad if you'll apply for our Sandbox
                   again after improving your level! See you"
             ></textarea>
-            <mat-error *ngIf="submitted && f.text.errors">
-              <mat-error class="nameError" *ngIf="f.text.errors.required">This field mustn't be empty</mat-error>
-              <mat-error class="nameError" *ngIf="f.text.errors.maxlength">Fields can't include more than 1500 symbols</mat-error>
+            <mat-error *ngIf="submitted && profileFormControls.text.errors">
+              <mat-error class="nameError" *ngIf="profileFormControls.text.errors.required">This field mustn't be empty</mat-error>
+              <mat-error class="nameError" *ngIf="profileFormControls.text.errors.maxlength"
+                >Fields can't include more than 1500 symbols</mat-error
+              >
             </mat-error>
           </mat-form-field>
         </div>
@@ -63,9 +69,11 @@
           <strong class="left-elem-two">Letter signature*</strong>
           <mat-form-field class="crtLetter__signature" appearance="outline">
             <textarea formControlName="signature" matInput placeholder="With respect Exadel Snadbox team"></textarea>
-            <mat-error *ngIf="submitted && f.signature.errors">
-              <mat-error class="nameError" *ngIf="f.signature.errors.required">This field mustn't be empty</mat-error>
-              <mat-error class="nameError" *ngIf="f.signature.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+            <mat-error *ngIf="submitted && profileFormControls.signature.errors">
+              <mat-error class="nameError" *ngIf="profileFormControls.signature.errors.required">This field mustn't be empty</mat-error>
+              <mat-error class="nameError" *ngIf="profileFormControls.signature.errors.maxlength"
+                >Fields can't include more than 100 symbols</mat-error
+              >
             </mat-error>
           </mat-form-field>
         </div>
