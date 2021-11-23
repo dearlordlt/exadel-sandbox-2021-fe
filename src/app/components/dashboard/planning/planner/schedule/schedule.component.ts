@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { PlannerData } from '../../../../../global/planner-data';
 import { MatDialog } from '@angular/material/dialog';
+import { MakeFreeSpotsDialogComponent } from '../make-free-spots-dialog/make-free-spots-dialog.component';
 import * as moment from 'moment';
 import 'moment-timezone';
-import { MakeFreeSpotsDialogComponent } from '../make-free-spots-dialog/make-free-spots-dialog.component';
 
 @Component({
   selector: 'app-schedule',

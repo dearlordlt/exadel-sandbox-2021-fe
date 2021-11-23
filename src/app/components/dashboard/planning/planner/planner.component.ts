@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EducationalProgramsData } from '../../../../global/educational-programs-data';
+import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
+import { EducationalProgramsService } from '../../../service/http/educational-programs/educational-programs.service';
 
 @Component({
   selector: 'app-planner',
@@ -13,15 +14,18 @@ export class PlannerComponent implements OnInit {
     date: '',
   });
 
-  educationalProgramId: string | null = null;
-  educationalProgramName: string | null = null;
+  educationalProgramId: string = '';
+  educationalProgram: EducationalProgram = {} as EducationalProgram;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private educationalProgramsService: EducationalProgramsService) {}
 
   ngOnInit(): void {
-    this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId');
+    this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
+
     if (this.educationalProgramId) {
-      this.educationalProgramName = EducationalProgramsData.find((program) => program.id === parseInt(this.educationalProgramId!))?.name!;
+      this.educationalProgramsService
+        .getEducationalProgram(this.educationalProgramId)
+        .subscribe((data: EducationalProgram) => (this.educationalProgram = data));
     }
   }
 }
