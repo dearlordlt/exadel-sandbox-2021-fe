@@ -1,0 +1,67 @@
+<form class="create-educational-program" [formGroup]="programForm" (ngSubmit)="onSubmit()">
+  <h1>Creating new educational program</h1>
+  <p>Value: {{ programForm.value | json }}</p>
+  <p>Status: {{ programForm.status }}</p>
+  <div class="create-educational-program__acceptance-period">
+    <h2>Application acceptance period</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker1">
+        <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
+        <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker1></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <div class="create-educational-program__programs-period">
+    <h2>Educational program's period</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker2">
+        <input matStartDate placeholder="Start date" formControlName="programsPeriodStartDate" />
+        <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker2></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <div class="create-educational-program__name">
+    <h2>Name</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput #input maxlength="100" placeholder="Ex. .NET, JS, BA: 10-11.21" formControlName="name" />
+      <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="create-educational-program__number-of-positions">
+    <h2>Number of positions/technologies</h2>
+    <mat-form-field appearance="outline">
+      <input matInput type="number" min="1" required formControlName="numberOfPositions" />
+    </mat-form-field>
+  </div>
+
+  <div formArrayName="positions">
+    <div class="create-educational-program__position" *ngFor="let position of positions.controls; let i=index" [formGroupName]="i">
+      <h2>Position/technology</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Position/technology</mat-label>
+        <input matInput #input maxlength="20" placeholder="Ex. .NET" formControlName="positionName" />
+        <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+      </mat-form-field>
+
+      <div class="create-educational-program__position-description">
+        <mat-form-field>
+          <mat-label>Description and requirements</mat-label>
+          <textarea matInput #textarea rows="10" maxlength="1500" formControlName="descriptionAndRequirements"></textarea>
+          <mat-hint align="end">{{textarea.value?.length || 0}}/1500</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <button mat-stroked-button color="primary" type="submit">Create</button>
+</form>
