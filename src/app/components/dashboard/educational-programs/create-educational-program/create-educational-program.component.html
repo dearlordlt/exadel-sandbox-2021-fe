@@ -1,7 +1,5 @@
 <form class="create-educational-program" [formGroup]="programForm" (ngSubmit)="onSubmit()">
   <h1>Creating new educational program</h1>
-  <p>Value: {{ programForm.value | json }}</p>
-  <p>Status: {{ programForm.status }}</p>
   <div class="create-educational-program__acceptance-period">
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
@@ -29,7 +27,7 @@
   </div>
 
   <div class="create-educational-program__name">
-    <h2>Name</h2>
+    <h2>Program's name</h2>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput #input maxlength="100" placeholder="Ex. .NET, JS, BA: 10-11.21" formControlName="name" />

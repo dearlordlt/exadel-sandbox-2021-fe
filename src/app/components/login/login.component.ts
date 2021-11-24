@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   getErrorMessage() {
     if (this.logInForm.controls['email'].hasError('required')) {
-      return 'You must enter a email';
+      return 'You must enter an email';
     }
     if (this.logInForm.controls['email'].hasError('pattern')) {
       return 'You must enter proper email containing @exadel.com';
