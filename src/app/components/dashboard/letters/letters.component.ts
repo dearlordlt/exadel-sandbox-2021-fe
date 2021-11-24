@@ -1,6 +1,7 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Date_Elements } from '../../models/dateElements';
+import { Router } from '@angular/router';
 
 const table_Data: Date_Elements[] = [
   { addDateTime: '27.10.2021', subject: 'the application is accepted' },
@@ -20,5 +21,9 @@ export class LettersComponent {
   displayedColumns: string[] = ['dateUpdate', 'Name', 'edit'];
   dataSource = new MatTableDataSource(table_Data);
 
-  constructor() {}
+  constructor( private router: Router ) {}  ;
+
+  gotoUpdate() {
+    this.router.navigate(['/', 'update-letter']);
+  }
 }
