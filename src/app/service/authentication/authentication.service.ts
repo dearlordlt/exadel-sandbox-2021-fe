@@ -12,7 +12,7 @@ export class AuthenticationService {
   // private readonly testUser = new LogInData('test@exadel.com', '123456')
   isAuthenticated = false;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private logInData: LogInData) { }
 
   // authenticate(logInData: LogInData): boolean{
   //   if(this.checkData(logInData)){
@@ -65,6 +65,7 @@ export class AuthenticationService {
       'Content-Type': 'application/json'
     })
   }
+  
   // userData = {
   //   username: 'Eliza',
   //   password: 'ewayne'
@@ -75,6 +76,7 @@ export class AuthenticationService {
       this.headers.headers = this.headers.headers.set('Authorized', `Bearer ${data.token}`)
     })
   }
+
   logout(){
     this.isAuthenticated = false;
     this.router.navigate(['login'])
