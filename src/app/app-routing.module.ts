@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       { path: 'candidates', component: CandidatesComponent },
       { path: '', redirectTo: 'candidates', pathMatch: 'full' },
@@ -51,10 +51,6 @@ const routes: Routes = [
       {
         path: 'create-educational-program',
         component: CreateEducationalProgramComponent,
-      },
-      {
-        path: 'educational-programs',
-        component: EducationalProgramsComponent,
       },
       {
         path: 'educational-programs',

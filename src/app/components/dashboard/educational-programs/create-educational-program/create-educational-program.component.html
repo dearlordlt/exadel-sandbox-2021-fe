@@ -1,12 +1,10 @@
 <form class="create-educational-program" [formGroup]="programForm" (ngSubmit)="onSubmit()">
   <h1>Creating new educational program</h1>
-  <p>Value: {{ programForm.value | json }}</p>
-  <p>Status: {{ programForm.status }}</p>
   <div class="create-educational-program__acceptance-period">
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker1">
+      <mat-date-range-input [rangePicker]="picker1" [min]="minAcceptancePeriodStartDate">
         <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
       </mat-date-range-input>
@@ -19,7 +17,7 @@
     <h2>Educational program's period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker2">
+      <mat-date-range-input [rangePicker]="picker2" [min]="minProgramsPeriodStartDate">
         <input matStartDate placeholder="Start date" formControlName="programsPeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
       </mat-date-range-input>
@@ -29,7 +27,7 @@
   </div>
 
   <div class="create-educational-program__name">
-    <h2>Name</h2>
+    <h2>Program's name</h2>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput #input maxlength="100" placeholder="Ex. .NET, JS, BA: 10-11.21" formControlName="name" />

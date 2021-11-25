@@ -1,15 +1,13 @@
-export interface EducationalProgram {
-  id: string;
+export interface PostEducationalProgram {
   name: string;
   appAcceptFrom: string;
   appAcceptTo: string;
   eduProgFrom: string;
   eduProgTo: string;
-  positions: Position[];
+  posiForEduPros: Position[];
 }
 
 export interface Position {
-  id: string;
   name: string;
   descrAndRequ: string;
 }

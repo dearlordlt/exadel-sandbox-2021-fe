@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
-import { EducationalProgramsService } from '../../../service/http/educational-programs/educational-programs.service';
+import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
 
 @Component({
   selector: 'app-planner',

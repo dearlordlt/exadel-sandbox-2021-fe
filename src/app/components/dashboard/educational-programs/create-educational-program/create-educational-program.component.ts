@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { pairwise, startWith } from 'rxjs/operators';
-import { Validators } from '@angular/forms';
+import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
+import { PostEducationalProgram } from 'src/app/components/dashboard/shared/interfaces/educational-program/post-educational-program.interface';
+import { Position } from 'src/app/components/dashboard/shared/interfaces/educational-program/post-educational-program.interface';
+import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DateAdapter } from '@angular/material/core';
+import * as moment from 'moment';
+import 'moment-timezone';
 
 @Component({
   selector: 'app-create-educational-program',
@@ -19,22 +26,40 @@ export class CreateEducationalProgramComponent implements OnInit {
     numberOfPositions: 1,
     positions: this.fb.array([
       this.fb.group({
-        positionName: '',
-        descriptionAndRequirements: '',
+        positionName: ['', [Validators.required]],
+        descriptionAndRequirements: ['', [Validators.required]],
       }),
     ]),
   });
 
+  minAcceptancePeriodStartDate: Date | null = null;
+  minAcceptancePeriodEndDate: Date | null = null;
+  minProgramsPeriodStartDate: Date | null = null;
+  minProgramsPeriodEndDate: Date | null = null;
+
   private numberOfPositionsSubscription: Subscription = new Subscription();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private educationalProgramsService: EducationalProgramsService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private dateAdapter: DateAdapter<Date>
+  ) {}
 
   ngOnInit(): void {
+    this.dateAdapter.setLocale('en-GB');
     this.onNumberOfPositionsChanges(); // Used to add or remove positions/techonologies inputs
+    this.setMinimumDates();
   }
 
   ngOnDestroy() {
     this.numberOfPositionsSubscription.unsubscribe();
+  }
+
+  setMinimumDates() {
+    this.minAcceptancePeriodStartDate = new Date();
+    this.minProgramsPeriodStartDate = new Date();
   }
 
   get positions() {
@@ -55,7 +80,6 @@ export class CreateEducationalProgramComponent implements OnInit {
   }
 
   onNumberOfPositionsChanges(): void {
-    // Had to check for null because TS was throwing a Object is possibly ‘null’ error
     const numberOfPositions = this.programForm.get('numberOfPositions');
     if (numberOfPositions !== null) {
       this.numberOfPositionsSubscription = numberOfPositions.valueChanges
@@ -76,5 +100,34 @@ export class CreateEducationalProgramComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    if (this.programForm.valid) {
+      const educationalProgram: PostEducationalProgram = this.mapFormValuesToPostEducationalProgramInterface();
+      this.educationalProgramsService
+        .postEducationalProgram(educationalProgram)
+        .subscribe((data: EducationalProgram) => this.router.navigate(['../educational-programs'], { relativeTo: this.route }));
+    }
+  }
+
+  mapFormValuesToPostEducationalProgramInterface(): PostEducationalProgram {
+    // Use moment lib to trim the time part from the date
+    const postEducationalProgram: PostEducationalProgram = {
+      name: this.programForm.get('name')!.value,
+      appAcceptFrom: moment(this.programForm.get('acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      appAcceptTo: moment(this.programForm.get('acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgFrom: moment(this.programForm.get('programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgTo: moment(this.programForm.get('programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      posiForEduPros: [],
+    };
+
+    this.programForm.get('positions')!.value.forEach((element: { positionName: string; descriptionAndRequirements: string }) => {
+      const position: Position = {
+        name: element.positionName,
+        descrAndRequ: element.descriptionAndRequirements,
+      };
+      postEducationalProgram.posiForEduPros.push(position);
+    });
+
+    return postEducationalProgram;
+  }
 }

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: 'http://localhost:3000',
-  exadelApi: 'http://localhost:8080/api',
+  EXADEL_API: 'http://localhost:8080/api',
 };
 
 /*
