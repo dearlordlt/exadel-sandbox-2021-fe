@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../service/authentication/authentication.service';
 import { LogInData } from '../models/logInData';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { UserData } from '../models/userData';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,6 +13,7 @@ import { LogInData } from '../models/logInData';
 })
 export class LoginComponent implements OnInit {
   logInForm: FormGroup = this.fb.group({
+    username: '',
     email: ['', [Validators.required, Validators.pattern(/@exadel.com/)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
@@ -33,24 +38,24 @@ export class LoginComponent implements OnInit {
   }
 
   getLoginRejected() {
-    // NOT SURE IF THIS IS NEEDED
-
-    // if (!this.authenticationService.getEmailChecked() || !this.authenticationService.getPasswordChecked()) {
-    //   console.log(this.authenticationService.getEmailChecked());
-    //   console.log(this.authenticationService.getPasswordChecked());
-    //   return 'Your email or password is incorrect';
-    // } else
     return 'Your email or password is incorrect';
   }
 
-  constructor(private authenticationService: AuthenticationService, private fb: FormBuilder) {}
+  constructor(private authenticationService: AuthenticationService, private fb: FormBuilder, private http: HttpClient) {}
   result = true;
-
+  
   ngOnInit() {}
   onSubmit() {
-    const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
-    this.authenticationService.authenticate(logInData);
-    this.result = this.authenticationService.authenticate(logInData);
-    console.log(this.result);
+    console.log(this.logInForm.controls['username'].value)
+    console.log(this.logInForm.controls['password'].value)
+    const logInData = new LogInData(this.logInForm.controls['username'].value, this.logInForm.controls['password'].value);
+    console.log(logInData)
+    this.authenticationService.getAuth(logInData);
+
+    // const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
+    // this.authenticationService.authenticate(logInData);
+    // this.result = this.authenticationService.authenticate(logInData);
+    // console.log(this.result);
+  
   }
 }
