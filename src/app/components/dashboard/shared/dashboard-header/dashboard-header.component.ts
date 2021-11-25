@@ -8,9 +8,9 @@ import { LogoutComponent } from '../logout/logout.component';
 })
 export class DashboardHeaderComponent implements OnInit {
   navigation = ['Candidates', 'Planning', 'Educational programs', 'Letters', 'Report'];
-
+  user = localStorage.getItem('email');
   constructor(public dialog: MatDialog) {}
-  //constructor() { }
+
   ngOnInit(): void {}
 
   openDialog() {

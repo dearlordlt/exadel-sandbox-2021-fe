@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../service/authentication/authentication.service';
 import { LogInData } from '../models/logInData';
 @Component({
@@ -43,14 +44,24 @@ export class LoginComponent implements OnInit {
     return 'Your email or password is incorrect';
   }
 
-  constructor(private authenticationService: AuthenticationService, private fb: FormBuilder) {}
+  constructor(private authenticationService: AuthenticationService, private fb: FormBuilder, private router: Router) {}
   result = true;
 
   ngOnInit() {}
   onSubmit() {
+    setTimeout(() => {
+      this.result = false;
+    }, 500);
     const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
-    this.authenticationService.authenticate(logInData);
-    this.result = this.authenticationService.authenticate(logInData);
-    console.log(this.result);
+    this.authenticationService.authenticate(logInData).subscribe((userData) => {
+      localStorage.setItem('id', userData.id);
+      localStorage.setItem('email', userData.email);
+      localStorage.setItem('token', userData.token);
+      this.authenticationService.isAuthenticated = true;
+      this.result = true;
+      this.router.navigate(['dashboard']);
+    });
+    // this.result = this.authenticationService.authenticate(logInData);
+    // console.log(this.result);
   }
 }
