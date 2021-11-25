@@ -4,7 +4,7 @@
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker1">
+      <mat-date-range-input [rangePicker]="picker1" [min]="minAcceptancePeriodStartDate">
         <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
       </mat-date-range-input>
@@ -17,7 +17,7 @@
     <h2>Educational program's period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker2">
+      <mat-date-range-input [rangePicker]="picker2" [min]="minProgramsPeriodStartDate">
         <input matStartDate placeholder="Start date" formControlName="programsPeriodStartDate" />
         <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
       </mat-date-range-input>
