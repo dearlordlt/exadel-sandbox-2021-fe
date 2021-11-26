@@ -6,13 +6,14 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class ReportService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getPrograms() {
-    return this.http.get<any>(`${environment.api}/educationalPrograms`);
+    return this.http.get<any>(`${environment.EXADEL_API}/educationalPrograms`);
   }
 
   getReport(id: number) {
-    return this.http.get<any>(`${environment.api}/GetForReport?eduProgId=${id}`);
+    return this.http.get<any>(`${environment.EXADEL_API}/GetForReport?eduProgId=${id}`);
   }
 }

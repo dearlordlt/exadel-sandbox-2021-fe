@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReportService } from './report.service';
+import { ReportService } from '../../../service/http/report/report.service';
 import { filter, map, tap } from 'rxjs/operators';
 import { Chart } from 'angular-highcharts';
 import * as XLSX from 'xlsx';
