@@ -3,3 +3,9 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+.loader-container {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}

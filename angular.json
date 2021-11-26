@@ -27,7 +27,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles/themes/exadel.scss", "src/styles.scss"],
+            "styles": ["src/styles/themes/exadel.scss", "node_modules/ngx-toastr/toastr.css", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -90,7 +90,7 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "sass",
             "assets": [
-              "src/favicon.ico", 
+              "src/favicon.ico",
               "src/assets",
               {
                 "glob": "**/*",
@@ -120,5 +120,4 @@
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
-  
 }
