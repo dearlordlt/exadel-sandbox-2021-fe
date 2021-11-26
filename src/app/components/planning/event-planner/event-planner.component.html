@@ -106,12 +106,16 @@
     <div class="field-wrapper">
       <mat-form-field appearance="fill">
         <mat-label>Link</mat-label>
-        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-        <!-- <mat-error *ngIf="">This field can’t be empty</mat-error> -->
+        <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [maxLength]="maxChars"></textarea>
+        <!-- <mat-error *ngIf="textArea.invalid">Description can't include more than 500 symbols</mat-error> -->
       </mat-form-field>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Create</button>
+  <button *ngIf="!showUpdate" mat-stroked-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Create</button>
+  <div *ngIf="showUpdate">
+    <button mat-stroked-button color="primary" [mat-dialog-close]="true">Save</button>
+    <button mat-stroked-button color="primary">Delete</button>
+  </div>
 </mat-dialog-actions>

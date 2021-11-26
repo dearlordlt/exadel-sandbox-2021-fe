@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { statuses } from 'src/app/global/constants';
 
@@ -10,9 +12,18 @@ import { statuses } from 'src/app/global/constants';
 export class EventPlannerComponent implements OnInit {
   skype = 'live:454sd545s';
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  maxChars = 500;
+  newData!: string;
   statuses = statuses.select;
+  showUpdate = false;
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // if (this.data.ninethirty === 'check') {
+    //   this.showUpdate = true;
+    // } else {
+    //   this.showUpdate = false;
+    // }
+  }
 }

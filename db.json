@@ -217,5 +217,31 @@
       "firstname": "john",
       "lastname": "Smith"
     }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "position": "Recruiter",
+      "name": "Anna Karenina",
+      "email": "annakaren@gmail.com",
+      "status": "accepted for Sandbox",
+      "candidate": "Mark Wahlberg",
+      "skype": "live:kjh1234",
+      "date": "11.12.2021",
+      "timeByMinsk": "11.30",
+      "description": "https://exs.zoom.us/pwd=jajdsiajsdijsdiajisdjaidjaidjiadja"
+    },
+    {
+      "id": 2,
+      "position": "Recruiter",
+      "name": "Katya Kravec",
+      "email": "katyan@gmail.com",
+      "status": "candidate's refusal",
+      "candidate": "Jim Carson",
+      "skype": "live:sda6566e6d6",
+      "date": "11.12.2021",
+      "timeByMinsk": "14.00",
+      "description": "https://exs.zoom.us/pwd=jajdsiajsdijsdiajsdsdisdjaidjaidjiadja"
+    }
   ]
 }
