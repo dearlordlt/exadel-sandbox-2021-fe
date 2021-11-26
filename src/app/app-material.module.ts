@@ -8,8 +8,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -19,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [],
@@ -31,9 +30,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
-    ClipboardModule,
-    TextFieldModule,
     MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -43,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatToolbarModule,
     MatSortModule,
     MatCheckboxModule,
+    ClipboardModule,
   ],
 })
 export class AppMaterialModule {}

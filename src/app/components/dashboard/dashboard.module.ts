@@ -26,6 +26,7 @@ import { UpdateCandidateDialogComponent } from './candidates/update-candidate-di
 import { PlannerComponent } from './planning/planner/planner.component';
 import { ScheduleComponent } from './planning/planner/schedule/schedule.component';
 import { MakeFreeSpotsDialogComponent } from './planning/planner/make-free-spots-dialog/make-free-spots-dialog.component';
+import { EventPlannerComponent } from './planning/planner/event-planner/event-planner.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MakeFreeSpotsDialogComponent } from './planning/planner/make-free-spots
     UpdateCandidateDialogComponent,
     PlannerComponent,
     ScheduleComponent,
+    EventPlannerComponent,
     MakeFreeSpotsDialogComponent,
     CandidatesComponent,
   ],

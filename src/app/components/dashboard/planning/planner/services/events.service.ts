@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
-import { Events } from '../../models/events';
+import { Events } from 'src/app/components/models/events';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {

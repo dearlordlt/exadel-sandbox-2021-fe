@@ -12,7 +12,7 @@ import { statuses } from 'src/app/global/constants';
 export class EventPlannerComponent implements OnInit {
   skype = 'live:454sd545s';
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   maxChars = 500;
   newData!: string;
