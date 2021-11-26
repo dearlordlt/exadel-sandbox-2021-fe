@@ -24,9 +24,15 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@types/moment-timezone": "^0.5.30",
+    "angular-highcharts": "^12.0.0",
+    "highcharts": "^9.3.1",
+    "moment": "^2.29.1",
+    "ngx-toastr": "^14.2.1",
     "rxjs": "~6.6.0",
     "svg-country-flags": "^1.2.10",
     "tslib": "^2.3.0",
+    "xlsx": "^0.17.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

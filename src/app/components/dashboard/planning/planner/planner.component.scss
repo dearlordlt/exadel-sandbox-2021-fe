@@ -1,0 +1,19 @@
+$primary: #0082ca;
+$available: #00cc8b;
+$unavailable: #878787;
+
+.planner {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+
+  &__calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__scheduler {
+    margin-top: 50px;
+  }
+}

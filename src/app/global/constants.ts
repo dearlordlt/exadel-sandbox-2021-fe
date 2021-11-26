@@ -1,4 +1,5 @@
 export const educationalPrograms = ['All', '.NET,JS,BA: 10-11.2021', 'Java,JS,BA: 6-7.2021', 'PHP,JS: 2-3.2021'];
+
 export const statuses = {
   search: [
     'All',
@@ -28,7 +29,9 @@ export const statuses = {
     "candidate's refusal",
   ],
 };
+
 export const englishLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
 export const countries = [
   'Belarus',
   'Georgia',
@@ -42,3 +45,46 @@ export const countries = [
   'United States',
   'Uzbekistan',
 ];
+
+export const schedulerTimeSpots = {
+  from: [
+    '9:00',
+    '9:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+    '12:30',
+    '13:00',
+    '13:30',
+    '14:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+  ],
+  to: [
+    '9:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+    '12:30',
+    '13:00',
+    '13:30',
+    '14:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
+  ],
+};

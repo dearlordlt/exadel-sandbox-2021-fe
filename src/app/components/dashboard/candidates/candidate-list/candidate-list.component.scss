@@ -1,0 +1,134 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .list-header {
+    font-size: 2.8rem;
+    margin: 3rem 0;
+  }
+}
+
+.table-wrapper {
+  display: block;
+  width: 95%;
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-bottom: 3rem;
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    display: table;
+    border-collapse: collapse;
+    margin: 0;
+
+    ::ng-deep .mat-form-field-underline {
+      display: none;
+    }
+
+    th {
+      mat-form-field {
+        width: 120px;
+
+        mat-label {
+          font-weight: bold;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+
+th.mat-header-cell {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 0.4rem;
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 0.4rem;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  min-width: 5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+}
+
+.mat-column-edit {
+  .edit-icon {
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+}
+
+.edit-feedback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.mat-header-row {
+  .mat-header-cell {
+    background: #ddd;
+  }
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  line-break: unset;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  max-width: 15rem; /* feel free to include any other value */
+  text-overflow: ellipsis;
+}
+
+/* Works on Firefox */
+.table-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #999 #e3e3e3;
+}
+
+/* Works on Chrome, Edge, and Safari */
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #e3e3e3;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 2px solid #e3e3e3;
+  background-color: #999;
+
+  &:hover {
+    background-color: #666;
+  }
+}

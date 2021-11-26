@@ -15,3 +15,12 @@ html {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
 }
+
+@media only screen and (min-width: 768px) {
+}
+
+.ngx-toastr {
+  @media only screen and (min-width: 768px) {
+    width: 500px !important; //  Specify toastr-dialog width on desktops
+  }
+}

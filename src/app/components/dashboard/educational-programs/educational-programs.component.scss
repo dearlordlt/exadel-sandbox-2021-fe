@@ -1,0 +1,35 @@
+.educational-programs {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+
+  &__create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__table {
+    margin-top: 50px;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  text-align: center;
+  border: none;
+}
+
+td.mat-cell {
+  border-bottom: 1px solid #ccc;
+}
