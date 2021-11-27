@@ -8,6 +8,7 @@ import { Position } from 'src/app/components/dashboard/shared/interfaces/educati
 import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
+import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
 import 'moment-timezone';
 
@@ -32,10 +33,7 @@ export class CreateEducationalProgramComponent implements OnInit {
     ]),
   });
 
-  minAcceptancePeriodStartDate: Date | null = null;
-  minAcceptancePeriodEndDate: Date | null = null;
-  minProgramsPeriodStartDate: Date | null = null;
-  minProgramsPeriodEndDate: Date | null = null;
+  minProgramsDate: Date | null = null;
 
   private numberOfPositionsSubscription: Subscription = new Subscription();
 
@@ -44,22 +42,22 @@ export class CreateEducationalProgramComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private dateAdapter: DateAdapter<Date>
+    private dateAdapter: DateAdapter<Date>,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.dateAdapter.setLocale('en-GB');
     this.onNumberOfPositionsChanges(); // Used to add or remove positions/techonologies inputs
-    this.setMinimumDates();
+    this.setMinimumProgramsDate();
   }
 
   ngOnDestroy() {
     this.numberOfPositionsSubscription.unsubscribe();
   }
 
-  setMinimumDates() {
-    this.minAcceptancePeriodStartDate = new Date();
-    this.minProgramsPeriodStartDate = new Date();
+  setMinimumProgramsDate() {
+    this.minProgramsDate = new Date();
   }
 
   get positions() {
@@ -103,9 +101,11 @@ export class CreateEducationalProgramComponent implements OnInit {
   onSubmit(): void {
     if (this.programForm.valid) {
       const educationalProgram: PostEducationalProgram = this.mapFormValuesToPostEducationalProgramInterface();
-      this.educationalProgramsService
-        .postEducationalProgram(educationalProgram)
-        .subscribe((data: EducationalProgram) => this.router.navigate(['../educational-programs'], { relativeTo: this.route }));
+      this.educationalProgramsService.postEducationalProgram(educationalProgram).subscribe((data: EducationalProgram) =>
+        this.router.navigate(['../educational-programs'], { relativeTo: this.route }).then(() => {
+          this.toastr.success('Educational program is created', 'Success');
+        })
+      );
     }
   }
 
