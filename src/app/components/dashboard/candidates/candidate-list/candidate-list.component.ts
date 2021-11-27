@@ -8,6 +8,7 @@ import { Candidate } from '../../../models/candidate';
 import { UpdateCandidateDialogComponent } from '../update-candidate-dialog/update-candidate-dialog.component';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
+import { StaticService } from 'src/app/service/http/static/static.service';
 
 @Component({
   selector: 'app-candidate-list',
@@ -24,27 +25,32 @@ export class CandidateListComponent implements OnInit {
     'edit',
     'firstname',
     'lastname',
-    'eduProg',
-    'position',
+    'educationProgramId',
+    'positionId',
     'email',
-    'skype',
-    'phone_number',
+    'contactSkype',
+    'contactPhone',
     'country',
     'city',
-    'english_level',
-    'contact_time',
-    'plan_to_join',
-    'date_of_apply',
-    'status',
-    'soft_skill',
-    'hard_skill',
-    'mentor_mark',
-    'interviewer_mark',
+    'englishLevel',
+    'contactTime',
+    'planToJoinExadel',
+    'postDateTimeNow',
+    'statusMark',
+    'softSkillLevel',
+    'hardSkillLevel',
+    'mentorsMark',
+    'interViewerMark',
   ];
 
   showDelay = 1000;
 
-  constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog) {
+  constructor(
+    private candidatesService: CandidatesService,
+    private router: Router,
+    public dialog: MatDialog,
+    private staticService: StaticService
+  ) {
     this.filterSelectObj = [
       {
         name: 'First name',
@@ -58,12 +64,12 @@ export class CandidateListComponent implements OnInit {
       },
       {
         name: 'Educational Programs',
-        columnProp: 'eduProg',
+        columnProp: 'educationProgramId',
         options: [],
       },
       {
-        name: 'Position/Technology',
-        columnProp: 'position',
+        name: 'positionId/Technology',
+        columnProp: 'positionId',
         options: [],
       },
       {
@@ -72,13 +78,13 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: 'Skype',
-        columnProp: 'skype',
+        name: 'contactSkype',
+        columnProp: 'contactSkype',
         options: [],
       },
       {
         name: 'Phone',
-        columnProp: 'phone_number',
+        columnProp: 'contactPhone',
         options: [],
       },
       {
@@ -93,47 +99,47 @@ export class CandidateListComponent implements OnInit {
       },
       {
         name: 'English Level',
-        columnProp: 'english_level',
+        columnProp: 'englishLevel',
         options: [],
       },
       {
         name: 'Time to Contact',
-        columnProp: 'contact_time',
+        columnProp: 'contactTime',
         options: [],
       },
       {
         name: 'Plan To Join',
-        columnProp: 'plan_to_join',
+        columnProp: 'planToJoinExadel',
         options: [],
       },
       {
         name: 'Date of Applying',
-        columnProp: 'date_of_apply',
+        columnProp: 'postDateTimeNow',
         options: [],
       },
       {
         name: 'Status',
-        columnProp: 'status',
+        columnProp: 'statusMark',
         options: [],
       },
       {
         name: 'Soft Skill',
-        columnProp: 'soft_skill',
+        columnProp: 'softSkillLevel',
         options: [],
       },
       {
         name: 'Hard Skill',
-        columnProp: 'hard_skill',
+        columnProp: 'hardSkillLevel',
         options: [],
       },
       {
         name: "Mentor's Mark",
-        columnProp: 'mentor_mark',
+        columnProp: 'mentorsMark',
         options: [],
       },
       {
         name: "Interviewer's Mark after Sandbox",
-        columnProp: 'interviewer_mark',
+        columnProp: 'interViewerMark',
         options: [],
       },
     ];
@@ -162,6 +168,7 @@ export class CandidateListComponent implements OnInit {
   getCandidates() {
     //need this now to make search component work, should be removed when connected to actual backend
     this.candidatesService.getCandidates().subscribe((candidates) => {
+      console.log(candidates);
       this.dataSource.data = candidates;
       this.filterSelectObj.filter((o: any) => {
         o.options = this.getFilterObject(candidates, o.columnProp);
@@ -219,12 +226,12 @@ export class CandidateListComponent implements OnInit {
   }
 
   searchList(values: string[]) {
-    const [program, status, name, email] = [...values];
+    const [program, statusMark, name, email] = [...values];
 
     this.dataSource = this.dataSource.filter(
       (item: Candidate) =>
-        item.eduProg === (program === 'All' ? item.eduProg : program) &&
-        item.status === (status === 'All' ? item.status : status) &&
+        item.educationProgramId === (program === 'All' ? item.educationProgramId : program) &&
+        item.statusMark === (statusMark === 'All' ? item.statusMark : statusMark) &&
         item.email.toLowerCase().includes(email.toLowerCase()) &&
         (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
     );

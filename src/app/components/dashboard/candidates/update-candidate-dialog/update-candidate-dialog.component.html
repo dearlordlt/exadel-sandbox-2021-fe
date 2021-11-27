@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Update Candidate Information</h1>
-<div mat-dialog-content (keyup)="checkValues()">
+<div mat-dialog-content (keyup)="checkValues()" (click)="checkValues()">
   <mat-form-field appearance="fill" hideRequiredMarker="true">
     <mat-label>First Name</mat-label>
     <input matInput [(ngModel)]="data.firstname" required />
@@ -17,24 +17,24 @@
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker="true">
     <mat-label>Skype</mat-label>
-    <input matInput [(ngModel)]="data.skype" required />
-    <mat-error *ngIf="!data.skype.length">This field can’t be empty</mat-error>
+    <input matInput [(ngModel)]="data.contactSkype" required />
+    <mat-error *ngIf="!data.contactSkype.length">This field can’t be empty</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker="true">
     <mat-label>Phone</mat-label>
-    <input matInput [(ngModel)]="data.phone_number" required />
-    <mat-error *ngIf="!data.phone_number.length">This field can’t be empty</mat-error>
+    <input matInput [(ngModel)]="data.contactPhone" required />
+    <mat-error *ngIf="!data.contactPhone.length">This field can’t be empty</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>English Level</mat-label>
-    <mat-select [(ngModel)]="data.english_level" (selectionChange)="checkValues()">
-      <mat-option *ngFor="let en of englishLevel" [value]="en">{{en}}</mat-option>
+    <mat-select [(ngModel)]="data.englishLevel" (selectionChange)="checkValues()">
+      <mat-option *ngFor="let level of englishLevel" [value]="level">{{level}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Country</mat-label>
     <mat-select [(ngModel)]="data.country" (selectionChange)="checkValues()">
-      <mat-option *ngFor="let ct of country" [value]="ct">{{ct}}</mat-option>
+      <mat-option *ngFor="let countryName of country" [value]="countryName">{{countryName}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill" hideRequiredMarker="true">
@@ -45,8 +45,8 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <mat-select [(ngModel)]="data.status" (selectionChange)="checkValues()">
-      <mat-option *ngFor="let st of status" [value]="st">{{st}}</mat-option>
+    <mat-select [(ngModel)]="data.statusMark" (selectionChange)="checkValues()">
+      <mat-option *ngFor="let status of statuses, let i =index" [value]="i+1">{{status}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
