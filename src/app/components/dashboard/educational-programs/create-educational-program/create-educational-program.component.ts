@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
 import 'moment-timezone';
 
+
 @Component({
   selector: 'app-create-educational-program',
   templateUrl: './create-educational-program.component.html',
@@ -43,8 +44,9 @@ export class CreateEducationalProgramComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dateAdapter: DateAdapter<Date>,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.dateAdapter.setLocale('en-GB');
@@ -104,7 +106,7 @@ export class CreateEducationalProgramComponent implements OnInit {
       this.educationalProgramsService.postEducationalProgram(educationalProgram).subscribe((data: EducationalProgram) =>
         this.router.navigate(['../educational-programs'], { relativeTo: this.route }).then(() => {
           this.toastr.success('Educational program is created', 'Success');
-        })
+        }),
       );
     }
   }

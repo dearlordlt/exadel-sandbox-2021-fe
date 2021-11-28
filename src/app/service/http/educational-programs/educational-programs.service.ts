@@ -15,10 +15,18 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class EducationalProgramsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-  getEducationalPrograms(): Observable<EducationalProgram[]> {
-    return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter`);
+  getEducationalPrograms(accep_per_from = '', prog_per_from = '', name = '', sort_col = '', sort_by = '', accep_per_to = '', prog_per_to = ''): Observable<EducationalProgram[]> {
+    return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter
+    ?accep_per_from=${accep_per_from}
+    &accep_per_to=${accep_per_to}
+    &prog_per_from=${prog_per_from}
+    &prog_per_to=${prog_per_to}
+    &name=${name}
+    &sort_col=${sort_col}
+    &sort_by=${sort_by}`);
   }
 
   getEducationalProgram(id: string): Observable<EducationalProgram> {

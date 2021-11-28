@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { statuses } from 'src/app/global/constants';
 import { Router } from '@angular/router';
@@ -6,42 +6,45 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-sample',
   templateUrl: './form-sample.component.html',
-  styleUrls: ['./form-sample.component.scss']
+  styleUrls: ['./form-sample.component.scss'],
 })
 export class FormSampleComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router) {
+  }
 
-  submitted = false ;
-  createbtn : boolean = false ;
-  message = "Letter's template is created" ;
+  submitted = false;
+  createbtn = false;
+  message = 'Letter\'s template is created';
 
-  @Input() submitbtn = this.createbtn ;
+  @Input() submitbtn = this.createbtn;
 
-  profileForm = this.fb.group( {
-    name: ['',[
+  profileForm = this.fb.group({
+    name: ['', [
       Validators.required,
-      Validators.maxLength(100)
+      Validators.maxLength(100),
     ]],
     status: [''],
     from: [''],
-    subject: ['',[
+    subject: ['', [
       Validators.maxLength(100),
-      Validators.required
+      Validators.required,
     ]],
-    text: ['',[
+    text: ['', [
       Validators.maxLength(1500),
-      Validators.required
+      Validators.required,
     ]],
-    signature: ['',[
+    signature: ['', [
       Validators.maxLength(100),
-      Validators.required
-    ]]
-  })
-  candidate_status = statuses.select
+      Validators.required,
+    ]],
+  });
+  candidate_status = statuses.select;
 
-  get f() {return this.profileForm.controls}
+  get f() {
+    return this.profileForm.controls;
+  }
 
   ngOnInit(): void {
   }
@@ -53,9 +56,14 @@ export class FormSampleComponent implements OnInit {
       return;
     }
   }
+
   savePage() {
     this.router.navigate(['/', 'letters']);
     alert(this.message);
+  }
+
+  deletePage() {
+
   }
 
 }

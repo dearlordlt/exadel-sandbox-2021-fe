@@ -3,6 +3,7 @@ import { EducationalProgramsService } from '../../../service/http/educational-pr
 import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
 import * as moment from 'moment';
 import 'moment-timezone';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-educational-programs',
@@ -13,7 +14,12 @@ export class EducationalProgramsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'applicationAcceptancePeriod', 'educationalProgramsPeriod', 'edit'];
   dataSource: EducationalProgram[] = [];
 
-  constructor(private educationalProgramsService: EducationalProgramsService) {}
+  accepPerFrom: FormControl = new FormControl();
+  progPerFrom: FormControl = new FormControl();
+  eduProgramName: FormControl = new FormControl();
+
+  constructor(private educationalProgramsService: EducationalProgramsService) {
+  }
 
   ngOnInit(): void {
     this.fetchEducationalPrograms();
@@ -21,7 +27,7 @@ export class EducationalProgramsComponent implements OnInit {
 
   fetchEducationalPrograms(): void {
     this.educationalProgramsService
-      .getEducationalPrograms()
+      .getEducationalPrograms(this.accepPerFrom.value, this.progPerFrom.value, this.eduProgramName.value)
       .subscribe((data: EducationalProgram[]) => (this.dataSource = this.trimTimeFromDate(data)));
   }
 

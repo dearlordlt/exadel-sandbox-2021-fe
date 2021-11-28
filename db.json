@@ -211,6 +211,17 @@
       "interviewer_mark": "1"
     }
   ],
+  "GetAllEducationProgramWithSortAndFilter": [
+    {
+      "id": "asd",
+      "name": "giorgi",
+      "appAcceptFrom": "string",
+      "appAcceptTo": "string",
+      "eduProgFrom": "string",
+      "eduProgTo": "string",
+      "positions": []
+    }
+  ],
   "mentors": [
     {
       "id": 1,
