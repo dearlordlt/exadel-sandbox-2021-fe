@@ -18,6 +18,26 @@ $primary: #0082ca;
 
 table {
   width: 100%;
+
+  &::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+
+  mat-form-field {
+    width: 280px;
+
+    mat-label {
+      ont-weight: bold;
+      color: #000;
+      font-size: 1.8rem;
+    }
+
+    .none {
+      visibility: hidden;
+    }
+
+  }
 }
 
 th.mat-header-cell {
