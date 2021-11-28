@@ -18,9 +18,9 @@ export class CandidatesService {
   apiUrl: string = 'candidates';
 
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.api}/${this.apiUrl}`).pipe(
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`).pipe(
       tap(() => console.log('fetched candidates')),
-      catchError(this.handleError('getCandidates', []))
+      catchError(this.handleError('getCandidates', [])),
     );
   }
 
@@ -28,9 +28,11 @@ export class CandidatesService {
     return this.http.put<Candidate>(`${environment.api}/${this.apiUrl}/${candidate.id}`, candidate, headers);
   }
 
-  filterData(searchText: string) {}
+  filterData(searchText: string) {
+  }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

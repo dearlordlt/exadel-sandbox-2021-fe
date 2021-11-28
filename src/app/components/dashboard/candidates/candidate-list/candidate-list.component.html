@@ -1,266 +1,267 @@
-<div class="list">
-  <app-search-candidate (searchEvent)="searchList($event)"></app-search-candidate>
-  <h3 class="list-header">List of candidates</h3>
-  <div *ngIf="dataSource" class="table-wrapper mat-elevation-z8 table-responsive">
-    <table mat-table [dataSource]="dataSource" matSort class="table">
-      <ng-container matColumnDef="edit">
+<h1 *ngIf='emp | async as empa'>asd {{empa.role.roleName | json}}</h1>
+<div class='list'>
+  <app-search-candidate (searchEvent)='searchList($event)'></app-search-candidate>
+  <h3 class='list-header'>List of candidates</h3>
+  <div *ngIf='dataSource' class='table-wrapper mat-elevation-z8 table-responsive'>
+    <table mat-table [dataSource]='dataSource' matSort class='table'>
+      <ng-container matColumnDef='edit'>
         <th mat-header-cell *matHeaderCellDef>
-          <button mat-flat-button color="primary" (click)="resetFilters()">Reset</button>
+          <button mat-flat-button color='primary' (click)='resetFilters()'>Reset</button>
         </th>
-        <td mat-cell *matCellDef="let candidate" class="edit-feedback">
-          <mat-icon class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
-          <button mat-stroked-button color="primary" (click)="writeFeedback()">Feedback</button>
-          <button mat-stroked-button color="primary" (click)="readFeedback()">Feedback</button>
+        <td mat-cell *matCellDef='let candidate' class='edit-feedback'>
+          <mat-icon class='edit-icon' (click)='openDialog(candidate)'>edit</mat-icon>
+          <button mat-stroked-button color='primary' (click)='writeFeedback()'>Feedback</button>
+          <button mat-stroked-button color='primary' (click)='readFeedback()'>Feedback</button>
 
         </td>
       </ng-container>
-      <ng-container matColumnDef="firstname">
+      <ng-container matColumnDef='firstname'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field class='example-form-field'>
             <mat-label>{{filterSelectObj[0].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[0].modelValue"
-                   (keyup)="filterChange(filterSelectObj[0],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[0].modelValue'
+                   (keyup)='filterChange(filterSelectObj[0],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.firstname}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.firstname}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="lastname">
+      <ng-container matColumnDef='lastname'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field class='example-form-field'>
             <mat-label>{{filterSelectObj[1].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[1].modelValue"
-                   (keyup)="filterChange(filterSelectObj[1],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[1].modelValue'
+                   (keyup)='filterChange(filterSelectObj[1],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.lastname}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.lastname}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="eduProg">
+      <ng-container matColumnDef='eduProg'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[2].name}}</mat-label>
 
-            <select matNativeControl name="{{filterSelectObj[2].columnProp}}"
-                    [(ngModel)]="filterSelectObj[2].modelValue"
-                    (change)="filterChange(filterSelectObj[2],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[2].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[2].columnProp}}'
+                    [(ngModel)]='filterSelectObj[2].modelValue'
+                    (change)='filterChange(filterSelectObj[2],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[2].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td [matTooltip]="candidate.eduProg" [matTooltipShowDelay]="showDelay" mat-cell *matCellDef="let candidate">
+        <td [matTooltip]='candidate.eduProg' [matTooltipShowDelay]='showDelay' mat-cell *matCellDef='let candidate'>
           {{candidate.eduProg}}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="position">
+      <ng-container matColumnDef='position'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[3].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[3].columnProp}}"
-                    [(ngModel)]="filterSelectObj[3].modelValue"
-                    (change)="filterChange(filterSelectObj[3],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[3].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[3].columnProp}}'
+                    [(ngModel)]='filterSelectObj[3].modelValue'
+                    (change)='filterChange(filterSelectObj[3],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[3].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.position}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.position}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="email">
+      <ng-container matColumnDef='email'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field class='example-form-field'>
             <mat-label>{{filterSelectObj[4].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[4].modelValue"
-                   (keyup)="filterChange(filterSelectObj[4],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[4].modelValue'
+                   (keyup)='filterChange(filterSelectObj[4],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email"
-            [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
+        <td mat-cell *matCellDef='let candidate' [matTooltip]='candidate.email'
+            [matTooltipShowDelay]='showDelay'>{{candidate.email}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="skype">
+      <ng-container matColumnDef='skype'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field class='example-form-field'>
             <mat-label>{{filterSelectObj[5].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[5].modelValue"
-                   (keyup)="filterChange(filterSelectObj[5],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[5].modelValue'
+                   (keyup)='filterChange(filterSelectObj[5],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.skype"
-            [matTooltipShowDelay]="showDelay">{{candidate.skype}}</td>
+        <td mat-cell *matCellDef='let candidate' [matTooltip]='candidate.skype'
+            [matTooltipShowDelay]='showDelay'>{{candidate.skype}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="phone_number">
+      <ng-container matColumnDef='phone_number'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label> {{filterSelectObj[6].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[6].modelValue"
-                   (keyup)="filterChange(filterSelectObj[6],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[6].modelValue'
+                   (keyup)='filterChange(filterSelectObj[6],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.phone_number}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.phone_number}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="country">
+      <ng-container matColumnDef='country'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label> {{filterSelectObj[7].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[7].modelValue"
-                   (keyup)="filterChange(filterSelectObj[7],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[7].modelValue'
+                   (keyup)='filterChange(filterSelectObj[7],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.country}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.country}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="city">
+      <ng-container matColumnDef='city'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[8].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[8].modelValue"
-                   (keyup)="filterChange(filterSelectObj[8],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[8].modelValue'
+                   (keyup)='filterChange(filterSelectObj[8],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.city}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.city}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="english_level">
+      <ng-container matColumnDef='english_level'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[9].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[9].columnProp}}"
-                    [(ngModel)]="filterSelectObj[9].modelValue"
-                    (change)="filterChange(filterSelectObj[9],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[9].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[9].columnProp}}'
+                    [(ngModel)]='filterSelectObj[9].modelValue'
+                    (change)='filterChange(filterSelectObj[9],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[9].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.english_level}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.english_level}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="contact_time">
+      <ng-container matColumnDef='contact_time'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[10].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[10].columnProp}}"
-                    [(ngModel)]="filterSelectObj[10].modelValue"
-                    (change)="filterChange(filterSelectObj[10],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[10].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[10].columnProp}}'
+                    [(ngModel)]='filterSelectObj[10].modelValue'
+                    (change)='filterChange(filterSelectObj[10],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[10].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.contact_time}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.contact_time}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="plan_to_join">
+      <ng-container matColumnDef='plan_to_join'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[11].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[11].columnProp}}"
-                    [(ngModel)]="filterSelectObj[11].modelValue"
-                    (change)="filterChange(filterSelectObj[11],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[11].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[11].columnProp}}'
+                    [(ngModel)]='filterSelectObj[11].modelValue'
+                    (change)='filterChange(filterSelectObj[11],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[11].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.plan_to_join}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.plan_to_join}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="date_of_apply">
+      <ng-container matColumnDef='date_of_apply'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[12].name}}</mat-label>
-            <input placeholder="Search..." matInput type="text" [(ngModel)]="filterSelectObj[12].modelValue"
-                   (keyup)="filterChange(filterSelectObj[12],$event)">
+            <input placeholder='Search...' matInput type='text' [(ngModel)]='filterSelectObj[12].modelValue'
+                   (keyup)='filterChange(filterSelectObj[12],$event)'>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.date_of_apply}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.date_of_apply}}</td>
       </ng-container>
 
       <!-- Assessment -->
-      <ng-container matColumnDef="status">
+      <ng-container matColumnDef='status'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[13].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[13].columnProp}}"
-                    [(ngModel)]="filterSelectObj[13].modelValue"
-                    (change)="filterChange(filterSelectObj[13],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[13].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[13].columnProp}}'
+                    [(ngModel)]='filterSelectObj[13].modelValue'
+                    (change)='filterChange(filterSelectObj[13],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[13].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.status"
-            [matTooltipShowDelay]="showDelay">{{candidate.status}}</td>
+        <td mat-cell *matCellDef='let candidate' [matTooltip]='candidate.status'
+            [matTooltipShowDelay]='showDelay'>{{candidate.status}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="soft_skill">
+      <ng-container matColumnDef='soft_skill'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[14].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[14].columnProp}}"
-                    [(ngModel)]="filterSelectObj[14].modelValue"
-                    (change)="filterChange(filterSelectObj[14],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[14].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[14].columnProp}}'
+                    [(ngModel)]='filterSelectObj[14].modelValue'
+                    (change)='filterChange(filterSelectObj[14],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[14].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.soft_skill}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.soft_skill}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="hard_skill">
+      <ng-container matColumnDef='hard_skill'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[15].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[15].columnProp}}"
-                    [(ngModel)]="filterSelectObj[15].modelValue"
-                    (change)="filterChange(filterSelectObj[15],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[15].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[15].columnProp}}'
+                    [(ngModel)]='filterSelectObj[15].modelValue'
+                    (change)='filterChange(filterSelectObj[15],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[15].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.hard_skill}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.hard_skill}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="mentor_mark">
+      <ng-container matColumnDef='mentor_mark'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[16].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[16].columnProp}}"
-                    [(ngModel)]="filterSelectObj[16].modelValue"
-                    (change)="filterChange(filterSelectObj[16],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[16].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[16].columnProp}}'
+                    [(ngModel)]='filterSelectObj[16].modelValue'
+                    (change)='filterChange(filterSelectObj[16],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[16].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.mentor_mark}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.mentor_mark}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="interviewer_mark">
+      <ng-container matColumnDef='interviewer_mark'>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-form-field>
             <mat-label>{{filterSelectObj[17].name}}</mat-label>
-            <select matNativeControl name="{{filterSelectObj[17].columnProp}}"
-                    [(ngModel)]="filterSelectObj[17].modelValue"
-                    (change)="filterChange(filterSelectObj[17],$event)">
-              <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[17].options">{{item}}</option>
+            <select matNativeControl name='{{filterSelectObj[17].columnProp}}'
+                    [(ngModel)]='filterSelectObj[17].modelValue'
+                    (change)='filterChange(filterSelectObj[17],$event)'>
+              <option value=''>All</option>
+              <option [value]='item' *ngFor='let item of filterSelectObj[17].options'>{{item}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.interviewer_mark}}</td>
+        <td mat-cell *matCellDef='let candidate'>{{candidate.interviewer_mark}}</td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef='displayedColumns'></tr>
+      <tr mat-row *matRowDef='let row; columns: displayedColumns;'></tr>
     </table>
 
   </div>

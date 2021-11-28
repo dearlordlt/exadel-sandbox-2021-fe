@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { filter, map, switchMap, take } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,6 +8,8 @@ import { Candidate } from '../../../models/candidate';
 import { UpdateCandidateDialogComponent } from '../update-candidate-dialog/update-candidate-dialog.component';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
+import { FeedbackService } from '../../../../service/http/feedback/feedback.service';
+import { AuthGuard } from '../../../../guards/auth.guard';
 
 @Component({
   selector: 'app-candidate-list',
@@ -43,8 +45,9 @@ export class CandidateListComponent implements OnInit {
   ];
 
   showDelay = 1000;
+  emp;
 
-  constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog) {
+  constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog, private feedback: FeedbackService, private auth: AuthGuard) {
     this.filterSelectObj = [
       {
         name: 'First name',
@@ -127,16 +130,18 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: "Mentor's Mark",
+        name: 'Mentor\'s Mark',
         columnProp: 'mentor_mark',
         options: [],
       },
       {
-        name: "Interviewer's Mark after Sandbox",
+        name: 'Interviewer\'s Mark after Sandbox',
         columnProp: 'interviewer_mark',
         options: [],
       },
     ];
+    this.emp = this.feedback.getEmployeeById(localStorage.getItem('id')!);
+    console.log(this.emp.pipe(tap(v => console.log(v.email))).subscribe());
   }
 
   ngOnInit(): void {
@@ -175,7 +180,7 @@ export class CandidateListComponent implements OnInit {
   }
 
   createFilter() {
-    const filterFunction = function (data: any, filter: string): boolean {
+    const filterFunction = function(data: any, filter: string): boolean {
       const searchTerms = JSON.parse(filter);
       let isFilterSet = false;
       for (const col in searchTerms) {
@@ -226,7 +231,7 @@ export class CandidateListComponent implements OnInit {
         item.eduProg === (program === 'All' ? item.eduProg : program) &&
         item.status === (status === 'All' ? item.status : status) &&
         item.email.toLowerCase().includes(email.toLowerCase()) &&
-        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
+        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase())),
     );
   }
 
@@ -236,6 +241,11 @@ export class CandidateListComponent implements OnInit {
 
   readFeedback() {
     this.router.navigateByUrl('dashboard/read_feedback').then();
+  }
+
+  rwFeedback() {
+    const emp = this.feedback.getEmployeeById(localStorage.getItem('id')!);
+    console.log(emp);
   }
 
   openDialog(candidate: Candidate): void {
@@ -252,7 +262,7 @@ export class CandidateListComponent implements OnInit {
             .updateCandidate(result)
             .subscribe(
               (candidate) =>
-                (this.dataSource = this.dataSource.map((cand: Candidate) => (candidate.id === cand.id ? { ...candidate } : cand)))
+                (this.dataSource = this.dataSource.map((cand: Candidate) => (candidate.id === cand.id ? { ...candidate } : cand))),
             );
         }
       }
