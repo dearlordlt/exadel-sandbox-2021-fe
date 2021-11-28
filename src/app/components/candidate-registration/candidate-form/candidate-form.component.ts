@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from '@angular-material-extensions/select-country';
+import { countries } from 'src/app/global/constants';
 
 interface Program {
   value: string;
@@ -57,6 +58,7 @@ export class CandidateFormComponent implements OnInit {
     { value: 'No', viewValue: 'No' },
     { value: 'Maybe', viewValue: 'Maybe' },
   ];
+  countries: string[] = countries;
 
   onCountrySelected(country: Country) {
     console.log(country);

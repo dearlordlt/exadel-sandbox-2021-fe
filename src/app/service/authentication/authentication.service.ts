@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogInData } from 'src/app/components/models/logInData';
 import { UserData } from 'src/app/components/models/userData';
+import { EmployeeData } from 'src/app/components/models/employeeData';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  isAuthenticated = localStorage.getItem('token') ? true : false;
+  isAuthenticated = localStorage.getItem('token') && localStorage.getItem('id') && localStorage.getItem('email') ? true : false;
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -26,6 +27,11 @@ export class AuthenticationService {
     //   return false;
     // }
   }
+
+  getEmployee(id: string): Observable<EmployeeData> {
+    return this.http.get<EmployeeData>(`${environment.EXADEL_API}/Employee/Get/${id}`);
+  }
+
   // private checkData(logInData: LogInData): boolean {
   //   return this.checkEmail(logInData.getEmail()) && this.checkPassword(logInData.getPassword());
   // }

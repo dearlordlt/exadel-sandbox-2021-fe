@@ -24,12 +24,12 @@ export class CandidatesService {
     );
   }
 
-  searchCandidate() {
-    return this.http.get<Candidate[]>(`${environment.api}/${this.apiUrl}`);
+  searchCandidate(searchQuery: string) {
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched?${searchQuery}`);
   }
 
   updateCandidate(candidate: Candidate): Observable<Candidate> {
-    return this.http.put<Candidate>(`${environment.api}/${this.apiUrl}/${candidate.id}`, candidate, headers);
+    return this.http.put<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/${candidate.id}`, candidate, headers);
   }
 
   filterData(searchText: string) {}

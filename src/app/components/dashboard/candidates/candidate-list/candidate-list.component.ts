@@ -9,6 +9,8 @@ import { UpdateCandidateDialogComponent } from '../update-candidate-dialog/updat
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { StaticService } from 'src/app/service/http/static/static.service';
+import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
+import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 
 @Component({
   selector: 'app-candidate-list',
@@ -18,8 +20,14 @@ import { StaticService } from 'src/app/service/http/static/static.service';
 export class CandidateListComponent implements OnInit {
   // dataSource: any | Candidate[] = [];
   dataSource: any | Candidate[] = new MatTableDataSource();
+  empoloyeeRole!: string;
   filterValues: any = {};
   filterSelectObj: any = [];
+  programsList: { id: string; name: string }[] = [];
+  positionsList: { id: string; name: string }[] = [];
+  statusesList!: { [id: string]: string };
+  updateOptionDisabled = true;
+  updateDialogWidth = '800px';
 
   displayedColumns: string[] = [
     'edit',
@@ -49,7 +57,9 @@ export class CandidateListComponent implements OnInit {
     private candidatesService: CandidatesService,
     private router: Router,
     public dialog: MatDialog,
-    private staticService: StaticService
+    private staticService: StaticService,
+    private educationalProgramsService: EducationalProgramsService,
+    private authenticationService: AuthenticationService
   ) {
     this.filterSelectObj = [
       {
@@ -68,7 +78,7 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: 'positionId/Technology',
+        name: 'Position/Technology',
         columnProp: 'positionId',
         options: [],
       },
@@ -78,7 +88,7 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: 'contactSkype',
+        name: 'Skype',
         columnProp: 'contactSkype',
         options: [],
       },
@@ -149,6 +159,10 @@ export class CandidateListComponent implements OnInit {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
     this.dataSource.sort = this.sort;
+    this.fillProgramsList();
+    this.fillPositionsList();
+    this.fillStatusesList();
+    this.getEmployeeRole();
   }
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -165,15 +179,71 @@ export class CandidateListComponent implements OnInit {
     return uniqChk;
   }
 
+  getEmployeeRole() {
+    this.authenticationService.getEmployee(localStorage.getItem('id') || '').subscribe((data) => {
+      const role = data.role.roleName;
+      if (role === 'Administrator' || role === 'Manager' || role === 'Recruiter') {
+        this.updateOptionDisabled = false;
+        if (role === 'Manager') {
+          this.updateDialogWidth = '400px';
+        }
+      }
+      this.empoloyeeRole = data.role.roleName;
+    });
+  }
+
   getCandidates() {
-    //need this now to make search component work, should be removed when connected to actual backend
     this.candidatesService.getCandidates().subscribe((candidates) => {
-      console.log(candidates);
       this.dataSource.data = candidates;
       this.filterSelectObj.filter((o: any) => {
         o.options = this.getFilterObject(candidates, o.columnProp);
       });
     });
+  }
+
+  fillProgramsList() {
+    this.educationalProgramsService.getEducationalPrograms().subscribe((programs) => {
+      programs.forEach((program) => {
+        this.programsList.push({ id: program.id, name: program.name });
+      });
+    });
+  }
+  fillPositionsList() {
+    this.educationalProgramsService.getPositions().subscribe((positions) => {
+      positions.forEach((position) => {
+        this.positionsList.push({ id: position.id, name: position.name });
+      });
+    });
+  }
+  fillStatusesList() {
+    this.staticService.getCandidateStatus().subscribe((data) => {
+      this.statusesList = data;
+    });
+  }
+
+  showProgramName(id: string) {
+    for (const program of this.programsList) {
+      if (id === program.id) {
+        return program.name;
+      }
+    }
+    return id;
+  }
+
+  showPositionName(id: string) {
+    for (const position of this.positionsList) {
+      if (id === position.id) {
+        return position.name;
+      }
+    }
+    return id;
+  }
+
+  showStatusName(id: string) {
+    if (this.statusesList) {
+      return this.statusesList[id];
+    }
+    return id;
   }
 
   filterChange(filter: any, event: any) {
@@ -225,16 +295,12 @@ export class CandidateListComponent implements OnInit {
     this.dataSource.filter = '';
   }
 
-  searchList(values: string[]) {
-    const [program, statusMark, name, email] = [...values];
+  searchList(data: Candidate[]) {
+    this.dataSource.data = data;
 
-    this.dataSource = this.dataSource.filter(
-      (item: Candidate) =>
-        item.educationProgramId === (program === 'All' ? item.educationProgramId : program) &&
-        item.statusMark === (statusMark === 'All' ? item.statusMark : statusMark) &&
-        item.email.toLowerCase().includes(email.toLowerCase()) &&
-        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
-    );
+    // this.filterSelectObj.filter((o: any) => {
+    //   o.options = this.getFilterObject(data, o.columnProp);
+    // });
   }
 
   writeFeedback() {
@@ -246,21 +312,18 @@ export class CandidateListComponent implements OnInit {
   }
 
   openDialog(candidate: Candidate): void {
-    const data = { ...candidate };
+    const candidateData = { ...candidate };
     const dialogRef = this.dialog.open(UpdateCandidateDialogComponent, {
-      width: '800px',
-      data: data,
+      width: this.updateDialogWidth,
+      data: { candidate: candidateData, role: this.empoloyeeRole },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined && result !== 'cancel') {
-        if (JSON.stringify(result) !== JSON.stringify(candidate)) {
-          this.candidatesService
-            .updateCandidate(result)
-            .subscribe(
-              (candidate) =>
-                (this.dataSource = this.dataSource.map((cand: Candidate) => (candidate.id === cand.id ? { ...candidate } : cand)))
-            );
+        if (JSON.stringify(result.candidate) !== JSON.stringify(candidate)) {
+          this.candidatesService.updateCandidate(result.candidate).subscribe(() => {
+            this.getCandidates();
+          });
         }
       }
     });

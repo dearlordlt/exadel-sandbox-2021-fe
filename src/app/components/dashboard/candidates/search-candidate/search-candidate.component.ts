@@ -5,6 +5,7 @@ import { StaticData } from '../../../models/staticData';
 import { educationalPrograms } from 'src/app/global/constants';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
 import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
+import { CandidatesService } from '../services/candidates.service';
 
 @Component({
   selector: 'app-search-candidate',
@@ -22,14 +23,19 @@ export class SearchCandidateComponent implements OnInit {
 
   programsId: string[] = ['0'];
   programsName: string[] = ['All'];
-  statuses: string[] = ['All'];
+  statuses: string[] = [];
   constructor(
     private fb: FormBuilder,
     private staticService: StaticService,
-    private educationalProgramsService: EducationalProgramsService
+    private educationalProgramsService: EducationalProgramsService,
+    private candidatesService: CandidatesService
   ) {}
-
   ngOnInit(): void {
+    this.getPrograms();
+    this.getStatuses();
+  }
+
+  getPrograms() {
     this.educationalProgramsService.getEducationalPrograms().subscribe((data) => {
       console.log(data);
       data.forEach((program) => {
@@ -37,27 +43,39 @@ export class SearchCandidateComponent implements OnInit {
         this.programsName.push(program.name);
       });
     });
+  }
 
+  getStatuses() {
     this.staticService.getCandidateStatus().subscribe((data) => {
-      const keys: string[] = Object.keys(data);
-      for (const key in keys) {
-        this.statuses.push(data[keys[key]]);
-      }
+      const values: string[] = Object.values(data);
+      this.statuses = ['All', ...values];
     });
   }
 
   clickSearch() {
-    // this.searchEvent.emit([
-    //   this.searchForm.value.searchEduProgram,
-    //   this.searchForm.value.searchStatus,
-    //   this.searchForm.value.searchName,
-    //   this.searchForm.value.searchEmail,
-    // ]);
-    console.log([
-      this.searchForm.value.searchEduProgram,
-      this.searchForm.value.searchStatus,
-      this.searchForm.value.searchName,
-      this.searchForm.value.searchEmail,
-    ]);
+    const queryArr: string[] = [],
+      program = this.searchForm.value.searchEduProgram,
+      status = this.searchForm.value.searchStatus,
+      name = this.searchForm.value.searchName,
+      email = this.searchForm.value.searchEmail;
+
+    if (email) {
+      queryArr.push(`email=${email}`);
+    }
+    if (name) {
+      queryArr.push(`name=${name}`);
+    }
+    if (program && program !== '0') {
+      queryArr.push(`gguid=${program}`);
+    }
+    if (status) {
+      queryArr.push(`statusid=${status}`);
+    }
+
+    const query = queryArr.join('&');
+
+    this.candidatesService.searchCandidate(query).subscribe((data) => {
+      this.searchEvent.emit(data);
+    });
   }
 }

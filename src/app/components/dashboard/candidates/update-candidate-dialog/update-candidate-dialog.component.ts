@@ -14,28 +14,37 @@ export class UpdateCandidateDialogComponent implements OnInit {
   englishLevel = englishLevels;
   country = countries;
   disableUpdate = false;
+  showFields = this.data.role !== 'Manager' ? true : false;
   constructor(
     public dialogRef: MatDialogRef<Candidate>,
-    @Inject(MAT_DIALOG_DATA) public data: Candidate,
+    @Inject(MAT_DIALOG_DATA) public data: { candidate: Candidate; role: string },
     private staticService: StaticService
   ) {}
 
   ngOnInit(): void {
     this.staticService.getCandidateStatus().subscribe((data) => {
       const keys: string[] = Object.keys(data);
-      for (const key in keys) {
-        this.statuses.push(data[keys[key]]);
+      if (this.data.role === 'Recruiter') {
+        for (const key in keys) {
+          if (parseInt(key) < 5) {
+            this.statuses.push(data[keys[key]]);
+          }
+        }
+      } else {
+        for (const key in keys) {
+          this.statuses.push(data[keys[key]]);
+        }
       }
     });
   }
   checkValues() {
     if (
-      !this.data.firstname.trim() ||
-      !this.data.lastname.trim() ||
-      !this.data.email.trim() ||
-      !this.data.contactSkype.trim() ||
-      !this.data.contactPhone.trim() ||
-      !this.data.city.trim()
+      !this.data.candidate.firstname.trim() ||
+      !this.data.candidate.lastname.trim() ||
+      !this.data.candidate.email.trim() ||
+      !this.data.candidate.contactSkype.trim() ||
+      !this.data.candidate.contactPhone.trim() ||
+      !this.data.candidate.city.trim()
     ) {
       this.disableUpdate = true;
     } else {

@@ -8,7 +8,9 @@
           <button mat-flat-button color="primary" (click)="resetFilters()">Reset</button>
         </th>
         <td mat-cell *matCellDef="let candidate" class="edit-feedback">
-          <mat-icon class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
+          <button class="hide-button" [disabled]="updateOptionDisabled" (click)="openDialog(candidate)">
+            <mat-icon class="edit-icon">edit</mat-icon>
+          </button>
           <button mat-stroked-button color="primary" (click)="writeFeedback()">Feedback</button>
           <button mat-stroked-button color="primary" (click)="readFeedback()">Feedback</button>
         </td>
@@ -57,12 +59,17 @@
               (change)="filterChange(filterSelectObj[2],$event)"
             >
               <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[2].options">{{item}}</option>
+              <option [value]="item" *ngFor="let item of filterSelectObj[2].options">{{showProgramName(item)}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td [matTooltip]="candidate.educationProgramId" [matTooltipShowDelay]="showDelay" mat-cell *matCellDef="let candidate">
-          {{candidate.educationProgramId}}
+        <td
+          [matTooltip]="showProgramName(candidate.educationProgramId)"
+          [matTooltipShowDelay]="showDelay"
+          mat-cell
+          *matCellDef="let candidate"
+        >
+          {{showProgramName(candidate.educationProgramId)}}
         </td>
       </ng-container>
 
@@ -77,11 +84,11 @@
               (change)="filterChange(filterSelectObj[3],$event)"
             >
               <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[3].options">{{item}}</option>
+              <option [value]="item" *ngFor="let item of filterSelectObj[3].options">{{showPositionName(item)}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.positionId}}</td>
+        <td mat-cell *matCellDef="let candidate">{{showPositionName(candidate.positionId)}}</td>
       </ng-container>
 
       <ng-container matColumnDef="email">
@@ -248,12 +255,12 @@
               (change)="filterChange(filterSelectObj[13],$event)"
             >
               <option value="">All</option>
-              <option [value]="item" *ngFor="let item of filterSelectObj[13].options">{{item}}</option>
+              <option [value]="item" *ngFor="let item of filterSelectObj[13].options">{{showStatusName(item)}}</option>
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.statusMark" [matTooltipShowDelay]="showDelay">
-          {{candidate.statusMark}}
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="showStatusName(candidate.statusMark)" [matTooltipShowDelay]="showDelay">
+          {{showStatusName(candidate.statusMark)}}
         </td>
       </ng-container>
 

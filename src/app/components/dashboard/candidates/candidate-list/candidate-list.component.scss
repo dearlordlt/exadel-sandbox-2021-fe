@@ -9,6 +9,11 @@
     margin: 3rem 0;
   }
 }
+button.hide-button {
+  outline: none;
+  background: none;
+  border: none;
+}
 
 .table-wrapper {
   display: block;
@@ -41,7 +46,6 @@
     }
   }
 }
-
 
 th.mat-header-cell {
   color: #000;
