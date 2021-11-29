@@ -17,7 +17,7 @@
   </div>
   <div class="descr-form">
     <div class="descr">
-      <mat-card class="decr-card">
+      <!-- <mat-card class="decr-card"> -->
         <h3 class="bold-text">Description</h3>
         <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
 
@@ -57,86 +57,79 @@
             </li>
           </ul>
         </div>
-      </mat-card>
+      <!-- </mat-card> -->
     </div>
-    <form [formGroup]="registrationForm" >
-      <mat-form-field  formControlName="firstName" appearance="fill">
-        <mat-label>First name</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field formControlName="lastName" appearance="fill">
-        <mat-label>Last name</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-    <!-- <form> -->
-      <!-- <div class="form">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="form">
         <div class="left-form">
-          <mat-form-field class="example-full-width" formControlName="firstName" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>First name</mat-label>
-            <input type="text" matInput />
+            <input type="text" formControlName="firstName" matInput />
           </mat-form-field>
-          <mat-form-field class="example-full-width" formControlName="lastName" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Last name</mat-label>
-            <input type="text" matInput />
+            <input formControlName="lastName" type="text" matInput />
           </mat-form-field>
-          <mat-form-field class="example-full-width" formControlName="skype" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Skype</mat-label>
-            <input type="text" matInput />
+            <input formControlName="skype" type="text" matInput />
           </mat-form-field>
-          <mat-form-field class="example-full-width" formControlName="email" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Email</mat-label> 
-            <input type="email" matInput placeholder="email@example.com" />
+            <input formControlName="email" type="email" matInput placeholder="email@example.com" />
           </mat-form-field>
-          <mat-form-field class="example-full-width" formControlName="phoneNumber" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Phone</mat-label>
-            <input type="tel" matInput />
+            <input formControlName="phoneNumber" type="tel" matInput />
           </mat-form-field>
-          <mat-form-field formControlName="country" appearance="fill">
+          <mat-form-field  appearance="fill">
             <mat-label>Country</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
+            <mat-select formControlName="country">
+              <mat-option required *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field class="example-full-width" formControlName="city" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>City</mat-label>
-            <input type="text" matInput />
+            <input formControlName="city" type="text" matInput />
           </mat-form-field>
         </div>
         <div class="right-form">
-          <mat-form-field formControlName="engLevel" appearance="fill">
+          <mat-form-field  appearance="fill">
             <mat-label>English level</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
+            <mat-select formControlName="engLevel">
+              <mat-option  *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field formControlName="contactTime" appearance="fill">
+          <mat-form-field  appearance="fill">
             <mat-label>The best time to contact (Minsk, UTC+3)</mat-label>
-            <mat-select>
+            <mat-select formControlName="contactTime">
               <mat-option *ngFor="let time of contactTimes" [value]="time"> {{time}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field formControlName="decision" appearance="fill">
+          <mat-form-field  appearance="fill">
             <mat-label>Are you planning to join Exadel after the Training?</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
+            <mat-select formControlName="decision">
+              <mat-option  *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <section class="example-section">
+          <section>
             <p>
-              <mat-checkbox formControlName="checkBox" class="example-margin">
-                I know that my personal data will be processed on the terms of specified in the Privacy Policy</mat-checkbox
-              >
+              <mat-checkbox required formControlName="checkBox">
+                I know that my personal data will be processed on the terms
+                <br> of specified in the Privacy Policy</mat-checkbox>
             </p>
           </section>
           <br />
           <p>Your personal data will be used during the Event and will not be shared with third parties</p>
           <p>Please read our <a href="https://exadel.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
         </div>
-      </div> -->
+        
+      </div>
+      <div class="apply-btn">
+        <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
+      </div>
     </form>
 
-    <div class="apply-btn">
-      <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
-    </div>
+    
   </div>
 </div>
