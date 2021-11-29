@@ -4,7 +4,7 @@ import { StaticService } from 'src/app/service/http/static/static.service';
 import { StaticData } from '../../../models/staticData';
 import { educationalPrograms } from 'src/app/global/constants';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
-import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
+import { EducationalProgram } from 'src/app/components/shared/interfaces/educational-program/educational-program.interface';
 import { CandidatesService } from '../services/candidates.service';
 
 @Component({

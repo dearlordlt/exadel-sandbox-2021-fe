@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EducationalProgram } from '../../../components/shared/interfaces/educational-program/educational-program.interface';
 import { PostEducationalProgram } from '../../../components/shared/interfaces/educational-program/post-educational-program.interface';
+import { Position } from '../../../components/shared/interfaces/educational-program/educational-program.interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
