@@ -3,12 +3,12 @@ import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { CandidatesService } from '../services/candidates.service';
+import { CandidatesService } from '../../../../service/http/candidate-list/candidates.service';
 import { Candidate } from '../../../models/candidate';
 import { UpdateCandidateDialogComponent } from '../update-candidate-dialog/update-candidate-dialog.component';
 import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
-import { FeedbackService } from '../../../../service/http/feedback/feedback.service';
+import { FeedbackService } from '../../../../service/http/candidate-list/feedback/feedback.service';
 import { AuthGuard } from '../../../../guards/auth.guard';
 
 @Component({
@@ -45,7 +45,6 @@ export class CandidateListComponent implements OnInit {
   ];
 
   showDelay = 1000;
-  emp;
 
   constructor(private candidatesService: CandidatesService, private router: Router, public dialog: MatDialog, private feedback: FeedbackService, private auth: AuthGuard) {
     this.filterSelectObj = [
@@ -140,8 +139,6 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
     ];
-    this.emp = this.feedback.getEmployeeById(localStorage.getItem('id')!);
-    console.log(this.emp.pipe(tap(v => console.log(v.email))).subscribe());
   }
 
   ngOnInit(): void {
@@ -168,6 +165,7 @@ export class CandidateListComponent implements OnInit {
     //need this now to make search component work, should be removed when connected to actual backend
     this.candidatesService.getCandidates().subscribe((candidates) => {
       this.dataSource.data = candidates;
+      console.log(this.dataSource.data[0].id)
       this.filterSelectObj.filter((o: any) => {
         o.options = this.getFilterObject(candidates, o.columnProp);
       });
@@ -235,17 +233,14 @@ export class CandidateListComponent implements OnInit {
     );
   }
 
-  writeFeedback() {
-    this.router.navigateByUrl('dashboard/write_feedback').then();
-  }
-
-  readFeedback() {
-    this.router.navigateByUrl('dashboard/read_feedback').then();
-  }
-
   rwFeedback() {
-    const emp = this.feedback.getEmployeeById(localStorage.getItem('id')!);
-    console.log(emp);
+    this.feedback.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
+      if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
+        this.router.navigateByUrl('dashboard/write_feedback').then();
+      } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
+        this.router.navigateByUrl('dashboard/read_feedback').then();
+      }
+    })).subscribe();
   }
 
   openDialog(candidate: Candidate): void {

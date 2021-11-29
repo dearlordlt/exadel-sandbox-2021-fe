@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Candidate } from '../../../models/candidate';
+import { Candidate } from '../../../components/models/candidate';
 import { concatMap, filter, catchError, map, tap, switchMap, toArray } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 const headers = {
   headers: new HttpHeaders({
@@ -15,7 +15,6 @@ const headers = {
   providedIn: 'root',
 })
 export class CandidatesService {
-  apiUrl: string = 'candidates';
 
   getCandidates(): Observable<Candidate[]> {
     return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`).pipe(
@@ -25,7 +24,7 @@ export class CandidatesService {
   }
 
   updateCandidate(candidate: Candidate): Observable<Candidate> {
-    return this.http.put<Candidate>(`${environment.api}/${this.apiUrl}/${candidate.id}`, candidate, headers);
+    return this.http.put<Candidate>(`${environment.EXADEL_API}/Candidates/${candidate.id}`, candidate, headers);
   }
 
   filterData(searchText: string) {

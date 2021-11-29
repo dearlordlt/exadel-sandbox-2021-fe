@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { educationalPrograms } from 'src/app/global/constants';
 import { statuses } from 'src/app/global/constants';
 
-import { CandidatesService } from '../../candidates/services/candidates.service';
+import { CandidatesService } from '../../../../service/http/candidate-list/candidates.service';
 import { Candidate } from '../../../models/candidate';
 
 const All: string = 'All';

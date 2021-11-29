@@ -1,26 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FeedbackService } from '../../../../../service/http/candidate-list/feedback/feedback.service';
 
 @Component({
   selector: 'app-write-feedback',
   templateUrl: './write-feedback.component.html',
-  styleUrls: ['./write-feedback.component.scss']
+  styleUrls: ['./write-feedback.component.scss'],
 })
 export class WriteFeedbackComponent implements OnInit {
-  name = 'Aliaksandr Katzuba'
+  name = 'Aliaksandr Katzuba';
 
-  constructor(private router: Router) {
+  // feedback
+
+  constructor(private router: Router, private rwFeedback: FeedbackService) {
   }
 
   ngOnInit(): void {
   }
 
   back() {
-    this.router.navigateByUrl('/dashboard').then()
+    this.router.navigateByUrl('/dashboard').then();
   }
 
   saveFeedback() {
-    console.log('feedback saved')
+
   }
 
 }
