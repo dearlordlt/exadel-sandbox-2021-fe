@@ -15,17 +15,21 @@ const headers = {
   providedIn: 'root',
 })
 export class CandidatesService {
-  apiUrl: string = 'candidates';
+  apiUrl: string = 'Candidates';
 
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.api}/${this.apiUrl}`).pipe(
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetAllCandidates`).pipe(
       tap(() => console.log('fetched candidates')),
       catchError(this.handleError('getCandidates', []))
     );
   }
 
+  searchCandidate(searchQuery: string) {
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched?${searchQuery}`);
+  }
+
   updateCandidate(candidate: Candidate): Observable<Candidate> {
-    return this.http.put<Candidate>(`${environment.api}/${this.apiUrl}/${candidate.id}`, candidate, headers);
+    return this.http.put<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/${candidate.id}`, candidate, headers);
   }
 
   filterData(searchText: string) {}

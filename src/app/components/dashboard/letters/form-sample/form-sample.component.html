@@ -3,60 +3,70 @@
     <div class="crtLetter__status">
       <strong>Name * </strong>
       <mat-form-field appearance="outline">
-        <input formControlName="name" matInput placeholder="Refusal by the level of English">
-        <mat-error *ngIf="submitted && f.name.errors">
-          <mat-error class="nameError" *ngIf="f.name.errors.required">This field mustn't be empty</mat-error>
-          <mat-error class="nameError" *ngIf="f.name.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+        <input formControlName="name" matInput placeholder="Refusal by the level of English" />
+        <mat-error *ngIf="submitted && profileFormControls.name.errors">
+          <mat-error class="nameError" *ngIf="profileFormControls.name.errors.required">This field mustn't be empty</mat-error>
+          <mat-error class="nameError" *ngIf="profileFormControls.name.errors.maxlength"
+            >Fields can't include more than 100 symbols</mat-error
+          >
         </mat-error>
       </mat-form-field>
     </div>
     <div class="crtLetter__template">
       <div class="crtLetter-flex">
         <strong class="left-elem-one">Candidate's status for sending letter automatically</strong>
-        <mat-form-field class="crtLetter-sending" appearance="outline" >
+        <mat-form-field class="crtLetter-sending" appearance="outline">
           <mat-select formControlName="status">
-            <mat-option *ngFor="let status of candidate_status" [value]="status">
-              {{status}}
-            </mat-option>
+            <mat-option *ngFor="let status of candidate_status" [value]="status"> {{status}} </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="crtLetter__from crtLetter-flex">
         <strong class="left-elem-two">From</strong>
-        <mat-form-field class='crtLetter-from' appearance="outline">
-          <input  matInput disabled placeholder="no-reply-sandbox@exadel.com">
+        <mat-form-field class="crtLetter-from" appearance="outline">
+          <input matInput disabled placeholder="no-reply-sandbox@exadel.com" />
         </mat-form-field>
       </div>
       <div class="crtLetter__subject crtLetter-flex">
         <strong class="left-elem-two">Subject *</strong>
-        <mat-form-field class="crtLetter-subject" appearance="outline"  >
-          <input formControlName="subject" matInput placeholder="Exadel Sandbox Refusal by the level of English">
-          <mat-error *ngIf="submitted && f.subject.errors">
-            <mat-error class="nameError" *ngIf="f.subject.errors.required">This field mustn't be empty</mat-error>
-            <mat-error class="nameError" *ngIf="f.subject.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+        <mat-form-field class="crtLetter-subject" appearance="outline">
+          <input formControlName="subject" matInput placeholder="Exadel Sandbox Refusal by the level of English" />
+          <mat-error *ngIf="submitted && profileFormControls.subject.errors">
+            <mat-error class="nameError" *ngIf="profileFormControls.subject.errors.required">This field mustn't be empty</mat-error>
+            <mat-error class="nameError" *ngIf="profileFormControls.subject.errors.maxlength"
+              >Fields can't include more than 100 symbols</mat-error
+            >
           </mat-error>
         </mat-form-field>
       </div>
       <div class="crtLetter-flex">
         <strong class="left-elem-two">Text of the letter*</strong>
-        <mat-form-field class="crtLetter-textlet" appearance="outline"  >
-                     <textarea formControlName="text" matInput placeholder="Hello,@First_name@Last_name!
+        <mat-form-field class="crtLetter-textlet" appearance="outline">
+          <textarea
+            formControlName="text"
+            matInput
+            placeholder="Hello,@First_name@Last_name!
                      Unfortunately we have to refuse your applying because of your English of level.
                       We'll be glad if you'll apply for our Sandbox
-                    again after improving your level! See you"></textarea>
-          <mat-error *ngIf="submitted && f.text.errors">
-            <mat-error class="nameError" *ngIf="f.text.errors.required">This field mustn't be empty</mat-error>
-            <mat-error class="nameError" *ngIf="f.text.errors.maxlength">Fields can't include more than 1500 symbols</mat-error>
+                    again after improving your level! See you"
+          ></textarea>
+          <mat-error *ngIf="submitted && profileFormControls.text.errors">
+            <mat-error class="nameError" *ngIf="profileFormControls.text.errors.required">This field mustn't be empty</mat-error>
+            <mat-error class="nameError" *ngIf="profileFormControls.text.errors.maxlength"
+              >Fields can't include more than 1500 symbols</mat-error
+            >
           </mat-error>
         </mat-form-field>
       </div>
       <div class="crtLetter-flex">
         <strong class="left-elem-two">Letter signature*</strong>
-        <mat-form-field class="crtLetter__signature" appearance="outline"  >
+        <mat-form-field class="crtLetter__signature" appearance="outline">
           <textarea formControlName="signature" matInput placeholder="With respect Exadel Snadbox team"></textarea>
-          <mat-error *ngIf="submitted && f.signature.errors">
-            <mat-error class="nameError" *ngIf="f.signature.errors.required">This field mustn't be empty</mat-error>
-            <mat-error class="nameError" *ngIf="f.signature.errors.maxlength">Fields can't include more than 100 symbols</mat-error>
+          <mat-error *ngIf="submitted && profileFormControls.signature.errors">
+            <mat-error class="nameError" *ngIf="profileFormControls.signature.errors.required">This field mustn't be empty</mat-error>
+            <mat-error class="nameError" *ngIf="profileFormControls.signature.errors.maxlength"
+              >Fields can't include more than 100 symbols</mat-error
+            >
           </mat-error>
         </mat-form-field>
       </div>
@@ -66,8 +76,8 @@
         <button type="submit" mat-stroked-button color="primary">Create</button>
       </div>
       <ng-template #updatebtn>
-        <button type="submit" (click)='savePage()' mat-stroked-button color="primary">Save</button>
-        <button type="submit" (click)='deletePage()' mat-stroked-button color="primary">Delete</button>
+        <button type="submit" (click)="savePage()" mat-stroked-button color="primary">Save</button>
+        <button type="submit" (click)="deletePage()" mat-stroked-button color="primary">Delete</button>
       </ng-template>
     </div>
     <!-- <p>Form Status: {{profileForm.status}}</p>

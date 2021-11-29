@@ -2,19 +2,19 @@
 <form [formGroup]="searchForm" (ngSubmit)="clickSearch()">
   <div class="flex">
     <div class="search-group">
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Educational Programs</mat-label>
         <mat-select formControlName="searchEduProgram">
-          <mat-option *ngFor="let program of programs" [value]="program">{{program}}</mat-option>
+          <mat-option *ngFor="let program of programsName, let i = index" [value]="programsId[i]">{{program}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
     <div class="search-group">
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Status</mat-label>
         <mat-select formControlName="searchStatus">
-          <mat-option *ngFor="let st of status" [value]="st">{{st}}</mat-option>
+          <mat-option *ngFor="let status of statuses, let i = index" [value]="i">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -33,7 +33,7 @@
       </mat-form-field>
     </div>
     <div class="search-group">
-      <button mat-stroked-button type="submit">Search</button>
+      <button mat-stroked-button color="primary" type="submit">Search</button>
     </div>
   </div>
 </form>
