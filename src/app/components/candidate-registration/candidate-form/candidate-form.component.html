@@ -3,7 +3,7 @@
     <h4>Actual Educational programs</h4>
     <mat-form-field appearance="fill">
       <mat-label>Educational Programs</mat-label>
-      <mat-select formControlName="searchEduProgram">
+      <mat-select >
         <mat-option *ngFor="let program of programs" [value]="program">{{program}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -60,8 +60,16 @@
       </mat-card>
     </div>
     <form [formGroup]="registrationForm" >
+      <mat-form-field  formControlName="firstName" appearance="fill">
+        <mat-label>First name</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <mat-form-field formControlName="lastName" appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
     <!-- <form> -->
-      <div class="form">
+      <!-- <div class="form">
         <div class="left-form">
           <mat-form-field class="example-full-width" formControlName="firstName" appearance="fill">
             <mat-label>First name</mat-label>
@@ -124,7 +132,7 @@
           <p>Your personal data will be used during the Event and will not be shared with third parties</p>
           <p>Please read our <a href="https://exadel.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
         </div>
-      </div>
+      </div> -->
     </form>
 
     <div class="apply-btn">
