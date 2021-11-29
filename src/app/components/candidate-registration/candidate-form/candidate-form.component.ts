@@ -1,67 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from '@angular-material-extensions/select-country';
-
-interface Program {
-  value: string;
-  viewValue: string;
-}
-interface Technology {
-  value: string;
-  viewValue: string;
-}
-interface Level {
-  value: string;
-  viewValue: string;
-}
-interface Time {
-  value: string;
-  viewValue: string;
-}
-interface Decision {
-  value: string;
-  viewValue: string;
-}
-
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { educationalPrograms, englishLevels } from 'src/app/global/constants';
+import { countries } from 'src/app/global/constants';
+import { contactTime } from 'src/app/global/constants';
+import { decision } from 'src/app/global/constants'
+import { technologies } from 'src/app/global/constants';
+import { technologyJsJava } from 'src/app/global/constants';
+import { technologyJsNET } from 'src/app/global/constants';
+import { technologyJsPHP } from 'src/app/global/constants';
 @Component({
   selector: 'app-candidate-form',
   templateUrl: './candidate-form.component.html',
   styleUrls: ['./candidate-form.component.scss'],
 })
 export class CandidateFormComponent implements OnInit {
-  programs: Program[] = [
-    { value: '.Net, JS, BA; 10-11.21', viewValue: '.Net, JS, BA; 10-11.21' },
-    { value: '.Net, JS, BA; 10-11.22', viewValue: '.Net, JS, BA; 10-11.22' },
-    { value: '.Net, JS, BA; 10-11.23', viewValue: '.Net, JS, BA; 10-11.23' },
-  ];
-  technologies: Technology[] = [
-    { value: '.Net-0', viewValue: '.Net' },
-    { value: 'JS-1', viewValue: 'JS' },
-    { value: 'BA-2', viewValue: 'BA' },
-  ];
-  levels: Level[] = [
-    { value: 'A1', viewValue: 'A1' },
-    { value: 'A2', viewValue: 'A2' },
-    { value: 'B1', viewValue: 'B1' },
-    { value: 'B2', viewValue: 'B2' },
-    { value: 'C1', viewValue: 'C1' },
-    { value: 'C2', viewValue: 'C2' },
-  ];
-  times: Time[] = [
-    { value: '10.00-13.00', viewValue: '10.00-13.00' },
-    { value: '13.00-16.00', viewValue: '13.00-16.00' },
-    { value: '16.00-19.00', viewValue: '16.00-19.00' },
-    { value: 'anytime', viewValue: 'anytime' },
-  ];
-  decisions: Decision[] = [
-    { value: 'Yes', viewValue: 'Yes' },
-    { value: 'No', viewValue: 'No' },
-    { value: 'Maybe', viewValue: 'Maybe' },
-  ];
+  registrationForm: FormGroup = this.fb.group({
+    firstName: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    skype: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/1-9/)]],
+    country: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
+    city: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
+    engLevel: ['', [Validators.required]],
+    contactTime: ['', [Validators.required]],
+    decision: ['', [Validators.required]],
+    checkBoxd: ['', [Validators.required]],
+  });
+  programs = educationalPrograms;
+  technologies = technologies;
+  levels = englishLevels;
+  countries = countries;
+  contactTimes = contactTime;
+  decisions = decision;
+  
 
-  onCountrySelected(country: Country) {
-    console.log(country);
-  }
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
 }
