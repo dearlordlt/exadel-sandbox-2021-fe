@@ -46,8 +46,8 @@ export class SearchCandidatesComponent implements OnInit {
 
     this.searchedCandidates = this.allCandidates.filter(
       (item) =>
-        item.eduProg === (program === All ? item.eduProg : program) &&
-        item.status === (status === All ? item.status : status) &&
+        item.educationProgramId === (program === All ? item.educationProgramId : program) &&
+        item.statusMark === (status === All ? item.statusMark : status) &&
         item.email.toLowerCase().includes(email.toLowerCase()) &&
         (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
     );

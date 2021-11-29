@@ -28,4 +28,8 @@ export class EducationalProgramsService {
   postEducationalProgram(data: PostEducationalProgram): Observable<EducationalProgram> {
     return this.http.post<EducationalProgram>(`${environment.EXADEL_API}/EducationProgram/AddEducationProgram`, data);
   }
+
+  getPositions(): Observable<Position[]> {
+    return this.http.get<Position[]>(`${environment.EXADEL_API}/Positions/GetAllPosition`);
+  }
 }

@@ -82,7 +82,13 @@
             <mat-label>Phone</mat-label>
             <input type="tel" matInput />
           </mat-form-field>
-          <mat-select-country appearance="outline" label="Country" (onCountrySelected)="onCountrySelected($event)"> </mat-select-country>
+          <!-- <mat-select-country appearance="outline" label="Country" (onCountrySelected)="onCountrySelected($event)"> </mat-select-country> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
+            </mat-select>
+          </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>City</mat-label>
             <input type="text" matInput />

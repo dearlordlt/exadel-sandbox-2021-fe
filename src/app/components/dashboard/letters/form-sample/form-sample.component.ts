@@ -27,7 +27,8 @@ export class FormSampleComponent implements OnInit {
   });
   candidate_status = statuses.select;
 
-  get f() {
+  get profileFormControls() {
+
     return this.profileForm.controls;
   }
 
@@ -40,10 +41,11 @@ export class FormSampleComponent implements OnInit {
       return;
     }
   }
+
+  deletePage() {}
+
   savePage() {
     this.router.navigate(['/', 'letters']);
     alert(this.message);
   }
-
-  deletePage() {}
 }
