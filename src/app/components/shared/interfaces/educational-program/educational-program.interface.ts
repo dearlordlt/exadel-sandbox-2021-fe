@@ -1,5 +1,3 @@
-import { Position } from './position';
-
 export interface EducationalProgram {
   id: string;
   name: string;
@@ -8,4 +6,10 @@ export interface EducationalProgram {
   eduProgFrom: string;
   eduProgTo: string;
   positions: Position[];
+}
+
+export interface Position {
+  id: string;
+  name: string;
+  descrAndRequ: string;
 }

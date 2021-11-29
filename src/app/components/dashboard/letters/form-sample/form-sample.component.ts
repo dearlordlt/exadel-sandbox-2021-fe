@@ -28,6 +28,7 @@ export class FormSampleComponent implements OnInit {
   candidate_status = statuses.select;
 
   get profileFormControls() {
+
     return this.profileForm.controls;
   }
 

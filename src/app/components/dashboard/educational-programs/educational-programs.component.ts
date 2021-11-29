@@ -33,6 +33,7 @@ export class EducationalProgramsComponent implements OnInit {
       educationalProgram.eduProgFrom = moment(educationalProgram.eduProgFrom).format(moment.HTML5_FMT.DATE).split('-').join('.');
       educationalProgram.eduProgTo = moment(educationalProgram.eduProgTo).format(moment.HTML5_FMT.DATE).split('-').join('.');
     });
+
     return educationalPrograms;
   }
 }
