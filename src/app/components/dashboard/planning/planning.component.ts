@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EducationalProgramsService } from '../../../service/http/educational-programs/educational-programs.service';
-import { EducationalProgram } from '../shared/interfaces/educational-program/educational-program.interface';
+import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
 import * as moment from 'moment';
 import 'moment-timezone';
 

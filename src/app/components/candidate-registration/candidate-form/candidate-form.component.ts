@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { educationalPrograms, englishLevels } from 'src/app/global/constants';
 import { countries } from 'src/app/global/constants';
 import { contactTime } from 'src/app/global/constants';
-import { decision } from 'src/app/global/constants'
+import { decision } from 'src/app/global/constants';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 // import { technologies } from 'src/app/global/constants';
@@ -36,11 +36,10 @@ export class CandidateFormComponent implements OnInit {
   contactTimes = contactTime;
   decisions = decision;
 
-  
-  constructor(private fb: FormBuilder,private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {}
-  onSubmit(){
-    console.log(this.registrationForm.value)
+  onSubmit() {
+    console.log(this.registrationForm.value);
   }
 }

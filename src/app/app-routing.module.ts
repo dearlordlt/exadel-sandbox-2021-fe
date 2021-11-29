@@ -15,6 +15,7 @@ import { WriteFeedbackComponent } from './components/dashboard/candidates/feedba
 import { CandidateRegistrationComponent } from './components/candidate-registration/candidate-registration.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CandidatesComponent } from './components/dashboard/candidates/candidates.component';
+import { UpdateEducationalProgramComponent } from './components/dashboard/educational-programs/update-educational-program/update-educational-program.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path: 'educational-programs',
         component: EducationalProgramsComponent,
+      },
+      {
+        path: 'educational-programs/:educationalProgramId',
+        component: UpdateEducationalProgramComponent,
       },
       {
         path: 'send-letter',

@@ -1,6 +1,9 @@
 $primary: #0082ca;
 
 .activeLink {
+  border-bottom: 2px solid $primary;
+  padding-bottom: 1rem;
+  color: $primary !important;
 }
 .container {
   display: flex;
@@ -26,8 +29,6 @@ $primary: #0082ca;
         color: black;
 
         &:hover {
-          border-bottom: 3px solid $primary;
-          padding-bottom: 1.5rem;
           color: $primary;
         }
       }

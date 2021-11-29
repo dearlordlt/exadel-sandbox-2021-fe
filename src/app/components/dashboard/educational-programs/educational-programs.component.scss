@@ -1,3 +1,5 @@
+$primary: #0082ca;
+
 .educational-programs {
   display: flex;
   flex-direction: column;
@@ -32,4 +34,14 @@ td.mat-cell {
 
 td.mat-cell {
   border-bottom: 1px solid #ccc;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    padding-bottom: 1.5rem;
+    color: $primary;
+  }
 }

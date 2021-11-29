@@ -9,11 +9,15 @@ export class LoaderInterceptor implements HttpInterceptor {
   constructor(public loaderService: LoaderService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.loaderService.isLoading.next(true);
+    setTimeout(() => {
+      this.loaderService.isLoading.next(true);
+    }, 0);
 
     return next.handle(request).pipe(
       finalize(() => {
-        this.loaderService.isLoading.next(false);
+        setTimeout(() => {
+          this.loaderService.isLoading.next(false);
+        }, 0);
       })
     );
   }

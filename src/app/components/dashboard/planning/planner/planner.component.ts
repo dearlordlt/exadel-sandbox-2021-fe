@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EducationalProgram } from '../../shared/interfaces/educational-program/educational-program.interface';
+import { EducationalProgram } from '../../../shared/interfaces/educational-program/educational-program.interface';
 import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
 
 @Component({
@@ -22,10 +22,12 @@ export class PlannerComponent implements OnInit {
   ngOnInit(): void {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
 
-    if (this.educationalProgramId) {
-      this.educationalProgramsService
-        .getEducationalProgram(this.educationalProgramId)
-        .subscribe((data: EducationalProgram) => (this.educationalProgram = data));
-    }
+    if (this.educationalProgramId) this.getEducationalProgram();
+  }
+
+  getEducationalProgram() {
+    this.educationalProgramsService
+      .getEducationalProgram(this.educationalProgramId)
+      .subscribe((data: EducationalProgram) => (this.educationalProgram = data));
   }
 }

@@ -3,7 +3,7 @@
     <h4>Actual Educational programs</h4>
     <mat-form-field appearance="fill">
       <mat-label>Educational Programs</mat-label>
-      <mat-select >
+      <mat-select>
         <mat-option *ngFor="let program of programs" [value]="program">{{program}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -18,45 +18,45 @@
   <div class="descr-form">
     <div class="descr">
       <!-- <mat-card class="decr-card"> -->
-        <h3 class="bold-text">Description</h3>
-        <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
+      <h3 class="bold-text">Description</h3>
+      <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
 
-        <p><span class="bold-text">How to get there: </span> pass the interview</p>
-        <p><span class="bold-text">Duration: </span> 2 months</p>
-        <p><span class="bold-text">Start: </span> October 4,2021</p>
-        <p><span class="bold-text">Registration: </span> by September 24, 2021</p>
-        <p><span class="bold-text">Format: </span> online</p>
-        <p><span class="bold-text">Language: </span> Russian or English</p>
-        <p><span class="bold-text">Location: </span> Georgia, Uzbekistan, Poland, Lithuania, Belarus, Russia.</p>
-        <p class="bold-text">Requirements for BA candidates:</p>
-        <div class="requirments">
-          <ul>
-            <li>English language: Intermediate or higher</li>
-            <li>Availability: from October 4 to December 4, 2021, at least 20 hours per week</li>
-            <li>
-              Excellent understanding:
-              <ul>
-                <li>software development cycle;</li>
-                <li>process and techniques for identifying requirements;</li>
-                <li>process and notation for requirements analysis</li>
-                <li>classification of Requirements and formats of their documentation;</li>
-                <li>the technician for verification, validation and requirements management;</li>
-              </ul>
-            </li>
-            <li>Excellent analytical and communication skills</li>
-            <li>Ability to present information in of group of people</li>
-            <li>Business communication skills</li>
-            <li>
-              An additional plus will be:
-              <ul>
-                <li>a basic understanding of the principles of user interface design;</li>
-                <li>a basic understanding of the principles of OOP;</li>
-                <li>basic understanding of API</li>
-                <li>experience of using Jira / Confluence, Trello, MS Visio, draw.io, Miro, Figma</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <p><span class="bold-text">How to get there: </span> pass the interview</p>
+      <p><span class="bold-text">Duration: </span> 2 months</p>
+      <p><span class="bold-text">Start: </span> October 4,2021</p>
+      <p><span class="bold-text">Registration: </span> by September 24, 2021</p>
+      <p><span class="bold-text">Format: </span> online</p>
+      <p><span class="bold-text">Language: </span> Russian or English</p>
+      <p><span class="bold-text">Location: </span> Georgia, Uzbekistan, Poland, Lithuania, Belarus, Russia.</p>
+      <p class="bold-text">Requirements for BA candidates:</p>
+      <div class="requirments">
+        <ul>
+          <li>English language: Intermediate or higher</li>
+          <li>Availability: from October 4 to December 4, 2021, at least 20 hours per week</li>
+          <li>
+            Excellent understanding:
+            <ul>
+              <li>software development cycle;</li>
+              <li>process and techniques for identifying requirements;</li>
+              <li>process and notation for requirements analysis</li>
+              <li>classification of Requirements and formats of their documentation;</li>
+              <li>the technician for verification, validation and requirements management;</li>
+            </ul>
+          </li>
+          <li>Excellent analytical and communication skills</li>
+          <li>Ability to present information in of group of people</li>
+          <li>Business communication skills</li>
+          <li>
+            An additional plus will be:
+            <ul>
+              <li>a basic understanding of the principles of user interface design;</li>
+              <li>a basic understanding of the principles of OOP;</li>
+              <li>basic understanding of API</li>
+              <li>experience of using Jira / Confluence, Trello, MS Visio, draw.io, Miro, Figma</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
       <!-- </mat-card> -->
     </div>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
@@ -75,14 +75,14 @@
             <input formControlName="skype" type="text" matInput />
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label> 
+            <mat-label>Email</mat-label>
             <input formControlName="email" type="email" matInput placeholder="email@example.com" />
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Phone</mat-label>
             <input formControlName="phoneNumber" type="tel" matInput />
           </mat-form-field>
-          <mat-form-field  appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Country</mat-label>
             <mat-select formControlName="country">
               <mat-option required *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
@@ -94,42 +94,41 @@
           </mat-form-field>
         </div>
         <div class="right-form">
-          <mat-form-field  appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>English level</mat-label>
             <mat-select formControlName="engLevel">
-              <mat-option  *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
+              <mat-option *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field  appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>The best time to contact (Minsk, UTC+3)</mat-label>
             <mat-select formControlName="contactTime">
               <mat-option *ngFor="let time of contactTimes" [value]="time"> {{time}} </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field  appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Are you planning to join Exadel after the Training?</mat-label>
             <mat-select formControlName="decision">
-              <mat-option  *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
+              <mat-option *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
             </mat-select>
           </mat-form-field>
           <section>
             <p>
               <mat-checkbox required formControlName="checkBox">
                 I know that my personal data will be processed on the terms
-                <br> of specified in the Privacy Policy</mat-checkbox>
+                <br />
+                of specified in the Privacy Policy</mat-checkbox
+              >
             </p>
           </section>
           <br />
           <p>Your personal data will be used during the Event and will not be shared with third parties</p>
           <p>Please read our <a href="https://exadel.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
         </div>
-        
       </div>
       <div class="apply-btn">
         <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
       </div>
     </form>
-
-    
   </div>
 </div>
