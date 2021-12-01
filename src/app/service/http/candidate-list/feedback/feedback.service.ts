@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
-import { CreateFeedback } from '../../../../components/dashboard/candidates/feedback/feedback';
+import { CreateFeedback } from '../../../../components/models/feedback';
 
 @Injectable({
   providedIn: 'root',
