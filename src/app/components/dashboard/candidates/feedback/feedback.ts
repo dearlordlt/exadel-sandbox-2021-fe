@@ -1,8 +1,18 @@
+export interface CreateFeedback {
+  datetimeNow: string;
+  feedBackType: string;
+  feedbackMark: number;
+  comment: string;
+  employeeId: string;
+  candidateId: string;
+}
+
 export interface Feedback {
-  id: 1;
-  candidateId: 1;
-  fromRecruiter: string;
-  fromInterviewer: string;
-  fromMentor: string;
-  fromInterviewerTwo: string;
+  id: string;
+  datetimeNow: string;
+  feedBackType: string;
+  feedbackMark: number;
+  comment: string;
+  employeeId: string;
+  candidateId: string;
 }
