@@ -1,9 +1,9 @@
 <div class="feedback">
   <h1>{{name}}'s feedback</h1>
   <div class="flex">
-    <div>
+    <div [formGroup]='feedbackForm'>
       <label for="hard_skill">Hard skill</label>
-      <select name="hard_skill" id="hard_skill">
+      <select name="hard_skill" id="hard_skill" [formControl]='feedbackMark'>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -32,7 +32,7 @@
     </div>
     <div class="textarea">
       <label for="feedback">Feedback</label>
-      <textarea name="feedback" id="feedback" cols="50" rows="5" placeholder="Your feedback"></textarea>
+      <textarea name="feedback" id="feedback" cols="50" rows="5" placeholder="Your feedback" [formControl]='comment'></textarea>
     </div>
   </div>
   <div class="btn">

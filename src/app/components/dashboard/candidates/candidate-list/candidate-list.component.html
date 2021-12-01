@@ -11,8 +11,7 @@
           <button class="hide-button" [disabled]="updateOptionDisabled" (click)="openDialog(candidate)">
             <mat-icon class="edit-icon">edit</mat-icon>
           </button>
-          <button mat-stroked-button color="primary" (click)="writeFeedback()">Feedback</button>
-          <button mat-stroked-button color="primary" (click)="readFeedback()">Feedback</button>
+          <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id, candidate.firstname, candidate.lastname)">Feedback</button>
         </td>
       </ng-container>
       <ng-container matColumnDef="firstname">

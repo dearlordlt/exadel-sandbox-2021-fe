@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment';
-import { Feedback } from '../feedback';
+import { Feedback } from '../../../../models/feedback';
 import { Observable } from 'rxjs';
 import { Candidate } from '../../../../models/candidate';
 import { filter, map, switchMap } from 'rxjs/operators';
