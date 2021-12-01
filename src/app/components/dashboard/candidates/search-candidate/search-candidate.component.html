@@ -5,7 +5,7 @@
       <mat-form-field>
         <mat-label>Educational Programs</mat-label>
         <mat-select formControlName="searchEduProgram">
-          <mat-option *ngFor="let program of programsName, let i = index" [value]="programsId[i]">{{program}}</mat-option>
+          <mat-option *ngFor="let program of programs" [value]="program.id">{{program.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -14,7 +14,7 @@
       <mat-form-field>
         <mat-label>Status</mat-label>
         <mat-select formControlName="searchStatus">
-          <mat-option *ngFor="let status of statuses, let i = index" [value]="i">{{status}}</mat-option>
+          <mat-option *ngFor="let status of statuses" [value]=" status.id">{{status.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

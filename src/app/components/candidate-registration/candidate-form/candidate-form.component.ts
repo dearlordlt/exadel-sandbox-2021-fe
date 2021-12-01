@@ -1,27 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from '@angular-material-extensions/select-country';
-import { countries } from 'src/app/global/constants';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SubmitDialogComponent } from '../submit-dialog/submit-dialog.component';
 
-interface Program {
-  value: string;
-  viewValue: string;
-}
-interface Technology {
-  value: string;
-  viewValue: string;
-}
-interface Level {
-  value: string;
-  viewValue: string;
-}
-interface Time {
-  value: string;
-  viewValue: string;
-}
-interface Decision {
-  value: string;
-  viewValue: string;
-}
+import { HttpClient } from '@angular/common/http';
+import { StaticService } from 'src/app/service/http/static/static.service';
+import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
+import { CandidatesService } from '../../dashboard/candidates/services/candidates.service';
+
+import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-candidate-form',
@@ -29,41 +16,124 @@ interface Decision {
   styleUrls: ['./candidate-form.component.scss'],
 })
 export class CandidateFormComponent implements OnInit {
-  programs: Program[] = [
-    { value: '.Net, JS, BA; 10-11.21', viewValue: '.Net, JS, BA; 10-11.21' },
-    { value: '.Net, JS, BA; 10-11.22', viewValue: '.Net, JS, BA; 10-11.22' },
-    { value: '.Net, JS, BA; 10-11.23', viewValue: '.Net, JS, BA; 10-11.23' },
-  ];
-  technologies: Technology[] = [
-    { value: '.Net-0', viewValue: '.Net' },
-    { value: 'JS-1', viewValue: 'JS' },
-    { value: 'BA-2', viewValue: 'BA' },
-  ];
-  levels: Level[] = [
-    { value: 'A1', viewValue: 'A1' },
-    { value: 'A2', viewValue: 'A2' },
-    { value: 'B1', viewValue: 'B1' },
-    { value: 'B2', viewValue: 'B2' },
-    { value: 'C1', viewValue: 'C1' },
-    { value: 'C2', viewValue: 'C2' },
-  ];
-  times: Time[] = [
-    { value: '10.00-13.00', viewValue: '10.00-13.00' },
-    { value: '13.00-16.00', viewValue: '13.00-16.00' },
-    { value: '16.00-19.00', viewValue: '16.00-19.00' },
-    { value: 'anytime', viewValue: 'anytime' },
-  ];
-  decisions: Decision[] = [
-    { value: 'Yes', viewValue: 'Yes' },
-    { value: 'No', viewValue: 'No' },
-    { value: 'Maybe', viewValue: 'Maybe' },
-  ];
-  countries: string[] = countries;
+  registrationForm: FormGroup = this.fb.group({
+    firstname: ['', [Validators.required]],
+    lastname: ['', [Validators.required]],
+    contactSkype: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern(/@[a-zA-Z ]*.[a-zA-Z ]*/)]],
+    contactPhone: ['', [Validators.required, Validators.pattern(/[0-9]{12}/)]],
+    country: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
+    city: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
+    englishLevel: ['', [Validators.required]],
+    contactTime: ['', [Validators.required]],
+    planToJoinExadel: ['', [Validators.required]],
+    checkBox: ['', [Validators.required]],
+    statusMark: [1],
+    educationProgramId: [''],
+    positionId: [''],
+  });
+  programs: { id: string; name: string }[] = [];
+  positions: { id: string; name: string; desc: string }[] = [];
+  description!: string;
+  levels!: string[];
+  countries!: string[];
+  contactTimes!: string[];
+  decisions!: string[];
 
-  onCountrySelected(country: Country) {
-    console.log(country);
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private staticService: StaticService,
+    private educationalProgramsService: EducationalProgramsService,
+    private candidatesService: CandidatesService,
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
+    this.getPrograms();
+    this.geStaticData();
   }
-  constructor() {}
 
-  ngOnInit(): void {}
+  geStaticData() {
+    this.staticService.getEnglishLevels().subscribe((data) => {
+      this.levels = Object.values(data);
+    });
+    this.staticService.getListofCountries().subscribe((data) => {
+      this.countries = Object.values(data);
+    });
+    this.staticService.getTimeSlots().subscribe((data) => {
+      this.contactTimes = Object.values(data);
+    });
+    this.staticService.getPlanningtoJoin().subscribe((data) => {
+      this.decisions = Object.values(data);
+    });
+  }
+  getPrograms() {
+    this.educationalProgramsService.getEducationalProgramsForRegistration().subscribe((data) => {
+      data.forEach((program) => {
+        this.programs.push({ id: program.id, name: program.name });
+      });
+    });
+  }
+  getPositions(id: string) {
+    this.educationalProgramsService.getEducationalProgramForRegistration(id).subscribe((data) => {
+      data.positions.forEach((position) => {
+        this.positions.push({ id: position.id, name: position.name, desc: position.descrAndRequ });
+      });
+    });
+  }
+  getDescription(id: string) {
+    this.positions.forEach((postion) => {
+      if (id === postion.id) {
+        this.description = postion.desc;
+      }
+    });
+  }
+  getFormError() {
+    return 'This field is required';
+  }
+  getCheckBoxError() {
+    return 'If you do not consent to the processing of personal data for the purposes and on terms specified in Privacy Policy, Exadel will not have the right to process your personal data and cannot allow you to participate in the event.';
+  }
+  getEmailError() {
+    if (this.registrationForm.controls['email'].hasError('required')) {
+      return 'You must enter an email';
+    }
+    return 'Not a valid email';
+  }
+  getPhoneError() {
+    if (this.registrationForm.controls['contactPhone'].hasError('required')) {
+      return 'You must enter an phone number';
+    }
+    return 'You must enter only 12 numbers';
+  }
+  getCityError() {
+    if (this.registrationForm.controls['city'].hasError('required')) {
+      return 'This field is required';
+    }
+    return 'City name should contain only letters';
+  }
+  showPostion(id: string) {
+    this.positions = [];
+    this.registrationForm.controls.positionId.setValue('');
+    this.getPositions(id);
+  }
+
+  openSubmitDialog() {
+    const dialogRef = this.dialog.open(SubmitDialogComponent, { data: this.registrationForm.value });
+    dialogRef.afterClosed().subscribe(() => {
+      this.registrationForm.reset();
+    });
+  }
+
+  submitted = false;
+  onSubmit() {
+    this.submitted = true;
+    if (this.registrationForm.valid) {
+      const sendData = { postDateTimeNow: moment().format(), ...this.registrationForm.value };
+      this.candidatesService.addCandidate(sendData).subscribe(() => {
+        this.openSubmitDialog();
+      });
+    }
+  }
 }

@@ -21,9 +21,9 @@ export class SearchCandidateComponent implements OnInit {
   });
   @Output() searchEvent = new EventEmitter();
 
-  programsId: string[] = ['0'];
-  programsName: string[] = ['All'];
-  statuses: string[] = [];
+  programs: { id: string; name: string }[] = [{ id: '', name: 'All' }];
+  statuses: { id: string; name: string }[] = [{ id: '', name: 'All' }];
+
   constructor(
     private fb: FormBuilder,
     private staticService: StaticService,
@@ -37,10 +37,8 @@ export class SearchCandidateComponent implements OnInit {
 
   getPrograms() {
     this.educationalProgramsService.getEducationalPrograms().subscribe((data) => {
-      console.log(data);
       data.forEach((program) => {
-        this.programsId.push(program.id);
-        this.programsName.push(program.name);
+        this.programs.push({ id: program.id, name: program.name });
       });
     });
   }
@@ -48,7 +46,9 @@ export class SearchCandidateComponent implements OnInit {
   getStatuses() {
     this.staticService.getCandidateStatus().subscribe((data) => {
       const values: string[] = Object.values(data);
-      this.statuses = ['All', ...values];
+      values.forEach((value, index) => {
+        this.statuses.push({ id: (index + 1).toString(), name: value });
+      });
     });
   }
 
@@ -65,7 +65,7 @@ export class SearchCandidateComponent implements OnInit {
     if (name) {
       queryArr.push(`name=${name}`);
     }
-    if (program && program !== '0') {
+    if (program) {
       queryArr.push(`gguid=${program}`);
     }
     if (status) {

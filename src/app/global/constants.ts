@@ -283,7 +283,49 @@ export const countries = [
   'Zambia',
   'Zimbabwe',
 ];
-
+export const technologies = {
+  technologyJsNET: [
+    '.Net',
+    'JS',
+    'BA'
+  ],
+  technologyJsJava: [
+    'Java',
+    'JS',
+    'BA'
+  ],
+  technologyJsPHP: [
+    'PHP',
+    'JS',
+    'BA'
+  ]
+}
+export const technologyJsNET = [
+  '.Net',
+  'JS',
+  'BA'
+]
+export const technologyJsJava = [
+  'Java',
+  'JS',
+  'BA'
+]
+export const technologyJsPHP = [
+  'PHP',
+  'JS',
+  'BA'
+]
+export const contactTime = [
+  '10.00-13.00',
+  '13.00-16.00',
+  '16.00-19.00',
+  'anytime',
+]
+export const decision = [
+  'Yes',
+  'No', 
+  'Maybe',
+]
 export const schedulerTimeSpots = {
   from: [
     '9:00',
