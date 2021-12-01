@@ -23,6 +23,10 @@ export class CandidatesService {
     );
   }
 
+  getCandidateById(id: string) {
+    return this.http.get<Candidate>(`${environment.EXADEL_API}/Candidates/${id}`);
+  }
+
   updateCandidate(candidate: Candidate): Observable<Candidate> {
     return this.http.put<Candidate>(`${environment.EXADEL_API}/Candidates/${candidate.id}`, candidate, headers);
   }

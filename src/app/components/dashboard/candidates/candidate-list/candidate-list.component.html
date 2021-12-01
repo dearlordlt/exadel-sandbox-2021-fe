@@ -9,7 +9,7 @@
         </th>
         <td mat-cell *matCellDef='let candidate' class='edit-feedback'>
           <mat-icon class='edit-icon' (click)='openDialog(candidate)'>edit</mat-icon>
-          <button mat-stroked-button color='primary' (click)='rwFeedback()'>Feedback</button>
+          <button mat-stroked-button color='primary' (click)='rwFeedback(candidate.id, candidate.firstname, candidate.lastname)'>Feedback</button>
         </td>
       </ng-container>
       <ng-container matColumnDef='firstname'>

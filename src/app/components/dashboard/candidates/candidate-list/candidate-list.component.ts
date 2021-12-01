@@ -165,7 +165,6 @@ export class CandidateListComponent implements OnInit {
     //need this now to make search component work, should be removed when connected to actual backend
     this.candidatesService.getCandidates().subscribe((candidates) => {
       this.dataSource.data = candidates;
-      console.log(this.dataSource.data[0].id)
       this.filterSelectObj.filter((o: any) => {
         o.options = this.getFilterObject(candidates, o.columnProp);
       });
@@ -233,7 +232,9 @@ export class CandidateListComponent implements OnInit {
     );
   }
 
-  rwFeedback() {
+  rwFeedback(id: string, name: string, lastname: string) {
+    this.feedback.candidateId = id;
+    this.feedback.candidateName = name + ' ' + lastname;
     this.feedback.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
       if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
         this.router.navigateByUrl('dashboard/write_feedback').then();

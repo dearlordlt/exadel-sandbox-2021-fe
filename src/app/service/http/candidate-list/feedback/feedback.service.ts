@@ -7,6 +7,8 @@ import { CreateFeedback } from '../../../../components/dashboard/candidates/feed
   providedIn: 'root',
 })
 export class FeedbackService {
+  candidateId = '';
+  candidateName = '';
 
   constructor(private http: HttpClient) {
   }
