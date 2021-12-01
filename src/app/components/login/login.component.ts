@@ -34,13 +34,6 @@ export class LoginComponent implements OnInit {
   }
 
   getLoginRejected() {
-    // NOT SURE IF THIS IS NEEDED
-
-    // if (!this.authenticationService.getEmailChecked() || !this.authenticationService.getPasswordChecked()) {
-    //   console.log(this.authenticationService.getEmailChecked());
-    //   console.log(this.authenticationService.getPasswordChecked());
-    //   return 'Your email or password is incorrect';
-    // } else
     return 'Your email or password is incorrect';
   }
 
@@ -49,19 +42,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   onSubmit() {
-    setTimeout(() => {
-      this.result = false;
-    }, 500);
     const logInData = new LogInData(this.logInForm.controls['email'].value, this.logInForm.controls['password'].value);
-    this.authenticationService.authenticate(logInData).subscribe((userData) => {
-      localStorage.setItem('id', userData.id);
-      localStorage.setItem('email', userData.email);
-      localStorage.setItem('token', userData.token);
-      this.authenticationService.isAuthenticated = true;
-      this.result = true;
-      this.router.navigate(['dashboard']);
-    });
-    // this.result = this.authenticationService.authenticate(logInData);
-    // console.log(this.result);
+    this.authenticationService.authenticate(logInData).subscribe(
+      (userData) => {
+        localStorage.setItem('id', userData.id);
+        localStorage.setItem('email', userData.email);
+        localStorage.setItem('token', userData.token);
+        this.authenticationService.isAuthenticated = true;
+        this.router.navigate(['dashboard']);
+      },
+      () => {
+        this.result = false;
+      }
+    );
   }
 }
