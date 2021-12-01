@@ -21,44 +21,6 @@
         <mat-card class="decr-card">
           <h3 class="bold-text">Description</h3>
           <p>{{description}}</p>
-          <!-- <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
-
-          <p><span class="bold-text">How to get there: </span> pass the interview</p>
-          <p><span class="bold-text">Duration: </span> 2 months</p>
-          <p><span class="bold-text">Start: </span> October 4,2021</p>
-          <p><span class="bold-text">Registration: </span> by September 24, 2021</p>
-          <p><span class="bold-text">Format: </span> online</p>
-          <p><span class="bold-text">Language: </span> Russian or English</p>
-          <p><span class="bold-text">Location: </span> Georgia, Uzbekistan, Poland, Lithuania, Belarus, Russia.</p>
-          <p class="bold-text">Requirements for BA candidates:</p>
-          <div class="requirments">
-            <ul>
-              <li>English language: Intermediate or higher</li>
-              <li>Availability: from October 4 to December 4, 2021, at least 20 hours per week</li>
-              <li>
-                Excellent understanding:
-                <ul>
-                  <li>software development cycle;</li>
-                  <li>process and techniques for identifying requirements;</li>
-                  <li>process and notation for requirements analysis</li>
-                  <li>classification of Requirements and formats of their documentation;</li>
-                  <li>the technician for verification, validation and requirements management;</li>
-                </ul>
-              </li>
-              <li>Excellent analytical and communication skills</li>
-              <li>Ability to present information in of group of people</li>
-              <li>Business communication skills</li>
-              <li>
-                An additional plus will be:
-                <ul>
-                  <li>a basic understanding of the principles of user interface design;</li>
-                  <li>a basic understanding of the principles of OOP;</li>
-                  <li>basic understanding of API</li>
-                  <li>experience of using Jira / Confluence, Trello, MS Visio, draw.io, Miro, Figma</li>
-                </ul>
-              </li>
-            </ul>
-          </div> -->
         </mat-card>
       </div>
       <div *ngIf="registrationForm.value.positionId" class="form">
@@ -66,32 +28,39 @@
           <mat-form-field appearance="fill">
             <mat-label>First name</mat-label>
             <input type="text" formControlName="firstname" matInput />
+            <mat-error *ngIf="registrationForm.controls['firstname'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Last name</mat-label>
             <input formControlName="lastname" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['lastname'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Skype</mat-label>
             <input formControlName="contactSkype" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['contactSkype'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
             <input formControlName="email" type="email" matInput placeholder="email@example.com" />
+            <mat-error *ngIf="registrationForm.controls['email'].invalid">{{getEmailError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Phone</mat-label>
             <input formControlName="contactPhone" type="tel" matInput />
+            <mat-error *ngIf="registrationForm.controls['contactPhone'].invalid">{{getPhoneError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Country</mat-label>
             <mat-select formControlName="country">
               <mat-option required *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['country'].invalid">{{getCityError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>City</mat-label>
             <input formControlName="city" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['city'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
         </div>
         <div class="right-form">
@@ -100,18 +69,21 @@
             <mat-select formControlName="englishLevel">
               <mat-option *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['englishLevel'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>The best time to contact (Minsk, UTC+3)</mat-label>
             <mat-select formControlName="contactTime">
               <mat-option *ngFor="let time of contactTimes" [value]="time"> {{time}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['contactTime'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Are you planning to join Exadel after the Training?</mat-label>
             <mat-select formControlName="planToJoinExadel">
               <mat-option *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['planToJoinExadel'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <section>
             <p>
@@ -120,6 +92,7 @@
                 <br />
                 of specified in the Privacy Policy</mat-checkbox
               >
+              <mat-error *ngIf="submitted && registrationForm.controls['checkBox'].errors">{{getCheckBoxError()}}</mat-error>
             </p>
           </section>
           <br />

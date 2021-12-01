@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SubmitDialogComponent } from '../submit-dialog/submit-dialog.component';
 
 import { HttpClient } from '@angular/common/http';
 import { StaticService } from 'src/app/service/http/static/static.service';
@@ -7,6 +8,7 @@ import { EducationalProgramsService } from 'src/app/service/http/educational-pro
 import { CandidatesService } from '../../dashboard/candidates/services/candidates.service';
 
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-candidate-form',
@@ -18,7 +20,7 @@ export class CandidateFormComponent implements OnInit {
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
     contactSkype: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.pattern(/@[a-zA-Z ]*.[a-zA-Z ]*/)]],
     contactPhone: ['', [Validators.required, Validators.pattern(/[0-9]{12}/)]],
     country: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
     city: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
@@ -43,7 +45,8 @@ export class CandidateFormComponent implements OnInit {
     private http: HttpClient,
     private staticService: StaticService,
     private educationalProgramsService: EducationalProgramsService,
-    private candidatesService: CandidatesService
+    private candidatesService: CandidatesService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -86,18 +89,47 @@ export class CandidateFormComponent implements OnInit {
       }
     });
   }
-
+  getFormError(){
+    return 'This field is required'
+  }
+  getCheckBoxError(){
+    return 'If you do not consent to the processing of personal data for the purposes and on terms specified in Privacy Policy, Exadel will not have the right to process your personal data and cannot allow you to participate in the event.'
+  }
+  getEmailError(){
+    if (this.registrationForm.controls['email'].hasError('required')) {
+      return 'You must enter an email';
+    }
+    return 'Not a valid email';
+  }
+  getPhoneError(){
+    if (this.registrationForm.controls['contactPhone'].hasError('required')) {
+      return 'You must enter an phone number';
+    }
+    return 'You must enter only 12 numbers'
+  }
+  getCityError(){
+    if (this.registrationForm.controls['city'].hasError('required')) {
+      return 'This field is required';
+    }
+    return 'City name should contain only letters'
+  }
   showPostion(id: string) {
     this.positions = [];
     this.registrationForm.controls.positionId.setValue('');
     this.getPositions(id);
   }
-
+  submitted = false;
   onSubmit() {
+    this.submitted = true;
     if (this.registrationForm.valid) {
       const sendData = { postDateTimeNow: moment().format(), ...this.registrationForm.value };
       this.candidatesService.addCandidate(sendData).subscribe((data) => {
         console.log('ADDED', data);
+        const dialogRef = this.dialog.open(SubmitDialogComponent);
+        dialogRef.afterClosed().subscribe((result) => {
+          console.log(`Dialog result: ${result}`);
+          this.registrationForm.reset(this.registrationForm.value)
+        });
       });
     }
   }

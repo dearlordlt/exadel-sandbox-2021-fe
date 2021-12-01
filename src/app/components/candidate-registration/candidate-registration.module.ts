@@ -10,9 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
 import { CandidateHeaderComponent } from './candidate-header/candidate-header.component';
 import { CandidateRegistrationComponent } from './candidate-registration.component';
+import { SubmitDialogComponent } from './submit-dialog/submit-dialog.component';
 
 @NgModule({
-  declarations: [CandidateFormComponent, CandidateHeaderComponent, CandidateRegistrationComponent],
+  declarations: [CandidateFormComponent, CandidateHeaderComponent, CandidateRegistrationComponent, SubmitDialogComponent],
   imports: [CommonModule, AppRoutingModule,  FormsModule, ReactiveFormsModule, AppMaterialModule, MatSelectCountryModule.forRoot('en'), HttpClientModule],
 })
 export class CandidateRegistrationModule {}
