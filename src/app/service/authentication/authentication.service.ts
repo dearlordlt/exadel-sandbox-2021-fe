@@ -17,51 +17,25 @@ export class AuthenticationService {
 
   authenticate(logInData: LogInData): Observable<UserData> {
     return this.http.post<UserData>(`${environment.EXADEL_API}/Employee/authenticate`, logInData);
-
-    // if (this.checkData(logInData)) {
-    //   this.isAuthenticated = true;
-    //   this.router.navigate(['dashboard']);
-    //   return true;
-    // } else {
-    //   this.isAuthenticated = false;
-    //   return false;
-    // }
   }
 
   getEmployee(id: string): Observable<EmployeeData> {
     return this.http.get<EmployeeData>(`${environment.EXADEL_API}/Employee/Get/${id}`);
   }
 
-  // private checkData(logInData: LogInData): boolean {
-  //   return this.checkEmail(logInData.getEmail()) && this.checkPassword(logInData.getPassword());
-  // }
-  // email_val: boolean | null = null;
-  // private checkEmail(email: string): boolean {
-  //   if (email === this.testUser.getEmail()) {
-  //     this.email_val = true;
-  //     return this.email_val;
-  //   } else {
-  //     this.email_val = false;
-  //     return this.email_val;
-  //   }
-  // }
-  // password_val: boolean | null = null;
-  // private checkPassword(password: string) {
-  //   if (password === this.testUser.getPassword()) {
-  //     this.password_val = true;
-  //     return this.password_val;
-  //   } else {
-  //     this.password_val = false;
-  //     return this.password_val;
-  //   }
-  // }
+  checkEmployee() {
+    this.getEmployee(localStorage.getItem('id') || '').subscribe(
+      (data) => {
+        if (data.email !== localStorage.getItem('email')) {
+          this.router.navigate(['login']);
+        }
+      },
+      () => {
+        this.router.navigate(['login']);
+      }
+    );
+  }
 
-  // getEmailChecked() {
-  //   return this.email_val;
-  // }
-  // getPasswordChecked() {
-  //   return this.password_val;
-  // }
   logout() {
     localStorage.clear();
     this.isAuthenticated = false;
