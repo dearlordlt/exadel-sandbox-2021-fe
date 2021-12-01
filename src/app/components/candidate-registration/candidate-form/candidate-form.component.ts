@@ -29,8 +29,8 @@ export class CandidateFormComponent implements OnInit {
     planToJoinExadel: ['', [Validators.required]],
     checkBox: ['', [Validators.required]],
     statusMark: [1],
-    educationProgramId: ['', [Validators.required]],
-    positionId: ['', [Validators.required]],
+    educationProgramId: [''],
+    positionId: [''],
   });
   programs: { id: string; name: string }[] = [];
   positions: { id: string; name: string; desc: string }[] = [];
@@ -89,47 +89,50 @@ export class CandidateFormComponent implements OnInit {
       }
     });
   }
-  getFormError(){
-    return 'This field is required'
+  getFormError() {
+    return 'This field is required';
   }
-  getCheckBoxError(){
-    return 'If you do not consent to the processing of personal data for the purposes and on terms specified in Privacy Policy, Exadel will not have the right to process your personal data and cannot allow you to participate in the event.'
+  getCheckBoxError() {
+    return 'If you do not consent to the processing of personal data for the purposes and on terms specified in Privacy Policy, Exadel will not have the right to process your personal data and cannot allow you to participate in the event.';
   }
-  getEmailError(){
+  getEmailError() {
     if (this.registrationForm.controls['email'].hasError('required')) {
       return 'You must enter an email';
     }
     return 'Not a valid email';
   }
-  getPhoneError(){
+  getPhoneError() {
     if (this.registrationForm.controls['contactPhone'].hasError('required')) {
       return 'You must enter an phone number';
     }
-    return 'You must enter only 12 numbers'
+    return 'You must enter only 12 numbers';
   }
-  getCityError(){
+  getCityError() {
     if (this.registrationForm.controls['city'].hasError('required')) {
       return 'This field is required';
     }
-    return 'City name should contain only letters'
+    return 'City name should contain only letters';
   }
   showPostion(id: string) {
     this.positions = [];
     this.registrationForm.controls.positionId.setValue('');
     this.getPositions(id);
   }
+
+  openSubmitDialog() {
+    const dialogRef = this.dialog.open(SubmitDialogComponent, { data: this.registrationForm.value });
+    dialogRef.afterClosed().subscribe(() => {
+      this.registrationForm.reset();
+    });
+  }
+
   submitted = false;
   onSubmit() {
     this.submitted = true;
     if (this.registrationForm.valid) {
       const sendData = { postDateTimeNow: moment().format(), ...this.registrationForm.value };
-      this.candidatesService.addCandidate(sendData).subscribe((data) => {
-        console.log('ADDED', data);
-        const dialogRef = this.dialog.open(SubmitDialogComponent);
-        dialogRef.afterClosed().subscribe((result) => {
-          console.log(`Dialog result: ${result}`);
-          this.registrationForm.reset(this.registrationForm.value)
-        });
+      this.candidatesService.addCandidate(sendData).subscribe(() => {
+        this.openSubmitDialog();
       });
     }
   }
