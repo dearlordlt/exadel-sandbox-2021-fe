@@ -22,8 +22,16 @@ export class EducationalProgramsService {
     return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter`);
   }
 
+  getEducationalProgramsForRegistration(): Observable<EducationalProgram[]> {
+    return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetForReg`);
+  }
+
   getEducationalProgram(id: string): Observable<EducationalProgram> {
     return this.http.get<EducationalProgram>(`${environment.EXADEL_API}/EducationProgram/${id}`);
+  }
+
+  getEducationalProgramForRegistration(id: string): Observable<EducationalProgram> {
+    return this.http.get<EducationalProgram>(`${environment.EXADEL_API}/EducationProgram/?id=${id}`);
   }
 
   postEducationalProgram(data: PostEducationalProgram): Observable<EducationalProgram> {

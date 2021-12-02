@@ -4,13 +4,12 @@ import { AuthenticationService } from 'src/app/service/authentication/authentica
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(public authenticationService: AuthenticationService) { }
+  constructor(public authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
+    this.authenticationService.checkEmployee();
   }
-
 }

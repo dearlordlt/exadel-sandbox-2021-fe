@@ -1,123 +1,98 @@
 <div class="container">
-  <div class="edu-programs">
-    <h4>Actual Educational programs</h4>
-    <mat-form-field appearance="fill">
-      <mat-label>Select program</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let program of programs" [value]="program.value"> {{program.viewValue}} </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <h4>Your position/technology</h4>
-    <mat-form-field appearance="fill">
-      <mat-label>Select technology</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let technology of technologies" [value]="technology.value"> {{technology.viewValue}} </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="descr-form">
-    <div class="descr">
-      <mat-card class="decr-card">
-        <h3 class="bold-text">Description</h3>
-        <p>During your internship, you will work closely with interns in JS and .NET on an exciting learning project.</p>
-
-        <p><span class="bold-text">How to get there: </span> pass the interview</p>
-        <p><span class="bold-text">Duration: </span> 2 months</p>
-        <p><span class="bold-text">Start: </span> October 4,2021</p>
-        <p><span class="bold-text">Registration: </span> by September 24, 2021</p>
-        <p><span class="bold-text">Format: </span> online</p>
-        <p><span class="bold-text">Language: </span> Russian or English</p>
-        <p><span class="bold-text">Location: </span> Georgia, Uzbekistan, Poland, Lithuania, Belarus, Russia.</p>
-        <p class="bold-text">Requirements for BA candidates:</p>
-        <div class="requirments">
-          <ul>
-            <li>English language: Intermediate or higher</li>
-            <li>Availability: from October 4 to December 4, 2021, at least 20 hours per week</li>
-            <li>
-              Excellent understanding:
-              <ul>
-                <li>software development cycle;</li>
-                <li>process and techniques for identifying requirements;</li>
-                <li>process and notation for requirements analysis</li>
-                <li>classification of Requirements and formats of their documentation;</li>
-                <li>the technician for verification, validation and requirements management;</li>
-              </ul>
-            </li>
-            <li>Excellent analytical and communication skills</li>
-            <li>Ability to present information in of group of people</li>
-            <li>Business communication skills</li>
-            <li>
-              An additional plus will be:
-              <ul>
-                <li>a basic understanding of the principles of user interface design;</li>
-                <li>a basic understanding of the principles of OOP;</li>
-                <li>basic understanding of API</li>
-                <li>experience of using Jira / Confluence, Trello, MS Visio, draw.io, Miro, Figma</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </mat-card>
+  <form [formGroup]="registrationForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+    <div class="edu-programs">
+      <h4>Actual Educational programs</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Educational Programs</mat-label>
+        <mat-select formControlName="educationProgramId" (selectionChange)="showPostion(registrationForm.value.educationProgramId)">
+          <mat-option *ngFor="let program of programs" [value]="program.id">{{program.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4>Your position/technology</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Select technology</mat-label>
+        <mat-select formControlName="positionId" (selectionChange)="getDescription(registrationForm.value.positionId)">
+          <mat-option *ngFor="let position of positions" [value]="position.id">{{position.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <form action="#">
-      <div class="form">
+    <div *ngIf="registrationForm.value.positionId" class="descr-form">
+      <div class="descr">
+        <mat-card class="decr-card">
+          <h3 class="bold-text">Description</h3>
+          <p>{{description}}</p>
+        </mat-card>
+      </div>
+      <div *ngIf="registrationForm.value.positionId" class="form">
         <div class="left-form">
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>First name</mat-label>
-            <input type="text" matInput />
+            <input type="text" formControlName="firstname" matInput />
+            <mat-error *ngIf="registrationForm.controls['firstname'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Last name</mat-label>
-            <input type="text" matInput />
+            <input formControlName="lastname" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['lastname'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Skype</mat-label>
-            <input type="text" matInput />
+            <input formControlName="contactSkype" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['contactSkype'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="email@example.com" />
+            <input formControlName="email" type="email" matInput placeholder="email@example.com" />
+            <mat-error *ngIf="registrationForm.controls['email'].invalid">{{getEmailError()}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Phone</mat-label>
-            <input type="tel" matInput />
+            <input formControlName="contactPhone" type="tel" matInput />
+            <mat-error *ngIf="registrationForm.controls['contactPhone'].invalid">{{getPhoneError()}}</mat-error>
           </mat-form-field>
-          <!-- <mat-select-country appearance="outline" label="Country" (onCountrySelected)="onCountrySelected($event)"> </mat-select-country> -->
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Country</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
+            <mat-select formControlName="country">
+              <mat-option required *ngFor="let country of countries" [value]="country"> {{country}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['country'].invalid">{{getCityError()}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>City</mat-label>
-            <input type="text" matInput />
+            <input formControlName="city" type="text" matInput />
+            <mat-error *ngIf="registrationForm.controls['city'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
         </div>
         <div class="right-form">
           <mat-form-field appearance="fill">
             <mat-label>English level</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let level of levels" [value]="level.value"> {{level.viewValue}} </mat-option>
+            <mat-select formControlName="englishLevel">
+              <mat-option *ngFor="let level of levels" [value]="level"> {{level}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['englishLevel'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>The best time to contact (Minsk, UTC+3)</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let time of times" [value]="time.value"> {{time.viewValue}} </mat-option>
+            <mat-select formControlName="contactTime">
+              <mat-option *ngFor="let time of contactTimes" [value]="time"> {{time}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['contactTime'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Are you planning to join Exadel after the Training?</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let decision of decisions" [value]="decision.value"> {{decision.viewValue}} </mat-option>
+            <mat-select formControlName="planToJoinExadel">
+              <mat-option *ngFor="let decision of decisions" [value]="decision"> {{decision}} </mat-option>
             </mat-select>
+            <mat-error *ngIf="registrationForm.controls['planToJoinExadel'].invalid">{{getFormError()}}</mat-error>
           </mat-form-field>
-          <section class="example-section">
+          <section>
             <p>
-              <mat-checkbox class="example-margin">
-                I know that my personal data will be processed on the terms of specified in the Privacy Policy</mat-checkbox
+              <mat-checkbox required formControlName="checkBox">
+                I know that my personal data will be processed on the terms
+                <br />
+                of specified in the Privacy Policy</mat-checkbox
               >
+              <mat-error *ngIf="submitted && registrationForm.controls['checkBox'].errors">{{getCheckBoxError()}}</mat-error>
             </p>
           </section>
           <br />
@@ -125,10 +100,9 @@
           <p>Please read our <a href="https://exadel.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
         </div>
       </div>
-    </form>
-
-    <div class="apply-btn">
-      <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
+      <div class="apply-btn">
+        <button mat-stroked-button class="apply-bt" color="primary">Apply</button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>

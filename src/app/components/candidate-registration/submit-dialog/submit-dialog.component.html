@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+  <p>{{data.firstname +' '+ data.lastname}}</p>
+  <p>You have applied for</p>
+  <p>Educational Program: {{program}}</p>
+  <p>Position: {{position}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>OK</button>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { filter, map, switchMap, take } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,13 +11,17 @@ import { MatSort } from '@angular/material/sort';
 import { StaticService } from 'src/app/service/http/static/static.service';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
+import { FeedbackService } from '../../../../service/http/candidate-list/feedback/feedback.service';
+
+import * as moment from 'moment';
+import 'moment-timezone';
 
 @Component({
   selector: 'app-candidate-list',
   templateUrl: './candidate-list.component.html',
   styleUrls: ['./candidate-list.component.scss'],
 })
-export class CandidateListComponent implements OnInit {
+export class CandidateListComponent implements OnInit, AfterViewInit {
   // dataSource: any | Candidate[] = [];
   dataSource: any | Candidate[] = new MatTableDataSource();
   empoloyeeRole!: string;
@@ -59,7 +63,8 @@ export class CandidateListComponent implements OnInit {
     public dialog: MatDialog,
     private staticService: StaticService,
     private educationalProgramsService: EducationalProgramsService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private feedbackService: FeedbackService
   ) {
     this.filterSelectObj = [
       {
@@ -158,7 +163,6 @@ export class CandidateListComponent implements OnInit {
   ngOnInit(): void {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
-    this.dataSource.sort = this.sort;
     this.fillProgramsList();
     this.fillPositionsList();
     this.fillStatusesList();
@@ -166,6 +170,12 @@ export class CandidateListComponent implements OnInit {
   }
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
   getFilterObject(fullObj: any, key: any) {
     const uniqChk: any = [];
@@ -208,6 +218,7 @@ export class CandidateListComponent implements OnInit {
       });
     });
   }
+
   fillPositionsList() {
     this.educationalProgramsService.getPositions().subscribe((positions) => {
       positions.forEach((position) => {
@@ -215,6 +226,7 @@ export class CandidateListComponent implements OnInit {
       });
     });
   }
+
   fillStatusesList() {
     this.staticService.getCandidateStatus().subscribe((data) => {
       this.statusesList = data;
@@ -244,6 +256,10 @@ export class CandidateListComponent implements OnInit {
       return this.statusesList[id];
     }
     return id;
+  }
+
+  showTime(time: Date) {
+    return moment(time).format(moment.HTML5_FMT.DATE).split('-').join('.');
   }
 
   filterChange(filter: any, event: any) {
@@ -303,12 +319,21 @@ export class CandidateListComponent implements OnInit {
     // });
   }
 
-  writeFeedback() {
-    this.router.navigateByUrl('dashboard/write_feedback').then();
-  }
-
-  readFeedback() {
-    this.router.navigateByUrl('dashboard/read_feedback').then();
+  rwFeedback(id: string, name: string, lastname: string) {
+    this.feedbackService.candidateId = id;
+    this.feedbackService.candidateName = name + ' ' + lastname;
+    this.feedbackService
+      .getEmployeeById(localStorage.getItem('id')!)
+      .pipe(
+        tap((emp) => {
+          if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
+            this.router.navigateByUrl('dashboard/write_feedback').then();
+          } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
+            this.router.navigateByUrl('dashboard/read_feedback').then();
+          }
+        })
+      )
+      .subscribe();
   }
 
   openDialog(candidate: Candidate): void {

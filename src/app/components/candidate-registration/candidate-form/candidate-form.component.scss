@@ -35,6 +35,9 @@ h3.bold-text{
     width: 100%;
     .descr{
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .decr-card{
         padding: 20px 180px;
         .requiremnets{

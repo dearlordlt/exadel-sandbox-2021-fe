@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { statuses, englishLevels, countries } from 'src/app/global/constants';
 import { StaticService } from 'src/app/service/http/static/static.service';
 import { Candidate } from '../../../models/candidate';
-import { StaticData } from '../../../models/staticData';
 @Component({
   selector: 'app-update-candidate-dialog',
   templateUrl: './update-candidate-dialog.component.html',
@@ -11,8 +9,8 @@ import { StaticData } from '../../../models/staticData';
 })
 export class UpdateCandidateDialogComponent implements OnInit {
   statuses: string[] = [];
-  englishLevel = englishLevels;
-  country = countries;
+  englishLevel: string[] = [];
+  country: string[] = [];
   disableUpdate = false;
   showFields = this.data.role !== 'Manager' ? true : false;
   constructor(
@@ -22,6 +20,12 @@ export class UpdateCandidateDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getStatuses();
+    this.getEnglishLevels();
+    this.getCountries();
+  }
+
+  getStatuses() {
     this.staticService.getCandidateStatus().subscribe((data) => {
       const keys: string[] = Object.keys(data);
       if (this.data.role === 'Recruiter') {
@@ -37,6 +41,19 @@ export class UpdateCandidateDialogComponent implements OnInit {
       }
     });
   }
+
+  getEnglishLevels() {
+    this.staticService.getEnglishLevels().subscribe((data) => {
+      this.englishLevel = Object.values(data);
+    });
+  }
+
+  getCountries() {
+    this.staticService.getListofCountries().subscribe((data) => {
+      this.country = data;
+    });
+  }
+
   checkValues() {
     if (
       !this.data.candidate.firstname.trim() ||

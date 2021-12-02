@@ -15,13 +15,17 @@ const headers = {
   providedIn: 'root',
 })
 export class CandidatesService {
-  apiUrl: string = 'Candidates';
+  private apiUrl = 'Candidates';
+
+  // getCandidates(): Observable<Candidate[]> {
+  //   return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetAllCandidates`).pipe(
+  //     tap(() => console.log('fetched candidates')),
+  //     catchError(this.handleError('getCandidates', []))
+  //   );
+  // }
 
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetAllCandidates`).pipe(
-      tap(() => console.log('fetched candidates')),
-      catchError(this.handleError('getCandidates', []))
-    );
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
   }
 
   searchCandidate(searchQuery: string) {
@@ -30,6 +34,10 @@ export class CandidatesService {
 
   updateCandidate(candidate: Candidate): Observable<Candidate> {
     return this.http.put<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/${candidate.id}`, candidate, headers);
+  }
+
+  addCandidate(candidate: Candidate): Observable<Candidate> {
+    return this.http.post<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/AddCandidate`, candidate, headers);
   }
 
   filterData(searchText: string) {}
