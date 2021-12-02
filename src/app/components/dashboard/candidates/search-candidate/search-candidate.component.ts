@@ -36,7 +36,7 @@ export class SearchCandidateComponent implements OnInit {
   }
 
   getPrograms() {
-    this.educationalProgramsService.getEducationalPrograms().subscribe((data) => {
+    this.educationalProgramsService.getEducationalProgramsForRegistration().subscribe((data) => {
       data.forEach((program) => {
         this.programs.push({ id: program.id!, name: program.name });
       });

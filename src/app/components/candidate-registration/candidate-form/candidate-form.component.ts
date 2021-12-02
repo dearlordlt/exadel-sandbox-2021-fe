@@ -74,14 +74,14 @@ export class CandidateFormComponent implements OnInit {
   getPrograms() {
     this.educationalProgramsService.getEducationalProgramsForRegistration().subscribe((data) => {
       data.forEach((program) => {
-        this.programs.push({ id: program.id, name: program.name });
+        this.programs.push({ id: program.id!, name: program.name });
       });
     });
   }
   getPositions(id: string) {
     this.educationalProgramsService.getEducationalProgramForRegistration(id).subscribe((data) => {
       data.positions.forEach((position) => {
-        this.positions.push({ id: position.id, name: position.name, desc: position.descrAndRequ });
+        this.positions.push({ id: position.id!, name: position.name, desc: position.descrAndRequ });
       });
     });
   }

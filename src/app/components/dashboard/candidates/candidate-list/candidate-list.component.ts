@@ -212,7 +212,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
   }
 
   fillProgramsList() {
-    this.educationalProgramsService.getEducationalPrograms().subscribe((programs) => {
+    this.educationalProgramsService.getEducationalProgramsForRegistration().subscribe((programs) => {
       programs.forEach((program) => {
         this.programsList.push({ id: program.id!, name: program.name });
       });
