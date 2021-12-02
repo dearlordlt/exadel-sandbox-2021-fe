@@ -16,7 +16,11 @@ export class ReportService {
     return this.http.get<any>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter`);
   }
 
+  getProgramById(id: string) {
+    return this.http.get<any>(`${environment.EXADEL_API}/EducationProgram/${id}`);
+  }
+
   getReport(id = '') {
-    return this.http.get<any>(`${environment.EXADEL_API}/Candidates/GetForReport?eduProgId=${id}`);
+    return this.http.get<any>(`${environment.EXADEL_API}/Candidates/GetForReport?educationProgramId=${id}`);
   }
 }

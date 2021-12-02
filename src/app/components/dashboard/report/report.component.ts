@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./report.component.scss'],
 })
 export class ReportComponent implements OnInit {
-  programs$ = this.reportService.getPrograms().pipe(tap(console.log));
+  programs$ = this.reportService.getPrograms().pipe();
   report$!: Observable<any>;
   fileName = 'Report.xlsx';
   reportArrOptions: string[] = ['Applications',
@@ -33,10 +33,10 @@ export class ReportComponent implements OnInit {
 
   createReport(id: string) {
     this.reportService.getReport(id).pipe(tap(r => {
-      this.reportArrValues = Object.values(r[0]);
+      this.reportArrValues = Object.values(r);
     })).subscribe();
-    this.reportService.getPrograms().pipe(tap(p => {
-      this.name = p[id].name;
+    this.reportService.getProgramById(id).pipe(tap(p => {
+      this.name = p.name;
     })).subscribe();
     this.report$ = this.reportService.getReport(id);
   }

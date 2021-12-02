@@ -5,7 +5,7 @@
     <mat-label>Educational Programs</mat-label>
     <mat-select (selectionChange)="createReport($event.value)">
       <ng-container *ngIf="programs$ | async as programs">
-        <mat-option *ngFor="let program of programs" [value]="program.id">{{program.id}}</mat-option>
+        <mat-option *ngFor="let program of programs" [value]="program.id">{{program.name}}</mat-option>
       </ng-container>
     </mat-select>
   </mat-form-field>
@@ -13,42 +13,42 @@
   <div [chart]="chart"></div>
 
   <ng-container *ngIf="report$ | async as reports">
-    <table id="excel-table" *ngFor="let report of reports">
+    <table id="excel-table" *ngIf="reportArrValues">
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[0]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.applications}}</th>
+        <th>{{reportArrValues[0]}}</th>
       </tr>
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[1]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.refusalByEnglish}}</th>
+        <th>{{reportArrValues[1]}}</th>
       </tr>
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[2]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.refusalByLocation}}</th>
+        <th>{{reportArrValues[2]}}</th>
       </tr>
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[3]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.failureTechnical}}</th>
+        <th>{{reportArrValues[3]}}</th>
       </tr>
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[4]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.candidateRefusal}}</th>
+        <th>{{reportArrValues[4]}}</th>
       </tr>
       <tr *ngIf="reportArrOptions">
         <th>{{reportArrOptions[5]}}</th>
         <th></th>
         <th></th>
-        <th>{{report.sandboxCompleted}}</th>
+        <th>{{reportArrValues[5]}}</th>
       </tr>
     </table>
   </ng-container>
