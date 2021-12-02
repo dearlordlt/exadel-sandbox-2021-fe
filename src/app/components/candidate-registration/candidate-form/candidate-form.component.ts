@@ -39,7 +39,7 @@ export class CandidateFormComponent implements OnInit {
   countries!: string[];
   contactTimes!: string[];
   decisions!: string[];
-  initalValues = this.registrationForm.value;
+  initialValues = this.registrationForm.value;
 
   constructor(
     private fb: FormBuilder,
@@ -124,7 +124,7 @@ export class CandidateFormComponent implements OnInit {
     const dialogRef = this.dialog.open(SubmitDialogComponent, { data: this.registrationForm.value });
     dialogRef.afterClosed().subscribe(() => {
       formDirective.resetForm();
-      this.registrationForm.reset(this.initalValues);
+      this.registrationForm.reset(this.initialValues);
       this.positions = [];
       this.submitted = false;
     });
