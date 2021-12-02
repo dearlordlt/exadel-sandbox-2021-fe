@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { SubmitDialogComponent } from '../submit-dialog/submit-dialog.component';
 
 import { HttpClient } from '@angular/common/http';
@@ -39,6 +39,7 @@ export class CandidateFormComponent implements OnInit {
   countries!: string[];
   contactTimes!: string[];
   decisions!: string[];
+  initalValues = this.registrationForm.value;
 
   constructor(
     private fb: FormBuilder,
@@ -119,20 +120,23 @@ export class CandidateFormComponent implements OnInit {
     this.getPositions(id);
   }
 
-  openSubmitDialog() {
+  openSubmitDialog(formDirective: FormGroupDirective) {
     const dialogRef = this.dialog.open(SubmitDialogComponent, { data: this.registrationForm.value });
     dialogRef.afterClosed().subscribe(() => {
-      this.registrationForm.reset();
+      formDirective.resetForm();
+      this.registrationForm.reset(this.initalValues);
+      this.positions = [];
+      this.submitted = false;
     });
   }
 
   submitted = false;
-  onSubmit() {
+  onSubmit(formDirective: FormGroupDirective) {
     this.submitted = true;
     if (this.registrationForm.valid) {
       const sendData = { postDateTimeNow: moment().format(), ...this.registrationForm.value };
       this.candidatesService.addCandidate(sendData).subscribe(() => {
-        this.openSubmitDialog();
+        this.openSubmitDialog(formDirective);
       });
     }
   }
