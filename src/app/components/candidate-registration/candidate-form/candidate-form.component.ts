@@ -20,7 +20,7 @@ export class CandidateFormComponent implements OnInit {
     firstname: ['', [Validators.required]],
     lastname: ['', [Validators.required]],
     contactSkype: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.pattern(/@[a-zA-Z ]*.[a-zA-Z ]*/)]],
+    email: ['', [Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
     contactPhone: ['', [Validators.required, Validators.pattern(/[0-9]{12}/)]],
     country: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
     city: ['', [Validators.required, Validators.pattern(/[a-zA-Z ]*/)]],
