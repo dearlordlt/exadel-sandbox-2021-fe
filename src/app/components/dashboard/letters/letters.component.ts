@@ -1,27 +1,37 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Date_Elements } from '../../models/dateElements';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-const table_Data: Date_Elements[] = [
-  { addDateTime: '27.10.2021', subject: 'the application is accepted' },
-  { addDateTime: '25.10.2021', subject: 'refusal by the level of English' },
-  { addDateTime: '24.10.2021', subject: 'refusal by location' },
-  { addDateTime: '23.10.2021', subject: 'failure on the technical level' },
-  { addDateTime: '22.10.2021', subject: 'in reserve' },
-  { addDateTime: '18.10.2021', subject: 'accepted for Sandbox' },
-];
+import { LetterTemplate } from '../../shared/interfaces/letters/letter-template.interface';
+import { LettersService } from 'src/app/service/http/letters/letters.service';
+import * as moment from 'moment';
+import 'moment-timezone';
 
 @Component({
   selector: 'app-letters',
   templateUrl: './letters.component.html',
   styleUrls: ['./letters.component.scss'],
 })
-export class LettersComponent {
-  displayedColumns: string[] = ['dateUpdate', 'Name', 'edit'];
-  dataSource = new MatTableDataSource(table_Data);
+export class LettersComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'dateOfUpdate', 'edit'];
+  dataSource: LetterTemplate[] = [];
 
-  constructor( private router: Router ) {}  ;
+  constructor(private router: Router, private letterService: LettersService) {}
+
+  ngOnInit(): void {
+    this.getLetterTemplates();
+  }
+
+  getLetterTemplates(): void {
+    this.letterService.getLetterTemplates().subscribe((data: LetterTemplate[]) => (this.dataSource = this.trimTimeFromDate(data)));
+  }
+
+  trimTimeFromDate(letterTemplates: LetterTemplate[]): LetterTemplate[] {
+    // Trim the time part from date and replaces dashes with dots
+    letterTemplates.forEach((letterTemplate) => {
+      letterTemplate.addDateTime = moment(letterTemplate.addDateTime).format(moment.HTML5_FMT.DATE).split('-').join('.');
+    });
+
+    return letterTemplates;
+  }
 
   gotoUpdate() {
     this.router.navigate(['/', 'update-letter']);

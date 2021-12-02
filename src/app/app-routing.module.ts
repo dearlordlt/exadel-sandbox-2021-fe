@@ -16,6 +16,7 @@ import { CandidateRegistrationComponent } from './components/candidate-registrat
 import { AuthGuard } from './guards/auth.guard';
 import { CandidatesComponent } from './components/dashboard/candidates/candidates.component';
 import { UpdateEducationalProgramComponent } from './components/dashboard/educational-programs/update-educational-program/update-educational-program.component';
+import { UpdateLetterComponent } from './components/dashboard/letters/update-letter/update-letter.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
       {
         path: 'letters',
         component: LettersComponent,
+      },
+      {
+        path: 'letters/:lettersTemplateId',
+        component: UpdateLetterComponent,
       },
       {
         path: 'report',

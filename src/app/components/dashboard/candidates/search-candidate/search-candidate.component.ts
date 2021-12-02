@@ -39,7 +39,7 @@ export class SearchCandidateComponent implements OnInit {
     this.educationalProgramsService.getEducationalPrograms().subscribe((data) => {
       console.log(data);
       data.forEach((program) => {
-        this.programsId.push(program.id);
+        this.programsId.push(program.id!);
         this.programsName.push(program.name);
       });
     });

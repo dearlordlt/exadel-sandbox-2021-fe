@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { statuses } from 'src/app/global/constants';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Candidate } from '../../../models/candidate';
-
 import { ValidateStringOfEmails } from '../../shared/validators/string-of-emails.validator';
+import { LetterTemplate } from 'src/app/components/shared/interfaces/letters/letter-template.interface';
 
 @Component({
   selector: 'app-send-letter',
@@ -20,7 +19,7 @@ export class SendLetterComponent {
     Signature: ['', [Validators.required]],
   });
 
-  readonly Templates: string[] = statuses.search;
+  letterTemplates: LetterTemplate[] = [];
 
   constructor(private fb: FormBuilder) {}
 

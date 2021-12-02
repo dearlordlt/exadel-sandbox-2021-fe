@@ -1,11 +1,11 @@
 <h2>Searching Candidate</h2>
-<form [formGroup]="searchForm" (ngSubmit)="clickSearch()">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <div class="flex">
     <div class="search-group">
       <mat-form-field>
         <mat-label>Educational Programs</mat-label>
         <mat-select formControlName="searchEducationalProgram">
-          <mat-option *ngFor="let program of educationalPrograms" [value]="program">{{program}}</mat-option>
+          <mat-option *ngFor="let program of educationalPrograms" [value]="program.id">{{program.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -14,7 +14,7 @@
       <mat-form-field>
         <mat-label>Status</mat-label>
         <mat-select formControlName="searchStatus">
-          <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+          <mat-option *ngFor="let status of statuses, let i = index" [value]="i">{{status}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

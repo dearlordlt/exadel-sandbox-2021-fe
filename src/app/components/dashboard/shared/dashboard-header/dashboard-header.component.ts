@@ -1,23 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { LogoutComponent } from '../logout/logout.component';
+
 @Component({
   selector: 'app-dashboard-header',
   templateUrl: './dashboard-header.component.html',
   styleUrls: ['./dashboard-header.component.scss'],
 })
-export class DashboardHeaderComponent implements OnInit {
+export class DashboardHeaderComponent {
   navigation = ['Candidates', 'Planning', 'Educational programs', 'Letters', 'Report'];
   user = localStorage.getItem('email');
-  constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  constructor(public matDialog: MatDialog, private authenticationService: AuthenticationService) {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(LogoutComponent, { data: { name: 'username' } });
+  logOut() {
+    const dialogRef = this.matDialog.open(ConfirmationDialogComponent, {
+      data: {
+        message: 'Are you sure want to log out?',
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No',
+        },
+      },
+    });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) this.authenticationService.logout();
     });
   }
 }

@@ -9,6 +9,7 @@ import { EducationalProgramsService } from '../../../../service/http/educational
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
 import { ToastrService } from 'ngx-toastr';
+import { DateValidators, SameDateErrorStateMatcher } from '../../shared/validators/same-date.validator';
 import * as moment from 'moment';
 import 'moment-timezone';
 
@@ -19,11 +20,29 @@ import 'moment-timezone';
 })
 export class CreateEducationalProgramComponent implements OnInit {
   programForm: FormGroup = this.fb.group({
-    acceptancePeriodStartDate: ['', [Validators.required]],
-    acceptancePeriodEndDate: ['', [Validators.required]],
-    programsPeriodStartDate: ['', [Validators.required]],
-    programsPeriodEndDate: ['', [Validators.required]],
     name: ['', [Validators.required]],
+    acceptancePeriodGroup: this.fb.group(
+      {
+        acceptancePeriodStartDate: ['', [Validators.required]],
+        acceptancePeriodEndDate: ['', Validators.required],
+      },
+      {
+        validator: DateValidators.sameDate('acceptancePeriodStartDate', 'acceptancePeriodEndDate', {
+          acceptancePeriodSameDate: true,
+        }),
+      }
+    ),
+    programsPeriodGroup: this.fb.group(
+      {
+        programsPeriodStartDate: ['', [Validators.required]],
+        programsPeriodEndDate: ['', Validators.required],
+      },
+      {
+        validator: DateValidators.sameDate('programsPeriodStartDate', 'programsPeriodEndDate', {
+          programsPeriodSameDate: true,
+        }),
+      }
+    ),
     numberOfPositions: 1,
     positions: this.fb.array([
       this.fb.group({
@@ -32,6 +51,9 @@ export class CreateEducationalProgramComponent implements OnInit {
       }),
     ]),
   });
+
+  // Matcher is needed to use <mat-error> tag with group validators
+  sameDateErrorStateMatcher = new SameDateErrorStateMatcher();
 
   minProgramsDate: Date = new Date();
 
@@ -108,10 +130,10 @@ export class CreateEducationalProgramComponent implements OnInit {
     // Use moment lib to trim the time part from the date
     const postEducationalProgram: PostEducationalProgram = {
       name: this.programForm.get('name')!.value,
-      appAcceptFrom: moment(this.programForm.get('acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
-      appAcceptTo: moment(this.programForm.get('acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
-      eduProgFrom: moment(this.programForm.get('programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
-      eduProgTo: moment(this.programForm.get('programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      appAcceptFrom: moment(this.programForm.get('acceptancePeriodGroup.acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      appAcceptTo: moment(this.programForm.get('acceptancePeriodGroup.acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgFrom: moment(this.programForm.get('programsPeriodGroup.programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgTo: moment(this.programForm.get('programsPeriodGroup.programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
       posiForEduPros: [],
     };
 

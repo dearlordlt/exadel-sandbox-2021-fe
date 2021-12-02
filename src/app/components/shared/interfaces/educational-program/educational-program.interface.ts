@@ -1,5 +1,5 @@
 export interface EducationalProgram {
-  id: string;
+  id?: string;
   name: string;
   appAcceptFrom: string;
   appAcceptTo: string;
@@ -9,7 +9,7 @@ export interface EducationalProgram {
 }
 
 export interface Position {
-  id: string;
+  id?: string;
   name: string;
   descrAndRequ: string;
 }

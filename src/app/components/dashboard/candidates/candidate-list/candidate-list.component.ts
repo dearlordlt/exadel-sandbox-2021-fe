@@ -204,14 +204,14 @@ export class CandidateListComponent implements OnInit {
   fillProgramsList() {
     this.educationalProgramsService.getEducationalPrograms().subscribe((programs) => {
       programs.forEach((program) => {
-        this.programsList.push({ id: program.id, name: program.name });
+        this.programsList.push({ id: program.id!, name: program.name });
       });
     });
   }
   fillPositionsList() {
     this.educationalProgramsService.getPositions().subscribe((positions) => {
       positions.forEach((position) => {
-        this.positionsList.push({ id: position.id, name: position.name });
+        this.positionsList.push({ id: position.id!, name: position.name });
       });
     });
   }

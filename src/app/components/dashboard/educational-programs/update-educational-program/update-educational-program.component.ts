@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { pairwise, startWith } from 'rxjs/operators';
-import { EducationalProgram } from '../../../shared/interfaces/educational-program/educational-program.interface';
-import { PostEducationalProgram } from '../../../shared/interfaces/educational-program/post-educational-program.interface';
-import { Position } from '../../../shared/interfaces/educational-program/post-educational-program.interface';
+import { EducationalProgram, Position } from '../../../shared/interfaces/educational-program/educational-program.interface';
 import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
-import { DateAdapter } from '@angular/material/core';
+import { DateAdapter, ErrorStateMatcher } from '@angular/material/core';
 import { ToastrService } from 'ngx-toastr';
+import { DateValidators } from '../../shared/validators/same-date.validator';
+import { SameDateErrorStateMatcher } from '../../shared/validators/same-date.validator';
 import * as moment from 'moment';
 import 'moment-timezone';
 
@@ -19,21 +19,41 @@ import 'moment-timezone';
 })
 export class UpdateEducationalProgramComponent implements OnInit {
   programForm: FormGroup = this.fb.group({
-    acceptancePeriodStartDate: ['', [Validators.required]],
-    acceptancePeriodEndDate: ['', [Validators.required]],
-    programsPeriodStartDate: ['', [Validators.required]],
-    programsPeriodEndDate: ['', [Validators.required]],
     name: ['', [Validators.required]],
+    acceptancePeriodGroup: this.fb.group(
+      {
+        acceptancePeriodStartDate: ['', [Validators.required]],
+        acceptancePeriodEndDate: ['', Validators.required],
+      },
+      {
+        validator: DateValidators.sameDate('acceptancePeriodStartDate', 'acceptancePeriodEndDate', {
+          acceptancePeriodSameDate: true,
+        }),
+      }
+    ),
+    programsPeriodGroup: this.fb.group(
+      {
+        programsPeriodStartDate: ['', [Validators.required]],
+        programsPeriodEndDate: ['', Validators.required],
+      },
+      {
+        validator: DateValidators.sameDate('programsPeriodStartDate', 'programsPeriodEndDate', {
+          programsPeriodSameDate: true,
+        }),
+      }
+    ),
     numberOfPositions: 1,
     positions: this.fb.array([
       this.fb.group({
+        positionId: '',
         positionName: ['', [Validators.required]],
         descriptionAndRequirements: ['', [Validators.required]],
       }),
     ]),
   });
 
-  minProgramsDate: Date | null = null;
+  // Matcher is needed to use <mat-error> tag with group validators
+  sameDateErrorStateMatcher = new SameDateErrorStateMatcher();
 
   private numberOfPositionsSubscription: Subscription = new Subscription();
 
@@ -53,7 +73,7 @@ export class UpdateEducationalProgramComponent implements OnInit {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
 
     this.dateAdapter.setLocale('en-GB');
-    this.onNumberOfPositionsChanges(); // Used to add or remove positions/techonologies inputs
+    this.onNumberOfPositionsChanges(); // Used to add or remove positions/techonologies input fields
 
     if (this.educationalProgramId) {
       this.educationalProgramsService.getEducationalProgram(this.educationalProgramId).subscribe((data: EducationalProgram) => {
@@ -75,16 +95,21 @@ export class UpdateEducationalProgramComponent implements OnInit {
 
   initializeFormWithEducationalProgramData() {
     this.programForm.patchValue({
-      acceptancePeriodStartDate: this.educationalProgram.appAcceptFrom,
-      acceptancePeriodEndDate: this.educationalProgram.appAcceptTo,
-      programsPeriodStartDate: this.educationalProgram.eduProgFrom,
-      programsPeriodEndDate: this.educationalProgram.eduProgTo,
+      acceptancePeriodGroup: {
+        acceptancePeriodStartDate: this.educationalProgram.appAcceptFrom,
+        acceptancePeriodEndDate: this.educationalProgram.appAcceptTo,
+      },
+      programsPeriodGroup: {
+        programsPeriodStartDate: this.educationalProgram.eduProgFrom,
+        programsPeriodEndDate: this.educationalProgram.eduProgTo,
+      },
       name: this.educationalProgram.name,
       numberOfPositions: this.educationalProgram.positions.length,
     });
 
     this.educationalProgram.positions.forEach((position, index) => {
       this.positions.at(index).patchValue({
+        positionId: position.id,
         positionName: position.name,
         descriptionAndRequirements: position.descrAndRequ,
       });
@@ -131,41 +156,37 @@ export class UpdateEducationalProgramComponent implements OnInit {
 
   onSubmit(): void {
     if (this.programForm.valid) {
-      this.mapFormValuesToEducationalProgramInterface();
-      // this.educationalProgramsService.postEducationalProgram(this.educationalProgram).subscribe((data: EducationalProgram) =>
-      //   this.router.navigate(['../educational-programs'], { relativeTo: this.route }).then(() => {
-      //     this.toastr.success('Educational program is created', 'Success');
-      //   })
-      // );
+      const updateEducationalProgram: EducationalProgram = this.mapFormValuesToEducationalProgramInterface();
+      this.educationalProgramsService
+        .updateEducationalProgram(this.educationalProgramId, updateEducationalProgram)
+        .subscribe((data: EducationalProgram) =>
+          this.router.navigate(['dashboard/educational-programs']).then(() => {
+            this.toastr.success('Educational program was updated', 'Success');
+          })
+        );
     }
   }
 
   mapFormValuesToEducationalProgramInterface() {
     // Use moment lib to trim the time part from the date
-    const postEducationalProgram: PostEducationalProgram = {
+    const updateEducationalProgram: EducationalProgram = {
       name: this.programForm.get('name')!.value,
-      appAcceptFrom: moment(this.programForm.get('acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
-      appAcceptTo: moment(this.programForm.get('acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
-      eduProgFrom: moment(this.programForm.get('programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
-      eduProgTo: moment(this.programForm.get('programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
-      posiForEduPros: [],
+      appAcceptFrom: moment(this.programForm.get('acceptancePeriodGroup.acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      appAcceptTo: moment(this.programForm.get('acceptancePeriodGroup.acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgFrom: moment(this.programForm.get('programsPeriodGroup.programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE),
+      eduProgTo: moment(this.programForm.get('programsPeriodGroup.programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE),
+      positions: [],
     };
 
-    this.educationalProgram.name = this.programForm.get('name')!.value;
-    this.educationalProgram.appAcceptFrom = moment(this.programForm.get('acceptancePeriodStartDate')!.value).format(moment.HTML5_FMT.DATE);
-    this.educationalProgram.appAcceptTo = moment(this.programForm.get('acceptancePeriodEndDate')!.value).format(moment.HTML5_FMT.DATE);
-    this.educationalProgram.eduProgFrom = moment(this.programForm.get('programsPeriodStartDate')!.value).format(moment.HTML5_FMT.DATE);
-    this.educationalProgram.eduProgTo = moment(this.programForm.get('programsPeriodEndDate')!.value).format(moment.HTML5_FMT.DATE);
-    this.educationalProgram.positions = [];
+    this.positions.value.forEach((element: { positionId: string; positionName: string; descriptionAndRequirements: string }) => {
+      const position: Position = {
+        name: element.positionName,
+        descrAndRequ: element.descriptionAndRequirements,
+      };
+      if (element.positionId) position.id = element.positionId;
+      updateEducationalProgram.positions.push(position);
+    });
 
-    // this.positions.value.forEach((element: { positionName: string; descriptionAndRequirements: string }) => {
-    //   const position: Position = {
-    //     name: element.positionName,
-    //     descrAndRequ: element.descriptionAndRequirements,
-    //   };
-    //   this.educationalProgram.positions.push(position);
-    // });
-
-    return postEducationalProgram;
+    return updateEducationalProgram;
   }
 }

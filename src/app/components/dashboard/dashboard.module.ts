@@ -26,9 +26,9 @@ import { UpdateCandidateDialogComponent } from './candidates/update-candidate-di
 import { PlannerComponent } from './planning/planner/planner.component';
 import { ScheduleComponent } from './planning/planner/schedule/schedule.component';
 import { MakeFreeSpotsDialogComponent } from './planning/planner/make-free-spots-dialog/make-free-spots-dialog.component';
-import { FormSampleComponent } from './letters/form-sample/form-sample.component';
 import { UpdateLetterComponent } from './letters/update-letter/update-letter.component';
 import { UpdateEducationalProgramComponent } from './educational-programs/update-educational-program/update-educational-program.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,9 +52,9 @@ import { UpdateEducationalProgramComponent } from './educational-programs/update
     ScheduleComponent,
     MakeFreeSpotsDialogComponent,
     CandidatesComponent,
-    FormSampleComponent,
     UpdateLetterComponent,
     UpdateEducationalProgramComponent,
+    ConfirmationDialogComponent,
   ],
 
   imports: [CommonModule, AppRoutingModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ChartModule],
