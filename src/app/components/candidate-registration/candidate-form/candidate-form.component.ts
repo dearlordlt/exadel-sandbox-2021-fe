@@ -7,8 +7,10 @@ import { StaticService } from 'src/app/service/http/static/static.service';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
 import { CandidatesService } from '../../dashboard/candidates/services/candidates.service';
 
-import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
+
+import * as moment from 'moment';
+import 'moment-timezone';
 
 @Component({
   selector: 'app-candidate-form',
