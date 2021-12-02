@@ -1,28 +1,48 @@
 <form class="update-educational-program" [formGroup]="programForm" (ngSubmit)="onSubmit()">
   <h1>{{ educationalProgram.name }}</h1>
-  <div class="update-educational-program__acceptance-period">
+
+  <div class="update-educational-program__acceptance-period" formGroupName="acceptancePeriodGroup">
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker1" [min]="minProgramsDate">
-        <input matStartDate placeholder="Start date" formControlName="acceptancePeriodStartDate" />
-        <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
+      <mat-date-range-input [rangePicker]="picker1">
+        <input
+          matStartDate
+          placeholder="Start date"
+          formControlName="acceptancePeriodStartDate"
+          [errorStateMatcher]="sameDateErrorStateMatcher"
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          formControlName="acceptancePeriodEndDate"
+          [errorStateMatcher]="sameDateErrorStateMatcher"
+        />
       </mat-date-range-input>
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-date-range-picker #picker1></mat-date-range-picker>
+      <mat-error *ngIf="programForm.controls.acceptancePeriodGroup.hasError('acceptancePeriodSameDate')">
+        Can't choose the same day
+      </mat-error>
     </mat-form-field>
   </div>
 
-  <div class="update-educational-program__programs-period">
+  <div class="update-educational-program__programs-period" formGroupName="programsPeriodGroup">
     <h2>Educational program's period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker2" [min]="minProgramsDate">
-        <input matStartDate placeholder="Start date" formControlName="programsPeriodStartDate" />
-        <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
+      <mat-date-range-input [rangePicker]="picker2">
+        <input
+          matStartDate
+          placeholder="Start date"
+          formControlName="programsPeriodStartDate"
+          [errorStateMatcher]="sameDateErrorStateMatcher"
+        />
+        <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" [errorStateMatcher]="sameDateErrorStateMatcher" />
       </mat-date-range-input>
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-date-range-picker #picker2></mat-date-range-picker>
+      <mat-error *ngIf="programForm.controls.programsPeriodGroup.hasError('programsPeriodSameDate')"> Can't choose the same day </mat-error>
     </mat-form-field>
   </div>
 

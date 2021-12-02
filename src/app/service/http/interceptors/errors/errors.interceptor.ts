@@ -14,6 +14,9 @@ export class ErrorsInterceptor implements HttpInterceptor {
         if (err.status == 400) {
           this.toastr.clear();
           this.toastr.error('Whoops! Bad request', 'Error');
+        } else if (err.status == 401) {
+          this.toastr.clear();
+          this.toastr.error('Please log in again', 'Error');
         } else if (err.status == 403) {
           this.toastr.clear();
           this.toastr.error("Whoops! It appears you don't have the necessary permissions", 'Error');

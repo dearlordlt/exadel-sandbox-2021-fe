@@ -8,6 +8,7 @@ export interface PostEducationalProgram {
 }
 
 export interface Position {
+  id?: string;
   name: string;
   descrAndRequ: string;
 }

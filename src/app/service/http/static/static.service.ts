@@ -13,6 +13,7 @@ export class StaticService {
   getEnglishLevels(): Observable<StaticData> {
     return this.http.get<StaticData>(`${environment.EXADEL_API}/${this.apiUrl}/English Levels`);
   }
+
   getTimeSlots(): Observable<StaticData> {
     return this.http.get<StaticData>(`${environment.EXADEL_API}/${this.apiUrl}/Time Slots`);
   }

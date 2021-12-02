@@ -1,12 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { educationalPrograms } from 'src/app/global/constants';
-import { statuses } from 'src/app/global/constants';
-
-import { CandidatesService } from '../../candidates/services/candidates.service';
 import { Candidate } from '../../../models/candidate';
-
-const All: string = 'All';
+import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
+import { EducationalProgram } from 'src/app/components/shared/interfaces/educational-program/educational-program.interface';
+import { StaticService } from 'src/app/service/http/static/static.service';
+import { CandidatesService } from '../../candidates/services/candidates.service';
 
 @Component({
   selector: 'app-search-candidates',
@@ -14,57 +12,80 @@ const All: string = 'All';
   styleUrls: ['./search-candidates.component.scss'],
 })
 export class SearchCandidatesComponent implements OnInit {
-  // This whole component will need to be refactored once we get the API
-
   searchForm: FormGroup = this.fb.group({
-    searchEducationalProgram: All,
-    searchStatus: All,
+    searchEducationalProgram: ' ',
+    searchStatus: '',
     searchName: '',
     searchEmail: ['', [Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
   });
 
-  allCandidates: Candidate[] = [];
-  searchedCandidates: Candidate[] = [];
+  educationalPrograms: EducationalProgram[] = [];
+  statuses: string[] = [];
 
   @Output() searchEvent: EventEmitter<Candidate[]> = new EventEmitter();
 
-  readonly educationalPrograms: string[] = educationalPrograms;
-  readonly statuses: string[] = statuses.search;
-
-  constructor(private fb: FormBuilder, private candidatesService: CandidatesService) {}
+  constructor(
+    private fb: FormBuilder,
+    private educationalProgramsService: EducationalProgramsService,
+    private staticService: StaticService,
+    private candidatesService: CandidatesService
+  ) {}
 
   ngOnInit(): void {
-    this.getCandidates();
+    this.getEducationalPrograms();
+    this.getStatuses();
   }
 
-  getCandidates() {
-    this.candidatesService.getCandidates().subscribe((candidates) => (this.allCandidates = candidates));
+  getEducationalPrograms(): void {
+    this.educationalProgramsService.getEducationalPrograms().subscribe((data: EducationalProgram[]) => {
+      this.educationalPrograms = data;
+      // Adding edu program with an empty id to the beggining for the "All" option in mat-select
+      this.educationalPrograms.unshift({
+        id: '',
+        name: 'All',
+        appAcceptFrom: '',
+        appAcceptTo: '',
+        eduProgFrom: '',
+        eduProgTo: '',
+        positions: [],
+      } as EducationalProgram);
+    });
   }
 
-  searchCandidates(values: string[]) {
-    const [program, status, name, email] = [...values];
-
-    this.searchedCandidates = this.allCandidates.filter(
-      (item) =>
-        item.educationProgramId === (program === All ? item.educationProgramId : program) &&
-        item.statusMark === (status === All ? item.statusMark : status) &&
-        item.email.toLowerCase().includes(email.toLowerCase()) &&
-        (item.firstname.toLowerCase().includes(name.toLowerCase()) || item.lastname.toLowerCase().includes(name.toLowerCase()))
-    );
+  getStatuses() {
+    this.staticService.getCandidateStatus().subscribe((data) => {
+      const values: string[] = Object.values(data);
+      this.statuses = ['All', ...values];
+    });
   }
 
-  clickSearch() {
-    const searchFormValues: string[] = [
-      this.searchForm.controls['searchEducationalProgram'].value,
-      this.searchForm.controls['searchStatus'].value,
-      this.searchForm.controls['searchName'].value,
-      this.searchForm.controls['searchEmail'].value,
-    ];
+  onSubmit() {
+    if (this.searchForm.valid) {
+      const queryArr: string[] = [],
+        program = this.searchForm.value.searchEducationalProgram,
+        status = this.searchForm.value.searchStatus,
+        name = this.searchForm.value.searchName,
+        email = this.searchForm.value.searchEmail;
 
-    this.searchCandidates(searchFormValues);
+      if (email) {
+        queryArr.push(`email=${email}`);
+      }
+      if (name) {
+        queryArr.push(`name=${name}`);
+      }
+      if (program) {
+        queryArr.push(`gguid=${program}`);
+      }
+      if (status) {
+        queryArr.push(`statusid=${status}`);
+      }
 
-    this.searchEvent.emit(this.searchedCandidates);
+      const query = queryArr.join('&');
 
-    this.getCandidates;
+      this.candidatesService.searchCandidate(query).subscribe((data) => {
+        console.log('searched candidates: ', data);
+        this.searchEvent.emit(data);
+      });
+    }
   }
 }
