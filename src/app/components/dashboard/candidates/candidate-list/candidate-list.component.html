@@ -11,7 +11,9 @@
           <button class="hide-button" [disabled]="updateOptionDisabled" (click)="openDialog(candidate)">
             <mat-icon class="edit-icon">edit</mat-icon>
           </button>
-          <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id, candidate.firstname, candidate.lastname)">Feedback</button>
+          <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id, candidate.firstname, candidate.lastname)">
+            Feedback
+          </button>
         </td>
       </ng-container>
       <ng-container matColumnDef="firstname">
@@ -239,7 +241,7 @@
             />
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate">{{candidate.postDateTimeNow}}</td>
+        <td mat-cell *matCellDef="let candidate">{{showTime(candidate.postDateTimeNow)}}</td>
       </ng-container>
 
       <!-- Assessment -->
@@ -338,5 +340,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" aria-label="Select page of candidates"></mat-paginator>
   </div>
 </div>
