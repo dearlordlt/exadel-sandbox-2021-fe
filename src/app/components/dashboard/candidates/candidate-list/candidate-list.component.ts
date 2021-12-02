@@ -13,12 +13,15 @@ import { EducationalProgramsService } from 'src/app/service/http/educational-pro
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 import { FeedbackService } from '../../../../service/http/candidate-list/feedback/feedback.service';
 
+import * as moment from 'moment';
+import 'moment-timezone';
+
 @Component({
   selector: 'app-candidate-list',
   templateUrl: './candidate-list.component.html',
   styleUrls: ['./candidate-list.component.scss'],
 })
-export class CandidateListComponent implements OnInit {
+export class CandidateListComponent implements OnInit, AfterViewInit {
   // dataSource: any | Candidate[] = [];
   dataSource: any | Candidate[] = new MatTableDataSource();
   empoloyeeRole!: string;
@@ -61,7 +64,7 @@ export class CandidateListComponent implements OnInit {
     private staticService: StaticService,
     private educationalProgramsService: EducationalProgramsService,
     private authenticationService: AuthenticationService,
-    private feedbackService: FeedbackService,
+    private feedbackService: FeedbackService
   ) {
     this.filterSelectObj = [
       {
@@ -145,12 +148,12 @@ export class CandidateListComponent implements OnInit {
         options: [],
       },
       {
-        name: 'Mentor\'s Mark',
+        name: "Mentor's Mark",
         columnProp: 'mentorsMark',
         options: [],
       },
       {
-        name: 'Interviewer\'s Mark after Sandbox',
+        name: "Interviewer's Mark after Sandbox",
         columnProp: 'interViewerMark',
         options: [],
       },
@@ -160,7 +163,6 @@ export class CandidateListComponent implements OnInit {
   ngOnInit(): void {
     this.getCandidates();
     this.dataSource.filterPredicate = this.createFilter();
-    this.dataSource.sort = this.sort;
     this.fillProgramsList();
     this.fillPositionsList();
     this.fillStatusesList();
@@ -168,6 +170,12 @@ export class CandidateListComponent implements OnInit {
   }
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
   getFilterObject(fullObj: any, key: any) {
     const uniqChk: any = [];
@@ -250,13 +258,17 @@ export class CandidateListComponent implements OnInit {
     return id;
   }
 
+  showTime(time: Date) {
+    return moment(time).format(moment.HTML5_FMT.DATE).split('-').join('.');
+  }
+
   filterChange(filter: any, event: any) {
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase();
     this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
   createFilter() {
-    const filterFunction = function(data: any, filter: string): boolean {
+    const filterFunction = function (data: any, filter: string): boolean {
       const searchTerms = JSON.parse(filter);
       let isFilterSet = false;
       for (const col in searchTerms) {
@@ -310,13 +322,18 @@ export class CandidateListComponent implements OnInit {
   rwFeedback(id: string, name: string, lastname: string) {
     this.feedbackService.candidateId = id;
     this.feedbackService.candidateName = name + ' ' + lastname;
-    this.feedbackService.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
-      if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
-        this.router.navigateByUrl('dashboard/write_feedback').then();
-      } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
-        this.router.navigateByUrl('dashboard/read_feedback').then();
-      }
-    })).subscribe();
+    this.feedbackService
+      .getEmployeeById(localStorage.getItem('id')!)
+      .pipe(
+        tap((emp) => {
+          if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
+            this.router.navigateByUrl('dashboard/write_feedback').then();
+          } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
+            this.router.navigateByUrl('dashboard/read_feedback').then();
+          }
+        })
+      )
+      .subscribe();
   }
 
   openDialog(candidate: Candidate): void {
