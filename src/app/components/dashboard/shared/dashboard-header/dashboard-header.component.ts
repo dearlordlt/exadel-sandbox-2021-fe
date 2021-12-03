@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-dashboard-header',
