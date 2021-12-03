@@ -1,17 +1,17 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { filter, map, switchMap, take, tap } from 'rxjs/operators';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
-import { CandidatesService } from '../services/candidates.service';
-import { Candidate } from '../../../models/candidate';
-import { UpdateCandidateDialogComponent } from '../update-candidate-dialog/update-candidate-dialog.component';
-import { Router } from '@angular/router';
-import { MatSort } from '@angular/material/sort';
-import { StaticService } from 'src/app/service/http/static/static.service';
-import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
-import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
-import { FeedbackService } from '../../../../service/http/candidate-list/feedback/feedback.service';
+import {Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import {filter, map, switchMap, take, tap} from 'rxjs/operators';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
+import {CandidatesService} from '../../../../service/http/candidate-list/services/candidates.service';
+import {Candidate} from '../../../models/candidate';
+import {UpdateCandidateDialogComponent} from '../update-candidate-dialog/update-candidate-dialog.component';
+import {Router} from '@angular/router';
+import {MatSort} from '@angular/material/sort';
+import {StaticService} from 'src/app/service/http/static/static.service';
+import {EducationalProgramsService} from 'src/app/service/http/educational-programs/educational-programs.service';
+import {AuthenticationService} from 'src/app/service/authentication/authentication.service';
+import {FeedbackService} from '../../../../service/http/candidate-list/feedback/feedback.service';
 
 import * as moment from 'moment';
 import 'moment-timezone';
@@ -214,7 +214,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
   fillProgramsList() {
     this.educationalProgramsService.getEducationalPrograms().subscribe((programs) => {
       programs.forEach((program) => {
-        this.programsList.push({ id: program.id!, name: program.name });
+        this.programsList.push({id: program.id!, name: program.name});
       });
     });
   }
@@ -222,7 +222,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
   fillPositionsList() {
     this.educationalProgramsService.getPositions().subscribe((positions) => {
       positions.forEach((position) => {
-        this.positionsList.push({ id: position.id!, name: position.name });
+        this.positionsList.push({id: position.id!, name: position.name});
       });
     });
   }
@@ -319,28 +319,29 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  rwFeedback(id: string, name: string, lastname: string) {
+  rwFeedback(id: string) {
     this.feedbackService.candidateId = id;
-    this.feedbackService.candidateName = name + ' ' + lastname;
-    this.feedbackService
-      .getEmployeeById(localStorage.getItem('id')!)
-      .pipe(
-        tap((emp) => {
-          if (emp.role.roleName == 'Recruiter' || emp.role.roleName == 'Interviewer' || emp.role.roleName == 'Mentor') {
-            this.router.navigateByUrl('dashboard/write_feedback').then();
-          } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
-            this.router.navigateByUrl('dashboard/read_feedback').then();
-          }
-        })
-      )
-      .subscribe();
+    this.candidatesService.getCandidatesByID(id).pipe(tap(candidate => {
+      this.feedbackService.candidateStatus = candidate.statusMark;
+      this.feedbackService.candidateName = candidate.firstname + ' ' + candidate.lastname;
+      this.feedbackService.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
+        if ((emp.role.roleName == 'Recruiter' && (candidate.statusMark == 1 || candidate.statusMark == 4)) || (emp.role.roleName == 'Interviewer' && (candidate.statusMark == 5 || candidate.statusMark == 10)) || (emp.role.roleName == 'Mentor' && candidate.statusMark == 10)) {
+          this.router.navigateByUrl('dashboard/write_feedback').then();
+        } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
+          this.router.navigateByUrl('dashboard/read_feedback').then();
+        } else {
+          alert('You can\'t leave feedback, Check the status');
+        }
+      })).subscribe();
+    })).subscribe()
+
   }
 
   openDialog(candidate: Candidate): void {
-    const candidateData = { ...candidate };
+    const candidateData = {...candidate};
     const dialogRef = this.dialog.open(UpdateCandidateDialogComponent, {
       width: this.updateDialogWidth,
-      data: { candidate: candidateData, role: this.empoloyeeRole },
+      data: {candidate: candidateData, role: this.empoloyeeRole},
     });
 
     dialogRef.afterClosed().subscribe((result) => {

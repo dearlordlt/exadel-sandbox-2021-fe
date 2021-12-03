@@ -9,7 +9,7 @@ import { CreateFeedback } from '../../../../components/models/feedback';
 export class FeedbackService {
   candidateId = '';
   candidateName = '';
-
+  candidateStatus = 0;
   constructor(private http: HttpClient) {
   }
 
@@ -19,6 +19,10 @@ export class FeedbackService {
 
   writeFeedback(feedback: CreateFeedback) {
     return this.http.post<CreateFeedback>(`${environment.EXADEL_API}/Feedback/AddFeedback`, feedback);
+  }
+
+  getFeedbackByID(id:string){
+    return
   }
 
 }

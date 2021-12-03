@@ -5,7 +5,7 @@ import { StaticData } from '../../../models/staticData';
 import { educationalPrograms } from 'src/app/global/constants';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
 import { EducationalProgram } from 'src/app/components/shared/interfaces/educational-program/educational-program.interface';
-import { CandidatesService } from '../services/candidates.service';
+import { CandidatesService } from '../../../../service/http/candidate-list/services/candidates.service';
 
 @Component({
   selector: 'app-search-candidate',
