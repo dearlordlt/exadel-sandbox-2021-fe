@@ -45,7 +45,7 @@
       <mat-error *ngIf="!data.candidate.city.length">This field can’t be empty</mat-error>
     </mat-form-field>
   </div>
-  <mat-form-field [class.all-width]="!showFields" appearance="fill">
+  <mat-form-field [class.all-width]="!showFields" *ngIf="showStatus" appearance="fill">
     <mat-label>Status</mat-label>
     <mat-select [(ngModel)]="data.candidate.statusMark" (selectionChange)="checkValues()">
       <mat-option *ngFor="let status of statuses, let i =index" [value]="i+1">{{status}}</mat-option>

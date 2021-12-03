@@ -13,6 +13,7 @@ export class UpdateCandidateDialogComponent implements OnInit {
   country: string[] = [];
   disableUpdate = false;
   showFields = this.data.role !== 'Manager' ? true : false;
+  showStatus = this.data.role === 'Recruiter' && this.data.candidate.statusMark > 5 ? false : true;
   constructor(
     public dialogRef: MatDialogRef<Candidate>,
     @Inject(MAT_DIALOG_DATA) public data: { candidate: Candidate; role: string },
