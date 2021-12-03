@@ -12,7 +12,6 @@ import { DashboardModule } from './components/dashboard/dashboard.module';
 import { LoginModule } from './components/login/login.module';
 import { ToastrModule } from 'ngx-toastr';
 
-import { LogoutComponent } from './components/dashboard/shared/logout/logout.component';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './service/http/interceptors/auth/auth.interceptor';
 import { ErrorsInterceptor } from './service/http/interceptors/errors/errors.interceptor';
@@ -54,7 +53,7 @@ import { LoaderInterceptor } from './service/http/interceptors/loader/loader.int
       multi: true,
     },
   ],
-  entryComponents: [LogoutComponent],
+  entryComponents: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

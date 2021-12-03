@@ -47,6 +47,13 @@ export class CandidatesService {
     return this.http.put<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/${candidate.id}`, candidate, headers);
   }
 
+  updateCandidatesStatus(candidate: Candidate): Observable<Candidate> {
+    return this.http.put<Candidate>(
+      `${environment.EXADEL_API}/${this.apiUrl}?id=${candidate.id}&statusId=${candidate.statusMark}`,
+      headers
+    );
+  }
+
   addCandidate(candidate: Candidate): Observable<Candidate> {
     return this.http.post<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/AddCandidate`, candidate, headers);
   }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ReportService } from '../../../service/http/report/report.service';
-import { filter, map, tap } from 'rxjs/operators';
-import { Chart } from 'angular-highcharts';
+import {Component, OnInit} from '@angular/core';
+import {ReportService} from '../../../service/http/report/report.service';
+import {filter, map, tap} from 'rxjs/operators';
+import {Chart} from 'angular-highcharts';
 import * as XLSX from 'xlsx';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-report',
@@ -10,8 +11,8 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./report.component.scss'],
 })
 export class ReportComponent implements OnInit {
-  programs$ = this.reportService.getPrograms();
-  report$ = this.reportService.getReport(1);
+  programs$ = this.reportService.getPrograms().pipe();
+  report$!: Observable<any>;
   fileName = 'Report.xlsx';
   reportArrOptions: string[] = ['Applications',
     'Refusal by the level of English',
@@ -30,12 +31,12 @@ export class ReportComponent implements OnInit {
     this.init();
   }
 
-  createReport(id: number) {
+  createReport(id: string) {
     this.reportService.getReport(id).pipe(tap(r => {
-      this.reportArrValues = Object.values(r[0]);
+      this.reportArrValues = Object.values(r);
     })).subscribe();
-    this.reportService.getPrograms().pipe(tap(p => {
-      this.name = p[id - 1].name;
+    this.reportService.getProgramById(id).pipe(tap(p => {
+      this.name = p.name;
     })).subscribe();
     this.report$ = this.reportService.getReport(id);
   }
@@ -72,12 +73,12 @@ export class ReportComponent implements OnInit {
           color: '#72b5e9',
           name: this.name,
           data: [
-            { y: this.reportArrValues[0] },
-            { y: this.reportArrValues[1] },
-            { y: this.reportArrValues[2] },
-            { y: this.reportArrValues[3] },
-            { y: this.reportArrValues[4] },
-            { y: this.reportArrValues[5] },
+            {y: this.reportArrValues[0]},
+            {y: this.reportArrValues[1]},
+            {y: this.reportArrValues[2]},
+            {y: this.reportArrValues[3]},
+            {y: this.reportArrValues[4]},
+            {y: this.reportArrValues[5]},
           ],
         },
       ],
