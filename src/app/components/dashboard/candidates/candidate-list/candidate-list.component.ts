@@ -3,7 +3,7 @@ import {filter, map, switchMap, take, tap} from 'rxjs/operators';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
-import {CandidatesService} from '../../../../service/http/candidate-list/services/candidates.service';
+import {CandidatesService} from "../../../../service/http/candidate-list/services/candidates.service";
 import {Candidate} from '../../../models/candidate';
 import {UpdateCandidateDialogComponent} from '../update-candidate-dialog/update-candidate-dialog.component';
 import {Router} from '@angular/router';
@@ -15,6 +15,7 @@ import {FeedbackService} from '../../../../service/http/candidate-list/feedback/
 
 import * as moment from 'moment';
 import 'moment-timezone';
+
 
 @Component({
   selector: 'app-candidate-list',
@@ -325,7 +326,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
       this.feedbackService.candidateStatus = candidate.statusMark;
       this.feedbackService.candidateName = candidate.firstname + ' ' + candidate.lastname;
       this.feedbackService.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
-        if ((emp.role.roleName == 'Recruiter' && (candidate.statusMark == 1 || candidate.statusMark == 4)) || (emp.role.roleName == 'Interviewer' && (candidate.statusMark == 5 || candidate.statusMark == 10)) || (emp.role.roleName == 'Mentor' && candidate.statusMark == 10)) {
+        if ((emp.role.roleName == 'Recruiter' && candidate.statusMark == 4) || (emp.role.roleName == 'Interviewer' && (candidate.statusMark == 5 || candidate.statusMark == 10)) || (emp.role.roleName == 'Mentor' && candidate.statusMark == 10)) {
           this.router.navigateByUrl('dashboard/write_feedback').then();
         } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
           this.router.navigateByUrl('dashboard/read_feedback').then();
@@ -348,9 +349,15 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
       if (result !== undefined && result !== 'cancel') {
         if (JSON.stringify(result.candidate) !== JSON.stringify(candidate)) {
           if (this.empoloyeeRole === 'Manager') {
-            this.candidatesService.updateCandidatesStatus(result.candidate).subscribe(() => {
-              this.getCandidates();
-            });
+            if (this.empoloyeeRole === 'Manager') {
+              this.candidatesService.updateCandidatesStatus(result.candidate).subscribe(() => {
+                this.getCandidates();
+              });
+            } else {
+              this.candidatesService.updateCandidate(result.candidate).subscribe(() => {
+                this.getCandidates();
+              });
+            }
           } else {
             this.candidatesService.updateCandidate(result.candidate).subscribe(() => {
               this.getCandidates();

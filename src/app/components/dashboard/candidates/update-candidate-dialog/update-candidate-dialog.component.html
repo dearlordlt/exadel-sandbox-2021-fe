@@ -4,27 +4,27 @@
   <div *ngIf="showFields">
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="data.candidate.firstname" required/>
+      <input matInput [(ngModel)]="data.candidate.firstname" required />
       <mat-error *ngIf="!data.candidate.firstname.length">This field can’t be empty</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="data.candidate.lastname" required/>
+      <input matInput [(ngModel)]="data.candidate.lastname" required />
       <mat-error *ngIf="!data.candidate.lastname.length">This field can’t be empty</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="data.candidate.email" required/>
+      <input matInput [(ngModel)]="data.candidate.email" required />
       <mat-error *ngIf="!data.candidate.email.length">This field can’t be empty</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>Skype</mat-label>
-      <input matInput [(ngModel)]="data.candidate.contactSkype" required/>
+      <input matInput [(ngModel)]="data.candidate.contactSkype" required />
       <mat-error *ngIf="!data.candidate.contactSkype.length">This field can’t be empty</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>Phone</mat-label>
-      <input matInput [(ngModel)]="data.candidate.contactPhone" required/>
+      <input matInput [(ngModel)]="data.candidate.contactPhone" required />
       <mat-error *ngIf="!data.candidate.contactPhone.length">This field can’t be empty</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -41,7 +41,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill" hideRequiredMarker="true">
       <mat-label>City</mat-label>
-      <input matInput [(ngModel)]="data.candidate.city" required/>
+      <input matInput [(ngModel)]="data.candidate.city" required />
       <mat-error *ngIf="!data.candidate.city.length">This field can’t be empty</mat-error>
     </mat-form-field>
   </div>
@@ -53,8 +53,6 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-stroked-button color="primary" [disabled]="disableUpdate" [mat-dialog-close]="data" cdkFocusInitial>
-    Update
-  </button>
+  <button mat-stroked-button color="primary" [disabled]="disableUpdate" [mat-dialog-close]="data" cdkFocusInitial>Update</button>
   <button mat-stroked-button mat-dialog-close="cancel">Cancel</button>
 </div>
