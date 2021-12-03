@@ -3,8 +3,8 @@
   <div class="send-letter__template">
     <mat-form-field appearance="outline">
       <mat-label>Template</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let letterTemplate of letterTemplates" [value]="letterTemplate">{{letterTemplate}}</mat-option>
+      <mat-select (selectionChange)="onLetterTemplateChange($event.value)">
+        <mat-option *ngFor="let letterTemplate of letterTemplates" [value]="letterTemplate">{{letterTemplate.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -31,7 +31,7 @@
   <div class="send-letter__subject">
     <mat-form-field appearance="outline">
       <mat-label>Subject</mat-label>
-      <input matInput #input maxlength="100" formControlName="Subject" />
+      <input matInput #input maxlength="100" formControlName="subject" />
       <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
     </mat-form-field>
   </div>
@@ -39,16 +39,16 @@
   <div class="send-letter__text textarea">
     <mat-form-field>
       <mat-label>Text of the letter</mat-label>
-      <textarea matInput rows="10" maxlength="1500" formControlName="Text"></textarea>
-      <mat-hint align="end">{{letterForm.controls.Text.value?.length || 0}}/1500</mat-hint>
+      <textarea matInput rows="10" maxlength="1500" formControlName="text"></textarea>
+      <mat-hint align="end">{{letterForm.controls.text.value?.length || 0}}/1500</mat-hint>
     </mat-form-field>
   </div>
 
   <div class="send-letter__signature textarea">
     <mat-form-field>
       <mat-label>Signature</mat-label>
-      <textarea matInput rows="10" maxlength="100" formControlName="Signature"></textarea>
-      <mat-hint align="end">{{letterForm.controls.Signature.value?.length || 0}}/100</mat-hint>
+      <textarea matInput rows="10" maxlength="100" formControlName="signature"></textarea>
+      <mat-hint align="end">{{letterForm.controls.signature.value?.length || 0}}/100</mat-hint>
     </mat-form-field>
   </div>
 

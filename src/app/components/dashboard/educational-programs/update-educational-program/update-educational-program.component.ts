@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { pairwise, startWith } from 'rxjs/operators';
 import { EducationalProgram, Position } from '../../../shared/interfaces/educational-program/educational-program.interface';
 import { EducationalProgramsService } from '../../../../service/http/educational-programs/educational-programs.service';
-import { DateAdapter, ErrorStateMatcher } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 import { ToastrService } from 'ngx-toastr';
 import { DateValidators } from '../../shared/validators/same-date.validator';
 import { SameDateErrorStateMatcher } from '../../shared/validators/same-date.validator';
