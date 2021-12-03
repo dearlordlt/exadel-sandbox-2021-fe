@@ -18,7 +18,6 @@ import { EducationalProgramsComponent } from './educational-programs/educational
 import { LettersComponent } from './letters/letters.component';
 import { ReportComponent } from './report/report.component';
 import { CreateEducationalProgramComponent } from './educational-programs/create-educational-program/create-educational-program.component';
-import { LogoutComponent } from './shared/logout/logout.component';
 import { CreateLettersTempComponent } from './letters/create-letters-temp/create-letters-temp.component';
 import { SendLetterComponent } from './letters/send-letter/send-letter.component';
 import { SearchCandidatesComponent } from './shared/search-candidates/search-candidates.component';
@@ -43,7 +42,6 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     LettersComponent,
     ReportComponent,
     CreateEducationalProgramComponent,
-    LogoutComponent,
     CreateLettersTempComponent,
     SendLetterComponent,
     SearchCandidatesComponent,
