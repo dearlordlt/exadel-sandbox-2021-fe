@@ -28,6 +28,13 @@ export class CandidatesService {
     return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
   }
 
+  updateCandidatesStatus(candidate: Candidate): Observable<Candidate> {
+    return this.http.put<Candidate>(
+      `${environment.EXADEL_API}/${this.apiUrl}?id=${candidate.id}&statusId=${candidate.statusMark}`,
+      headers
+    );
+  }
+
   getCandidates(): Observable<Candidate[]> {
     return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`).pipe(
       tap(() => console.log('fetched candidates')),

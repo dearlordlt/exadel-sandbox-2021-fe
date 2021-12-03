@@ -30,7 +30,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
   programsList: { id: string; name: string }[] = [];
   positionsList: { id: string; name: string }[] = [];
   statusesList!: { [id: string]: string };
-  updateOptionDisabled = true;
+  updateOption = false;
   updateDialogWidth = '800px';
 
   displayedColumns: string[] = [
@@ -193,7 +193,7 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
     this.authenticationService.getEmployee(localStorage.getItem('id') || '').subscribe((data) => {
       const role = data.role.roleName;
       if (role === 'Administrator' || role === 'Manager' || role === 'Recruiter') {
-        this.updateOptionDisabled = false;
+        this.updateOption = true;
         if (role === 'Manager') {
           this.updateDialogWidth = '400px';
         }
@@ -347,9 +347,15 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined && result !== 'cancel') {
         if (JSON.stringify(result.candidate) !== JSON.stringify(candidate)) {
-          this.candidatesService.updateCandidate(result.candidate).subscribe(() => {
-            this.getCandidates();
-          });
+          if (this.empoloyeeRole === 'Manager') {
+            this.candidatesService.updateCandidatesStatus(result.candidate).subscribe(() => {
+              this.getCandidates();
+            });
+          } else {
+            this.candidatesService.updateCandidate(result.candidate).subscribe(() => {
+              this.getCandidates();
+            });
+          }
         }
       }
     });
