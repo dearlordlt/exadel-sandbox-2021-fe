@@ -27,6 +27,7 @@
             />
           </mat-form-field>
         </th>
+        
         <td mat-cell *matCellDef="let candidate">{{candidate.firstname}}</td>
       </ng-container>
 
@@ -103,7 +104,8 @@
             />
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email" [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email"
+            [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
       </ng-container>
 
       <ng-container matColumnDef="contactSkype">
@@ -119,7 +121,8 @@
             />
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.contactSkype" [matTooltipShowDelay]="showDelay">
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.contactSkype"
+            [matTooltipShowDelay]="showDelay">
           {{candidate.contactSkype}}
         </td>
       </ng-container>
@@ -258,7 +261,8 @@
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="showStatusName(candidate.statusMark)" [matTooltipShowDelay]="showDelay">
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="showStatusName(candidate.statusMark)"
+            [matTooltipShowDelay]="showDelay">
           {{showStatusName(candidate.statusMark)}}
         </td>
       </ng-container>

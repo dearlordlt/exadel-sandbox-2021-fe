@@ -1,7 +1,7 @@
 <div class="feedback">
   <h1>{{name}}'s feedback</h1>
 
-  <div class="flex-col" *ngIf="RecruiterName!==''">
+  <div class="flex-col" *ngIf="RecruiterName.length!==0">
     <h2>From {{RecruiterName}}</h2>
     <div class="content">
       <div>
@@ -10,13 +10,13 @@
       </div>
       <div class="flex">
         <h2>Feedback</h2>
-        <p>{{feedbackFromRecruiter}}</p>
+        <p >{{feedbackFromRecruiter}}</p>
       </div>
     </div>
   </div>
 
-  <div class="flex-col" *ngIf="InterviewerName!=='' &&  feedbackFromInterViewerBeforeSandbox!==''">
-    <h2>From {{InterviewerName}}</h2>
+  <div class="flex-col" *ngIf="InterviewerBeforeSandbox.length!==0">
+    <h2>From {{InterviewerBeforeSandbox}}</h2>
     <div class="content">
       <div>
         <h2>Hard skill</h2>
@@ -24,12 +24,12 @@
       </div>
       <div class="flex">
         <h2>Feedback</h2>
-        <p>{{feedbackFromInterViewerBeforeSandbox}}</p>
+        <p >{{feedbackFromInterViewerBeforeSandbox}}</p>
       </div>
     </div>
   </div>
 
-  <div class="flex-col" *ngIf="MentorName!==''">
+  <div class="flex-col" *ngIf="MentorName.length!==0">
     <h2>From {{MentorName}} after Sandbox</h2>
     <div class="content">
       <div>
@@ -38,13 +38,13 @@
       </div>
       <div class="flex">
         <h2>Feedback</h2>
-        <p>{{feedbackFromMentor}}</p>
+        <p >{{feedbackFromMentor}}</p>
       </div>
     </div>
   </div>
 
-  <div class="flex-col" *ngIf="InterviewerName!==''">
-    <h2>From {{InterviewerName}} after Sandbox</h2>
+  <div class="flex-col" *ngIf="InterviewerAfterSandbox.length!==0">
+    <h2>From {{InterviewerAfterSandbox}} after Sandbox</h2>
     <div class="content">
       <div>
         <h2>Mark</h2>
@@ -52,7 +52,7 @@
       </div>
       <div class="flex">
         <h2>Feedback</h2>
-        <p>{{feedbackFromInterViewerAfterSandbox}}</p>
+        <p >{{feedbackFromInterViewerAfterSandbox}}</p>
       </div>
     </div>
   </div>

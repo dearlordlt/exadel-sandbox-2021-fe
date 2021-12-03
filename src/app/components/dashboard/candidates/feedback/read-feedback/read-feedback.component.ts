@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FeedbackService} from "../../../../../service/http/candidate-list/feedback/feedback.service";
-import {tap} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {CandidatesService} from "../../../../../service/http/candidate-list/services/candidates.service";
 
 @Component({
@@ -11,7 +11,8 @@ import {CandidatesService} from "../../../../../service/http/candidate-list/serv
 })
 export class ReadFeedbackComponent implements OnInit {
   name = ''
-  InterviewerName = '';
+  InterviewerBeforeSandbox = '';
+  InterviewerAfterSandbox = ''
   RecruiterName = '';
   MentorName = '';
   feedbackFromRecruiter = '';
@@ -30,38 +31,41 @@ export class ReadFeedbackComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.readFeedback.getAllFeedback().pipe(tap(candidate =>
-      candidate.map((c: any) => {
-          this.candidateService.getCandidatesByID(c.candidateId).pipe(tap(cand => {
-            this.readFeedback.getEmployeeById(c.employeeId).pipe(tap(employee => {
-                if (employee.role.roleName == 'Recruiter') {
-                  this.feedbackFromRecruiter = c.comment;
-                  this.MarkFromRecruiter = c.feedbackMark;
-                  this.RecruiterName = employee.role.roleName + ' ' + employee.firstname + ' ' + employee.lastname;
-
-                }
-                else if(employee.role.roleName=='Interviewer' && c.feedBackType == 'InterViewerMark'){
-                  this.MarkFromInterviewerAfterSandbox = c.feedbackMark
-                  this.feedbackFromInterViewerAfterSandbox = c.comment;
-                  this.InterviewerName = employee.role.roleName + ' ' + employee.firstname + ' ' + employee.lastname;
-                }
-                else if (employee.role.roleName == 'Interviewer') {
-                  this.feedbackFromInterViewerBeforeSandbox = c.comment;
-                  this.MarkFromInterviewerBeforeSandbox = c.feedbackMark
-                  this.InterviewerName = employee.role.roleName + ' ' + employee.firstname + ' ' + employee.lastname;
-                }
-
-                else if (employee.role.roleName == 'Mentor') {
-                  this.feedbackFromMentor = c.comment;
-                  this.MarkFromMentor = c.feedbackMark
-                  this.MentorName = employee.role.roleName + ' ' + employee.firstname + ' ' + employee.lastname;
-                }
+    this.readFeedback.getAllFeedback().pipe(map(feedback=>{
+      feedback.map((f:any)=>{
+        if(f.candidateId==this.readFeedback.candidateId) {
+          if(f.employee.empPosition=='Recruiter'){
+            this.RecruiterName=f.employee.empPosition+' ' + f.employee.firstname+' '+f.employee.lastname
+            console.log( this.RecruiterName);
+            f.employee.feedbacks.map((fb:any)=>{
+              this.feedbackFromRecruiter = fb.comment;
+            })
+          }else if(f.employee.empPosition=='Mentor'){
+            this.MentorName =f.employee.empPosition+' ' +  f.employee.firstname+' '+f.employee.lastname;
+            f.employee.feedbacks.map((fb:any)=>{
+              this.feedbackFromMentor = fb.comment;
+            })
+            console.log( this.MentorName);
+          }else if(f.employee.empPosition=='Interviewer'){
+            f.employee.feedbacks.map((fb:any)=>{
+              console.log(fb.feedBackType)
+              if(fb.feedBackType == 'InterViewerMark'){
+                this.InterviewerAfterSandbox = f.employee.empPosition+' ' + f.employee.firstname+' '+f.employee.lastname;
+                this.feedbackFromInterViewerAfterSandbox = fb.comment
+              }else{
+                this.InterviewerBeforeSandbox =f.employee.empPosition+' ' +  f.employee.firstname+' '+f.employee.lastname;
+                this.feedbackFromInterViewerBeforeSandbox = fb.comment
               }
-            )).subscribe()
-          })).subscribe()
+            })
+          }
+          console.log(f.employee)
+
+
+
         }
-      )
-    )).subscribe()
+      })
+
+    })).subscribe()
 
   }
 

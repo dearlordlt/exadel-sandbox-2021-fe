@@ -5,13 +5,12 @@ import { SubmitDialogComponent } from '../submit-dialog/submit-dialog.component'
 import { HttpClient } from '@angular/common/http';
 import { StaticService } from 'src/app/service/http/static/static.service';
 import { EducationalProgramsService } from 'src/app/service/http/educational-programs/educational-programs.service';
-
+import { CandidatesService } from '../../../service/http/candidate-list/services/candidates.service';
 
 import { MatDialog } from '@angular/material/dialog';
 
 import * as moment from 'moment';
 import 'moment-timezone';
-import {CandidatesService} from "../../../service/http/candidate-list/services/candidates.service";
 
 @Component({
   selector: 'app-candidate-form',

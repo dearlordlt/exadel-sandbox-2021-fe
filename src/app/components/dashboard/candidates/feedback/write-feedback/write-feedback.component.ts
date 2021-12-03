@@ -65,6 +65,7 @@ export class WriteFeedbackComponent implements OnInit {
         }
       )).subscribe()
     })).subscribe()
+
   }
 
   back() {
