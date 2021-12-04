@@ -21,7 +21,6 @@ export class PlannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
-
     if (this.educationalProgramId) this.getEducationalProgram();
   }
 
@@ -29,5 +28,8 @@ export class PlannerComponent implements OnInit {
     this.educationalProgramsService
       .getEducationalProgram(this.educationalProgramId)
       .subscribe((data: EducationalProgram) => (this.educationalProgram = data));
+  }
+  getDate(){
+    console.log(this.programForm.controls['date'].value)
   }
 }

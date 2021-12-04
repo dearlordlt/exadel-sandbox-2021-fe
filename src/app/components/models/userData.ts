@@ -5,4 +5,5 @@ export interface UserData {
   token: string;
   username: string;
   email: string;
+  role: string;
 }
