@@ -1,32 +1,49 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
 .container {
     display: flex;
+    //height: 100vh;
     flex-flow: row;
     flex-direction: column;
   }
   
   .header {
+    height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px 10px 0 10px;
+    font-family: 'Poppins', sans-serif;
     .logo {
       width: 150px;
       height: 50px;
     }
-  
+    h1{
+      margin: 0;
+    }
+   
   }
-  
+
   .about {
+    background-image: url('../../../../assets/images/home-bg.png.webp');
+    background-repeat: no-repeat;
+    //background-color: #fff;
+    height: 110vh !important;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 12vh;
+    align-items: flex-end;
+    padding-right: 80px;
+    padding-top: 0;
   }
   
   .about-card {
+    background-color: transparent;
     max-width: 500px;
     width: 400px;
-    height: 200px;
+    //height: 200px;
     box-shadow: none !important;
   }
 

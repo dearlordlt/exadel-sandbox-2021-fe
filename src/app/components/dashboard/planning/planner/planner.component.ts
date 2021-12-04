@@ -16,7 +16,6 @@ export class PlannerComponent implements OnInit {
   programForm: FormGroup = this.fb.group({
     date: '',
   });
-  date: string = '';
   dateFomatted: string = '';
   educationalProgramId: string = '';
   educationalProgram: EducationalProgram = {} as EducationalProgram;
@@ -33,11 +32,8 @@ export class PlannerComponent implements OnInit {
       .getEducationalProgram(this.educationalProgramId)
       .subscribe((data: EducationalProgram) => (this.educationalProgram = data));
   }
-  getDate(){
-    
+  getDate(){ 
     this.dateFomatted = moment(this.programForm.controls['date'].value).format(moment.HTML5_FMT.DATE).split('-').join('-');
-
-    console.log(this.date)
     console.log(this.dateFomatted)
     return this.dateFomatted;
   }
