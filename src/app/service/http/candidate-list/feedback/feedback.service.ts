@@ -22,8 +22,8 @@ export class FeedbackService {
     return this.http.post<CreateFeedback>(`${environment.EXADEL_API}/Feedback/AddFeedback`, feedback);
   }
 
-  getAllFeedback() {
-    return this.http.get<any>(`${environment.EXADEL_API}/Feedback/GetAllFeedbacks`);
+  getAllFeedback(candidateID: string) {
+    return this.http.get<any>(`${environment.EXADEL_API}/Feedback/GetAllFeedbacks?CandidateID=${candidateID}`);
   }
 
   getFeedbackByID(id: string) {

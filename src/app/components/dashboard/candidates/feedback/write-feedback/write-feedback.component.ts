@@ -25,6 +25,7 @@ export class WriteFeedbackComponent implements OnInit {
     comment: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(1000)]),
   });
   success = false;
+
   constructor(private router: Router, private rwFeedback: FeedbackService, private feedbackTypeService: StaticService) {
     this.name = this.rwFeedback.candidateName;
     this.status = this.rwFeedback.candidateStatus
@@ -76,7 +77,7 @@ export class WriteFeedbackComponent implements OnInit {
     const date = new Date();
     this.datetimeNow.setValue(date);
     this.feedbackType.setValue(this.feedbackTypeValue)
-    if(this.feedbackForm.valid) {
+    if (this.feedbackForm.valid) {
       this.rwFeedback.writeFeedback({
         ...this.feedbackForm.value,
         employeeId: localStorage.getItem('id'),
@@ -84,9 +85,8 @@ export class WriteFeedbackComponent implements OnInit {
       }).pipe(tap(feedback => {
         this.feedback = feedback;
         this.success = true;
-        console.log(this.feedback);
       })).subscribe();
-    }else {
+    } else {
       alert('Inputs are required')
     }
   }
