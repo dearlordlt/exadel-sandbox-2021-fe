@@ -14,7 +14,8 @@ button.hide-button {
   background: none;
   border: none;
 }
-h3, button{
+h3,
+button {
   font-family: 'Poppins', sans-serif;
 }
 .table-wrapper {
@@ -49,12 +50,6 @@ h3, button{
   }
 }
 
-th.mat-header-cell {
-  color: #000;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
 th.mat-header-cell:first-of-type,
 td.mat-cell:first-of-type,
 td.mat-footer-cell:first-of-type {
@@ -70,9 +65,12 @@ td.mat-footer-cell:last-of-type {
 th.mat-header-cell,
 td.mat-cell {
   min-width: 5rem;
-  text-align: center;
-  border: 1px solid #ccc;
+  text-align: left !important;
   padding: 0.4rem;
+}
+
+th.mat-header-cell {
+  border: none;
 }
 
 .mat-column-edit {
@@ -83,18 +81,18 @@ td.mat-cell {
   }
 }
 
+.edit-reset {
+  button {
+    width: 100%;
+  }
+}
+
 .edit-feedback {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0;
-}
-
-.mat-header-row {
-  .mat-header-cell {
-    background: #ddd;
-  }
 }
 
 .mat-row,

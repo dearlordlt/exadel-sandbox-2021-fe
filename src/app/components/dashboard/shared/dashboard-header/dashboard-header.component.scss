@@ -20,6 +20,7 @@ $primary: #0082ca;
     display: flex;
     gap: 70px;
     list-style: none;
+    align-items: center;
 
     li {
       font-size: 1.8rem;
@@ -40,6 +41,13 @@ $primary: #0082ca;
     gap: 20px;
     align-items: center;
 
+    .profile__name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 10px;
+    }
+
     button {
       background-color: #fff;
       // box-shadow: 0 0 2px 2px $primary;
@@ -49,6 +57,7 @@ $primary: #0082ca;
       padding: 0px 15px;
       font-size: 1.4rem;
       margin-left: 10px;
+      box-shadow: none;
 
       &:hover {
         box-shadow: 0 0 1px 0px $primary;

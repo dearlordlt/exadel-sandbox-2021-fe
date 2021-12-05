@@ -21,8 +21,10 @@
     </ul>
   </div>
   <div class="profile">
-    <span><i class="fas fa-user-circle"></i></span>
-    <span>{{user}}</span>
+    <div class="profile__name">
+      <span><i class="fas fa-user-circle"></i></span>
+      <span>{{user}}</span>
+    </div>
     <button mat-raised-button (click)="logOut()">Log Out</button>
   </div>
 </div>
