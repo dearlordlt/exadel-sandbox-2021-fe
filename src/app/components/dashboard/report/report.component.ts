@@ -54,6 +54,9 @@ export class ReportComponent implements OnInit {
       },
       yAxis: {
         visible: true,
+        min: 0,
+        minTickInterval: 1,
+        allowDecimals: false
       },
       legend: {
         enabled: true,
@@ -61,6 +64,9 @@ export class ReportComponent implements OnInit {
       xAxis: {
         lineColor: '#fff',
         categories: this.reportArrOptions,
+        min: 0,
+        minTickInterval: 1,
+        allowDecimals: false
       },
       plotOptions: {
         series: {

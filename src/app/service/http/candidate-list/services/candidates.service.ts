@@ -25,7 +25,7 @@ export class CandidatesService {
     );
   }
 
-  getCandidatesByID(id: string) {
+  getCandidateByID(id: string) {
     return this.http.get<Candidate>(`${environment.EXADEL_API}/Candidates/${id}`)
   }
 

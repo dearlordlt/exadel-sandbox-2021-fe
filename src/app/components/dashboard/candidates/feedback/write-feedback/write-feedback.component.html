@@ -2,7 +2,7 @@
   <h1>{{name}}'s feedback</h1>
   <div class="flex">
     <div [formGroup]='feedbackForm'>
-      <ng-container *ngIf="checkStatus === 'Interviewer' && status === 5" >
+      <ng-container *ngIf="checkStatus === 'Interviewer' && status === 5">
         <mat-form-field>
           <mat-label>Hard skill</mat-label>
           <mat-select [formControl]="feedbackMark">
@@ -30,7 +30,8 @@
     </div>
     <div class="textarea">
       <label for="feedback">Feedback</label>
-      <textarea name="feedback" id="feedback" cols="50" rows="5" placeholder="Your feedback" [formControl]='comment'></textarea>
+      <textarea name="feedback" id="feedback" cols="50" rows="5" placeholder="Your feedback"
+                [formControl]='comment'></textarea>
     </div>
   </div>
   <div class="btn">
