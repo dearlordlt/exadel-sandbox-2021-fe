@@ -12,7 +12,8 @@
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 10px 10px 0 10px;
     font-family: 'Poppins', sans-serif;
     .logo {
@@ -21,6 +22,12 @@
     }
     h1{
       margin: 0;
+      font-family: 'Poppins', sans-serif;
+
+    }
+    h2{
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
    
   }
@@ -29,22 +36,26 @@
     background-image: url('../../../../assets/images/home-bg.png.webp');
     background-repeat: no-repeat;
     //background-color: #fff;
-    height: 110vh !important;
+    height: 90vh !important;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-top: 12vh;
     align-items: flex-end;
     padding-right: 80px;
     padding-top: 0;
+    padding-bottom: 0;
   }
   
   .about-card {
-    background-color: transparent;
+    background-color: #fff;
     max-width: 500px;
     width: 400px;
-    //height: 200px;
     box-shadow: none !important;
+    .header-apply-btn{
+      margin-left: 100px;
+    }
   }
+
 
   

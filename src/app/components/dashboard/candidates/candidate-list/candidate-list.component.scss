@@ -14,7 +14,9 @@ button.hide-button {
   background: none;
   border: none;
 }
-
+h3, button{
+  font-family: 'Poppins', sans-serif;
+}
 .table-wrapper {
   display: block;
   width: 95%;
@@ -29,7 +31,7 @@ button.hide-button {
     display: table;
     border-collapse: collapse;
     margin: 0;
-
+    font-family: 'Poppins', sans-serif;
     ::ng-deep .mat-form-field-underline {
       display: none;
     }
@@ -37,10 +39,10 @@ button.hide-button {
     th {
       mat-form-field {
         width: 120px;
-
         mat-label {
           font-weight: bold;
           color: #000;
+          font-family: 'Poppins', sans-serif;
         }
       }
     }
