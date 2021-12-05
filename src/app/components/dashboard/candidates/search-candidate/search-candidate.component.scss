@@ -6,12 +6,14 @@ h2 {
 .flex {
   display: flex;
   flex-wrap: wrap;
+  font-family: 'Poppins', sans-serif !important;
+
 }
 .search-group {
   display: flex;
   flex-direction: column;
   margin: 0 50px;
 }
-mat-label, mat-select, button{
-  font-family: 'Poppins', sans-serif;
+mat-label, mat-select, button, mat-option{
+  font-family: 'Poppins', sans-serif !important;
 }
