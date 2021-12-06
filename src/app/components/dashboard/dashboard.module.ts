@@ -28,6 +28,7 @@ import { MakeFreeSpotsDialogComponent } from './planning/planner/make-free-spots
 import { UpdateLetterComponent } from './letters/update-letter/update-letter.component';
 import { UpdateEducationalProgramComponent } from './educational-programs/update-educational-program/update-educational-program.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { EventDialogComponent } from './planning/planner/event-dialog/event-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     UpdateLetterComponent,
     UpdateEducationalProgramComponent,
     ConfirmationDialogComponent,
+    EventDialogComponent,
   ],
 
   imports: [CommonModule, AppRoutingModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ChartModule],

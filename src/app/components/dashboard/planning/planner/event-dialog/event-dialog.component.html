@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>event Information</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Date</mat-label>
+    <input matInput disabled [(ngModel)]="data.date" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Time</mat-label>
+    <input matInput disabled [(ngModel)]="data.elem.time" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Name</mat-label>
+    <input matInput disabled [(ngModel)]="data.main.name" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Position</mat-label>
+    <input matInput disabled [(ngModel)]="data.main.position" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Candidate</mat-label>
+    <mat-select [(ngModel)]="data.elem.candidate" *ngIf="admin">
+      <mat-option *ngFor="let candidate of candidates" (onSelectionChange)="getSkype(candidate)" [value]="candidate"
+        >{{candidate}}</mat-option
+      >
+    </mat-select>
+    <input matInput *ngIf="!admin" disabled [(ngModel)]="data.elem.candidate" required />
+  </mat-form-field>
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Skype</mat-label>
+    <input matInput disabled [(ngModel)]="data.elem.skype" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" hideRequiredMarker="true">
+    <mat-label>Description</mat-label>
+    <textarea matInput #textarea rows="10" maxlength="1500" [disabled]="!admin" [(ngModel)]="data.elem.description"></textarea>
+    <mat-hint align="end">{{textarea.value?.length || 0}}/1500</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{this.admin ? 'Save' : 'Ok'}}</button>
+  <button *ngIf="admin" mat-stroked-button (click)="onDelete()">Delete</button>
+</div>

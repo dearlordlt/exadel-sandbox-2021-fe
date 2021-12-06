@@ -3,12 +3,270 @@
     <h1>{{ educationalProgram.name }}</h1>
     <mat-form-field appearance="outline" [formGroup]="programForm">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <input matInput [matDatepicker]="picker" (dateChange)="dateEvent()" formControlName="date" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="planner__scheduler">
-    <app-schedule [_educationalProgramId]="educationalProgramId" [date]="programForm.controls['date'].value"></app-schedule>
+    <!-- <app-schedule [_educationalProgramId]="educationalProgramId" [date]="programForm.controls['date'].value"></app-schedule> -->
+    <div class="schedule">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element" class="schedule__name-cell">{{element.name}}</td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Position</th>
+          <td mat-cell *matCellDef="let element">{{element.position}}</td>
+        </ng-container>
+
+        <!-- Time Columns -->
+        <ng-container matColumnDef="9:00">
+          <th mat-header-cell *matHeaderCellDef>9:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[0].available || element.eventData[1].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[0].available }"
+            (click)="addEvent(element,element.eventData[0])"
+          >
+            <mat-icon *ngIf="element.eventData[0].taken">check</mat-icon>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="9:30">
+          <th mat-header-cell *matHeaderCellDef>9:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[1].available || element.eventData[1].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[1].available }"
+            (click)="addEvent(element,element.eventData[1])"
+          >
+            <mat-icon *ngIf="element.eventData[1].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="10:00">
+          <th mat-header-cell *matHeaderCellDef>10:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[2].available || element.eventData[2].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[2].available }"
+            (click)="addEvent(element,element.eventData[2])"
+          >
+            <mat-icon *ngIf="element.eventData[2].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="10:30">
+          <th mat-header-cell *matHeaderCellDef>10:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[3].available || element.eventData[3].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[3].available }"
+            (click)="addEvent(element,element.eventData[3])"
+          >
+            <mat-icon *ngIf="element.eventData[3].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="11:00">
+          <th mat-header-cell *matHeaderCellDef>11:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[4].available || element.eventData[4].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[4].available }"
+            (click)="addEvent(element,element.eventData[4])"
+          >
+            <mat-icon *ngIf="element.eventData[4].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="11:30">
+          <th mat-header-cell *matHeaderCellDef>11:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[5].available || element.eventData[5].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[5].available }"
+            (click)="addEvent(element,element.eventData[5])"
+          >
+            <mat-icon *ngIf="element.eventData[5].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="12:00">
+          <th mat-header-cell *matHeaderCellDef>12:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[6].available || element.eventData[6].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[6].available }"
+            (click)="addEvent(element,element.eventData[6])"
+          >
+            <mat-icon *ngIf="element.eventData[6].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="12:30">
+          <th mat-header-cell *matHeaderCellDef>12:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[7].available || element.eventData[7].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[7].available }"
+            (click)="addEvent(element,element.eventData[7])"
+          >
+            <mat-icon *ngIf="element.eventData[7].taken">check</mat-icon>
+          </td></ng-container
+        >
+
+        <ng-container matColumnDef="13:00">
+          <th mat-header-cell *matHeaderCellDef>13:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[8].available || element.eventData[8].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[8].available }"
+            (click)="addEvent(element,element.eventData[8])"
+          >
+            <mat-icon *ngIf="element.eventData[8].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="13:30">
+          <th mat-header-cell *matHeaderCellDef>13:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[9].available || element.eventData[9].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[9].available }"
+            (click)="addEvent(element,element.eventData[9])"
+          >
+            <mat-icon *ngIf="element.eventData[9].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="14:00">
+          <th mat-header-cell *matHeaderCellDef>14:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[10].available || element.eventData[10].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[10].available }"
+            (click)="addEvent(element,element.eventData[10])"
+          >
+            <mat-icon *ngIf="element.eventData[10].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="14:30">
+          <th mat-header-cell *matHeaderCellDef>14:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[11].available || element.eventData[11].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[11].available }"
+            (click)="addEvent(element,element.eventData[11])"
+          >
+            <mat-icon *ngIf="element.eventData[11].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="15:00">
+          <th mat-header-cell *matHeaderCellDef>15:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[12].available || element.eventData[12].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[12].available }"
+            (click)="addEvent(element,element.eventData[12])"
+          >
+            <mat-icon *ngIf="element.eventData[12].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="15:30">
+          <th mat-header-cell *matHeaderCellDef>15:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[13].available || element.eventData[13].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[13].available }"
+            (click)="addEvent(element,element.eventData[13])"
+          >
+            <mat-icon *ngIf="element.eventData[13].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="16:00">
+          <th mat-header-cell *matHeaderCellDef>16:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[14].available || element.eventData[14].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[14].available }"
+            (click)="addEvent(element,element.eventData[14])"
+          >
+            <mat-icon *ngIf="element.eventData[14].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="16:30">
+          <th mat-header-cell *matHeaderCellDef>16:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[15].available || element.eventData[15].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[15].available }"
+            (click)="addEvent(element,element.eventData[15])"
+          >
+            <mat-icon *ngIf="element.eventData[15].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="17:00">
+          <th mat-header-cell *matHeaderCellDef>17:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[1].available || element.eventData[16].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[16].available }"
+            (click)="addEvent(element,element.eventData[16])"
+          >
+            <mat-icon *ngIf="element.eventData[16].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="17:30">
+          <th mat-header-cell *matHeaderCellDef>17:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[17].available || element.eventData[17].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[17].available }"
+            (click)="addEvent(element,element.eventData[17])"
+          >
+            <mat-icon *ngIf="element.eventData[17].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="18:00">
+          <th mat-header-cell *matHeaderCellDef>18:00</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[18].available || element.eventData[18].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[18].available }"
+            (click)="addEvent(element,element.eventData[18])"
+          >
+            <mat-icon *ngIf="element.eventData[18].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="18:30">
+          <th mat-header-cell *matHeaderCellDef>18:30</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[19].available || element.eventData[19].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[19].available }"
+            (click)="addEvent(element,element.eventData[19])"
+          >
+            <mat-icon *ngIf="element.eventData[19].taken">check</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
   </div>
 </div>

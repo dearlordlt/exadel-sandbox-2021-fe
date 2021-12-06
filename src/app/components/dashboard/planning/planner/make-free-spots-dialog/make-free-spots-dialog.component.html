@@ -1,22 +1,24 @@
 <h1 mat-dialog-title>Free spots</h1>
 <div mat-dialog-content [formGroup]="freeSpotsForm" class="dialog">
   <div formArrayName="freeSpots">
-    <div *ngFor="let freeSpot of freeSpotsForms.controls; let i=index" [formGroupName]="i" class="dialog__time-spot">
-      <mat-form-field class="dialog__form-field">
-        <mat-label>From</mat-label>
-        <mat-select formControlName="from">
-          <mat-option *ngFor="let spot of freeSpotsFrom" [value]="spot">{{spot}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div *ngFor="let freeSpot of freeSpotsForms.controls; let i=index" class="dialog__time-spot">
+      <div formGroupName="i">
+        <mat-form-field class="dialog__form-field">
+          <mat-label>From</mat-label>
+          <mat-select formControlName="from">
+            <mat-option *ngFor="let spot of freeSpotsFrom" [value]="spot.id">{{spot.time}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="dialog__form-field">
-        <mat-label>To</mat-label>
-        <mat-select formControlName="to">
-          <mat-option *ngFor="let spot of freeSpotsTo" [value]="spot">{{spot}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="dialog__form-field">
+          <mat-label>To</mat-label>
+          <mat-select formControlName="to">
+            <mat-option *ngFor="let spot of freeSpotsTo" [value]="spot.id">{{spot.time}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <button mat-stroked-button color="warn" (click)="deleteFreeSpot(i)"><mat-icon>remove</mat-icon></button>
+        <button mat-stroked-button color="warn" (click)="deleteFreeSpot(i)"><mat-icon>remove</mat-icon></button>
+      </div>
     </div>
   </div>
 
@@ -25,7 +27,7 @@
   </div>
 
   <div mat-dialog-actions class="dialog__action-buttons">
-    <button mat-stroked-button color="primary" cdkFocusInitial>Save</button>
-    <button mat-stroked-button color="primary" (click)="onCancelClick()">Cancel</button>
+    <button mat-stroked-button color="primary" cdkFocusInitial [mat-dialog-close]="this.freeSpotsForm.value">Save</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="'cancel'" (click)="onCancelClick()">Cancel</button>
   </div>
 </div>

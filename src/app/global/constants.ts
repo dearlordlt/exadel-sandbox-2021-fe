@@ -284,87 +284,58 @@ export const countries = [
   'Zimbabwe',
 ];
 export const technologies = {
-  technologyJsNET: [
-    '.Net',
-    'JS',
-    'BA'
-  ],
-  technologyJsJava: [
-    'Java',
-    'JS',
-    'BA'
-  ],
-  technologyJsPHP: [
-    'PHP',
-    'JS',
-    'BA'
-  ]
-}
-export const technologyJsNET = [
-  '.Net',
-  'JS',
-  'BA'
-]
-export const technologyJsJava = [
-  'Java',
-  'JS',
-  'BA'
-]
-export const technologyJsPHP = [
-  'PHP',
-  'JS',
-  'BA'
-]
-export const contactTime = [
-  '10.00-13.00',
-  '13.00-16.00',
-  '16.00-19.00',
-  'anytime',
-]
-export const decision = [
-  'Yes',
-  'No', 
-  'Maybe',
-]
+  technologyJsNET: ['.Net', 'JS', 'BA'],
+  technologyJsJava: ['Java', 'JS', 'BA'],
+  technologyJsPHP: ['PHP', 'JS', 'BA'],
+};
+export const technologyJsNET = ['.Net', 'JS', 'BA'];
+export const technologyJsJava = ['Java', 'JS', 'BA'];
+export const technologyJsPHP = ['PHP', 'JS', 'BA'];
+export const contactTime = ['10.00-13.00', '13.00-16.00', '16.00-19.00', 'anytime'];
+export const decision = ['Yes', 'No', 'Maybe'];
 export const schedulerTimeSpots = {
   from: [
-    '9:00',
-    '9:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-    '18:30',
+    { id: 1, time: '9:00' },
+    { id: 2, time: '9:30' },
+    { id: 3, time: '10:00' },
+    { id: 4, time: '10:30' },
+    { id: 5, time: '11:00' },
+    { id: 6, time: '11:30' },
+    { id: 7, time: '12:00' },
+    { id: 8, time: '12:30' },
+    { id: 9, time: '13:00' },
+    { id: 10, time: '13:30' },
+    { id: 11, time: '14:00' },
+    { id: 12, time: '14:30' },
+    { id: 13, time: '15:00' },
+    { id: 14, time: '15:30' },
+    { id: 15, time: '16:00' },
+    { id: 16, time: '16:30' },
+    { id: 17, time: '17:00' },
+    { id: 18, time: '17:30' },
+    { id: 19, time: '18:00' },
+    { id: 20, time: '18:30' },
   ],
   to: [
-    '9:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-    '18:30',
-    '19:00',
+    { id: 1, time: '9:00' },
+    { id: 2, time: '9:30' },
+    { id: 3, time: '10:00' },
+    { id: 4, time: '10:30' },
+    { id: 5, time: '11:00' },
+    { id: 6, time: '11:30' },
+    { id: 7, time: '12:00' },
+    { id: 8, time: '12:30' },
+    { id: 9, time: '13:00' },
+    { id: 10, time: '13:30' },
+    { id: 11, time: '14:00' },
+    { id: 12, time: '14:30' },
+    { id: 13, time: '15:00' },
+    { id: 14, time: '15:30' },
+    { id: 15, time: '16:00' },
+    { id: 16, time: '16:30' },
+    { id: 17, time: '17:00' },
+    { id: 18, time: '17:30' },
+    { id: 19, time: '18:00' },
+    { id: 20, time: '18:30' },
   ],
 };

@@ -17,3 +17,55 @@ $unavailable: #878787;
     margin-top: 50px;
   }
 }
+$primary: #0082ca;
+$available: #00cc8b;
+$unavailable: #878787;
+
+.schedule {
+  &__cell {
+    height: 100%;
+    width: 100%;
+    background-color: $unavailable;
+  }
+
+  &__cell--available {
+    background-color: $available;
+  }
+
+  &__cell--unavailable {
+    background-color: $unavailable;
+  }
+
+  &__name-cell {
+    cursor: pointer;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  justify-content: center;
+  text-align: center;
+}
+
+td.mat-cell {
+  width: 50px;
+  height: 50px;
+}
+
+.mat-column-name {
+  border: none;
+}
+
+.mat-column-position {
+  border: none;
+}

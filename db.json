@@ -1,274 +1,959 @@
 {
-  "candidates": [
+  "EventData": [
     {
-      "id": 1,
-      "firstname": "Tituss",
-      "lastname": "Chase",
-      "eduProg": ".NET,JS,BA: 10-11.2021",
-      "position": "BA",
-      "email": "Titus.Chase@gmail.com",
-      "phone_number": "123123123",
-      "skype": "live:abcd1234",
-      "country": "Belarus",
-      "city": "Minsk",
-      "english_level": "B2",
-      "contact_time": "10:00-13:00",
-      "plan_to_join": "maybe",
-      "date_of_apply": "01.10.2021",
-      "status": "Sandbox completed",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
+      "id": "2021-12-06",
+      "userData": [
+        {
+          "name": "Jeff Mason",
+          "position": "Interviewer",
+          "eventData": [
+            {
+              "id": 1,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:00"
+            },
+            {
+              "id": 2,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:30"
+            },
+            {
+              "id": 3,
+              "available": true,
+              "taken": true,
+              "candidate": "Anna Holmes",
+              "skype": "live: sdf789",
+              "description": "zoom link",
+              "time": "10:00"
+            },
+            {
+              "id": 4,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:30"
+            },
+            {
+              "id": 5,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:00"
+            },
+            {
+              "id": 6,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:30"
+            },
+            {
+              "id": 7,
+              "available": true,
+              "taken": true,
+              "candidate": "Anna Holmes",
+              "skype": "live: sdf789",
+              "description": "",
+              "time": "12:00"
+            },
+            {
+              "id": 8,
+              "available": true,
+              "taken": true,
+              "candidate": "Bob Miller",
+              "skype": "live: sdf123",
+              "description": "",
+              "time": "12:30"
+            },
+            {
+              "id": 9,
+              "available": true,
+              "taken": true,
+              "candidate": "Bob Miller",
+              "skype": "live: sdf123",
+              "description": "desc",
+              "time": "13:00"
+            },
+            {
+              "id": 10,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:30"
+            },
+            {
+              "id": 11,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:00"
+            },
+            {
+              "id": 12,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:30"
+            },
+            {
+              "id": 13,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:00"
+            },
+            {
+              "id": 14,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:30"
+            },
+            {
+              "id": 15,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:00"
+            },
+            {
+              "id": 16,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:30"
+            },
+            {
+              "id": 17,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:00"
+            },
+            {
+              "id": 18,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:30"
+            },
+            {
+              "id": 19,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:00"
+            },
+            {
+              "id": 20,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:30"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 2,
-      "firstname": "Dawson",
-      "lastname": "Gallegos",
-      "eduProg": ".NET,JS,BA: 10-11.2021",
-      "position": ".NET",
-      "email": "Dawson.Gallegos@gmail.com",
-      "phone_number": "456234678",
-      "skype": "dawson.gal",
-      "country": "Georgia",
-      "city": "Tbilisi",
-      "english_level": "B1",
-      "contact_time": "13:00-16:00",
-      "plan_to_join": "yes",
-      "date_of_apply": "01.10.2021",
-      "status": "accepted for Sandbox",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
+      "id": "2021-12-07",
+      "userData": [
+        {
+          "name": "Jeff Mason",
+          "position": "Interviewer",
+          "eventData": [
+            {
+              "id": 1,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:00"
+            },
+            {
+              "id": 2,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:30"
+            },
+            {
+              "id": 3,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:00"
+            },
+            {
+              "id": 4,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:30"
+            },
+            {
+              "id": 5,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:00"
+            },
+            {
+              "id": 6,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:30"
+            },
+            {
+              "id": 7,
+              "available": true,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:00"
+            },
+            {
+              "id": 8,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:30"
+            },
+            {
+              "id": 9,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:00"
+            },
+            {
+              "id": 10,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:30"
+            },
+            {
+              "id": 11,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:00"
+            },
+            {
+              "id": 12,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:30"
+            },
+            {
+              "id": 13,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:00"
+            },
+            {
+              "id": 14,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:30"
+            },
+            {
+              "id": 15,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:00"
+            },
+            {
+              "id": 16,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:30"
+            },
+            {
+              "id": 17,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:00"
+            },
+            {
+              "id": 18,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:30"
+            },
+            {
+              "id": 19,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:00"
+            },
+            {
+              "id": 20,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:30"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 3,
-      "firstname": "Lance",
-      "lastname": "Gallagher",
-      "eduProg": ".NET,JS,BA: 10-11.2021",
-      "position": "JS",
-      "email": "Lance.Mack@yahoo.com",
-      "phone_number": "490634678",
-      "skype": "live:xyz789",
-      "country": "Uzbekistan",
-      "city": "Tashkent",
-      "english_level": "B2",
-      "contact_time": "16:00-19:00",
-      "plan_to_join": "yes",
-      "date_of_apply": "01.10.2021",
-      "status": "accepted for Sandbox",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
+      "id": "2021-12-08",
+      "userData": [
+        {
+          "name": "Jeff Mason",
+          "position": "Interviewer",
+          "eventData": [
+            {
+              "id": 1,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:00"
+            },
+            {
+              "id": 2,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:30"
+            },
+            {
+              "id": 3,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:00"
+            },
+            {
+              "id": 4,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:30"
+            },
+            {
+              "id": 5,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:00"
+            },
+            {
+              "id": 6,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:30"
+            },
+            {
+              "id": 7,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:00"
+            },
+            {
+              "id": 8,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:30"
+            },
+            {
+              "id": 9,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:00"
+            },
+            {
+              "id": 10,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:30"
+            },
+            {
+              "id": 11,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:00"
+            },
+            {
+              "id": 12,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:30"
+            },
+            {
+              "id": 13,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:00"
+            },
+            {
+              "id": 14,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:30"
+            },
+            {
+              "id": 15,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:00"
+            },
+            {
+              "id": 16,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:30"
+            },
+            {
+              "id": 17,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:00"
+            },
+            {
+              "id": 18,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:30"
+            },
+            {
+              "id": 19,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:00"
+            },
+            {
+              "id": 20,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:30"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 4,
-      "firstname": "Kate",
-      "lastname": "Long",
-      "eduProg": ".NET,JS,BA: 10-11.2021",
-      "position": "BA",
-      "email": "Kate.Long@gmail.com",
-      "phone_number": "346745628",
-      "skype": "k.long",
-      "country": "Lithuania",
-      "city": "Vilnius",
-      "english_level": "C1",
-      "contact_time": "10:00-13:00",
-      "plan_to_join": "maybe",
-      "date_of_apply": "01.10.2021",
-      "status": "accepted for Sandbox",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
+      "id": "2021-12-09",
+      "userData": [
+        {
+          "name": "Jeff Mason",
+          "position": "Interviewer",
+          "eventData": [
+            {
+              "id": 1,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:00"
+            },
+            {
+              "id": 2,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:30"
+            },
+            {
+              "id": 3,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:00"
+            },
+            {
+              "id": 4,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:30"
+            },
+            {
+              "id": 5,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:00"
+            },
+            {
+              "id": 6,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:30"
+            },
+            {
+              "id": 7,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:00"
+            },
+            {
+              "id": 8,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:30"
+            },
+            {
+              "id": 9,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:00"
+            },
+            {
+              "id": 10,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:30"
+            },
+            {
+              "id": 11,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:00"
+            },
+            {
+              "id": 12,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:30"
+            },
+            {
+              "id": 13,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:00"
+            },
+            {
+              "id": 14,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:30"
+            },
+            {
+              "id": 15,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:00"
+            },
+            {
+              "id": 16,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:30"
+            },
+            {
+              "id": 17,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:00"
+            },
+            {
+              "id": 18,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:30"
+            },
+            {
+              "id": 19,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:00"
+            },
+            {
+              "id": 20,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:30"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": 5,
-      "firstname": "long",
-      "lastname": "lee",
-      "eduProg": "Java,JS,BA: 6-7.2021",
-      "position": "Java",
-      "email": "li.Long@outlook.com",
-      "phone_number": "012654012",
-      "skype": "long.li",
-      "country": "Belarus",
-      "city": "Minsk",
-      "english_level": "B2",
-      "contact_time": "13:00-16:00",
-      "plan_to_join": "maybe",
-      "date_of_apply": "01.06.2021",
-      "status": "Sandbox completed",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    },
-    {
-      "id": 6,
-      "firstname": "Erica",
-      "lastname": "Jensen",
-      "eduProg": "Java,JS,BA: 6-7.2021",
-      "position": "BA",
-      "email": "ejensen@gmail.com",
-      "phone_number": "321321321",
-      "skype": "erica.j",
-      "country": "Ukraine",
-      "city": "Kyiv",
-      "english_level": "B1",
-      "contact_time": "13:00-16:00",
-      "plan_to_join": "yes",
-      "date_of_apply": "01.06.2021",
-      "status": "Sandbox completed",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    },
-    {
-      "id": 7,
-      "firstname": "Patrick",
-      "lastname": "Robles",
-      "eduProg": "Java,JS,BA: 6-7.2021",
-      "position": "JS",
-      "email": "patrick.robles@outlook.com",
-      "phone_number": "741741741",
-      "skype": "live:qwer9874",
-      "country": "Belarus",
-      "city": "Grodno",
-      "english_level": "A2",
-      "contact_time": "16:00-19:00",
-      "plan_to_join": "no",
-      "date_of_apply": "01.06.2021",
-      "status": "candidate's refusal",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    },
-    {
-      "id": 8,
-      "firstname": "Bernard",
-      "lastname": "Miller",
-      "eduProg": "PHP,JS: 2-3.2021",
-      "position": "JS",
-      "email": "bernardm@gmail.com",
-      "phone_number": "984261357",
-      "skype": "long.li",
-      "country": "Poland",
-      "city": "Warsaw",
-      "english_level": "C1",
-      "contact_time": "13:00-16:00",
-      "plan_to_join": "maybe",
-      "date_of_apply": "01.02.2021",
-      "status": "Sandbox completed",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    },
-    {
-      "id": 9,
-      "firstname": "Anna",
-      "lastname": "Hines",
-      "eduProg": "PHP,JS: 2-3.2021",
-      "position": "JS",
-      "email": "hinesanna@yahoo.com",
-      "phone_number": "987321654",
-      "skype": "anna.hines",
-      "country": "Belarus",
-      "city": "Brest",
-      "english_level": "B2",
-      "contact_time": "13:00-16:00",
-      "plan_to_join": "yes",
-      "date_of_apply": "01.02.2021",
-      "status": "Sandbox completed",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    },
-    {
-      "id": 10,
-      "firstname": "Dolores",
-      "lastname": "Burks",
-      "eduProg": "PHP,JS: 2-3.2021",
-      "position": "PHP",
-      "email": "doloresb@gmail.com",
-      "phone_number": "159753456",
-      "skype": "live:kjh1234",
-      "country": "Belarus",
-      "city": "Minsk",
-      "english_level": "B1",
-      "contact_time": "10:00-13:00",
-      "plan_to_join": "no",
-      "date_of_apply": "01.02.2021",
-      "status": "candidate's refusal",
-      "soft_skill": "1",
-      "hard_skill": "1",
-      "mentor_mark": "1",
-      "interviewer_mark": "1"
-    }
-  ],
-  "mentors": [
-    {
-      "id": 1,
-      "firstname": "john",
-      "lastname": "Smith"
-    }
-  ],
-  "feedback": [
-    {
-      "id": 1,
-      "candidateId": 1,
-      "fromRecruiter": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-      "fromInterviewer": " Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-      "fromMentor": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-      "fromInterviewerTwo": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc"
-    }
-  ],
-  "educationalPrograms": [
-    {
-      "id": 1,
-      "name": ".NET,JS,BA: 10-11.2021"
-    },
-    {
-      "id": 2,
-      "name": "Java,JS,BA: 6-7.2021"
-    },
-    {
-      "id": 3,
-      "name": "PHP,JS: 2-3.2021"
-    }
-  ],
-  "GetForReport": [
-    {
-      "applications": 4,
-      "refusalByEnglish": 5,
-      "refusalByLocation": 2,
-      "failureTechnical": 7,
-      "candidateRefusal": 11,
-      "sandboxCompleted": 9,
-      "eduProgId": 1
-    },
-    {
-      "applications": 50,
-      "refusalByEnglish": 15,
-      "refusalByLocation": 5,
-      "failureTechnical": 17,
-      "candidateRefusal": 15,
-      "sandboxCompleted": 9,
-      "eduProgId": 2
-    },
-    {
-      "applications": 100,
-      "refusalByEnglish": 20,
-      "refusalByLocation": 30,
-      "failureTechnical": 15,
-      "candidateRefusal": 11,
-      "sandboxCompleted": 9,
-      "eduProgId": 3
+      "id": "2021-12-10",
+      "userData": [
+        {
+          "name": "Jeff Mason",
+          "position": "Interviewer",
+          "eventData": [
+            {
+              "id": 1,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:00"
+            },
+            {
+              "id": 2,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "09:30"
+            },
+            {
+              "id": 3,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:00"
+            },
+            {
+              "id": 4,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "10:30"
+            },
+            {
+              "id": 5,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:00"
+            },
+            {
+              "id": 6,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "11:30"
+            },
+            {
+              "id": 7,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:00"
+            },
+            {
+              "id": 8,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "12:30"
+            },
+            {
+              "id": 9,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:00"
+            },
+            {
+              "id": 10,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "13:30"
+            },
+            {
+              "id": 11,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:00"
+            },
+            {
+              "id": 12,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "14:30"
+            },
+            {
+              "id": 13,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:00"
+            },
+            {
+              "id": 14,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "15:30"
+            },
+            {
+              "id": 15,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:00"
+            },
+            {
+              "id": 16,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "16:30"
+            },
+            {
+              "id": 17,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:00"
+            },
+            {
+              "id": 18,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "17:30"
+            },
+            {
+              "id": 19,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:00"
+            },
+            {
+              "id": 20,
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
+              "time": "18:30"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
