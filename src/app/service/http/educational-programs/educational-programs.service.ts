@@ -1,10 +1,14 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { EducationalProgram } from '../../../components/shared/interfaces/educational-program/educational-program.interface';
-import { PostEducationalProgram } from '../../../components/shared/interfaces/educational-program/post-educational-program.interface';
-import { Position } from '../../../components/shared/interfaces/educational-program/educational-program.interface';
+import {Injectable} from '@angular/core';
+import {environment} from '../../../../environments/environment';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {
+  EducationalProgram
+} from '../../../components/shared/interfaces/educational-program/educational-program.interface';
+import {
+  PostEducationalProgram
+} from '../../../components/shared/interfaces/educational-program/post-educational-program.interface';
+import {Position} from '../../../components/shared/interfaces/educational-program/educational-program.interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,10 +20,11 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class EducationalProgramsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-  getEducationalPrograms(): Observable<EducationalProgram[]> {
-    return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter`);
+  getEducationalPrograms(name = '', accep_per_from = '', prog_per_from = ''): Observable<EducationalProgram[]> {
+    return this.http.get<EducationalProgram[]>(`${environment.EXADEL_API}/EducationProgram/GetAllEducationProgramWithSortAndFilter?name=${name}&accep_per_from=${accep_per_from}&prog_per_from=${prog_per_from}`);
   }
 
   getEducationalProgramsForRegistration(): Observable<EducationalProgram[]> {
@@ -40,7 +45,7 @@ export class EducationalProgramsService {
 
   updateEducationalProgram(id: string, data: EducationalProgram): Observable<EducationalProgram> {
     const params = new HttpParams().set('Id', id);
-    return this.http.put<EducationalProgram>(`${environment.EXADEL_API}/EducationProgram/`, data, { params: params });
+    return this.http.put<EducationalProgram>(`${environment.EXADEL_API}/EducationProgram/`, data, {params: params});
   }
 
   getPositions(): Observable<Position[]> {
