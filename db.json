@@ -27,16 +27,16 @@
             },
             {
               "id": 3,
-              "available": true,
-              "taken": true,
-              "candidate": "Anna Holmes",
-              "skype": "live: sdf789",
-              "description": "zoom link",
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
               "time": "10:00"
             },
             {
               "id": 4,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -54,7 +54,7 @@
             },
             {
               "id": 6,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -63,29 +63,29 @@
             },
             {
               "id": 7,
-              "available": true,
-              "taken": true,
-              "candidate": "Anna Holmes",
-              "skype": "live: sdf789",
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
               "description": "",
               "time": "12:00"
             },
             {
               "id": 8,
-              "available": true,
-              "taken": true,
-              "candidate": "Bob Miller",
-              "skype": "live: sdf123",
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
               "description": "",
               "time": "12:30"
             },
             {
               "id": 9,
-              "available": true,
-              "taken": true,
-              "candidate": "Bob Miller",
-              "skype": "live: sdf123",
-              "description": "desc",
+              "available": false,
+              "taken": false,
+              "candidate": "",
+              "skype": "",
+              "description": "",
               "time": "13:00"
             },
             {
@@ -218,7 +218,7 @@
             },
             {
               "id": 3,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -227,7 +227,7 @@
             },
             {
               "id": 4,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -236,7 +236,7 @@
             },
             {
               "id": 5,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -245,7 +245,7 @@
             },
             {
               "id": 6,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
@@ -254,7 +254,7 @@
             },
             {
               "id": 7,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
