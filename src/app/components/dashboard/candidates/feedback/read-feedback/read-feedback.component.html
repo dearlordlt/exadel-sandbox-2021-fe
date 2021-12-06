@@ -1,60 +1,38 @@
 <div class="feedback">
   <h1>{{name}}'s feedback</h1>
 
-  <div class="flex-col" *ngIf="RecruiterName.length!==0">
+  <div class="card" *ngIf="RecruiterName">
     <h2>From {{RecruiterName}}</h2>
-    <div class="content">
-      <div>
-        <h2>Soft skill</h2>
-        <p>{{MarkFromRecruiter}}</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p >{{feedbackFromRecruiter}}</p>
-      </div>
-    </div>
+    <h2>Soft skill: <span>{{MarkFromRecruiter}}</span></h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromRecruiter}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col" *ngIf="InterviewerBeforeSandbox.length!==0">
+  <div class="card" *ngIf="InterviewerBeforeSandbox">
     <h2>From {{InterviewerBeforeSandbox}}</h2>
-    <div class="content">
-      <div>
-        <h2>Hard skill</h2>
-        <p>{{MarkFromInterviewerBeforeSandbox}}</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p >{{feedbackFromInterViewerBeforeSandbox}}</p>
-      </div>
-    </div>
+    <h2>Hard skill: <span>{{MarkFromInterviewerBeforeSandbox}}</span></h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromInterViewerBeforeSandbox}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col" *ngIf="MentorName.length!==0">
+
+  <div class="card" *ngIf="MentorName">
     <h2>From {{MentorName}} after Sandbox</h2>
-    <div class="content">
-      <div>
-        <h2>Mark</h2>
-        <p>{{MarkFromMentor}}</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p >{{feedbackFromMentor}}</p>
-      </div>
-    </div>
+    <h2>Mark: {{MarkFromMentor}}</h2>
+    <h2>Feedback:</h2>
+    <p >{{feedbackFromMentor}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col" *ngIf="InterviewerAfterSandbox.length!==0">
+
+
+  <div class="card" *ngIf="InterviewerAfterSandbox">
     <h2>From {{InterviewerAfterSandbox}} after Sandbox</h2>
-    <div class="content">
-      <div>
-        <h2>Mark</h2>
-        <p>{{MarkFromInterviewerAfterSandbox}}</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p >{{feedbackFromInterViewerAfterSandbox}}</p>
-      </div>
-    </div>
+    <h2>Mark: {{MarkFromInterviewerAfterSandbox}}</h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromInterViewerAfterSandbox}}</p>
   </div>
 
   <button (click)="back()">Back to candidate's page</button>

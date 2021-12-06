@@ -4,6 +4,7 @@ import {FeedbackService} from '../../../../../service/http/candidate-list/feedba
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {tap} from 'rxjs/operators';
 import {StaticService} from "../../../../../service/http/static/static.service";
+import {CandidatesService} from "../../../../../service/http/candidate-list/services/candidates.service";
 
 @Component({
   selector: 'app-write-feedback',
@@ -25,7 +26,8 @@ export class WriteFeedbackComponent implements OnInit {
     comment: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(1000)]),
   });
   success = false;
-  constructor(private router: Router, private rwFeedback: FeedbackService, private feedbackTypeService: StaticService) {
+
+  constructor(private router: Router, private rwFeedback: FeedbackService, private feedbackTypeService: StaticService, private candidateService: CandidatesService) {
     this.name = this.rwFeedback.candidateName;
     this.status = this.rwFeedback.candidateStatus
     console.log()
@@ -76,7 +78,7 @@ export class WriteFeedbackComponent implements OnInit {
     const date = new Date();
     this.datetimeNow.setValue(date);
     this.feedbackType.setValue(this.feedbackTypeValue)
-    if(this.feedbackForm.valid) {
+    if (this.feedbackForm.valid && !this.success) {
       this.rwFeedback.writeFeedback({
         ...this.feedbackForm.value,
         employeeId: localStorage.getItem('id'),
@@ -84,11 +86,31 @@ export class WriteFeedbackComponent implements OnInit {
       }).pipe(tap(feedback => {
         this.feedback = feedback;
         this.success = true;
-        console.log(this.feedback);
-      })).subscribe();
-    }else {
+
+      })).subscribe(r => {
+        this.candidateService.getCandidateByID(this.rwFeedback.candidateId).pipe(tap(candidate => {
+            this.rwFeedback.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
+              if (emp.role.roleName == 'Recruiter' && candidate.softSkillLevel == 0) {
+                this.candidateService.updateCandidate({...candidate, softSkillLevel: r.feedbackMark}).subscribe()
+              } else if (emp.role.roleName == 'Interviewer' && candidate.statusMark == 5 && candidate.hardSkillLevel == 0) {
+                this.candidateService.updateCandidate({...candidate, hardSkillLevel: r.feedbackMark}).subscribe()
+              } else if (emp.role.roleName == 'Interviewer' && candidate.statusMark == 10 && candidate.interViewerMark == 0) {
+                this.candidateService.updateCandidate({...candidate, interViewerMark: r.feedbackMark}).subscribe()
+              } else if (emp.role.roleName == 'Mentor' && candidate.mentorsMark == 0) {
+                this.candidateService.updateCandidate({...candidate, mentorsMark: r.feedbackMark}).subscribe()
+              }
+            })).subscribe();
+
+          }
+        )).subscribe()
+      });
+    } else if (this.success) {
+      alert('You already have left feedback, can\'t add more')
+    }else{
       alert('Inputs are required')
+
     }
+
   }
 
 }

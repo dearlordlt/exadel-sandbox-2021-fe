@@ -322,16 +322,16 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
 
   rwFeedback(id: string) {
     this.feedbackService.candidateId = id;
-    this.candidatesService.getCandidatesByID(id).pipe(tap(candidate => {
+    this.candidatesService.getCandidateByID(id).pipe(tap(candidate => {
       this.feedbackService.candidateStatus = candidate.statusMark;
       this.feedbackService.candidateName = candidate.firstname + ' ' + candidate.lastname;
       this.feedbackService.getEmployeeById(localStorage.getItem('id')!).pipe(tap(emp => {
-        if ((emp.role.roleName == 'Recruiter' && candidate.statusMark == 4) || (emp.role.roleName == 'Interviewer' && (candidate.statusMark == 5 || candidate.statusMark == 10)) || (emp.role.roleName == 'Mentor' && candidate.statusMark == 10)) {
+        if ((emp.role.roleName == 'Recruiter' && candidate.statusMark == 4 && candidate.softSkillLevel == 0) || (emp.role.roleName == 'Interviewer' && ((candidate.statusMark == 5 && candidate.hardSkillLevel == 0) || (candidate.statusMark == 10 && candidate.interViewerMark == 0))) || (emp.role.roleName == 'Mentor' && candidate.statusMark == 10 && candidate.mentorsMark == 0)) {
           this.router.navigateByUrl('dashboard/write_feedback').then();
         } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
           this.router.navigateByUrl('dashboard/read_feedback').then();
         } else {
-          alert('You can\'t leave feedback, Check the status');
+          alert('You can\'t leave feedback according to candidate\'s status or may be you already left, Please  Check');
         }
       })).subscribe();
     })).subscribe()
