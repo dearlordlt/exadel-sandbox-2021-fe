@@ -2,37 +2,43 @@
   <header class="header">
     <div><img class="logo" src="../../../assets/imgs/logo.svg" alt="logo" /></div>
     <div><h1>Registration to Exadel's Sandbox</h1></div>
-    <div><a  href="#_"><button mat-raised-button class="header-apply-btn" color="primary">Apply for Sandbox</button></a></div>
-
-  </header>
-    <div class="about">
-      <div>
-        <mat-card class="about-card">
-          <mat-card-title>About Exadel</mat-card-title>
-          <mat-card-content>
-            <h2>Digital solutions for your business — delivered.</h2>
-            <p>
-              Exadel is a software engineering company that delivers the digital platforms, products and applications our clients need to run
-              and grow their business.
-            </p>
-          </mat-card-content>
-          <div><a  href="https://exadel.com/" target="_blank">More about Exadel</a></div>
-
-        </mat-card>
-      </div>
-      <div>
-        <mat-card class="about-card">
-          <mat-card-title>About Sandbox</mat-card-title>
-          <mat-card-content>
-            <p>
-              In our competitive Sandbox program, about 65% of each class will win professional position with us. Here, as part of our
-              development team, internships work closely with experienced engineers to quickly deepen their skills through real-world work in
-              coding, development, design and testing. Being part of a consultancy organization, a strong emphasis on teamwork is also part of
-              every internship's experience. Interested in learning more?
-            </p>
-          </mat-card-content>
-
-        </mat-card>
-      </div>
+    <div>
+      <button
+        mat-raised-button
+        class="header-apply-btn"
+        color="primary"
+        (click)="scrollToCandidateRegistrationPart('candidate-registration')"
+      >
+        Register now
+      </button>
     </div>
+  </header>
+  <div class="about">
+    <div>
+      <mat-card class="about-card">
+        <mat-card-title>About Exadel</mat-card-title>
+        <mat-card-content>
+          <h2>Digital solutions for your business — delivered.</h2>
+          <p>
+            Exadel is a software engineering company that delivers the digital platforms, products and applications our clients need to run
+            and grow their business.
+          </p>
+        </mat-card-content>
+        <div><a href="https://exadel.com/" target="_blank">More about Exadel</a></div>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card class="about-card">
+        <mat-card-title>About Sandbox</mat-card-title>
+        <mat-card-content>
+          <p>
+            In our competitive Sandbox program, about 65% of each class will win professional position with us. Here, as part of our
+            development team, internships work closely with experienced engineers to quickly deepen their skills through real-world work in
+            coding, development, design and testing. Being part of a consultancy organization, a strong emphasis on teamwork is also part of
+            every internship's experience. Interested in learning more?
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
