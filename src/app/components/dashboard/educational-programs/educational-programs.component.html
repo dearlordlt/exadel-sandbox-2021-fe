@@ -1,8 +1,6 @@
 <div class="educational-programs">
   <div class="educational-programs__create">
-    <button mat-stroked-button color="primary" [routerLink]="['../create-educational-program']">Create educational
-      program
-    </button>
+    <button mat-stroked-button color="primary" [routerLink]="['../create-educational-program']">Create educational program</button>
   </div>
   <div class="educational-programs__table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -11,8 +9,14 @@
         <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">
           <mat-form-field>
             <mat-label class="fixName">Name</mat-label>
-            <input matInput type='text' [formControl]='eduProgramName' (input)="buildNameTerm(eduProgramName.value)"
-                   placeholder='Search' autocomplete="off">
+            <input
+              matInput
+              type="text"
+              [formControl]="eduProgramName"
+              (input)="buildNameTerm(eduProgramName.value)"
+              placeholder="Search"
+              autocomplete="off"
+            />
           </mat-form-field>
         </th>
         <td mat-cell *matCellDef="let element">{{element.name}}</td>
@@ -23,8 +27,14 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Application acceptance period</mat-label>
-            <input matInput type='text' [formControl]='accepPerFrom' (input)="buildAccepDateTerm(accepPerFrom.value)"
-                   placeholder="MM/DD/YYYY" autocomplete="off">
+            <input
+              matInput
+              type="text"
+              [formControl]="accepPerFrom"
+              (input)="buildAccepDateTerm(accepPerFrom.value)"
+              placeholder="MM/DD/YYYY"
+              autocomplete="off"
+            />
           </mat-form-field>
         </th>
         <td mat-cell *matCellDef="let element">{{element.appAcceptFrom}} - {{element.appAcceptTo}}</td>
@@ -35,8 +45,14 @@
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field>
             <mat-label>Educational program 's period</mat-label>
-            <input matInput type='text' [formControl]='progPerFrom' (input)="buildProgDateTerm(progPerFrom.value)"
-                   placeholder="MM/DD/YYYY" autocomplete="off">
+            <input
+              matInput
+              type="text"
+              [formControl]="progPerFrom"
+              (input)="buildProgDateTerm(progPerFrom.value)"
+              placeholder="MM/DD/YYYY"
+              autocomplete="off"
+            />
           </mat-form-field>
         </th>
         <td mat-cell *matCellDef="let element">{{element.eduProgFrom}} - {{element.eduProgTo}}</td>
