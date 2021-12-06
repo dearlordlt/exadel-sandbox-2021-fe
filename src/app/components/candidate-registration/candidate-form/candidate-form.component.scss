@@ -3,23 +3,21 @@
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-
 }
-h4{
+h4 {
   font-family: 'Poppins', sans-serif;
-
 }
 li {
   padding-left: 20px;
   padding-top: 5px;
 }
-.bold-text{
+.bold-text {
   font-weight: 500;
 }
-h3.bold-text{
+h3.bold-text {
   text-align: center;
 }
-.apply-btn{
+.apply-btn {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -28,41 +26,42 @@ h3.bold-text{
 .container {
   width: 100%;
   padding: 5px;
-  .edu-programs{
+  padding-bottom: 150px;
+  .edu-programs {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .descr-form{
+  .descr-form {
     margin-top: 5px;
     padding: 5px;
     width: 100%;
-    .descr{
+    .descr {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      .decr-card{
+      .decr-card {
         padding: 20px 180px;
-        .requiremnets{
+        .requiremnets {
           padding: 20px;
         }
       }
     }
-    .form{
+    .form {
       margin-top: 5px;
       padding: 25px;
       width: 100%;
       display: flex;
-      .left-form{
+      .left-form {
         width: 50%;
         padding: 0 40px 0 40px;
         display: flex;
         flex-direction: column;
       }
-      .right-form{
+      .right-form {
         width: 50%;
         padding: 0 40px 0 40px;
         display: flex;

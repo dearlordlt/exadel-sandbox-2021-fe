@@ -1,2 +1,2 @@
-<app-candidate-header></app-candidate-header>
-<app-candidate-form></app-candidate-form>
+<app-candidate-header (register)="showPrograms()"></app-candidate-header>
+<app-candidate-form [showPrograms]="programs"></app-candidate-form>

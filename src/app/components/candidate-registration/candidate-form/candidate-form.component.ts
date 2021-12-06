@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { SubmitDialogComponent } from '../submit-dialog/submit-dialog.component';
 
@@ -34,6 +34,7 @@ export class CandidateFormComponent implements OnInit {
     educationProgramId: [''],
     positionId: [''],
   });
+  @Input() showPrograms!: boolean;
   programs: { id: string; name: string }[] = [];
   positions: { id: string; name: string; desc: string }[] = [];
   description!: string;
