@@ -1,60 +1,38 @@
 <div class="feedback">
-  <h1>Aliaksandr katzuba's feedback</h1>
+  <h1>{{name}}'s feedback</h1>
 
-  <div class="flex-col">
-    <h2>From Recruiter Alesya Titova</h2>
-    <div class="content">
-      <div>
-        <h2>Soft skill</h2>
-        <p>4</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p *ngFor="let feedback of feedback$ | async">{{feedback}}</p>
-      </div>
-    </div>
+  <div class="card" *ngIf="RecruiterName">
+    <h2>From {{RecruiterName}}</h2>
+    <h2>Soft skill: <span>{{MarkFromRecruiter}}</span></h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromRecruiter}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col">
-    <h2>From Interviewer Sergey Kaminski</h2>
-    <div class="content">
-      <div>
-        <h2>Hard skill</h2>
-        <p>3</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p *ngFor="let feedback of feedback$ | async">{{feedback}}</p>
-      </div>
-    </div>
+  <div class="card" *ngIf="InterviewerBeforeSandbox">
+    <h2>From {{InterviewerBeforeSandbox}}</h2>
+    <h2>Hard skill: <span>{{MarkFromInterviewerBeforeSandbox}}</span></h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromInterViewerBeforeSandbox}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col">
-    <h2>From Mentor Michail Khmyl after Sandbox</h2>
-    <div class="content">
-      <div>
-        <h2>Mark</h2>
-        <p>4</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p *ngFor="let feedback of feedback$ | async">{{feedback}}</p>
-      </div>
-    </div>
+
+  <div class="card" *ngIf="MentorName">
+    <h2>From {{MentorName}} after Sandbox</h2>
+    <h2>Mark: {{MarkFromMentor}}</h2>
+    <h2>Feedback:</h2>
+    <p >{{feedbackFromMentor}}</p>
+    <hr>
   </div>
 
-  <div class="flex-col">
-    <h2>From Interviewer Nadya Mishina after Sandbox</h2>
-    <div class="content">
-      <div>
-        <h2>Mark</h2>
-        <p>7</p>
-      </div>
-      <div class="flex">
-        <h2>Feedback</h2>
-        <p *ngFor="let feedback of feedback$ | async">{{feedback}}</p>
-      </div>
-    </div>
+
+
+  <div class="card" *ngIf="InterviewerAfterSandbox">
+    <h2>From {{InterviewerAfterSandbox}} after Sandbox</h2>
+    <h2>Mark: {{MarkFromInterviewerAfterSandbox}}</h2>
+    <h2>Feedback:</h2>
+    <p>{{feedbackFromInterViewerAfterSandbox}}</p>
   </div>
 
   <button (click)="back()">Back to candidate's page</button>

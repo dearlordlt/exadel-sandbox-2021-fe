@@ -3,6 +3,7 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LetterTemplate } from 'src/app/components/shared/interfaces/letters/letter-template.interface';
+import { Letter } from 'src/app/components/shared/interfaces/letters/letter.interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -36,5 +37,9 @@ export class LettersService {
   deleteLetterTemplate(id: string): Observable<LetterTemplate> {
     const params = new HttpParams().set('Id', id);
     return this.http.delete<LetterTemplate>(`${environment.EXADEL_API}/LettersTemp/DeleteLettersTemp`, { params: params });
+  }
+
+  sendLetter(data: Letter): Observable<Letter> {
+    return this.http.post<Letter>(`${environment.EXADEL_API}/LettersTemp/SendMail`, data);
   }
 }
