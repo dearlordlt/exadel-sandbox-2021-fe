@@ -16,7 +16,6 @@ export class MakeFreeSpotsDialogComponent implements OnInit {
       },
     ]),
   });
-
   freeSpotsFrom: string[] = schedulerTimeSpots.from;
   freeSpotsTo: string[] = schedulerTimeSpots.to;
 
