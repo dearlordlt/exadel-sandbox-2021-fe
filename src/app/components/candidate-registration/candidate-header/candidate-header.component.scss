@@ -24,10 +24,7 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
   }
-  h2{
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-  }
+  
 }
 
 .about {
@@ -43,6 +40,11 @@
   padding-right: 80px;
   padding-top: 0;
   padding-bottom: 0;
+  h2{
+    margin: 0;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+  }
 }
   
 .about-card {
