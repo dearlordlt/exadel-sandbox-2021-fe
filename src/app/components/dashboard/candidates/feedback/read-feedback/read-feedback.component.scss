@@ -1,50 +1,36 @@
-.feedback {
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Poppins', sans-serif;
-  .content {
-    display: grid;
-    width: 50%;
-    grid-template-columns:  1fr 3fr;
-    text-align: center;
-    div:first-child{
-      h2{
-        grid-area: 1/1;
-        text-align: start;
-      }
-      p{
-        height: 50px;
-        width: fit-content;
-        grid-area: 2/1;
 
-      }
+div.feedback {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns:600px;
+  width: 100%;
+  height: 100%;
+   font-family: 'Poppins', sans-serif;
+  h1{
+    text-transform: uppercase;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+  }
+  div.card{
+    width: 90%;
+    margin-bottom: 25px;
+    h2:first-child{
+      text-align: center;
     }
-    div.flex{
-      display: flex;
-      flex-direction: column;
-      p{
-        width: 100%;
-      }
+    p{
+      word-wrap: break-word;
     }
 
-  }
-
-  .flex-col {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  p {
-    border: 4px solid #CCCCCC;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    padding: 10px;
-    width: 50%;
+    hr {
+      border: none;
+      border-top: 1px dashed #0082ca;
+      color: #fff;
+      background-color: #fff;
+      height: 1px;
+      width: 100%;
+      margin-bottom: 50px;
+    }
   }
 
   button {
@@ -60,7 +46,6 @@
       box-shadow: 0 0 2px 1px #0082ca;
     }
   }
-
 }
 h1, h2, button{
   font-family: 'Poppins', sans-serif;

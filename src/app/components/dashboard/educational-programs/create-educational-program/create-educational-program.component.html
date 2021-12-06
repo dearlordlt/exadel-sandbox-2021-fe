@@ -5,7 +5,7 @@
     <h2>Application acceptance period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker1" [min]="minProgramsDate">
+      <mat-date-range-input [rangePicker]="acceptancePeriodPicker" [min]="minProgramsDate">
         <input
           matStartDate
           placeholder="Start date"
@@ -14,8 +14,8 @@
         />
         <input matEndDate placeholder="End date" formControlName="acceptancePeriodEndDate" />
       </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker1></mat-date-range-picker>
+      <mat-datepicker-toggle matSuffix [for]="acceptancePeriodPicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #acceptancePeriodPicker></mat-date-range-picker>
       <mat-error *ngIf="programForm.controls.acceptancePeriodGroup.hasError('acceptancePeriodSameDate')">
         Can't choose the same day
       </mat-error>
@@ -26,7 +26,7 @@
     <h2>Educational program's period</h2>
     <mat-form-field appearance="outline">
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker2" [min]="minProgramsDate">
+      <mat-date-range-input [rangePicker]="programsPeriodPicker" [min]="minProgramsDate">
         <input
           matStartDate
           placeholder="Start date"
@@ -35,8 +35,8 @@
         />
         <input matEndDate placeholder="End date" formControlName="programsPeriodEndDate" />
       </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker2></mat-date-range-picker>
+      <mat-datepicker-toggle matSuffix [for]="programsPeriodPicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #programsPeriodPicker></mat-date-range-picker>
       <mat-error *ngIf="programForm.controls.programsPeriodGroup.hasError('programsPeriodSameDate')"> Can't choose the same day </mat-error>
     </mat-form-field>
   </div>
