@@ -1,88 +1,83 @@
-<div class="container-crtLetter">
-  <h1 class="createLetter">{{ letterTemplate.name }}</h1>
-  <form class="crtLetter__form" [formGroup]="letterTemplateForm" (ngSubmit)="onSubmit()">
-    <div class="crLetter__innerbox">
-      <div class="crtLetter__status">
-        <strong>Name * </strong>
-        <mat-form-field appearance="outline">
-          <input formControlName="name" matInput placeholder="Refusal by the level of English" />
-          <mat-error *ngIf="submitted && letterTemplateFormControls.name.errors">
-            <mat-error class="nameError" *ngIf="letterTemplateFormControls.name.errors.required">This field mustn't be empty</mat-error>
-            <mat-error class="nameError" *ngIf="letterTemplateFormControls.name.errors.maxlength"
-              >Fields can't include more than 100 symbols</mat-error
-            >
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="crtLetter__template">
-        <div class="crtLetter-flex">
-          <strong class="left-elem-one">Candidate's status for sending letter automatically</strong>
-          <mat-form-field class="crtLetter-sending" appearance="outline">
-            <mat-select formControlName="status">
-              <mat-option *ngFor="let status of statuses, let i = index" [value]="i+1">{{status}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="crtLetter__from crtLetter-flex">
-          <strong class="left-elem-two">From</strong>
-          <mat-form-field class="crtLetter-from" appearance="outline">
-            <input matInput disabled placeholder="no-reply-sandbox@exadel.com" />
-          </mat-form-field>
-        </div>
-        <div class="crtLetter__subject crtLetter-flex">
-          <strong class="left-elem-two">Subject *</strong>
-          <mat-form-field class="crtLetter-subject" appearance="outline">
-            <input formControlName="subject" matInput placeholder="Exadel Sandbox Refusal by the level of English" />
-            <mat-error *ngIf="submitted && letterTemplateFormControls.subject.errors">
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.subject.errors.required"
-                >This field mustn't be empty</mat-error
-              >
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.subject.errors.maxlength"
-                >Fields can't include more than 100 symbols</mat-error
-              >
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="crtLetter-flex">
-          <strong class="left-elem-two">Text of the letter*</strong>
-          <mat-form-field class="crtLetter-textlet" appearance="outline">
-            <textarea
-              formControlName="text"
-              matInput
-              placeholder="Hello,@First_name@Last_name!
-                       Unfortunately we have to refuse your applying because of your English of level.
-                        We'll be glad if you'll apply for our Sandbox
-                      again after improving your level! See you"
-            ></textarea>
-            <mat-error *ngIf="submitted && letterTemplateFormControls.text.errors">
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.text.errors.required">This field mustn't be empty</mat-error>
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.text.errors.maxlength"
-                >Fields can't include more than 1500 symbols</mat-error
-              >
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="crtLetter-flex">
-          <strong class="left-elem-two">Letter signature*</strong>
-          <mat-form-field class="crtLetter__signature" appearance="outline">
-            <textarea formControlName="signature" matInput placeholder="With respect Exadel Snadbox team"></textarea>
-            <mat-error *ngIf="submitted && letterTemplateFormControls.signature.errors">
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.signature.errors.required"
-                >This field mustn't be empty</mat-error
-              >
-              <mat-error class="nameError" *ngIf="letterTemplateFormControls.signature.errors.maxlength"
-                >Fields can't include more than 100 symbols</mat-error
-              >
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="btnUpdate">
-        <button type="submit" mat-stroked-button color="primary">Save</button>
-        <button type="button" mat-stroked-button color="warn" (click)="deleteLetterTemplate()">Delete</button>
-      </div>
-      <!-- <p>Form Status: {{letterTemplateForm.status}}</p>
-      <p> Value: {{letterTemplateForm.value | json }}</p> -->
-    </div>
-  </form>
-</div>
+<form class="create-letters-temp" [formGroup]="letterTemplateForm" (ngSubmit)="onSubmit()">
+  <h1>{{letterTemplate.name}}</h1>
+
+  <div class="create-letters-temp__name">
+    <h2>Name</h2>
+    <mat-form-field appearance="outline">
+      <input formControlName="name" matInput placeholder="Refusal by the level of English" />
+      <mat-error *ngIf="submitted && letterTemplateFormControls.name.errors">
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.name.errors.required">This field mustn't be empty</mat-error>
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.name.errors.maxlength"
+          >Fields can't include more than 100 symbols</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__status">
+    <h2>Candidate's status for sending letter automatically</h2>
+    <mat-form-field appearance="outline">
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statuses, let i = index" [value]="i+1">{{status}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__from">
+    <h2>From</h2>
+    <mat-form-field appearance="outline">
+      <input matInput disabled placeholder="no-reply-sandbox@exadel.com" />
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__subject">
+    <h2>Subject</h2>
+    <mat-form-field appearance="outline">
+      <input formControlName="subject" matInput placeholder="Exadel Sandbox Refusal by the level of English" />
+      <mat-error *ngIf="submitted && letterTemplateFormControls.subject.errors">
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.subject.errors.required">This field mustn't be empty</mat-error>
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.subject.errors.maxlength"
+          >Fields can't include more than 100 symbols</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__text">
+    <h2>Letter body</h2>
+    <mat-form-field>
+      <mat-label></mat-label>
+      <textarea
+        formControlName="text"
+        matInput
+        rows="10"
+        placeholder="Hello, @First_name @Last_name!&#13;&#10;&#10;We are contacting you in regard to the Exadel's Sandbox"
+      ></textarea>
+      <mat-error *ngIf="submitted && letterTemplateFormControls.text.errors">
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.text.errors.required">This field mustn't be empty</mat-error>
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.text.errors.maxlength"
+          >Fields can't include more than 1500 symbols</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__signature">
+    <h2>Letter signature</h2>
+    <mat-form-field>
+      <mat-label></mat-label>
+      <textarea formControlName="signature" matInput rows="5" placeholder="Respectfully&#13;&#10;Exadel Sandbox team"></textarea>
+      <mat-error *ngIf="submitted && letterTemplateFormControls.signature.errors">
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.signature.errors.required">This field mustn't be empty</mat-error>
+        <mat-error class="nameError" *ngIf="letterTemplateFormControls.signature.errors.maxlength"
+          >Fields can't include more than 100 symbols</mat-error
+        >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="create-letters-temp__actions">
+    <button type="submit" mat-stroked-button color="primary">Save</button>
+    <button type="button" mat-stroked-button color="warn" (click)="deleteLetterTemplate()">Delete</button>
+  </div>
+</form>

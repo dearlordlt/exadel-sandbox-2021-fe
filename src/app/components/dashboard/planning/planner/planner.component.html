@@ -7,6 +7,7 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <button (click)='getDate()'>get date</button>
   </div>
   <div class="planner__scheduler">
     <app-schedule [_educationalProgramId]="educationalProgramId" [date]="programForm.controls['date'].value"></app-schedule>

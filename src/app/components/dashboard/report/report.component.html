@@ -1,7 +1,6 @@
 <div class="flex">
   <h1>Report</h1>
-  <p>Educational program</p>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="standard">
     <mat-label>Educational Programs</mat-label>
     <mat-select (selectionChange)="createReport($event.value)">
       <ng-container *ngIf="programs$ | async as programs">
@@ -9,7 +8,7 @@
       </ng-container>
     </mat-select>
   </mat-form-field>
-  <button (click)="init()">Create</button>
+  <button mat-stroked-button color="primary" (click)="init()">Create</button>
   <div [chart]="chart"></div>
 
   <ng-container *ngIf="report$ | async as reports">
@@ -53,5 +52,5 @@
     </table>
   </ng-container>
 
-  <button (click)="exportExcel()">Save to Excel</button>
+  <button mat-stroked-button color="primary" (click)="exportExcel()">Save to Excel</button>
 </div>

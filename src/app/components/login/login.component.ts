@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('id', userData.id);
         localStorage.setItem('email', userData.email);
         localStorage.setItem('token', userData.token);
+        localStorage.setItem('firstname', userData.firstName);
+        localStorage.setItem('role', userData.role);
         this.authenticationService.isAuthenticated = true;
         this.router.navigate(['dashboard']);
       },

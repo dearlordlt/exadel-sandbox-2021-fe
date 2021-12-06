@@ -9,16 +9,34 @@ $primary: #0082ca;
         display: flex;
         flex-direction: column;
     }
+    mat-toolbar{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+    mat-label{
+        font-family: 'Poppins', sans-serif;
+    }
+    mat-error{
+        font-family: 'Poppins', sans-serif;
+    }
+    input{
+        font-family: 'Poppins', sans-serif;
+
+    }
     .login-btn{
         width: 100%;
+        font-family: 'Poppins', sans-serif;
     }
     .back-btn{
         width: 100%;
         margin-top: 5%;
         color: #fff;
         background-color: $primary;
+        font-family: 'Poppins', sans-serif;
     }
 }
 form{
     width: 25%;
+    font-family: 'Poppins', sans-serif;
+
 }

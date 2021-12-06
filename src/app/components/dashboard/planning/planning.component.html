@@ -26,8 +26,8 @@
       <ng-container matColumnDef="calendar">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button>
-            <a [routerLink]="['../planning', element.id]"><mat-icon>calendar_today</mat-icon></a>
+          <button mat-button [routerLink]="['../planning', element.id]">
+            <a><mat-icon>calendar_today</mat-icon></a>
           </button>
         </td>
       </ng-container>
