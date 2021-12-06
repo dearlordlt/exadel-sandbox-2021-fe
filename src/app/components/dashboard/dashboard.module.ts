@@ -28,6 +28,7 @@ import { MakeFreeSpotsDialogComponent } from './planning/planner/make-free-spots
 import { UpdateLetterComponent } from './letters/update-letter/update-letter.component';
 import { UpdateEducationalProgramComponent } from './educational-programs/update-educational-program/update-educational-program.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,6 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ConfirmationDialogComponent,
   ],
 
-  imports: [CommonModule, AppRoutingModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ChartModule],
+    imports: [CommonModule, AppRoutingModule, AppMaterialModule, FormsModule, ReactiveFormsModule, ChartModule, MatAutocompleteModule],
 })
 export class DashboardModule {}

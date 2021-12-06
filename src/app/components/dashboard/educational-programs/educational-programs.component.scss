@@ -18,6 +18,25 @@ $primary: #0082ca;
 
 table {
   width: 100%;
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  th {
+    mat-form-field {
+      width: 180px;
+
+      .fixName {
+        margin-left: 50px;
+      }
+
+      mat-label {
+        font-weight: bold;
+        color: #000;
+      }
+    }
+  }
 }
 
 th.mat-header-cell {
