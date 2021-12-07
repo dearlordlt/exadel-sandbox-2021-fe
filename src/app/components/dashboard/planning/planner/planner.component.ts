@@ -64,7 +64,7 @@ export class PlannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
-    if (this.educationalProgramId) this.getEducationalProgram();
+    // if (this.educationalProgramId) this.getEducationalProgram();
     this.getdata();
     this.getRole();
   }
@@ -155,7 +155,7 @@ export class PlannerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result !== 'cancel') {
+      if (result !== 'cancel' && result !== undefined) {
         this.updateData(result.main, result.elem);
         this.getdata();
       }

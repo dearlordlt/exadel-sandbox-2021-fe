@@ -22,7 +22,6 @@ export class EventDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCandidates();
-    console.log(this.data.elem.candidate);
   }
 
   getCandidates() {
@@ -39,7 +38,6 @@ export class EventDialogComponent implements OnInit {
     // if (this.data.elem.candidate) {
     this.data.elem.candidate = candidate;
     this.data.elem.taken = true;
-    console.log('run', this.data.elem.candidate);
     this.candidates.forEach((el, ind) => {
       if (el === this.data.elem.candidate) {
         this.data.elem.skype = this.skypeList[ind];
@@ -48,12 +46,10 @@ export class EventDialogComponent implements OnInit {
   }
 
   onDelete() {
-    this.data.elem.candidate = '';
-    this.data.elem.skype = '';
-    this.data.elem.description = '';
-    this.data.elem.taken = false;
-    console.log(this.data.elem);
+    this.candidates = [];
+    this.skypeList = [];
     this.dialogRef.close(this.data);
+    this.data.elem = { ...this.data.elem, candidate: '', skype: '', description: '', taken: false };
   }
   // }
 }

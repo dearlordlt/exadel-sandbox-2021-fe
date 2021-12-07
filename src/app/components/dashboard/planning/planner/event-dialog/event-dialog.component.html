@@ -38,5 +38,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{this.admin ? 'Save' : 'Ok'}}</button>
-  <button *ngIf="admin" mat-stroked-button (click)="onDelete()">Delete</button>
+  <button *ngIf="admin" mat-stroked-button (click)="onDelete()">{{data.elem.candidate ? 'Delete' : 'Cancel'}}</button>
 </div>
