@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
-import {CreateFeedback} from '../../../../components/models/feedback';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
+import { CreateFeedback } from '../../../../components/models/feedback';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,7 @@ export class FeedbackService {
   candidateName = '';
   candidateStatus = 0;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getEmployeeById(id: string) {
     return this.http.get<any>(`${environment.EXADEL_API}/Employee/Get/${id}`);
@@ -29,5 +29,4 @@ export class FeedbackService {
   getFeedbackByID(id: string) {
     return this.http.get<any>(`${environment.EXADEL_API}/Feedback/Get?Id=${id}`);
   }
-
 }
