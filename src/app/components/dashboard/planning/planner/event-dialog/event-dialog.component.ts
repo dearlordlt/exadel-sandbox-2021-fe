@@ -26,7 +26,7 @@ export class EventDialogComponent implements OnInit {
   }
 
   getCandidates() {
-    this.candidatesService.getSearchedCandidates().subscribe((data) => {
+    this.candidatesService.getCandidates().subscribe((data) => {
       data.forEach((element) => {
         const name = `${element.firstname} ${element.lastname}`;
         this.candidates.push(name);
