@@ -13,3 +13,9 @@ th.mat-header-cell,
 td.mat-cell {
   text-align: center !important;
 }
+
+.sort-and-filter-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

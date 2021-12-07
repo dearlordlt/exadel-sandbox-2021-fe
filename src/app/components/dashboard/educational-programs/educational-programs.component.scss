@@ -21,6 +21,7 @@
     th {
       mat-form-field {
         width: 120px;
+        text-align: center;
 
         mat-label {
           font-weight: bold;
@@ -30,7 +31,6 @@
     }
   }
 }
-
 
 a {
   text-decoration: none;

@@ -10,6 +10,6 @@ export class DashboardComponent implements OnInit {
   constructor(public authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.authenticationService.checkEmployee();
+    //this.authenticationService.checkEmployee();
   }
 }
