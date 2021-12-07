@@ -6,16 +6,16 @@
       <li>
         <a [routerLink]="['./candidates']" routerLinkActive="activeLink">Candidates</a>
       </li>
-      <li>
+      <li *ngIf="showPlanning">
         <a [routerLink]="['./planning']" routerLinkActive="activeLink">Planning</a>
       </li>
-      <li>
+      <li *ngIf="showEducationalPrograms">
         <a [routerLink]="['./educational-programs']" routerLinkActive="activeLink">Educational programs</a>
       </li>
-      <li>
+      <li *ngIf="showLetters">
         <a [routerLink]="['./letters']" routerLinkActive="activeLink">Letters</a>
       </li>
-      <li>
+      <li *ngIf="showReport">
         <a [routerLink]="['./report']" routerLinkActive="activeLink">Report</a>
       </li>
     </ul>
