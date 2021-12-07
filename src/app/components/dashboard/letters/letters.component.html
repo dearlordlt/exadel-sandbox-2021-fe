@@ -1,7 +1,7 @@
 <div class="letters">
   <div class="letters__actions">
     <button mat-stroked-button color="primary" [routerLink]="['../send-letter']">Send letter manually</button>
-    <button mat-stroked-button color="primary" [routerLink]="['../create-letters-temp']">Create letter's template</button>
+    <button *ngIf="userAdmin" mat-stroked-button color="primary" [routerLink]="['../create-letters-temp']">Create letter's template</button>
   </div>
   <div class="letters__table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -21,7 +21,7 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button [routerLink]="['../letters', element.id]">
+          <button [disabled]="!userAdmin" [class.blur]="!userAdmin" mat-button [routerLink]="['../letters', element.id]">
             <a><mat-icon>edit</mat-icon></a>
           </button>
         </td>
