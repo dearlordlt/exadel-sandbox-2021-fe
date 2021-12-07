@@ -7,7 +7,7 @@
       mat-table
       matSort
       matSortActive="appAcceptFrom"
-      matSortDirection="desc"
+      matSortDirection="asc"
       (matSortChange)="sortData($event)"
       [dataSource]="dataSource"
       class="mat-elevation-z8"
@@ -16,8 +16,8 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">
           <div class="sort-and-filter-header">
-            <mat-form-field>
-              <mat-label class="fixName">Name</mat-label>
+            <mat-form-field class="fixName">
+              <mat-label>Name</mat-label>
               <input
                 matInput
                 type="text"
