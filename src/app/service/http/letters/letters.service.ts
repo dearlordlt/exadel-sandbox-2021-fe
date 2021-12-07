@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { LetterTemplate } from 'src/app/components/shared/interfaces/letters/letter-template.interface';
-import { Letter } from 'src/app/components/shared/interfaces/letters/letter.interface';
+import {Injectable} from '@angular/core';
+import {environment} from '../../../../environments/environment';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {LetterTemplate} from 'src/app/components/shared/interfaces/letters/letter-template.interface';
+import {Letter} from 'src/app/components/shared/interfaces/letters/letter.interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,15 +15,21 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class LettersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getLetterTemplate(id: string): Observable<LetterTemplate> {
     const params = new HttpParams().set('Id', id);
-    return this.http.get<LetterTemplate>(`${environment.EXADEL_API}/LettersTemp/GetById`, { params: params });
+    return this.http.get<LetterTemplate>(`${environment.EXADEL_API}/LettersTemp/GetById`, {params: params});
   }
 
   getLetterTemplates(): Observable<LetterTemplate[]> {
     return this.http.get<LetterTemplate[]>(`${environment.EXADEL_API}/LettersTemp/GetAllLettersTemp`);
+  }
+
+  getLetterSorted(column = 1,
+                  order = 2): Observable<LetterTemplate[]> {
+    return this.http.get<LetterTemplate[]>(`${environment.EXADEL_API}/LettersTemp/Sort?column=${column}&order=${order}`);
   }
 
   postLetterTemplate(data: LetterTemplate): Observable<LetterTemplate> {
@@ -36,7 +42,7 @@ export class LettersService {
 
   deleteLetterTemplate(id: string): Observable<LetterTemplate> {
     const params = new HttpParams().set('Id', id);
-    return this.http.delete<LetterTemplate>(`${environment.EXADEL_API}/LettersTemp/DeleteLettersTemp`, { params: params });
+    return this.http.delete<LetterTemplate>(`${environment.EXADEL_API}/LettersTemp/DeleteLettersTemp`, {params: params});
   }
 
   sendLetter(data: Letter): Observable<Letter> {

@@ -55,7 +55,7 @@ export class EducationalProgramsComponent implements OnInit {
     this.route.queryParams
       .pipe(
         map((query) => query.name || ''),
-        debounceTime(300),
+        debounceTime(100),
         distinctUntilChanged(),
         switchMap((term: string) =>
           this.educationalProgramsService.getEducationalPrograms(

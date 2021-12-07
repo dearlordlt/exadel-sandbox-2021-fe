@@ -18,10 +18,19 @@
       display: none;
     }
 
+    ::ng-deep .mat-sort-header-container:not(.mat-sort-header-sorted) .mat-sort-header-arrow {
+      opacity: 0.54 !important;
+      transform: translateY(0px) !important;
+    }
+
     th {
       mat-form-field {
-        width: 120px;
+        width: 210px;
         text-align: center;
+
+        &.fixName {
+          width: 50px;
+        }
 
         mat-label {
           font-weight: bold;

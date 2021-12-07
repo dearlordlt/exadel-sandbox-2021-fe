@@ -1,19 +1,51 @@
 <div class="letters">
   <div class="letters__actions">
     <button mat-stroked-button color="primary" [routerLink]="['../send-letter']">Send letter manually</button>
-    <button *ngIf="userAdmin" mat-stroked-button color="primary" [routerLink]="['../create-letters-temp']">Create letter's template</button>
+    <button *ngIf="userAdmin" mat-stroked-button color="primary" [routerLink]="['../create-letters-temp']">Create
+      letter's template
+    </button>
   </div>
   <div class="letters__table">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table matSort
+
+           [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Tempalte name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">Template</th>
+        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">
+          <div class="sort-and-filter-header">
+            <mat-form-field class="example-form-field">
+              <mat-label class="fixTemplate">{{filterSelectObj[0].name}}</mat-label>
+              <input
+                placeholder="Search..."
+                matInput
+                type="text"
+                [(ngModel)]="filterSelectObj[0].modelValue"
+                (keyup)="filterChange(filterSelectObj[0],$event)"
+              />
+            </mat-form-field>
+            <span mat-sort-header></span>
+          </div>
+        </th>
         <td mat-cell *matCellDef="let element">{{element.name}}</td>
       </ng-container>
 
       <!-- Last update date Column -->
       <ng-container matColumnDef="dateOfUpdate">
-        <th mat-header-cell *matHeaderCellDef>Last updated</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="sort-and-filter-header">
+            <mat-form-field class="example-form-field">
+              <mat-label>{{filterSelectObj[1].name}}</mat-label>
+              <input
+                placeholder="Search..."
+                matInput
+                type="text"
+                [(ngModel)]="filterSelectObj[1].modelValue"
+                (keyup)="filterChange(filterSelectObj[1],$event)"
+              />
+            </mat-form-field>
+            <span mat-sort-header></span>
+          </div>
+        </th>
         <td mat-cell *matCellDef="let element">{{element.addDateTime}}</td>
       </ng-container>
 
@@ -21,8 +53,11 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button [disabled]="!userAdmin" [class.blur]="!userAdmin" mat-button [routerLink]="['../letters', element.id]">
-            <a><mat-icon>edit</mat-icon></a>
+          <button [disabled]="!userAdmin" [class.blur]="!userAdmin" mat-button
+                  [routerLink]="['../letters', element.id]">
+            <a>
+              <mat-icon>edit</mat-icon>
+            </a>
           </button>
         </td>
       </ng-container>

@@ -5,6 +5,7 @@ $primary: #0082ca;
   padding-bottom: 1rem;
   color: $primary !important;
 }
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -14,6 +15,7 @@ $primary: #0082ca;
   img {
     width: 85px;
     aspect-ratio: 1/1;
+    cursor: pointer;
   }
 
   ul {
