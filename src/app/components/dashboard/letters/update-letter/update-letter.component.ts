@@ -53,7 +53,6 @@ export class UpdateLetterComponent implements OnInit {
   }
 
   initializeFormWithLetterTemplateData(): void {
-    console.log('cia: ', this.letterTemplate.candidateStatusId);
     this.letterTemplateForm.setValue({
       name: this.letterTemplate.name,
       status: this.letterTemplate.candidateStatusId,
