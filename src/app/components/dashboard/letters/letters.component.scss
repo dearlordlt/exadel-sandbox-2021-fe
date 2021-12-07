@@ -15,6 +15,14 @@
   &__table {
     margin-top: 50px;
   }
+
+  .blur {
+    opacity: 0.5;
+
+    a:hover {
+      color: #000;
+    }
+  }
 }
 
 a {

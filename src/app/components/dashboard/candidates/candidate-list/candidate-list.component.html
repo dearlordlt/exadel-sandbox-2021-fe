@@ -8,15 +8,15 @@
           <button mat-flat-button color="primary" (click)="resetFilters()">Reset</button>
         </th>
         <td mat-cell *matCellDef="let candidate" class="edit-feedback">
-          <mat-icon *ngIf="updateOption" class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
-          <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id)">
-            Feedback
+          <button class="hide-button" [disabled]="!updateOption" (click)="openDialog(candidate)">
+            <mat-icon class="edit-icon" [class.no-pointer]="!updateOption">edit</mat-icon>
           </button>
+          <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id)">Feedback</button>
         </td>
       </ng-container>
       <ng-container matColumnDef="firstname">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field (click)="stopSort($event)" class="example-form-field">
             <mat-label>{{filterSelectObj[0].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -27,13 +27,13 @@
             />
           </mat-form-field>
         </th>
-        
+
         <td mat-cell *matCellDef="let candidate">{{candidate.firstname}}</td>
       </ng-container>
 
       <ng-container matColumnDef="lastname">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field (click)="stopSort($event)" class="example-form-field">
             <mat-label>{{filterSelectObj[1].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -49,7 +49,7 @@
 
       <ng-container matColumnDef="educationProgramId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[2].name}}</mat-label>
 
             <select
@@ -75,7 +75,7 @@
 
       <ng-container matColumnDef="positionId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[3].name}}</mat-label>
             <select
               matNativeControl
@@ -93,7 +93,7 @@
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field (click)="stopSort($event)" class="example-form-field">
             <mat-label>{{filterSelectObj[4].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -104,13 +104,12 @@
             />
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email"
-            [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.email" [matTooltipShowDelay]="showDelay">{{candidate.email}}</td>
       </ng-container>
 
       <ng-container matColumnDef="contactSkype">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field class="example-form-field">
+          <mat-form-field (click)="stopSort($event)" class="example-form-field">
             <mat-label>{{filterSelectObj[5].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -121,15 +120,14 @@
             />
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.contactSkype"
-            [matTooltipShowDelay]="showDelay">
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="candidate.contactSkype" [matTooltipShowDelay]="showDelay">
           {{candidate.contactSkype}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="contactPhone">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label> {{filterSelectObj[6].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -145,7 +143,7 @@
 
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label> {{filterSelectObj[7].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -161,7 +159,7 @@
 
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[8].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -177,7 +175,7 @@
 
       <ng-container matColumnDef="englishLevel">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[9].name}}</mat-label>
             <select
               matNativeControl
@@ -195,7 +193,7 @@
 
       <ng-container matColumnDef="contactTime">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[10].name}}</mat-label>
             <select
               matNativeControl
@@ -213,7 +211,7 @@
 
       <ng-container matColumnDef="planToJoinExadel">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[11].name}}</mat-label>
             <select
               matNativeControl
@@ -231,7 +229,7 @@
 
       <ng-container matColumnDef="postDateTimeNow">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[12].name}}</mat-label>
             <input
               placeholder="Search..."
@@ -248,7 +246,7 @@
       <!-- Assessment -->
       <ng-container matColumnDef="statusMark">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[13].name}}</mat-label>
             <select
               matNativeControl
@@ -261,15 +259,14 @@
             </select>
           </mat-form-field>
         </th>
-        <td mat-cell *matCellDef="let candidate" [matTooltip]="showStatusName(candidate.statusMark)"
-            [matTooltipShowDelay]="showDelay">
+        <td mat-cell *matCellDef="let candidate" [matTooltip]="showStatusName(candidate.statusMark)" [matTooltipShowDelay]="showDelay">
           {{showStatusName(candidate.statusMark)}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="softSkillLevel">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[14].name}}</mat-label>
             <select
               matNativeControl
@@ -287,7 +284,7 @@
 
       <ng-container matColumnDef="hardSkillLevel">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[15].name}}</mat-label>
             <select
               matNativeControl
@@ -305,7 +302,7 @@
 
       <ng-container matColumnDef="mentorsMark">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[16].name}}</mat-label>
             <select
               matNativeControl
@@ -323,7 +320,7 @@
 
       <ng-container matColumnDef="interViewerMark">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <mat-form-field>
+          <mat-form-field (click)="stopSort($event)">
             <mat-label>{{filterSelectObj[17].name}}</mat-label>
             <select
               matNativeControl

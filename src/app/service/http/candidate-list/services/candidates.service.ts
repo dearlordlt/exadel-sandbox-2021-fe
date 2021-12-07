@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Candidate} from '../../../../components/models/candidate';
-import {concatMap, filter, catchError, map, tap, switchMap, toArray} from 'rxjs/operators';
-import {of, Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { Candidate } from '../../../../components/models/candidate';
+import { concatMap, filter, catchError, map, tap, switchMap, toArray } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 const headers = {
   headers: new HttpHeaders({
@@ -17,20 +17,20 @@ const headers = {
 export class CandidatesService {
   private apiUrl = 'Candidates';
 
-
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`).pipe(
-      tap(() => console.log('fetched candidates')),
-      catchError(this.handleError('getCandidates', [])),
-    );
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`);
+    // .pipe(
+    // tap(() => console.log('fetched candidates')),
+    // catchError(this.handleError('getCandidates', [])),
+    // );
   }
+
+  // getCandidates(): Observable<Candidate[]> {
+  //   return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
+  // }
 
   getCandidateByID(id: string) {
-    return this.http.get<Candidate>(`${environment.EXADEL_API}/Candidates/${id}`)
-  }
-
-  getSearchedCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
+    return this.http.get<Candidate>(`${environment.EXADEL_API}/Candidates/${id}`);
   }
 
   searchCandidate(searchQuery: string) {
@@ -52,11 +52,9 @@ export class CandidatesService {
     return this.http.post<Candidate>(`${environment.EXADEL_API}/${this.apiUrl}/AddCandidate`, candidate, headers);
   }
 
-  filterData(searchText: string) {
-  }
+  filterData(searchText: string) {}
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -4,6 +4,7 @@ import { environment } from '../../../../../environments/environment';
 import { CreateFeedback } from '../../../../components/models/feedback';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) {}
 
   getEmployeeById(id: string) {
-    return this.http.get<any>(`${environment.EXADEL_API}/Employee/Get/${id}`);
+    return this.http.get<any>(`${environment.EXADEL_API}/Employee/${id}`);
   }
 
   writeFeedback(feedback: CreateFeedback) {
