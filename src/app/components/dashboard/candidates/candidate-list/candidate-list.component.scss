@@ -14,6 +14,10 @@ button.hide-button {
   background: none;
   border: none;
 }
+.no-pointer {
+  cursor: default !important;
+}
+
 h3,
 button {
   font-family: 'Poppins', sans-serif;

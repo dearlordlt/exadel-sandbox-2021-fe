@@ -8,7 +8,9 @@
           <button mat-flat-button color="primary" (click)="resetFilters()">Reset</button>
         </th>
         <td mat-cell *matCellDef="let candidate" class="edit-feedback">
-          <mat-icon *ngIf="updateOption" class="edit-icon" (click)="openDialog(candidate)">edit</mat-icon>
+          <button class="hide-button" [disabled]="!updateOption" (click)="openDialog(candidate)">
+            <mat-icon class="edit-icon" [class.no-pointer]="!updateOption">edit</mat-icon>
+          </button>
           <button mat-stroked-button color="primary" (click)="rwFeedback(candidate.id)">Feedback</button>
         </td>
       </ng-container>
