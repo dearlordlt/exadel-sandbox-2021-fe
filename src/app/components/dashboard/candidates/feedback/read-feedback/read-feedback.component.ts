@@ -26,40 +26,41 @@ export class ReadFeedbackComponent implements OnInit {
   MarkFromMentor = 0;
 
 
-  constructor(private router: Router, private readFeedback: FeedbackService, private candidateService: CandidatesService) {
+  constructor(private router: Router, private readFeedback: FeedbackService) {
     this.name = this.readFeedback.candidateName
   }
 
   ngOnInit(): void {
     this.readFeedback.getAllFeedback(this.readFeedback.candidateId).pipe(tap(feedback => {
       feedback.map((f: any) => {
-        if (f.employee.empPosition == 'Recruiter') {
-          this.RecruiterName = f.employee.empPosition + ' ' + f.employee.firstname + ' ' + f.employee.lastname
-          this.feedbackFromRecruiter = f.comment;
-          this.MarkFromRecruiter = f.feedbackMark;
+        this.readFeedback.getEmployeeById(f.employeeId).pipe(tap(employee => {
+          if (employee.empPosition == 'Recruiter') {
+            this.RecruiterName = employee.empPosition + ' ' + employee.firstname + ' ' + employee.lastname
+            this.feedbackFromRecruiter = f.comment;
+            this.MarkFromRecruiter = f.feedbackMark;
 
-        } else if (f.employee.empPosition == 'Mentor') {
-          this.MentorName = f.employee.empPosition + ' ' + f.employee.firstname + ' ' + f.employee.lastname;
-          this.feedbackFromMentor = f.comment;
-          this.MarkFromMentor = f.feedbackMark;
+          } else if (employee.empPosition == 'Mentor') {
+            this.MentorName = employee.empPosition + ' ' + employee.firstname + ' ' + employee.lastname;
+            this.feedbackFromMentor = f.comment;
+            this.MarkFromMentor = f.feedbackMark;
 
-        } else if (f.employee.empPosition == 'Interviewer') {
-          if (f.feedBackType == 'InterViewerMark') {
-            this.InterviewerAfterSandbox = f.employee.empPosition + ' ' + f.employee.firstname + ' ' + f.employee.lastname;
-            this.feedbackFromInterViewerAfterSandbox = f.comment
-            this.MarkFromInterviewerAfterSandbox = f.feedbackMark;
+          } else if (employee.empPosition == 'Interviewer') {
+            if (f.feedBackType == 'InterViewerMark') {
+              this.InterviewerAfterSandbox = employee.empPosition + ' ' + employee.firstname + ' ' + employee.lastname;
+              this.feedbackFromInterViewerAfterSandbox = f.comment
+              this.MarkFromInterviewerAfterSandbox = f.feedbackMark;
 
-          } else {
-            this.InterviewerBeforeSandbox = f.employee.empPosition + ' ' + f.employee.firstname + ' ' + f.employee.lastname;
-            this.feedbackFromInterViewerBeforeSandbox = f.comment
-            this.MarkFromInterviewerBeforeSandbox = f.feedbackMark;
-
+            } else {
+              this.InterviewerBeforeSandbox = employee.empPosition + ' ' + employee.firstname + ' ' + employee.lastname;
+              this.feedbackFromInterViewerBeforeSandbox = f.comment
+              this.MarkFromInterviewerBeforeSandbox = f.feedbackMark;
+            }
           }
-        }
+        })).subscribe()
+
       })
 
     })).subscribe()
-
   }
 
   back() {
