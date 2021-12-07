@@ -6,19 +6,37 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label class="fixName">Name</mat-label>
+            <input matInput type='text' [formControl]='eduProgramName' (input)="buildNameTerm(eduProgramName.value)"
+                   placeholder='Search' autocomplete="off">
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let element"><a [routerLink]="['../planning', element.id]">{{element.name}}</a></td>
       </ng-container>
 
       <!-- Application acceptance period Column -->
       <ng-container matColumnDef="applicationAcceptancePeriod">
-        <th mat-header-cell *matHeaderCellDef>Application acceptance period</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Application acceptance period</mat-label>
+            <input matInput type='text' [formControl]='accepPerFrom' (input)="buildAccepDateTerm(accepPerFrom.value)"
+                   placeholder="MM/DD/YYYY" autocomplete="off">
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let element">{{element.appAcceptFrom}} - {{element.appAcceptTo}}</td>
       </ng-container>
 
       <!-- Program's period Column -->
       <ng-container matColumnDef="educationalProgramsPeriod">
-        <th mat-header-cell *matHeaderCellDef>Educational program's period</th>
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field>
+            <mat-label>Educational program 's period</mat-label>
+            <input matInput type='text' [formControl]='progPerFrom' (input)="buildProgDateTerm(progPerFrom.value)"
+                   placeholder="MM/DD/YYYY" autocomplete="off">
+          </mat-form-field>
+        </th>
         <td mat-cell *matCellDef="let element">{{element.eduProgFrom}} - {{element.eduProgTo}}</td>
       </ng-container>
 
@@ -26,8 +44,10 @@
       <ng-container matColumnDef="calendar">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button>
-            <a [routerLink]="['../planning', element.id]"><mat-icon>calendar_today</mat-icon></a>
+          <button mat-button [routerLink]="['../planning', element.id]">
+            <a>
+              <mat-icon>calendar_today</mat-icon>
+            </a>
           </button>
         </td>
       </ng-container>

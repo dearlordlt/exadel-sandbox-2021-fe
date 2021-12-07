@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" id="candidate-registration">
   <form [formGroup]="registrationForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-    <div class="edu-programs">
-      <h4>Actual Educational programs</h4>
+    <div class="edu-programs" *ngIf="showPrograms">
+      <h4>Educational programs</h4>
       <mat-form-field appearance="fill">
         <mat-label>Educational Programs</mat-label>
         <mat-select formControlName="educationProgramId" (selectionChange)="showPostion(registrationForm.value.educationProgramId)">

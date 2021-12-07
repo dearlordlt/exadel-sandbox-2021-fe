@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
-import {CreateFeedback} from '../../../../components/models/feedback';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
+import { CreateFeedback } from '../../../../components/models/feedback';
 
 @Injectable({
   providedIn: 'root',
@@ -11,23 +11,21 @@ export class FeedbackService {
   candidateName = '';
   candidateStatus = 0;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getEmployeeById(id: string) {
-    return this.http.get<any>(`${environment.EXADEL_API}/Employee/Get/${id}`);
+    return this.http.get<any>(`${environment.EXADEL_API}/Employee/${id}`);
   }
 
   writeFeedback(feedback: CreateFeedback) {
     return this.http.post<CreateFeedback>(`${environment.EXADEL_API}/Feedback/AddFeedback`, feedback);
   }
 
-  getAllFeedback() {
-    return this.http.get<any>(`${environment.EXADEL_API}/Feedback/GetAllFeedbacks`);
+  getAllFeedback(candidateID: string) {
+    return this.http.get<any>(`${environment.EXADEL_API}/Feedback/GetAllFeedbacks?CandidateID=${candidateID}`);
   }
 
   getFeedbackByID(id: string) {
     return this.http.get<any>(`${environment.EXADEL_API}/Feedback/Get?Id=${id}`);
   }
-
 }

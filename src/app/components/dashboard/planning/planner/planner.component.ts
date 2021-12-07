@@ -64,7 +64,6 @@ export class PlannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.educationalProgramId = this.route.snapshot.paramMap.get('educationalProgramId')!;
-
     if (this.educationalProgramId) this.getEducationalProgram();
     this.getdata();
     this.getRole();
@@ -72,7 +71,7 @@ export class PlannerComponent implements OnInit {
 
   getRole() {
     this.authService.getEmployee(localStorage.getItem('id') || '').subscribe((data) => {
-      this.userRole = data.role.roleName;
+      this.userRole = data.empPosition;
     });
   }
 

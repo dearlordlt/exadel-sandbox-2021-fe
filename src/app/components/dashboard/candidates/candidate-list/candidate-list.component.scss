@@ -14,7 +14,10 @@ button.hide-button {
   background: none;
   border: none;
 }
-
+h3,
+button {
+  font-family: 'Poppins', sans-serif;
+}
 .table-wrapper {
   display: block;
   width: 95%;
@@ -29,7 +32,7 @@ button.hide-button {
     display: table;
     border-collapse: collapse;
     margin: 0;
-
+    font-family: 'Poppins', sans-serif;
     ::ng-deep .mat-form-field-underline {
       display: none;
     }
@@ -37,20 +40,14 @@ button.hide-button {
     th {
       mat-form-field {
         width: 120px;
-
         mat-label {
           font-weight: bold;
           color: #000;
+          font-family: 'Poppins', sans-serif;
         }
       }
     }
   }
-}
-
-th.mat-header-cell {
-  color: #000;
-  font-size: 1.3rem;
-  font-weight: bold;
 }
 
 th.mat-header-cell:first-of-type,
@@ -68,9 +65,12 @@ td.mat-footer-cell:last-of-type {
 th.mat-header-cell,
 td.mat-cell {
   min-width: 5rem;
-  text-align: center;
-  border: 1px solid #ccc;
+  text-align: left !important;
   padding: 0.4rem;
+}
+
+th.mat-header-cell {
+  border: none;
 }
 
 .mat-column-edit {
@@ -81,18 +81,18 @@ td.mat-cell {
   }
 }
 
+.edit-reset {
+  button {
+    width: 100%;
+  }
+}
+
 .edit-feedback {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0;
-}
-
-.mat-header-row {
-  .mat-header-cell {
-    background: #ddd;
-  }
 }
 
 .mat-row,

@@ -1,4 +1,4 @@
-$primary: #0082ca;
+@import '../../../../styles/global-styles/global-variables.scss';
 
 .educational-programs {
   display: flex;
@@ -14,26 +14,25 @@ $primary: #0082ca;
   &__table {
     margin-top: 50px;
   }
-}
 
-table {
-  width: 100%;
-}
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
 
-th.mat-header-cell {
-  color: #000;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
+  th {
+    mat-form-field {
+      width: 180px;
 
-th.mat-header-cell,
-td.mat-cell {
-  text-align: center;
-  border: none;
-}
+      .fixName {
+        margin-left: 50px;
+      }
 
-td.mat-cell {
-  border-bottom: 1px solid #ccc;
+      mat-label {
+        font-weight: bold;
+        color: #000;
+      }
+    }
+  }
 }
 
 a {
