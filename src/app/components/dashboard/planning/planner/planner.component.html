@@ -222,7 +222,7 @@
           <td
             mat-cell
             *matCellDef="let element"
-            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[1].available || element.eventData[16].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[16].available }"
+            [ngClass]="{'schedule__cell schedule__cell--available': element.eventData[16].available || element.eventData[16].taken, 'schedule__cell schedule__cell--unavailable': !element.eventData[16].available }"
             (click)="addEvent(element,element.eventData[16])"
           >
             <mat-icon *ngIf="element.eventData[16].taken">check</mat-icon>
