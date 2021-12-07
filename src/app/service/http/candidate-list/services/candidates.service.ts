@@ -17,16 +17,17 @@ const headers = {
 export class CandidatesService {
   private apiUrl = 'Candidates';
 
-  // getCandidates(): Observable<Candidate[]> {
-  //   return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`).pipe(
-  //     tap(() => console.log('fetched candidates')),
-  //     catchError(this.handleError('getCandidates', [])),
-  //   );
-  // }
-
   getCandidates(): Observable<Candidate[]> {
-    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
+    return this.http.get<Candidate[]>(`${environment.EXADEL_API}/Candidates/GetAllCandidates`);
+    // .pipe(
+    // tap(() => console.log('fetched candidates')),
+    // catchError(this.handleError('getCandidates', [])),
+    // );
   }
+
+  // getCandidates(): Observable<Candidate[]> {
+  //   return this.http.get<Candidate[]>(`${environment.EXADEL_API}/${this.apiUrl}/GetSearched`);
+  // }
 
   getCandidateByID(id: string) {
     return this.http.get<Candidate>(`${environment.EXADEL_API}/Candidates/${id}`);
