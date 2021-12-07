@@ -45,7 +45,7 @@
             },
             {
               "id": 5,
-              "available": true,
+              "available": false,
               "taken": false,
               "candidate": "",
               "skype": "",
