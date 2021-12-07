@@ -191,14 +191,14 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
 
   getEmployeeRole() {
     this.authenticationService.getEmployee(localStorage.getItem('id') || '').subscribe((data) => {
-      const role = data.role.roleName;
+      const role = data.empPosition;
       if (role === 'Administrator' || role === 'Manager' || role === 'Recruiter') {
         this.updateOption = true;
         if (role === 'Manager') {
           this.updateDialogWidth = '400px';
         }
       }
-      this.empoloyeeRole = data.role.roleName;
+      this.empoloyeeRole = data.empPosition;
     });
   }
 
@@ -336,14 +336,14 @@ export class CandidateListComponent implements OnInit, AfterViewInit {
             .pipe(
               tap((emp) => {
                 if (
-                  (emp.role.roleName == 'Recruiter' && candidate.statusMark == 4 && candidate.softSkillLevel == 0) ||
-                  (emp.role.roleName == 'Interviewer' &&
+                  (emp.empPosition == 'Recruiter' && candidate.statusMark == 4 && candidate.softSkillLevel == 0) ||
+                  (emp.empPosition == 'Interviewer' &&
                     ((candidate.statusMark == 5 && candidate.hardSkillLevel == 0) ||
                       (candidate.statusMark == 10 && candidate.interViewerMark == 0))) ||
-                  (emp.role.roleName == 'Mentor' && candidate.statusMark == 10 && candidate.mentorsMark == 0)
+                  (emp.empPosition == 'Mentor' && candidate.statusMark == 10 && candidate.mentorsMark == 0)
                 ) {
                   this.router.navigateByUrl('dashboard/write_feedback').then();
-                } else if (emp.role.roleName == 'Administrator' || emp.role.roleName == 'Manager') {
+                } else if (emp.empPosition == 'Administrator' || emp.empPosition == 'Manager') {
                   this.router.navigateByUrl('dashboard/read_feedback').then();
                 } else {
                   alert("You can't leave feedback according to candidate's status or may be you already left, Please  Check");

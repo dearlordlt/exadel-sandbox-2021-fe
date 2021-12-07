@@ -20,17 +20,19 @@ export class AuthenticationService {
   }
 
   getEmployee(id: string): Observable<EmployeeData> {
-    return this.http.get<EmployeeData>(`${environment.EXADEL_API}/Employee/Get/${id}`);
+    return this.http.get<EmployeeData>(`${environment.EXADEL_API}/Employee/${id}`);
   }
 
   checkEmployee() {
     this.getEmployee(localStorage.getItem('id') || '').subscribe(
       (data) => {
         if (data.email !== localStorage.getItem('email')) {
+          localStorage.clear();
           this.router.navigate(['login']);
         }
       },
       () => {
+        localStorage.clear();
         this.router.navigate(['login']);
       }
     );
